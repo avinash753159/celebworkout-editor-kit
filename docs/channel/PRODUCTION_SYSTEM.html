@@ -1,0 +1,355 @@
+<title>How the next film gets made — Celeb Workout production system</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F;
+    --free:#2E6B4F; --paid:#B22B1A;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --free:#6FBF95;--paid:#E4573F;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --free:#6FBF95;--paid:#E4573F;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;
+          --free:#2E6B4F;--paid:#B22B1A;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:56rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.28rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:1px solid var(--rule);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:.94rem;font-weight:700;color:var(--ink);margin:1.9rem 0 .35rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.05em .3em;}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.83rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.44rem .7rem .44rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 9%,transparent);font-weight:600;color:var(--ink);}
+  .yes{color:var(--good);font-weight:700;} .no{color:var(--bad);font-weight:700;}
+  td code{font-size:.8em;}
+
+  /* pipeline */
+  .pipe{margin:1.6rem 0 1rem;font-family:var(--sans);}
+  .st{display:grid;grid-template-columns:2.1rem 1fr;gap:1rem;padding:0 0 1.5rem;position:relative;}
+  .st:not(:last-child)::before{content:"";position:absolute;left:1.02rem;top:2.3rem;bottom:0;
+     width:2px;background:var(--rule);}
+  .st .num{width:2.1rem;height:2.1rem;border-radius:50%;display:flex;align-items:center;
+     justify-content:center;font-weight:700;font-size:.82rem;color:#fff;background:var(--free);z-index:1;}
+  .st.paid .num{background:var(--paid);}
+  .st .bd{padding-top:.1rem;}
+  .st h4{margin:0 0 .2rem;font-size:1rem;font-weight:700;color:var(--ink);
+     display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap;}
+  .st h4 .cost{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+     color:var(--free);border:1px solid currentColor;padding:.06rem .35rem;}
+  .st.paid h4 .cost{color:var(--paid);}
+  .st .what{font-size:.86rem;line-height:1.5;margin:.3rem 0 .5rem;color:var(--body);}
+  .st .gate{font-size:.78rem;background:var(--panel);border-left:3px solid var(--ink);
+     padding:.45rem .7rem;line-height:1.45;}
+  .st .gate b{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);
+     display:block;margin-bottom:.1rem;}
+  .st .runs{font-size:.74rem;color:var(--mute);margin-top:.4rem;}
+  .st .runs code{background:none;padding:0;color:var(--red);}
+  .cut{display:grid;grid-template-columns:2.1rem 1fr;gap:1rem;margin:.2rem 0 1.5rem;}
+  .cut .ln{grid-column:2;border-top:2px dashed var(--paid);padding-top:.4rem;
+     font-family:var(--sans);font-size:.7rem;font-weight:700;letter-spacing:.12em;
+     text-transform:uppercase;color:var(--paid);}
+
+  .bars{margin:1.3rem 0 1.6rem;font-family:var(--sans);font-size:.8rem;}
+  .bar{display:grid;grid-template-columns:9.5rem 1fr 5rem;gap:.7rem;align-items:center;margin-bottom:.42rem;}
+  .bar .lab{color:var(--body);text-align:right;}
+  .bar .track{background:var(--panel);height:1.15rem;}
+  .bar .fill{background:var(--red);height:100%;}
+  .bar .fill.q{background:var(--mute);}
+  .bar .fill.g{background:var(--good);}
+  .bar .val{color:var(--mute);}
+  .bar.big .lab,.bar.big .val{color:var(--ink);font-weight:700;}
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.5rem 0 1.6rem;}
+
+  ol.build{list-style:none;counter-reset:b;padding:0;margin:1.2rem 0 0;}
+  ol.build li{counter-increment:b;position:relative;padding:.9rem 0 .9rem 3.2rem;border-bottom:1px solid var(--rule);}
+  ol.build li::before{content:counter(b);position:absolute;left:0;top:.75rem;font-family:var(--sans);
+     font-size:1.5rem;font-weight:700;color:var(--red);line-height:1;}
+  ol.build .h{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:.96rem;
+     display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;}
+  ol.build .tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:700;}
+  ol.build p{margin:.25rem 0 0;font-size:.92rem;}
+
+  @media (max-width:640px){
+    .bar{grid-template-columns:1fr;gap:.15rem;} .bar .lab{text-align:left;}
+    .st{grid-template-columns:1.7rem 1fr;gap:.7rem;} .st .num{width:1.7rem;height:1.7rem;font-size:.72rem;}
+    .st:not(:last-child)::before{left:.82rem;}
+    .cut{grid-template-columns:1.7rem 1fr;gap:.7rem;}
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Production system <span>· Celeb Workout · supersedes SPEED_PLAN</span></div>
+  <h1>How the next film gets made</h1>
+  <p class="stand">Four minutes of compute today closed three gaps that had survived three script
+  versions, a full render and a rejection. The pipeline is not slow. It is in the wrong order.</p>
+  <div class="byline"><span>3 August 2026</span><span>Target: 20 min · ~4 h · mostly unattended</span></div>
+</header>
+
+<h2><span class="n">I.</span> The evidence</h2>
+
+<p class="lede">This is not a theory about where the time goes. Today it was measured, by accident,
+while looking for something else.</p>
+
+<div class="tw">
+<table>
+  <caption>Three blockers, and what actually solved them</caption>
+  <tr><th>Blocker</th><th>Blocked for</th><th>What solved it</th><th class="n">Cost</th></tr>
+  <tr class="hi"><td>The eight exercises — the film's entire deliverable</td><td>V1, V2, V3 + a full render</td><td>transcribe <code>MENSHEALTH.mp4</code>, already on disk</td><td class="n">~90 s</td></tr>
+  <tr><td>13 more movements, with Hemsworth demonstrating on camera</td><td>never attempted</td><td><code>grep CENTR.en.vtt</code>, already captioned</td><td class="n">~2 s</td></tr>
+  <tr><td>560,000 chars of first-person father / Alzheimer's material</td><td>never opened</td><td><code>grep</code> two <code>.vtt</code> files</td><td class="n">~3 s</td></tr>
+</table>
+</div>
+
+<div class="verdict">
+  <div class="lab">The finding</div>
+  <p>Every one of those was <strong>free, local, and available on day one.</strong> The pipeline
+  instead spent a night generating stills to stand in for material it already owned — and produced a
+  film with no workout in it and no subject on screen.</p>
+</div>
+
+<h2><span class="n">II.</span> The rule the system is built on</h2>
+
+<p><strong>Order every stage by what it costs to find a defect there.</strong> Nothing expensive runs
+until everything cheap has passed. Every complaint in the voice note — narrator echo, mid-sentence
+bites, one source over-mined, no workout, no brand — is detectable in text, for free, before a frame
+exists.</p>
+
+<div class="pipe">
+
+  <div class="st">
+    <div class="num">0</div>
+    <div class="bd">
+      <h4>INVENTORY <span class="cost">free · ~10 min</span></h4>
+      <p class="what">Walk <code>dossier/&lt;subject&gt;/sources/</code>. Transcribe every media file
+      that has no captions. Index every caption file. Emit what is <em>actually in</em> each one:
+      duration, named exercises, people, dates, quotable complete-thought windows.</p>
+      <div class="gate"><b>Gate</b> No research task may open until the inventory is green. Nothing
+      may be generated that the inventory says already exists.</div>
+      <p class="runs">Runs: <code>pipeline/inventory.py</code> → <code>manifest/inventory_&lt;subject&gt;.json</code>
+      · faster_whisper, already installed</p>
+    </div>
+  </div>
+
+  <div class="st">
+    <div class="num">1</div>
+    <div class="bd">
+      <h4>SOURCE <span class="cost">free · 1–2 h unattended</span></h4>
+      <p class="what">Acquire to 10–15 sources. Scene-detect, identity-pass, then cut candidate bites
+      on <em>word-level</em> timings so every bite is a complete thought. Build the bite bank with a
+      per-source ledger.</p>
+      <div class="gate"><b>Gate</b> ≥10 sources · ≥8 min of usable bite time · no source over 20% of
+      it · every bite identity-verified · no bite starts or ends mid-sentence</div>
+      <p class="runs">Runs: <code>pipeline/bitebank.py</code> · reuses <code>detect_shots</code>,
+      <code>word_times</code>, <code>verify_pool</code></p>
+    </div>
+  </div>
+
+  <div class="st">
+    <div class="num">2</div>
+    <div class="bd">
+      <h4>SCRIPT LOOP <span class="cost">pennies · ~30 min</span></h4>
+      <p class="what">Braid outline, then <strong>five drafts in parallel</strong>, each a different
+      angle. Every draft read by a first-time viewer simulation, critiqued for structure, and swept
+      for language tics. Score, keep the winner, graft the best beats off the rest. Repeat until the
+      reader stops complaining.</p>
+      <div class="gate"><b>Gate</b> reader-sim clean twice running · zero echo against the bite bank ·
+      runtime projection 20 min ±2 at measured WPM · every movement in the programme named on screen ·
+      no narration block that only describes the picture</div>
+      <p class="runs">Runs: <code>story-planning</code> · <code>creative-writing-modes</code> ·
+      <code>reader-sim</code> · <code>story-review</code> · <code>llm-writing</code> ·
+      <code>echo_check.py</code></p>
+    </div>
+  </div>
+
+  <div class="st">
+    <div class="num">3</div>
+    <div class="bd">
+      <h4>RADIO EDIT <span class="cost">free · ~20 min</span></h4>
+      <p class="what">Assemble the whole film as audio: free draft narration, the real bites, the
+      music. No picture. This is the film's spine and it is listenable end to end.</p>
+      <div class="gate"><b>Gate</b> real-voice ≥40% · music-beat share ≈2.5% · runtime 20 min ±1 ·
+      no bite clipped mid-thought · no interviewer filler</div>
+      <p class="runs">Runs: <code>edge-tts</code> (free) · <code>pipeline/radio.py</code> ·
+      <code>bite_windows.py</code></p>
+    </div>
+  </div>
+
+  <div class="cut"><div class="ln">↓ everything below this line costs money — nothing crosses it until every gate above is green ↓</div></div>
+
+  <div class="st paid">
+    <div class="num">4</div>
+    <div class="bd">
+      <h4>PICTURE <span class="cost">~$4–10 · ~60 min</span></h4>
+      <p class="what">Narration bought <strong>once</strong>, on the locked script. Shot plan written
+      per <em>argument</em>, not per line. Real footage, archive, documents and brand cards first;
+      generation only where no real artefact could exist.</p>
+      <div class="gate"><b>Gate</b> median hold 8–12 s · every shot scores ≥2 on "does this advance
+      the paragraph's claim" · generated share ≤15% · brand palette and type sampled · no reuse ·
+      no shot crossing a camera cut</div>
+      <p class="runs">Runs: <code>flow_plan</code> · <code>flow_still</code> · <code>fx_camera</code> ·
+      <code>flow_assemble</code></p>
+    </div>
+  </div>
+
+  <div class="st paid">
+    <div class="num">5</div>
+    <div class="bd">
+      <h4>ASSEMBLE &amp; QC <span class="cost">free · ~20 min</span></h4>
+      <p class="what">Frame-exact against the locked audio. Then the Owner Proxy watches contact
+      sheets against the narration and writes the review you would write.</p>
+      <div class="gate"><b>Gate</b> Owner Proxy passes twice running · all upstream gates still green
+      on the final file</div>
+      <p class="runs">Runs: <code>v11_assemble</code> · <code>qc</code> · Owner Proxy team</p>
+    </div>
+  </div>
+</div>
+
+<h2><span class="n">III.</span> Where the gates come from</h2>
+
+<p>Not invented. Every one is a defect you named, or a number measured off the reference channel.</p>
+
+<div class="tw">
+<table>
+  <caption>Gate provenance</caption>
+  <tr><th>Gate</th><th>Stage</th><th>Origin</th></tr>
+  <tr><td>Zero echo between narration and adjacent bite</td><td>2</td><td>"the narrator says it, then MrBeast says the exact same thing"</td></tr>
+  <tr><td>No bite clipped mid-thought · no interviewer filler</td><td>3</td><td>"he hasn't finished his sentence" · "he'll just say one little 'uh'"</td></tr>
+  <tr><td>No source over 20% of bite time</td><td>1</td><td>"so many clips taken from the same one"</td></tr>
+  <tr><td>Median hold 8–12 s</td><td>4</td><td>"very fragmented" · "just images after images"</td></tr>
+  <tr><td>Shot advances the paragraph, not a word</td><td>4</td><td>"it'll cling to a word and create a visual"</td></tr>
+  <tr><td>Brand palette and type sampled every frame</td><td>4</td><td>"it wasn't one brand theme, it was cut and paste"</td></tr>
+  <tr class="hi"><td>Every movement named on screen</td><td>2</td><td>V3 said "eight movements" four times and named none</td></tr>
+  <tr><td>Real-voice ≥40% · beats ≈2.5% · runtime</td><td>3</td><td>measured off eight Gavia films, §17</td></tr>
+</table>
+</div>
+
+<h2><span class="n">IV.</span> Who runs it while you sleep</h2>
+
+<p>Stages 0–3 are the loop, and they are the ones worth running overnight. Six teams on the board;
+a failure routes itself back to whoever caused it.</p>
+
+<div class="tw">
+<table>
+  <caption>Teams → stages → the calls that make it autonomous</caption>
+  <tr><th>Team</th><th>Stage</th><th>Key calls</th></tr>
+  <tr><td>Inventory &amp; Research</td><td>0</td><td><code>task_create</code> per source found · <code>cross_team_send</code></td></tr>
+  <tr><td>Sourcing</td><td>1</td><td><code>process_register</code> for long scans · <code>task_attach_file</code></td></tr>
+  <tr><td>Story</td><td>2</td><td>one task per draft · <code>task_link</code> to the outline</td></tr>
+  <tr class="hi"><td><strong>Owner Proxy</strong></td><td>2, 3, 5</td><td><code>kanban_add_reviewer</code> · <strong><code>review_request_changes</code></strong> with the critique attached</td></tr>
+  <tr><td>Audio</td><td>4</td><td>triggers only on <code>APPROVED</code> — the money gate</td></tr>
+  <tr><td>Picture &amp; Assembly</td><td>4, 5</td><td><code>process_register</code> the ffmpeg job</td></tr>
+</table>
+</div>
+
+<p><code>review_request_changes</code> is the whole point: a rejection returns the task to the team
+that caused it with no human in the path. That single transition is what today costs you a night of
+sleep and a message in the morning. <code>task_set_clarification</code> is the only thing that should
+ever wake you.</p>
+
+<p class="note">Controller verified live on <code>127.0.0.1:3456</code>, <code>/api/teams</code>
+responding, no teams provisioned yet. The MCP package is not on npm — it builds from source in the
+repo, or the HTTP API is called directly.</p>
+
+<h2><span class="n">V.</span> The arithmetic</h2>
+
+<div class="bars">
+  <div class="bar big"><div class="lab">Today — idle</div><div class="track"><div class="fill" style="width:79%"></div></div><div class="val">6 h 25 m</div></div>
+  <div class="bar"><div class="lab">Today — render</div><div class="track"><div class="fill q" style="width:12.3%"></div></div><div class="val">60 m</div></div>
+  <div class="bar"><div class="lab">Today — crash</div><div class="track"><div class="fill q" style="width:5.1%"></div></div><div class="val">25 m</div></div>
+  <div class="bar"><div class="lab">Today — real work</div><div class="track"><div class="fill q" style="width:3.5%"></div></div><div class="val">17 m</div></div>
+</div>
+<p class="note">Measured from process logs for the Hemsworth build, 02:26–10:32. Outcome: rejected.</p>
+
+<div class="tw">
+<table>
+  <caption>Per film, before and after</caption>
+  <tr><th></th><th class="n">Now</th><th class="n">After</th><th>Why</th></tr>
+  <tr><td>Wall clock</td><td class="n">8 h 06</td><td class="n">~4 h</td><td>estimate — render and scans dominate</td></tr>
+  <tr class="hi"><td>Your hands-on time</td><td class="n">the whole night</td><td class="n">~20 min</td><td>the board routes rejections, not you</td></tr>
+  <tr><td>Rejection loops before you see it</td><td class="n">0</td><td class="n">6–10</td><td>they happen in text, at Stage 2</td></tr>
+  <tr><td>Cost of finding a defect</td><td class="n">a night</td><td class="n">pennies</td><td>caught above the money line</td></tr>
+  <tr><td>Films published</td><td class="n no">0 of 2</td><td class="n">—</td><td>the number that actually matters</td></tr>
+</table>
+</div>
+
+<div class="verdict">
+  <div class="lab">The real gain</div>
+  <p>Not the four hours. It is that <strong>the cut you wake up to has already failed and been fixed
+  eight times</strong> — in text, where failing is free.</p>
+</div>
+
+<h2><span class="n">VI.</span> Build order</h2>
+
+<ol class="build">
+  <li><div class="h"><span><code>pipeline/inventory.py</code> — Stage 0</span><span class="tag">~1 h · highest ROI</span></div>
+    <p>Transcribe-if-missing, index, report what each asset contains. Would have printed <em>"MENSHEALTH.mp4
+    — 8 named exercises"</em> on day one and saved this entire week. Reusable for every celebrity, forever.</p></li>
+
+  <li><div class="h"><span><code>gates/</code> — the standard, made executable</span><span class="tag">~3 h</span></div>
+    <p>One machine-readable standard file, then a gate per row of the table in §III. Each returns
+    pass/fail plus evidence. <strong>Validated by running them against the two rejected films — a suite
+    that passes either one is wrong.</strong></p></li>
+
+  <li><div class="h"><span><code>pipeline/bitebank.py</code> — Stage 1</span><span class="tag">~3 h</span></div>
+    <p>The stage that has never existed. Complete-thought cutting on word timings, identity pass,
+    per-source ledger. This is what puts the subject on screen.</p></li>
+
+  <li><div class="h"><span>The script loop — Stage 2</span><span class="tag">~2 h</span></div>
+    <p>Five parallel drafts, reader-sim, review, tic sweep, score, iterate. The skills are installed;
+    this is the harness that runs them in a loop and keeps score.</p></li>
+
+  <li><div class="h"><span>Teams on the board</span><span class="tag">~2 h</span></div>
+    <p>Provision the six teams against the live controller, wire the Python as tools, prove
+    <code>review_request_changes</code> closes the loop without a human. Do the one-team smoke test
+    first — if it stalls waiting for a click, the overnight design changes.</p></li>
+</ol>
+
+<p style="margin-top:1.4rem"><strong>~11 hours of build.</strong> After that a film is roughly four
+hours, nearly all of it unattended, and the failures happen where they are free.</p>
+
+</div>

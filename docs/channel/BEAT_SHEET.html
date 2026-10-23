@@ -1,0 +1,406 @@
+<title>The Beat Sheet — template and worked example</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#121212; --body:#2E2E2E; --rule:#D4D4D4; --hair:#E6E6E6;
+    --paper:#FFFFFF; --panel:#F4F4F4; --mute:#6B6B6B; --good:#1F6F4A; --bad:#A32A17;
+    --a1:#2B5C7E; --a2:#8A4B2A; --a3:#3F7048;
+    --serif:"Milo Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    color-scheme: light;
+  }
+  html,body{background:#fff;}
+  body{color:var(--body);font-family:var(--serif);font-size:16.5px;line-height:1.58;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem 6rem;background:#fff;}
+
+  header.mast{margin-top:2.4rem;}
+  .tab{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);
+       font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+       padding:.22rem .6rem;margin-bottom:.9rem;}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0 0 .55rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
+  .stand{font-size:1.2rem;line-height:1.42;color:var(--mute);max-width:42rem;margin:0 0 1.3rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+          padding:.5rem 0;margin-bottom:2.4rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.18rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.005em;margin:2.9rem 0 .6rem;padding-top:.9rem;border-top:3px solid var(--red);}
+  h2 .n{color:var(--red);margin-right:.45rem;font-variant-numeric:tabular-nums;}
+  h3{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--ink);margin:1.7rem 0 .35rem;}
+  p{margin:0 0 .95rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  a{color:var(--red);}
+  .lede{font-size:1.05rem;}
+
+  .box{background:var(--panel);border-top:2px solid var(--red);padding:.85rem 1.05rem;margin:1rem 0 1.4rem;}
+  .box .lab{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.13em;
+     text-transform:uppercase;color:var(--red);margin-bottom:.25rem;}
+  .box p{margin:0;font-size:.98rem;}
+
+  .tw{overflow-x:auto;margin:1.1rem 0 1.5rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.79rem;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.62rem;
+     font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);padding-bottom:.45rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.38rem .7rem .38rem 0;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.42rem .7rem .42rem 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:#FBEDEA;color:var(--ink);}
+  tr.hi td strong{color:var(--red);}
+
+  .act{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+     text-transform:uppercase;color:#fff;padding:.35rem .8rem;margin:1.9rem 0 0;display:block;}
+  .act.a1{background:var(--a1)} .act.a2{background:var(--a2)} .act.a3{background:var(--a3)}
+
+  .beat{border:1px solid var(--rule);border-left:3px solid var(--bc);margin:.55rem 0;
+     display:grid;grid-template-columns:3.2rem 1fr;background:#fff;}
+  .beat.a1{--bc:var(--a1)} .beat.a2{--bc:var(--a2)} .beat.a3{--bc:var(--a3)}
+  .beat .num{background:#FAFAFA;display:flex;flex-direction:column;align-items:center;
+     padding:.6rem .2rem;font-family:var(--sans);border-right:1px solid var(--hair);}
+  .beat .num b{font-size:1.05rem;font-weight:700;color:var(--bc);line-height:1;}
+  .beat .num span{font-size:.55rem;color:var(--mute);font-weight:700;margin-top:.3rem;text-align:center;}
+  .beat .bd{padding:.6rem .9rem .7rem;}
+  .beat .ttl{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:.92rem;
+     display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;}
+  .beat .ttl em{font-style:normal;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+     color:var(--mute);font-weight:700;}
+  .beat dl{display:grid;grid-template-columns:5.8rem 1fr;gap:.2rem .8rem;margin:.45rem 0 0;
+     font-family:var(--sans);font-size:.79rem;}
+  .beat dt{color:var(--mute);font-weight:700;font-size:.58rem;letter-spacing:.09em;
+     text-transform:uppercase;padding-top:.17rem;}
+  .beat dd{margin:0;line-height:1.42;}
+  .beat dd.arg{color:var(--ink);font-weight:600;}
+  .wk{background:#FBEDEA;border-left:3px solid var(--red);padding:.35rem .6rem;
+     font-family:var(--sans);font-size:.77rem;margin-top:.4rem;line-height:1.42;}
+  .wk b{font-size:.56rem;letter-spacing:.11em;text-transform:uppercase;color:var(--red);
+     display:block;margin-bottom:.08rem;}
+  .bstory{background:#EDF2F6;border-left:3px solid var(--a1);}
+  .bstory b{color:var(--a1);}
+  .fx{display:inline-block;font-family:var(--mono);font-size:.68rem;background:var(--panel);
+     padding:.04rem .28rem;color:var(--red);}
+
+  pre{background:var(--panel);border-left:2px solid var(--rule);padding:.85rem 1rem;overflow-x:auto;
+      font-family:var(--mono);font-size:.74rem;line-height:1.55;margin:.9rem 0 1.3rem;color:var(--ink);}
+  .note{font-family:var(--sans);font-size:.74rem;color:var(--mute);line-height:1.48;margin:-.3rem 0 1.5rem;}
+
+  @media (max-width:640px){ .beat dl{grid-template-columns:1fr;} .beat{grid-template-columns:2.5rem 1fr;} }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="tab">Beat sheet · pillar ① · owned by the Showrunner</div>
+  <h1>The Beat Sheet</h1>
+  <p class="stand">Sixteen beats, checked against both industry standards and adapted to a
+  twenty-minute celebrity documentary — with the workout braided through, because the programme is
+  why they clicked.</p>
+  <div class="byline"><span>v2 · 3 August 2026</span><span>Save the Cat · No Film School · Celeb Workout</span></div>
+</header>
+
+<h2><span class="n">I.</span> What this is, and who writes it</h2>
+
+<p class="lede">Gavia writes his in about two hours and calls it <em>"a scene-by-scene outline of what
+should happen in the documentary."</em> It is not a script. It is the document that tells the footage
+hunt what to go and find, and it is the highest-leverage two hours in the whole process.</p>
+
+<div class="box">
+  <div class="lab">The two-track rule</div>
+  <p>A feature beat sheet has one track. <strong>Ours has two.</strong> The story track carries the
+  argument; the workout track delivers the programme movement by movement, each one attached to the
+  beat that justifies it. Never one summary card — that is R10, and it is the single biggest failure
+  of every previous script.</p>
+</div>
+
+<h2><span class="n">II.</span> Three structures, mapped</h2>
+
+<p>Ours is not invented. It is Save the Cat's fifteen and No Film School's sixteen, reconciled and
+retimed to twenty minutes. Where all three agree, the beat is load-bearing.</p>
+
+<div class="tw">
+<table>
+  <caption>Save the Cat · No Film School · Celeb Workout</caption>
+  <tr><th class="n">#</th><th>Save the Cat</th><th>No Film School</th><th>Celeb Workout</th><th class="n">At</th></tr>
+  <tr class="hi"><td class="n">1</td><td><strong>Opening Image</strong></td><td>The First Frame</td><td><strong>THE ARTIFACT</strong></td><td class="n">0:00</td></tr>
+  <tr class="hi"><td class="n">2</td><td><strong>Theme Stated</strong></td><td>—</td><td><strong>THE PROMISE</strong> — withheld, aloud, before 0:20</td><td class="n">0:20</td></tr>
+  <tr><td class="n">3</td><td>The Set Up</td><td>World Around Us · Protagonist</td><td>THE BODY</td><td class="n">1:10</td></tr>
+  <tr><td class="n">4</td><td>The Set Up</td><td>Character Traits</td><td>THE TRAIT</td><td class="n">2:10</td></tr>
+  <tr><td class="n">5</td><td>Catalyst</td><td>Emotional Hurdle</td><td>WHAT IT WAS FOR</td><td class="n">3:10</td></tr>
+  <tr><td class="n">6</td><td>Debate</td><td>Physical Hurdle</td><td>THE CONSTRAINT</td><td class="n">4:10</td></tr>
+  <tr class="hi"><td class="n">7</td><td><strong>B Story</strong></td><td>Reason Forward</td><td>WHO BUILT IT <strong>+ the B story opens</strong></td><td class="n">5:10</td></tr>
+  <tr><td class="n">8</td><td>Break Into Two</td><td>Decision to Try</td><td>THE METHOD</td><td class="n">6:00</td></tr>
+  <tr class="hi"><td class="n">9</td><td><strong>Fun &amp; Games</strong><br><span style="color:var(--mute)">"promise of the premise"</span></td><td>Why We're Here</td><td><strong>THE PROGRAMME, IN FULL</strong></td><td class="n">7:00</td></tr>
+  <tr class="hi"><td class="n">10</td><td><strong>Midpoint</strong><br><span style="color:var(--mute)">false victory</span></td><td>Antics &amp; Escapades</td><td>IT WORKED</td><td class="n">9:00</td></tr>
+  <tr><td class="n">11</td><td>Bad Guys Close In</td><td>Consequences</td><td>THE COST</td><td class="n">10:00</td></tr>
+  <tr class="hi"><td class="n">12</td><td><strong>All Is Lost</strong></td><td>The Final Straw</td><td><strong>THE TURN</strong> — promise paid</td><td class="n">11:30</td></tr>
+  <tr><td class="n">13</td><td>Dark Night of the Soul</td><td>Rock Bottom</td><td>WHY IT LANDED</td><td class="n">13:00</td></tr>
+  <tr><td class="n">14</td><td>Break Into Three</td><td>The Bounce Back</td><td>HE CHANGED THE OBJECTIVE</td><td class="n">14:40</td></tr>
+  <tr><td class="n">15</td><td>Finale</td><td>Triumphs</td><td>SECOND PROGRAMME + THE LIMIT</td><td class="n">16:00</td></tr>
+  <tr class="hi"><td class="n">16</td><td><strong>Final Image</strong></td><td>The Final Frame</td><td><strong>THE CLOSE</strong> + bridge</td><td class="n">18:30</td></tr>
+</table>
+</div>
+
+<h3>What Save the Cat caught that the other two missed</h3>
+
+<div class="box">
+  <div class="lab">Finding — the B story</div>
+  <p>Save the Cat puts a <strong>B story</strong> at beat 7 — the secondary thread that carries the
+  theme while the A story carries the plot. No Film School has no equivalent, and neither did our
+  draft. <strong>In the Hemsworth film the B story is his father.</strong> Every previous version held
+  Craig back until minute thirteen, which is why the ending felt unearned: the emotional thread was
+  introduced after the audience had stopped being able to use it. <strong>It opens at 5:10 and runs
+  underneath everything.</strong></p>
+</div>
+
+<div class="box">
+  <div class="lab">Finding — the midpoint is a false victory</div>
+  <p>Save the Cat's midpoint is a <em>false</em> win: things appear to succeed, and the stakes rise
+  underneath. Our beat 10 — <em>it worked, the photograph became the reference image for a decade</em>
+  — is exactly that shape, and naming it correctly changes how it is cut. It should feel like a peak
+  and play like a warning.</p>
+</div>
+
+<div class="tw">
+<table>
+  <caption>Fields — every beat carries all seven</caption>
+  <tr><th>Field</th><th>Rule</th></tr>
+  <tr class="hi"><td><strong>ARGUES</strong></td><td>One sentence. What this beat <em>claims</em> — never what it says. If you can only write what happens, the beat is not earning its place.</td></tr>
+  <tr><td><strong>TIME</strong></td><td>Target duration. Sum must land 20 min ±1.</td></tr>
+  <tr><td><strong>WORKOUT</strong></td><td>Which movement(s) land here, or <code>—</code>.</td></tr>
+  <tr><td><strong>PICTURE</strong></td><td>A brief a stranger could act on. This is what the Hunter receives.</td></tr>
+  <tr><td><strong>TREATMENT</strong></td><td>Prescribed effect from the library. Never improvised.</td></tr>
+  <tr><td><strong>FACTS</strong></td><td>Which dossier claims this beat spends, with tier.</td></tr>
+  <tr><td><strong>BITE</strong></td><td>What real voice is wanted here, if any.</td></tr>
+</table>
+</div>
+
+<h2><span class="n">III.</span> Worked example — Chris Hemsworth</h2>
+
+<p>Built from <code>dossier/hemsworth/WORKOUT.md</code> and <code>SOURCES.md</code>. Every fact is
+sourced; every movement is named. <strong>Title, to the grammar:</strong>
+<em>The Diagnosis That Ended the Thor Body | His Real Workout &amp; What Replaced It</em></p>
+
+<div class="box">
+  <div class="lab">Thesis — one sentence</div>
+  <p>A man built the most copied body of his generation as a job requirement, then found out his
+  brain carries eight to ten times the population risk of Alzheimer's — and changed what he was
+  training for.</p>
+</div>
+
+<span class="act a1">Act One — the machine · 0:00–6:00</span>
+
+<div class="beat a1"><div class="num"><b>1</b><span>0:00</span></div><div class="bd">
+  <div class="ttl">THE ARTIFACT <em>opening image</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">This photograph is the most copied male body of the last two decades — and the man in it stopped building it.</dd>
+    <dt>Picture</dt><dd>The Thor physique still, full frame, held. No titles, no biography, no date.</dd>
+    <dt>Treatment</dt><dd><span class="fx">archive_treatment</span> → slow <span class="fx">flow_dibr</span></dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>2</b><span>0:20</span></div><div class="bd">
+  <div class="ttl">THE PROMISE <em>theme stated · withheld</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">A doctor stopped a camera rather than read a result aloud — and I will tell you what was on that page, but not yet.</dd>
+    <dt>Picture</dt><dd>Consulting-room artifacts only: a page face down, a boom lowering, an empty chair. <strong>Hunter: does real <em>Limitless</em> footage of this moment exist? If not, say so.</strong></dd>
+    <dt>Treatment</dt><dd><span class="fx">text_matte</span> on the title</dd>
+    <dt>Facts</dt><dd><em>Limitless</em> ep.5, Nat Geo 2022 — <strong>CONFIRMED</strong></dd>
+    <dt>Bite</dt><dd>Cascade — 2–3 short archival voices, fast</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>3</b><span>1:10</span></div><div class="bd">
+  <div class="ttl">THE BODY <em>set up</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">It was never a transformation. Transformations end; this was held continuously for eleven years across nine films.</dd>
+    <dt>Picture</dt><dd>Release-date table as a real document; set and press archive.</dd>
+    <dt>Treatment</dt><dd><span class="fx">source_highlight</span> on the dates</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>4</b><span>2:10</span></div><div class="bd">
+  <div class="ttl">THE TRAIT <em>character traits</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">What built it was not gym discipline — it was tolerance for repetition on a clock nobody else was keeping.</dd>
+    <dt>Picture</dt><dd>Trailer, hotel room, 5am call sheets.</dd>
+  </dl>
+  <div class="wk"><b>Workout · warm-up</b>Bear crawl · bodyweight squat — 20s on, 10s off. <code>MENSHEALTH.mp4</code> 01:19–02:04</div>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>5</b><span>3:10</span></div><div class="bd">
+  <div class="ttl">WHAT IT WAS FOR <em>catalyst</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">He was paid to be looked at, and the body was the product — which is what makes what he did later cost something.</dd>
+    <dt>Treatment</dt><dd><span class="fx">headline_over</span> — press coverage of the physique</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>6</b><span>4:10</span></div><div class="bd">
+  <div class="ttl">THE CONSTRAINT <em>debate</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">He could not train in a gym — the job moved every week, so the programme had to fit whatever room the production put him in.</dd>
+    <dt>Bite</dt><dd><strong>Zocchi:</strong> <em>"We travelled a lot on the film, and wherever we were we could get this workout done."</em> — 00:27</dd>
+  </dl>
+  <div class="wk"><b>Workout · kit</b>Dumbbells only. This establishes why the whole programme is shaped as it is.</div>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>7</b><span>5:10</span></div><div class="bd">
+  <div class="ttl">WHO BUILT IT <em>B story opens</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The routine you have read online was reconstructed by magazines. The man who actually wrote it has never sold a supplement.</dd>
+    <dt>Picture</dt><dd>Near-identical articles, tiled. Then Zocchi, ordinary, Byron Bay.</dd>
+    <dt>Treatment</dt><dd><span class="fx">source_highlight</span> across the copied articles</dd>
+  </dl>
+  <div class="wk bstory"><b>B story — the father, opens here</b>First mention of Craig and the
+  grandfather. One line, no explanation. It must be planted now so beat 13 pays rather than
+  introduces. <code>SHETTY.m4a</code> — "my dad" ×68, never mined.</div>
+</div></div>
+
+<span class="act a2">Act Two — the programme and its cost · 6:00–11:30</span>
+
+<div class="beat a2"><div class="num"><b>8</b><span>6:00</span></div><div class="bd">
+  <div class="ttl">THE METHOD <em>break into two</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The difficulty was never the movements. It is that the rest you were counting on is where the core work goes.</dd>
+    <dt>Bite</dt><dd><strong>Zocchi, verbatim:</strong> <em>"Eight weighted exercises for eight reps, then into three core exercises with no break, going through three times."</em> — 02:08</dd>
+    <dt>Treatment</dt><dd>Brand card — eight slots, all blank</dd>
+  </dl>
+  <div class="wk"><b>Correction the film must carry</b>This is the <strong>Men in Black</strong> circuit, not Thor. Zocchi: <em>"a more athletic, less bulky look than Thor."</em> The Thor programme is Centr Power — beat 15.</div>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>9</b><span>7:00</span></div><div class="bd">
+  <div class="ttl">THE PROGRAMME, IN FULL <em>fun &amp; games · promise of the premise</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Here is the entire thing, and there is no secret in it — which is the point.</dd>
+    <dt>Picture</dt><dd>Per movement: brand card → demonstration → his stated reason. Eleven in sequence.</dd>
+    <dt>Treatment</dt><dd>Exercise card + real demo + trainer bite</dd>
+  </dl>
+  <div class="wk"><b>Workout · all eleven</b>1 Weighted burpee · 2 Curl and press · 3 Goblet squat ·
+  4 Standing triceps extension · 5 Reverse lunge curl · 6 Lateral raise · 7 Front raise · 8 Upright
+  row → 9 Plank punch-out · 10 Plank pulse · 11 Plank pike. All timecoded in <code>WORKOUT.md</code>.<br>
+  <strong>Rule 9:</strong> the demonstrator is "Bob", not Hemsworth. Label honestly as the method
+  demonstrated by the man who designed it.</div>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>10</b><span>9:00</span></div><div class="bd">
+  <div class="ttl">IT WORKED <em>midpoint · false victory</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">It worked so completely that the photograph became the reference image for a decade of men's fitness.</dd>
+    <dt>Treatment</dt><dd><span class="fx">transform_morph</span> — before into after</dd>
+    <dt>Note</dt><dd>Cut as a peak that plays as a warning. This is the last moment the film lets the body be the point.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>11</b><span>10:00</span></div><div class="bd">
+  <div class="ttl">THE COST <em>bad guys close in</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">At that volume the enemy is not appetite, it is arithmetic — and it is the least photogenic part of the whole story.</dd>
+    <dt>Facts</dt><dd>~4,500 kcal/day, ten meals of 450 — <strong>REPORTED</strong>, must be labelled on screen</dd>
+    <dt>Treatment</dt><dd><span class="fx">source_highlight</span>, REPORTED visible</dd>
+  </dl>
+</div></div>
+
+<span class="act a3">Act Three — the turn · 11:30–20:00</span>
+
+<div class="beat a3"><div class="num"><b>12</b><span>11:30</span></div><div class="bd">
+  <div class="ttl">THE TURN <em>all is lost · promise paid</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">He carries two copies of APOE4 — and the doctor stopped the camera not because of the odds, but because of the recognition.</dd>
+    <dt>Picture</dt><dd>The page turning. The empty chair from beat 2, now in context.</dd>
+    <dt>Treatment</dt><dd><span class="fx">book_plate</span> → <span class="fx">source_highlight</span> on the Alzheimer's Association page</dd>
+    <dt>Facts</dt><dd>Two APOE4 copies, ~8–10× population risk — <strong>CONFIRMED</strong>. <strong>Risk marker, never a diagnosis.</strong></dd>
+    <dt>Bite</dt><dd><strong>Hemsworth, GMA:</strong> <em>"It's not a pre-deterministic gene. It was just an indicator that says I'm in a high risk category."</em></dd>
+  </dl>
+</div></div>
+
+<div class="beat a3"><div class="num"><b>13</b><span>13:00</span></div><div class="bd">
+  <div class="ttl">WHY IT LANDED <em>dark night of the soul · B story pays</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">He is not a man told about a risk. He is a man watching his own future happen to his father, and filming it.</dd>
+    <dt>Picture</dt><dd>Grandfather photograph, unrestored. Craig, present day. The road, held long.</dd>
+    <dt>Bite</dt><dd><code>ATTIA.m4a</code> · <code>SHETTY.m4a</code> — 560k chars, never opened</dd>
+  </dl>
+  <div class="wk bstory"><b>B story pays here</b>Only works because it opened at 5:10. If Craig first
+  appears in this beat, the ending is unearned — which is exactly what V1–V3 did.</div>
+</div></div>
+
+<div class="beat a3"><div class="num"><b>14</b><span>14:40</span></div><div class="bd">
+  <div class="ttl">HE CHANGED THE OBJECTIVE <em>break into three</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">He did not quit. He changed what he was training for — and in his industry that costs something, because it makes you smaller on camera.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a3"><div class="num"><b>15</b><span>16:00</span></div><div class="bd">
+  <div class="ttl">THE SECOND PROGRAMME + THE LIMIT <em>finale</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Here is what he does now — and no protocol on earth prevents this disease, which this film says out loud because the coverage would not.</dd>
+    <dt>Treatment</dt><dd>Comparison card, then plain type on brand black — <strong>deliberately no imagery</strong></dd>
+    <dt>Facts</dt><dd>Zocchi: <em>"The advanced workouts on Centr Power are basically 90% of what Chris does for Thor."</em> — <strong>CONFIRMED</strong></dd>
+  </dl>
+  <div class="wk"><b>Workout · the second programme</b>Centr Power paired structure — DB single-arm
+  alternating bench press ×12 / push-up ×8, 10s between · banded chest fly / band-resisted push-up ·
+  skull crusher / rope pushdown. Plus the 20/10 bodyweight session, 13 movements,
+  <strong>Hemsworth himself on camera</strong>, <code>CENTR.mp4</code>.<br>
+  <strong>Hard line:</strong> never imply training prevents, treats or cures Alzheimer's.</div>
+</div></div>
+
+<div class="beat a3"><div class="num"><b>16</b><span>18:30</span></div><div class="bd">
+  <div class="ttl">THE CLOSE <em>final image</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">He was paid for eleven years to be looked at, then found out the part worth protecting is the one nobody photographs.</dd>
+    <dt>Picture</dt><dd>The two photographs from beat 1, side by side at last. Hold on the family photograph.</dd>
+    <dt>Treatment</dt><dd><span class="fx">text_matte</span> — TRAIN LIKE THE ICONS</dd>
+  </dl>
+  <div class="wk"><b>Bridge</b>Name the next film. Not a gesture at the channel — a title.</div>
+</div></div>
+
+<h2><span class="n">IV.</span> The machine-readable form</h2>
+
+<p>What the Showrunner emits and the Hunter consumes. One object per beat; the <code>picture</code>
+field <em>is</em> the Hunter's brief.</p>
+
+<pre>{
+  "film": "hemsworth",
+  "title": "The Diagnosis That Ended the Thor Body | His Real Workout &amp; What Replaced It",
+  "thesis": "A man built the most copied body of his generation as a job requirement, then...",
+  "runtime_target_s": 1200,
+  "b_story": {"thread": "his father Craig", "opens_at": 310, "pays_at": 780},
+  "beats": [
+    {
+      "n": 9,
+      "name": "THE PROGRAMME, IN FULL",
+      "stc": "fun_and_games", "nfs": "why_were_here",
+      "t_start": 420, "t_end": 540,
+      "argues": "Here is the entire thing, and there is no secret in it - which is the point.",
+      "workout": ["weighted_burpee","curl_and_press","goblet_squat","standing_tricep_ext",
+                  "reverse_lunge_curl","lateral_raise","front_raise","upright_row",
+                  "plank_punchout","plank_pulse","plank_pike"],
+      "picture": "Per movement: brand card, then the demonstration, then his stated reason.",
+      "treatment": ["exercise_card","real_demo","trainer_bite"],
+      "facts": [{"claim":"8 weighted x8 reps, 3 core no break, x3","tier":"CONFIRMED",
+                 "src":"MENSHEALTH.mp4@128"}],
+      "bite_wanted": "Zocchi stating the structure",
+      "constraints": ["rule_9_demonstrator_is_not_subject"]
+    }
+  ]
+}</pre>
+
+<h2><span class="n">V.</span> The gate on this document</h2>
+
+<div class="box">
+  <div class="lab">The Showrunner cannot hand off until</div>
+  <p>Every beat has an ARGUES sentence · durations sum to 20 min ±1 · the withheld promise is spoken
+  before 0:20 · <strong>every movement of the programme is assigned to a beat</strong> · beat 9 lands
+  before the halfway point · <strong>the B story opens in act one and pays in act three</strong> ·
+  every fact carries a tier.</p>
+</div>
+
+<p class="note">The last three are what V1–V3 failed. The programme was never assigned to any beat
+because it was never found; the reveal sat at 90% of the way in with the workout promised and never
+delivered; and the father — the whole emotional engine — was introduced after the point at which the
+audience could still use him. All three are now checkable before a word of narration is written.</p>
+
+</div>

@@ -1,0 +1,576 @@
+{
+  "engine": "Resemble AI Chatterbox Nano",
+  "model_repo": "ResembleAI/chatterbox-nano",
+  "voice_reference": "C:\\Users\\avina\\OneDrive\\Desktop\\Claude Projects\\YouTube\\jordan_v1\\work\\voicetest_am_michael.wav",
+  "sample_rate": 48000,
+  "duration": 822.429,
+  "blocks": [
+    {
+      "id": "I1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 0.0,
+      "duration": 5.067,
+      "end": 5.067
+    },
+    {
+      "id": "H1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 5.427,
+      "duration": 17.438,
+      "end": 22.865
+    },
+    {
+      "id": "H2",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 23.1,
+      "duration": 10.501,
+      "end": 33.601
+    },
+    {
+      "id": "H3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 33.836,
+      "duration": 15.8,
+      "end": 49.636
+    },
+    {
+      "id": "R1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 49.996,
+      "duration": 22.343,
+      "end": 72.339
+    },
+    {
+      "id": "R2",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 72.574,
+      "duration": 15.432,
+      "end": 88.006
+    },
+    {
+      "id": "R3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 88.241,
+      "duration": 16.805,
+      "end": 105.046
+    },
+    {
+      "id": "R4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 105.281,
+      "duration": 26.621,
+      "end": 131.902
+    },
+    {
+      "id": "R5",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 132.137,
+      "duration": 2.564,
+      "end": 134.701
+    },
+    {
+      "id": "R6",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 134.936,
+      "duration": 16.544,
+      "end": 151.48
+    },
+    {
+      "id": "R7",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 151.715,
+      "duration": 9.092,
+      "end": 160.807
+    },
+    {
+      "id": "T1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 161.167,
+      "duration": 11.213,
+      "end": 172.38
+    },
+    {
+      "id": "T2",
+      "kind": "bite",
+      "quote": "grover_letter",
+      "source": "PjSFlFqxyGc",
+      "start": 172.615,
+      "duration": 24.872,
+      "end": 197.487
+    },
+    {
+      "id": "T3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 197.847,
+      "duration": 3.701,
+      "end": 201.548
+    },
+    {
+      "id": "T3b",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 201.783,
+      "duration": 6.819,
+      "end": 208.602
+    },
+    {
+      "id": "T3c",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 208.837,
+      "duration": 6.311,
+      "end": 215.148
+    },
+    {
+      "id": "T4",
+      "kind": "bite",
+      "quote": "grover_program",
+      "source": "lfCZOKhWqWU",
+      "start": 215.383,
+      "duration": 24.392,
+      "end": 239.775
+    },
+    {
+      "id": "T5",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 240.135,
+      "duration": 13.865,
+      "end": 254.0
+    },
+    {
+      "id": "W1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 254.36,
+      "duration": 8.441,
+      "end": 262.801
+    },
+    {
+      "id": "W1b",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 263.036,
+      "duration": 2.711,
+      "end": 265.747
+    },
+    {
+      "id": "W1c",
+      "kind": "bite",
+      "quote": "grover_breakfast",
+      "source": "URBPD_HSQcc",
+      "start": 265.982,
+      "duration": 24.538,
+      "end": 290.52
+    },
+    {
+      "id": "W1d",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 290.88,
+      "duration": 4.389,
+      "end": 295.269
+    },
+    {
+      "id": "W2",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 295.504,
+      "duration": 3.855,
+      "end": 299.359
+    },
+    {
+      "id": "W3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 299.594,
+      "duration": 18.86,
+      "end": 318.454
+    },
+    {
+      "id": "W4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 318.689,
+      "duration": 13.381,
+      "end": 332.07
+    },
+    {
+      "id": "W6",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 332.305,
+      "duration": 11.695,
+      "end": 344.0
+    },
+    {
+      "id": "W7",
+      "kind": "bite",
+      "quote": "mj_conditioning",
+      "source": "Buaf4NWIikw",
+      "start": 344.235,
+      "duration": 25.356,
+      "end": 369.591
+    },
+    {
+      "id": "W8",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 369.951,
+      "duration": 2.653,
+      "end": 372.604
+    },
+    {
+      "id": "W9",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 372.839,
+      "duration": 10.684,
+      "end": 383.523
+    },
+    {
+      "id": "W10",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 383.758,
+      "duration": 7.681,
+      "end": 391.439
+    },
+    {
+      "id": "W11",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 391.674,
+      "duration": 10.611,
+      "end": 402.285
+    },
+    {
+      "id": "W12",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 402.52,
+      "duration": 18.32,
+      "end": 420.84
+    },
+    {
+      "id": "W13",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 421.075,
+      "duration": 11.189,
+      "end": 432.264
+    },
+    {
+      "id": "W14",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 432.499,
+      "duration": 12.274,
+      "end": 444.773
+    },
+    {
+      "id": "W14b",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 445.008,
+      "duration": 6.759,
+      "end": 451.767
+    },
+    {
+      "id": "W14d",
+      "kind": "bite",
+      "quote": "schaefer_1990",
+      "source": "D1sKOv7WFBA",
+      "start": 452.002,
+      "duration": 25.069,
+      "end": 477.071
+    },
+    {
+      "id": "W14e",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 477.431,
+      "duration": 14.078,
+      "end": 491.509
+    },
+    {
+      "id": "W15",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 491.744,
+      "duration": 9.397,
+      "end": 501.141
+    },
+    {
+      "id": "W16",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 501.376,
+      "duration": 13.243,
+      "end": 514.619
+    },
+    {
+      "id": "D1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 514.979,
+      "duration": 4.174,
+      "end": 519.153
+    },
+    {
+      "id": "D2",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 519.388,
+      "duration": 6.58,
+      "end": 525.968
+    },
+    {
+      "id": "D3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 526.203,
+      "duration": 11.469,
+      "end": 537.672
+    },
+    {
+      "id": "D4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 537.907,
+      "duration": 15.091,
+      "end": 552.998
+    },
+    {
+      "id": "D5",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 553.233,
+      "duration": 8.257,
+      "end": 561.49
+    },
+    {
+      "id": "D6",
+      "kind": "bite",
+      "quote": "mj_meals",
+      "source": "lhUTSxQasIU",
+      "start": 561.725,
+      "duration": 25.097,
+      "end": 586.822
+    },
+    {
+      "id": "D7",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 587.182,
+      "duration": 5.887,
+      "end": 593.069
+    },
+    {
+      "id": "D8",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 593.304,
+      "duration": 11.023,
+      "end": 604.327
+    },
+    {
+      "id": "P1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 604.687,
+      "duration": 10.982,
+      "end": 615.669
+    },
+    {
+      "id": "P2",
+      "kind": "bite",
+      "quote": "mj_practice",
+      "source": "D2l_l4Tjvi8",
+      "start": 615.904,
+      "duration": 20.815,
+      "end": 636.719
+    },
+    {
+      "id": "P3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 637.079,
+      "duration": 11.511,
+      "end": 648.59
+    },
+    {
+      "id": "P4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 648.825,
+      "duration": 16.095,
+      "end": 664.92
+    },
+    {
+      "id": "P5",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 665.155,
+      "duration": 19.537,
+      "end": 684.692
+    },
+    {
+      "id": "S1",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 685.052,
+      "duration": 4.78,
+      "end": 689.832
+    },
+    {
+      "id": "S2",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 690.067,
+      "duration": 14.672,
+      "end": 704.739
+    },
+    {
+      "id": "S3",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 704.974,
+      "duration": 18.505,
+      "end": 723.479
+    },
+    {
+      "id": "S4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 723.714,
+      "duration": 11.076,
+      "end": 734.79
+    },
+    {
+      "id": "S5",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 735.025,
+      "duration": 7.975,
+      "end": 743.0
+    },
+    {
+      "id": "S6",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 743.235,
+      "duration": 13.332,
+      "end": 756.567
+    },
+    {
+      "id": "S7",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 756.802,
+      "duration": 1.491,
+      "end": 758.293
+    },
+    {
+      "id": "E1V4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 758.813,
+      "duration": 22.255,
+      "end": 781.068
+    },
+    {
+      "id": "E2V4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 781.448,
+      "duration": 10.215,
+      "end": 791.663
+    },
+    {
+      "id": "E3",
+      "kind": "bite",
+      "quote": "mj_outofshape",
+      "source": "U1dMA2GTheQ",
+      "start": 791.898,
+      "duration": 22.276,
+      "end": 814.174
+    },
+    {
+      "id": "E4V4",
+      "kind": "vo",
+      "quote": null,
+      "source": null,
+      "start": 814.694,
+      "duration": 7.235,
+      "end": 821.929
+    }
+  ]
+}

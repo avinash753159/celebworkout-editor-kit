@@ -1,0 +1,34 @@
+{
+  "duration": 822.429,
+  "maxStaticSec": 15,
+  "assertions": [
+    {
+      "kind": "appearsBy",
+      "selector": "#opener-i1",
+      "bySec": 0.6
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#evidence-h2",
+      "bySec": 25.6
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#roster-w1",
+      "bySec": 256.56
+    },
+    {
+      "kind": "appearsBy",
+      "selector": "#evidence-s4",
+      "bySec": 726.214
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#id-t2"
+    },
+    {
+      "kind": "staysInFrame",
+      "selector": "#summary-e1v4"
+    }
+  ]
+}

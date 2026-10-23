@@ -1,0 +1,322 @@
+<title>The Beat Sheet — Jennifer Aniston</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#121212; --body:#2E2E2E; --rule:#D4D4D4; --hair:#E6E6E6;
+    --paper:#FFFFFF; --panel:#F4F4F4; --mute:#6B6B6B; --good:#1F6F4A; --bad:#A32A17;
+    --a1:#2B5C7E; --a2:#8A4B2A; --a3:#3F7048;
+    --serif:"Milo Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    color-scheme: light;
+  }
+  html,body{background:#fff;}
+  body{color:var(--body);font-family:var(--serif);font-size:16.5px;line-height:1.58;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem 6rem;background:#fff;}
+
+  header.mast{margin-top:2.4rem;}
+  .tab{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);
+       font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+       padding:.22rem .6rem;margin-bottom:.9rem;}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0 0 .55rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
+  .stand{font-size:1.2rem;line-height:1.42;color:var(--mute);max-width:42rem;margin:0 0 1.3rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+          padding:.5rem 0;margin-bottom:2.4rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.18rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.005em;margin:2.9rem 0 .6rem;padding-top:.9rem;border-top:3px solid var(--red);}
+  h2 .n{color:var(--red);margin-right:.45rem;font-variant-numeric:tabular-nums;}
+  h3{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--ink);margin:1.7rem 0 .35rem;}
+  p{margin:0 0 .95rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  a{color:var(--red);}
+  .lede{font-size:1.05rem;}
+
+  .box{background:var(--panel);border-top:2px solid var(--red);padding:.85rem 1.05rem;margin:1rem 0 1.4rem;}
+  .box .lab{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.13em;
+     text-transform:uppercase;color:var(--red);margin-bottom:.25rem;}
+  .box p{margin:0;font-size:.98rem;}
+
+  .tw{overflow-x:auto;margin:1.1rem 0 1.5rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.79rem;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.62rem;
+     font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);padding-bottom:.45rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.38rem .7rem .38rem 0;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.42rem .7rem .42rem 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:#FBEDEA;color:var(--ink);}
+  tr.hi td strong{color:var(--red);}
+
+  .act{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.16em;
+     text-transform:uppercase;color:#fff;padding:.35rem .8rem;margin:1.9rem 0 0;display:block;}
+  .act.a1{background:var(--a1)} .act.a2{background:var(--a2)} .act.a3{background:var(--a3)}
+
+  .beat{border:1px solid var(--rule);border-left:3px solid var(--bc);margin:.55rem 0;
+     display:grid;grid-template-columns:3.2rem 1fr;background:#fff;}
+  .beat.a1{--bc:var(--a1)} .beat.a2{--bc:var(--a2)} .beat.a3{--bc:var(--a3)}
+  .beat .num{background:#FAFAFA;display:flex;flex-direction:column;align-items:center;
+     padding:.6rem .2rem;font-family:var(--sans);border-right:1px solid var(--hair);}
+  .beat .num b{font-size:1.05rem;font-weight:700;color:var(--bc);line-height:1;}
+  .beat .num span{font-size:.55rem;color:var(--mute);font-weight:700;margin-top:.3rem;text-align:center;}
+  .beat .bd{padding:.6rem .9rem .7rem;}
+  .beat .ttl{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:.92rem;
+     display:flex;gap:.6rem;align-items:baseline;flex-wrap:wrap;}
+  .beat .ttl em{font-style:normal;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+     color:var(--mute);font-weight:700;}
+  .beat dl{display:grid;grid-template-columns:5.8rem 1fr;gap:.2rem .8rem;margin:.45rem 0 0;
+     font-family:var(--sans);font-size:.79rem;}
+  .beat dt{color:var(--mute);font-weight:700;font-size:.58rem;letter-spacing:.09em;
+     text-transform:uppercase;padding-top:.17rem;}
+  .beat dd{margin:0;line-height:1.42;}
+  .beat dd.arg{color:var(--ink);font-weight:600;}
+  .wk{background:#FBEDEA;border-left:3px solid var(--red);padding:.35rem .6rem;
+     font-family:var(--sans);font-size:.77rem;margin-top:.4rem;line-height:1.42;}
+  .wk b{font-size:.56rem;letter-spacing:.11em;text-transform:uppercase;color:var(--red);
+     display:block;margin-bottom:.08rem;}
+  .bstory{background:#EDF2F6;border-left:3px solid var(--a1);}
+  .bstory b{color:var(--a1);}
+  .fx{display:inline-block;font-family:var(--mono);font-size:.68rem;background:var(--panel);
+     padding:.04rem .28rem;color:var(--red);}
+  .tier{display:inline-block;font-family:var(--sans);font-size:.6rem;font-weight:700;
+     letter-spacing:.06em;padding:.02rem .32rem;margin-right:.3rem;}
+  .t-confirmed{background:#E6F2EC;color:var(--good);}
+  .t-reported{background:#FDF3E3;color:#8A5A00;}
+  .t-rumour{background:#FBEAE8;color:var(--bad);}
+
+  .note{font-family:var(--sans);font-size:.74rem;color:var(--mute);line-height:1.48;margin:-.3rem 0 1.5rem;}
+
+  @media (max-width:640px){ .beat dl{grid-template-columns:1fr;} .beat{grid-template-columns:2.5rem 1fr;} }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="tab">Beat sheet · Jennifer Aniston · first female subject</div>
+  <h1>The Beat Sheet</h1>
+  <p class="stand">Sixteen beats, synthesized from two independent drafts against the verified dossier
+  and the angle-tournament winner. The B-story (Mandy Ingber → Dani Coleman, the one relationship
+  three decades of tabloid scrutiny never touched) opens at Beat 7 and bookends the film at Beats 1
+  and 16.</p>
+  <div class="byline"><span>v1 · synthesized from 59-agent research pass</span><span>Save the Cat · No Film School · Celeb Workout</span></div>
+</header>
+
+<h2><span class="n">I.</span> The locked charter</h2>
+
+<div class="box">
+  <div class="lab">Title</div>
+  <p><strong>The Practice That Outlasted the Headlines</strong> — won a 3-angle tournament, 3 judges,
+  2-1. See <code>dossier/jennifer_aniston/SOURCES.md</code> for the two losing pitches and why.</p>
+</div>
+
+<div class="box">
+  <div class="lab">Thesis — one sentence (narrowed post exemplar-pass, see GOAL.md §2 &amp; §13)</div>
+  <p>While two marriages ended in public and tabloids tracked her body for three decades, the
+  private daily practice underneath it — yoga with Mandy Ingber from at least 2006, then Pvolve
+  since — stayed hers, even as each version of it acquired a name, a DVD, a company.</p>
+</div>
+
+<div class="box" style="border-top-color:#A32A17;background:#FBEDEA;">
+  <div class="lab" style="color:#A32A17;">Two things fixed after a second, adversarial pass</div>
+  <p>(1) The original thesis claimed the practice "never had a headline attached to it" — three
+  independent editor-critics caught the same hole: the film's hero artifacts are a commercial DVD
+  and a company (Pvolve) Aniston is paid to be the face of. Thesis narrowed above. (2) 8 of 11
+  verbatim quotes in the shot list could not be independently re-confirmed on adversarial re-check
+  (one was actively wrong). Converted to narrator paraphrase — real voice dropped from 9.7% to
+  3.2% as a direct, correct consequence. See <code>GOAL.md</code> §13 and the <code>note</code>
+  field on affected rows in <code>pipeline/shotlist_jennifer_aniston.py</code>.</p>
+</div>
+
+<p class="lede">Built from <code>dossier/jennifer_aniston/WORKOUT.md</code> and
+<code>SOURCES.md</code>. Every fact is tiered CONFIRMED/REPORTED/RUMOUR; every movement is named.
+Nothing below is downloaded footage yet — see <code>GOAL.md</code> §6 for the sourcing pass this
+still needs.</p>
+
+<h2><span class="n">II.</span> The sixteen beats</h2>
+
+<span class="act a1">Act One — the constraint · 0:00–6:00</span>
+
+<div class="beat a1 bstory"><div class="num"><b>1</b><span>0:00</span></div><div class="bd">
+  <div class="ttl">THE ARTIFACT <em>opening image · B-story opens</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">A scuffed Yogalosophy DVD and an early-90s magazine cover, held together in silence, argue before a word is spoken that this film's real subject is the private practice underneath the public products.</dd>
+    <dt>Time</dt><dd>~0:09 (2 rows) — CUT from 0:72/8 rows after direct owner review: 72s of silence read as far too long on watch-back. See GOAL.md §14.</dd>
+    <dt>Picture</dt><dd>Quick push-in on the magazine cover — no legible specific quote text shown until verified — then one overhead shot of both objects together. No narration. Fast, not a slow rostrum crawl.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Rolling Stone #729, March 7 1996 — found and verified directly at archive.org, see GOAL.md §15 · <span class="tier t-confirmed">CONFIRMED</span>Yogalosophy DVD, Mandy Ingber, 2011</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>2</b><span>0:20</span></div><div class="bd">
+  <div class="ttl">THE PROMISE <em>theme stated — withheld, aloud, before 0:40</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">"Nobody put this on a magazine cover" — then a rapid cascade of archival scrutiny (body, marriages, children) proves how much of her life did get put on one, before the central question lands aloud. REWRITTEN post exemplar-pass (craft-tournament winner) — no longer references the unverified 1996 quote.</dd>
+    <dt>Time</dt><dd>~0:60 (7 rows)</dd>
+    <dt>Picture</dt><dd>Candid press archive → rapid tabloid-cover montage (RUMOUR, shown as critique) → DVD-as-object argument (no quote-dependent DOC row) → CARD transition into Beat 3.</dd>
+    <dt>Bite</dt><dd>None — narration-carried cold open, per the fixed five-part formula.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>3</b><span>1:10</span></div><div class="bd">
+  <div class="ttl">THE BODY <em>set up</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The scrutiny didn't start with fame — six failed pilots, off-Broadway work and survival jobs establish an ordinary working actor with zero leverage in the industry, pre-Friends.</dd>
+    <dt>Time</dt><dd>~0:76 (9 rows)</dd>
+    <dt>Picture</dt><dd>Birth-year CARD → LaGuardia High School archive → pilot-count stat CARD → object b-roll of survival jobs → two narrator-paraphrase rows (Poconos telemarketing, bicycle messenger).</dd>
+    <dt>Bite</dt><dd>Zero, post exemplar-pass — both were REAL-V bites whose exact quotes could not be re-confirmed; converted to REAL-A paraphrase. Re-verifying these against a primary source is real, achievable work — see GOAL.md §13.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>b. Feb 11 1969 · LaGuardia HS, Anthony Abeson · six failed pilots · Poconos/messenger jobs</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>4</b><span>2:10</span></div><div class="bd">
+  <div class="ttl">THE TRAIT <em>character traits</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Self-possession wasn't a fitness trait first — it was a survival trait, built inside a home she has called "destabilized" in her own words. Plants the psychological logic the B-story completes.</dd>
+    <dt>Time</dt><dd>~1:09 (7 rows)</dd>
+    <dt>Picture</dt><dd>DOC (Interview Magazine, softened to paraphrase) → narrator paraphrase (Diane Sawyer, general "sudden exit" framing — the specific "Band-Aid" phrase couldn't be re-confirmed) → LaGuardia as first self-chosen discipline → foreshadow STOCK of a bare exercise mat.</dd>
+    <dt>Bite</dt><dd>Zero, post exemplar-pass — see GOAL.md §13.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Interview Mag Mar 2020 · <span class="tier t-confirmed">CONFIRMED</span>ABC Primetime/Sawyer</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>5</b><span>3:10</span></div><div class="bd">
+  <div class="ttl">WHAT IT WAS FOR <em>catalyst</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">REWRITTEN (GOAL.md §15) — 1994 is the hinge: the year Friends made her famous is the year a national magazine put its own name to who she was, opening on the true irony that she'd been sent from the table at twelve for "not being interesting enough."</dd>
+    <dt>Time</dt><dd>~1:11 (7 rows)</dd>
+    <dt>Picture</dt><dd>1994 CARD → 1994 ET/premiere archive → confirmed real RS #729 cover DOC → verbatim headline DOC ("She's not just... She's interesting") → verbatim childhood quote DOC ("nothing to say... made me leave the table") → irony pivot CARD → closing CARD.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Friends premiered 1994 · RS #729, March 7 1996, "The Girl Friend," by Rich Cohen — verified directly against archive.org's own metadata · both quotes above transcribed verbatim off the primary source</dd>
+    <dt>Note</dt><dd>The OLD version of this beat (weight-comment catalyst, "~30 lbs," "nicest thing he ever did") was checked directly against the magazine's actual OCR text and does not exist in it — not just unconfirmed, disconfirmed. Full story in <code>GOAL.md</code> §15.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1"><div class="num"><b>6</b><span>4:10</span></div><div class="bd">
+  <div class="ttl">THE CONSTRAINT <em>debate</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">From 1994 onward her body stopped being her own story: two marriages ending in headlines, three decades of body-watch, fertility speculation seeded here for Beat 11's payoff. Find something the tabloids cannot touch, or lose control of everything.</dd>
+    <dt>Time</dt><dd>~1:16 (8 rows)</dd>
+    <dt>Picture</dt><dd>Friends-premiere archive → real tabloid covers (RUMOUR, critique only) → Pitt marriage/divorce archive → Theroux marriage/divorce archive → "2 marriages / 3 decades" stat CARD → seed row for Beat 11 (no fertility language yet) → CARD thesis → STOCK bridge into Beat 7.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Pitt marriage 2000–2005 · Theroux marriage 2015–2018 · <span class="tier t-rumour">RUMOUR</span>tabloid body/pregnancy coverage, shown only as critique</dd>
+    <dt>Note</dt><dd>Zero REAL-V rows by design — archive/document material for the historical record; see <code>GOAL.md</code> §8.3.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a1 bstory"><div class="num"><b>7</b><span>5:10</span></div><div class="bd">
+  <div class="ttl">WHO BUILT IT <em>reason forward · B story opens</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The constraint gets its answer: the practice had a builder. Mandy Ingber, introduced by name — the one working relationship on the record since at least 2006 that never once generated a headline.</dd>
+    <dt>Time</dt><dd>~1:08 (7 rows)</dd>
+    <dt>Picture</dt><dd>Name-reveal CARD → Vogue 2006 DOC → SELF 8-page spread DOC → "NO HEADLINE." CARD → Marie Claire quote DOC → dashed-timeline CARD (no founding year stated) → DEMO preview of the pairing.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Vogue 2006 naming · SELF 2006 spread · Marie Claire quote · <span class="tier t-reported">REPORTED</span>duration beyond 2006 (outlets disagree 15–25+ yrs, no year stated on screen)</dd>
+  </dl>
+</div></div>
+
+<span class="act a2">Act Two — the method · 6:00–14:40</span>
+
+<div class="beat a2"><div class="num"><b>8</b><span>6:00</span></div><div class="bd">
+  <div class="ttl">THE METHOD <em>decision to try · first structural disclosure</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Yogalosophy is a specific, ownable hybrid system — not generic "she does yoga" — pairing a traditional pose with a toning move. The film's first concrete, filmable method.</dd>
+    <dt>Time</dt><dd>~1:19 (8 rows)</dd>
+    <dt>Workout</dt><dd>Yogalosophy, structural intro — pose-plus-toning pairing named, not yet demonstrated pose-by-pose (that's Beat 9)</dd>
+    <dt>Picture</dt><dd>Act-break CARD → Vogue/SELF naming DOC → generic pairing ANIM → Temple+Chair <span class="fx">DEMO (fallback ANIM)</span> → Sun Salute/Tree/Reclining Pigeon ANIM → DVD+books DOC → Marie Claire quote DOC → tally CARD.</dd>
+    <dt>Note</dt><dd>Row 4 defaults to DEMO (real Yogalosophy footage) rather than ANIM, per the repair pass — breaks up what was a 3-row ANIM run. Confirm which one actually clears sourcing.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>9</b><span>7:00</span></div><div class="bd">
+  <div class="ttl">THE PROGRAMME, IN FULL <em>why we're here — fun &amp; games</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Walks the named Yogalosophy sequence pose by pose — what tabloids dismissed as "just yoga" is a specific, repeatable, teachable system engineered for the exact scrutiny problem Beat 6 raised.</dd>
+    <dt>Time</dt><dd>~1:07 (8 rows)</dd>
+    <dt>Workout</dt><dd><span class="wk"><b>Yogalosophy, full sequence</b>1 Temple Pose (calves) · 2 Chair Pose (legs/glutes) · 3 Sun Salute (abs/hamstrings, cardio spike) · 4 Tree Pose (abs/thighs, balance) · 5 Reclining Pigeon (chest/thighs, recovery)</span></dd>
+    <dt>Picture</dt><dd>"Just yoga" CARD → DVD/books DOC → five DEMO rows, one pose per row (Tree Pose falls back to ANIM, flagged as a stand-in) → five-move summary CARD.</dd>
+  </dl>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>10</b><span>9:00</span></div><div class="bd">
+  <div class="ttl">IT WORKED <em>midpoint — false victory</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The proof isn't a before/after photo — it's that the practice survived a punishing production schedule intact, with Ingber literally on set beside her.</dd>
+    <dt>Time</dt><dd>~1:18 (8 rows)</dd>
+    <dt>Picture</dt><dd>Thesis CARD → <em>The Break-Up</em> (2006) on-set archive → Refinery29 (2013) DOC confirming Ingber trained her on set → programme-name callback CARD → Chair/Temple DEMO on set → tabloid montage as counter-noise → 2006-to-present timeline CARD → closing archival montage.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Refinery29 2013, Ingber on <em>The Break-Up</em> set</dd>
+  </dl>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>11</b><span>10:00</span></div><div class="bd">
+  <div class="ttl">THE COST <em>consequences</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The toll, entirely in her own words: disordered eating in her youth, IVF/fertility speculation she had to publicly address herself, two marriages ending in public, and thirty years of body commentary — the price that makes the untouched practice matter.</dd>
+    <dt>Time</dt><dd>~1:16 (8 rows)</dd>
+    <dt>Picture</dt><dd>Thesis CARD → REAL-V bite (disordered eating, Naked with Catt Sadler) → archive montage → REAL-V bite (Elle/InStyle, body scrutiny) → Chicago Tribune 2022 essay DOC (IVF) → marriage-archive REAL-A → REAL-V bite (Vogue/Allure, compounded scrutiny) → STOCK bridge into Beat 12.</dd>
+    <dt>Bite</dt><dd>Three — three distinct named outlets, kept under the 20%-per-source cap.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>disordered eating (her own words) · Chicago Tribune 2022 essay, IVF · two marriages ending in public</dd>
+  </dl>
+</div></div>
+
+<div class="beat a2"><div class="num"><b>12</b><span>11:30</span></div><div class="bd">
+  <div class="ttl">THE TURN <em>the final straw — all is lost</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Two decades of consistency meets a hard physical wall: an on-set back injury forces the first real evolution of the practice. The discipline was never about one method — it was about never stopping.</dd>
+    <dt>Time</dt><dd>~1:15 (8 rows)</dd>
+    <dt>Workout</dt><dd>Pvolve, name-drop and equipment intro — P.band, P.ball, P.3 Trainer named, not yet demonstrated in full (that's Beat 15)</dd>
+    <dt>Picture</dt><dd>2021 CARD → unnamed-set archive (production not confirmed, kept general) → recovery-to-Pvolve press DOC → "PVOLVE" name CARD → real Pvolve equipment STOCK → low-impact DEMO (fallback ANIM) → Dani Coleman intro REAL-A → closing thesis CARD.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Pvolve began 2021, back-injury recovery</dd>
+  </dl>
+</div></div>
+
+<div class="beat a2 bstory"><div class="num"><b>13</b><span>13:00</span></div><div class="bd">
+  <div class="ttl">WHY IT LANDED <em>rock bottom · B story pays</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">What Ingber began in private becomes the template again in 2022: Dani Coleman, a second named collaborator brought inside the circle, then a formal Pvolve partnership in June 2023 — the pattern the Ingber relationship first established, repeating.</dd>
+    <dt>Time</dt><dd>~1:08 (7 rows)</dd>
+    <dt>Picture</dt><dd>2022 press archive → "DANI COLEMAN" name CARD → Businesswire June 2023 DOC (partner/investor/advisor) → Pvolve studio DEMO → Ingber-era archive rhyme shot → tabloid-callback archive (resolves Beat 11) → two-name closing CARD.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Coleman in-person training 2022 · Businesswire, June 2023, official Pvolve partner/investor/advisor</dd>
+  </dl>
+</div></div>
+
+<span class="act a3">Act Three — the objective · 14:40–end</span>
+
+<div class="beat a3"><div class="num"><b>14</b><span>14:40</span></div><div class="bd">
+  <div class="ttl">SHE CHANGED THE OBJECTIVE <em>the bounce back — break into three</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The goal shifts from aesthetic control (set in motion by the 1996 catalyst) to functional resilience — in Coleman's own words, "feeling good in your body," not chasing an image.</dd>
+    <dt>Time</dt><dd>~1:09 (7 rows)</dd>
+    <dt>Picture</dt><dd>"5" CARD (Coleman's "last five years") → Coleman REAL-V lead-in → Coleman REAL-V quote, verbatim → Pvolve function-first DEMO → Aniston REAL-V quote pt.1 → Aniston REAL-V quote pt.2 → closing thesis CARD.</dd>
+    <dt>Bite</dt><dd>Two continuous sync takes (Coleman's KCM quote across 2 rows, Aniston's Pvolve-campaign quote across 2 rows) — see <code>GOAL.md</code> §8.2 for why these read as one take split for pacing, not two butted bites.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>Coleman, Katie Couric Media, "feeling good in your body" · <span class="tier t-confirmed">CONFIRMED</span>Aniston, Pvolve press, "fell in love with the program"</dd>
+  </dl>
+</div></div>
+
+<div class="beat a3"><div class="num"><b>15</b><span>16:00</span></div><div class="bd">
+  <div class="ttl">SECOND PROGRAMME + THE LIMIT <em>triumphs — finale</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">Delivers present-day Pvolve in full — P.band, P.ball, P.3 Trainer, gliders, across three named formats — while Coleman states the honest boundary in the same breath. Boxing with Leyon Azubuike named as the newest, least time-tested layer.</dd>
+    <dt>Time</dt><dd>~1:27 (9 rows)</dd>
+    <dt>Workout</dt><dd><span class="wk"><b>Pvolve, full system</b>Weight training · Sculpt · Sculpt cardio — 30–40 min each. Equipment: P.band, P.ball, P.3 Trainer, gliders.</span><span class="wk"><b>Boxing/HIIT, Gloveworx (newest addition, undated)</b>Jump rope · lat pulldown · squat to row · military press · seated row · Spartan strike and stab · wood chops · kettlebell squat to press · seated lateral raise · front raise</span></dd>
+    <dt>Picture</dt><dd>"PVOLVE 02" CARD → P.band DEMO → P.ball DEMO → Coleman REAL-V ("work around your injury") → P.3 Trainer/gliders DEMO → Azubuike/Gloveworx REAL-A → Aniston REAL-V ("longest workout... other than yoga") → "no confirmed start date" limit CARD → two-programme tally CARD.</dd>
+    <dt>Bite</dt><dd>Two — Coleman on the honest boundary, Aniston on boxing consistency.</dd>
+    <dt>Facts</dt><dd><span class="tier t-confirmed">CONFIRMED</span>3 Pvolve formats, 4 named equipment pieces · <span class="tier t-confirmed">CONFIRMED</span>Azubuike/Gloveworx, 10 named drills · boxing start date explicitly not pinned down — stated as a limit on screen, not hidden</dd>
+  </dl>
+</div></div>
+
+<div class="beat a3 bstory"><div class="num"><b>16</b><span>18:30</span></div><div class="bd">
+  <div class="ttl">THE CLOSE <em>final image · bridge · B story bookends</em></div>
+  <dl>
+    <dt>Argues</dt><dd class="arg">The Yogalosophy DVD and the Pvolve P.band, framed together — everything else about her public life changed hands over three decades, but this, in its two authored forms, never once became someone else's property.</dd>
+    <dt>Time</dt><dd>~1:16 (8 rows)</dd>
+    <dt>Picture</dt><dd>"Every version had an owner but her" CARD → RS #729 archive callback → tabloid pregnancy-speculation critique → the same DVD prop from Beat 1 → the P.band, matched lighting → both objects in one frame — the film's single most important shot → closing thesis CARD → series end card ("Train like the icons").</dd>
+    <dt>Note</dt><dd>Zero REAL-V by design — the bookend is deliberately object-only, no talking head. Do not add one. See <code>GOAL.md</code> §8.3.</dd>
+  </dl>
+</div></div>
+
+<h2><span class="n">III.</span> What's still open</h2>
+
+<p class="note">See <code>GOAL.md</code> §7 for the full completeness-critique gate list (six items) and
+§9 for order of work. Nothing here is a locked script — it is a synthesized-and-repaired first pass
+out of a 59-agent research workflow, ready for the sourcing pass.</p>
+
+</div>

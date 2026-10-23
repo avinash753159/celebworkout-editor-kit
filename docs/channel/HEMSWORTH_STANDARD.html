@@ -1,0 +1,572 @@
+<title>The Hemsworth production standard</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A;
+    --good:#2E6B4F; --warn:#8A6A1F; --bad:#93321F;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;
+          --good:#6FBF95;--warn:#D6AC4E;--bad:#E47862;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+    --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--warn:#D6AC4E;--bad:#E47862;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+    --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--warn:#8A6A1F;--bad:#93321F;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;-webkit-font-smoothing:antialiased;
+       font-variant-numeric:tabular-nums;}
+  .wrap{max-width:54rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.06;margin:.5rem 0 .6rem;color:var(--ink);
+     font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.2rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.71rem;letter-spacing:.09em;text-transform:uppercase;
+     color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+     padding:.55rem 0;margin-bottom:2.4rem;display:flex;gap:1.3rem;flex-wrap:wrap;}
+
+  nav.toc{background:var(--panel);padding:1.1rem 1.4rem;margin:0 0 2.6rem;
+     font-family:var(--sans);font-size:.83rem;}
+  nav.toc b{display:block;font-size:.64rem;letter-spacing:.15em;text-transform:uppercase;
+     color:var(--red);margin-bottom:.6rem;}
+  nav.toc ol{margin:0;padding-left:1.3rem;columns:2;column-gap:2rem;}
+  nav.toc li{margin-bottom:.28rem;break-inside:avoid;}
+  nav.toc a{color:var(--body);text-decoration:none;border-bottom:1px solid var(--rule);}
+  nav.toc a:hover{color:var(--red);}
+
+  h2{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.012em;margin:3.2rem 0 .3rem;padding-top:1.1rem;border-top:2px solid var(--red);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:1rem;font-weight:700;color:var(--ink);margin:2rem 0 .4rem;}
+  h4{font-family:var(--sans);font-size:.82rem;font-weight:700;color:var(--red);margin:1.4rem 0 .3rem;
+     letter-spacing:.08em;text-transform:uppercase;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  .lede::first-letter{float:left;font-size:3.4em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  strong{color:var(--ink);font-weight:700;}
+  ul,ol{margin:0 0 1.1rem;padding-left:1.3rem;} li{margin-bottom:.34rem;}
+
+  .tw{overflow-x:auto;margin:1.2rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.83rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.64rem;font-weight:700;
+     letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;
+     vertical-align:bottom;}
+  td{padding:.44rem .7rem .44rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.fail td{background:color-mix(in srgb,var(--bad) 12%,transparent);}
+  tr.hi td{background:color-mix(in srgb,var(--red) 9%,transparent);}
+  .p{color:var(--good);font-weight:700;} .f{color:var(--bad);font-weight:700;}
+  .w{color:var(--warn);font-weight:700;}
+
+  .box{background:var(--panel);border-left:4px solid var(--red);padding:1rem 1.2rem;margin:1.3rem 0;}
+  .box h4{margin-top:0;}
+  .box p:last-child{margin-bottom:0;}
+  .box.warn{border-left-color:var(--bad);}
+  .box.ok{border-left-color:var(--good);}
+
+  blockquote{margin:1.1rem 0;padding:.2rem 0 .2rem 1.1rem;border-left:3px solid var(--rule);
+     font-style:italic;color:var(--mute);}
+  blockquote p{margin-bottom:.4rem;}
+
+  .pull{border-top:2px solid var(--red);border-bottom:1px solid var(--rule);padding:1rem 0;
+     margin:2rem 0;font-size:1.3rem;line-height:1.34;color:var(--ink);font-style:italic;
+     text-wrap:balance;}
+
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.1em .34em;}
+  pre{background:var(--panel);padding:.9rem 1.1rem;overflow-x:auto;font-family:var(--mono);
+      font-size:.78rem;line-height:1.55;margin:1rem 0;border-left:3px solid var(--rule);}
+  pre code{background:none;padding:0;}
+
+  .stages{counter-reset:st;list-style:none;padding:0;margin:1.2rem 0 0;}
+  .stages > li{counter-increment:st;position:relative;padding:1.1rem 0 1.1rem 3.4rem;
+     border-bottom:1px solid var(--rule);}
+  .stages > li::before{content:counter(st);position:absolute;left:0;top:1rem;font-family:var(--sans);
+     font-size:1.6rem;font-weight:700;color:var(--red);line-height:1;}
+  .stages .h{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:1rem;
+     display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;}
+  .stages .tag{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+     font-weight:700;white-space:nowrap;}
+  .stages .tag.gate{color:var(--red);}
+  .stages p{margin:.35rem 0 0;font-size:.97rem;}
+
+  .chk{list-style:none;padding:0;margin:1rem 0;font-family:var(--sans);font-size:.87rem;}
+  .chk li{padding:.34rem 0 .34rem 1.7rem;position:relative;border-bottom:1px solid var(--rule);}
+  .chk li::before{content:"☐";position:absolute;left:0;color:var(--red);font-size:1rem;}
+
+  footer{margin-top:3.5rem;padding-top:1rem;border-top:1px solid var(--rule);
+     font-family:var(--sans);font-size:.74rem;color:var(--mute);line-height:1.6;}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Production standard <span>&nbsp;·&nbsp; Celeb Workout &nbsp;·&nbsp; internal</span></div>
+  <h1>What MrBeast got, what Hemsworth got, and what happens next</h1>
+  <p class="stand">The MrBeast film was produced audio-first against a 472-line written standard, nine pipeline stages and seven machine-checked format gates. The Hemsworth film was produced picture-first against none of them. This document reconstructs the method exactly, measures the current film against it, and specifies the rebuild.</p>
+  <div class="byline">
+    <span>3 August 2026</span>
+    <span>Subject: Chris Hemsworth</span>
+    <span>Current cut 12:47.5 · 104 shots · $4.16</span>
+    <span>Status: fails 2 of 7 gates, 1 unreachable</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <b>Contents</b>
+  <ol>
+    <li><a href="#verdict">The verdict in one table</a></li>
+    <li><a href="#defects">Three defects found today</a></li>
+    <li><a href="#method">The MrBeast method, stage by stage</a></li>
+    <li><a href="#gates">The seven format gates, exactly</a></li>
+    <li><a href="#conflict">The conflict you must resolve</a></li>
+    <li><a href="#plan">The Hemsworth rebuild</a></li>
+    <li><a href="#story">Story architecture</a></li>
+    <li><a href="#sound">Sound and mix specification</a></li>
+    <li><a href="#picture">Picture specification</a></li>
+    <li><a href="#dod">Definition of done</a></li>
+    <li><a href="#decisions">Decisions I need from you</a></li>
+  </ol>
+</nav>
+
+<p class="lede">The difference between the two films is not talent, budget or compute. It is that MrBeast passed through nine stages and four owner gates, and Hemsworth passed through four stages and none. Every fault you have named — the stretched images, the missing subject, the narrator restating quotes — is a stage I skipped, and each one had a script already written to catch it.</p>
+
+<!-- ================================================================= -->
+<h2 id="verdict"><span class="n">I.</span> The verdict in one table</h2>
+
+<p>The current cut measured against the V11 gates in <code>pipeline/edl.py</code>. These are not opinions; they are functions of the cut list.</p>
+
+<div class="tw">
+<table>
+  <caption>THE BODY HE STOPPED BUILDING — 767.5 s — against the V11 gates</caption>
+  <thead><tr><th>Gate</th><th>Requirement</th><th class="n">Measured</th><th>Result</th></tr></thead>
+  <tbody>
+    <tr class="fail"><td><strong>V1</strong> voice ratio</td><td>Real archival voice ≥ 40% of runtime, as a chorus; no single bite over 30 s</td><td class="n">0.0%</td><td class="f">FAIL — and unreachable, see §V</td></tr>
+    <tr class="fail"><td><strong>V2</strong> card containment</td><td>All graphic cards inside one contiguous Protocol Act</td><td class="n">13 cards</td><td class="f">FAIL — scattered across 9 chapters</td></tr>
+    <tr><td><strong>V3</strong> promise resolved</td><td>Cold open withholds a promise; final chapter pays it off</td><td class="n">—</td><td class="w">NOT MODELLED — no promise/resolves fields exist</td></tr>
+    <tr><td><strong>V4</strong> silence budget</td><td>≥ 6 music-only beats and ≥ 2.5% of runtime</td><td class="n">7 beats · 2.9%</td><td class="p">PASS</td></tr>
+    <tr><td><strong>V5</strong> speaker cap</td><td>No non-subject speaker over 90 s</td><td class="n">0 s</td><td class="w">VACUOUS — there are no real speakers to cap</td></tr>
+    <tr><td><strong>V6</strong> fitness ratio</td><td>Picture ≥ 35% overall, ≥ 90% inside the Protocol Act</td><td class="n">—</td><td class="w">NOT MODELLED — no fitness flags set</td></tr>
+    <tr><td><strong>V8</strong> chapter contiguity</td><td>Chapters are contiguous blocks</td><td class="n">—</td><td class="w">NOT MODELLED</td></tr>
+    <tr class="fail"><td><strong>§9</strong> radio gate</td><td>Audio-only edit delivered and signed off before any picture assembly</td><td class="n">not run</td><td class="f">FAIL — standing rule, skipped</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Composition of the current cut, for reference:</p>
+
+<div class="tw">
+<table>
+  <caption>Where 767.5 seconds go</caption>
+  <thead><tr><th>Kind</th><th class="n">Count</th><th class="n">Seconds</th><th class="n">Share</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>narr</td><td class="n">63</td><td class="n">595.9</td><td class="n">77.6%</td><td>Brian, synthetic</td></tr>
+    <tr class="hi"><td>quote</td><td class="n">10</td><td class="n">112.0</td><td class="n">14.6%</td><td><strong>Also Brian</strong> — reading other people's words. Counts as narration, not voice.</td></tr>
+    <tr><td>card</td><td class="n">13</td><td class="n">31.2</td><td class="n">4.1%</td><td>Scattered; breaks V2</td></tr>
+    <tr><td>beat</td><td class="n">7</td><td class="n">22.4</td><td class="n">2.9%</td><td>Passes V4</td></tr>
+    <tr><td>title</td><td class="n">2</td><td class="n">6.0</td><td class="n">0.8%</td><td></td></tr>
+    <tr class="fail"><td><strong>bite</strong></td><td class="n">0</td><td class="n">0.0</td><td class="n">0.0%</td><td><strong>No real human voice appears in the film.</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box warn">
+  <h4>The quote blocks are the trap</h4>
+  <p>Ten blocks are marked <code>quote</code> and read as if they were evidence. Every one is the synthetic narrator speaking someone else's words over a generated image. That is simultaneously the V1 failure (no archival voice), the R4 failure (narration restating a bite), and the reason a documentary about Chris Hemsworth contains no Chris Hemsworth. One defect wearing three costumes.</p>
+</div>
+
+<!-- ================================================================= -->
+<h2 id="defects"><span class="n">II.</span> Three defects found today</h2>
+
+<h3>1 — 93 of 104 shots are geometrically distorted</h3>
+
+<p><code>pipeline/hems_render.py:51</code> resizes every generated still straight to 1920×1080 with no aspect handling:</p>
+
+<pre><code>rgb = np.asarray(Image.open(img).convert("RGB").resize(
+    (OUT_W, OUT_H), Image.LANCZOS), dtype=np.float32)</code></pre>
+
+<p>The generator never returned 16:9. It returned five different shapes:</p>
+
+<div class="tw">
+<table>
+  <caption>Generated still dimensions versus the 1.7778 target</caption>
+  <thead><tr><th>Size</th><th class="n">Aspect</th><th class="n">Shots</th><th class="n">Horizontal error</th><th>Effect on a face</th></tr></thead>
+  <tbody>
+    <tr class="fail"><td>1600 × 672</td><td class="n">2.381</td><td class="n">25</td><td class="n">+33.9%</td><td>A third too wide</td></tr>
+    <tr class="fail"><td>1584 × 672</td><td class="n">2.357</td><td class="n">21</td><td class="n">+32.6%</td><td>A third too wide</td></tr>
+    <tr><td>1408 × 768</td><td class="n">1.833</td><td class="n">45</td><td class="n">+3.1%</td><td>Marginal, still wrong</td></tr>
+    <tr><td>1376 × 768</td><td class="n">1.792</td><td class="n">11</td><td class="n">+0.8%</td><td>Acceptable</td></tr>
+    <tr class="fail"><td>768 × 1376</td><td class="n">0.558</td><td class="n">2</td><td class="n">−68.6%</td><td><strong>Portrait, squashed sideways into landscape</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>Fix:</strong> cover-crop to 16:9 before the warp, never stretch. Regenerate the two portrait shots. Add the aspect assertion as a hard gate so an out-of-spec source cannot reach the renderer.</p>
+
+<h3>2 — The film has no footage of its subject</h3>
+
+<p>Not an oversight in execution; there was no stage that could have produced any. The V12 architecture was built for MrBeast precisely to <em>stop</em> hunting footage and generate everything. Carrying it to Hemsworth unchanged meant nothing in the pipeline ever looked for the man. <code>SOURCES.md</code> planned five video sources; no code was written to download, cut or place them.</p>
+
+<p><strong>Partially fixed today.</strong> <code>pipeline/hems_footage.py</code> now cuts real footage into existing slots, frame-exact, cropping broadcast furniture geometrically rather than masking it. The GMA insert is built: 289 frames, 1920×1080, 24 fps, all ABC branding removed, his own voice at the emotional peak.</p>
+
+<h3>3 — Men's Health is not Chris Hemsworth</h3>
+
+<p>The second download was to be the workout evidence. On inspection the man lifting has full sleeve tattoos, and <code>SOURCES.md</code> line V4 describes the source accurately as <em>"Luke Zocchi demonstrating the actual method."</em> Men's Health also burns exercise lower-thirds into the lower-left, inside any 16:9 crop that keeps the action. <strong>Rejected.</strong> Substituting a presenter for the subject would have been worse than the absence.</p>
+
+<div class="box ok">
+  <h4>Checked and correct: the music</h4>
+  <p><code>work/hemsworth/cues.json</code> holds five Scott Buckley cues under CC BY 4.0, each with its attribution string stored, each mapped to a story function rather than dropped in arbitrarily — Penumbra for the cold open, Amberlight through the routine, Eyes In The Void on the turn. Bed at 0.16. This part meets the standard. The attribution must still reach the video description before publication.</p>
+</div>
+
+<p class="pull">Every fault traces to the same root: picture was made before sound was approved, so nothing could be checked while it was still cheap to change.</p>
+
+<!-- ================================================================= -->
+<h2 id="method"><span class="n">III.</span> The MrBeast method, stage by stage</h2>
+
+<p>Nine stages. Each names the file that implements it, so none of this has to be rebuilt — only pointed at a new subject.</p>
+
+<ol class="stages">
+
+<li>
+  <div class="h"><span>Build the sound bank before the script exists</span><span class="tag">soundbank.py</span></div>
+  <p>Every utterance in every source transcribed with faster-whisper — punctuated, with word-level timestamps — and indexed to <code>manifest/soundbites.json</code>. The module's own rationale: <em>"the script is written TO the material rather than the material hunted to match the script, so the bank exists before the script does."</em> YouTube auto-caption VTTs are explicitly rejected: no punctuation means no sentence boundaries, which means no way to honour "a bite plays a complete thought".</p>
+  <p>Each record carries <code>id · source_id · speaker · t0 · t1 · duration · chapter · topic_tags · text · status</code>. The status field is the verification state — MrBeast's bites reached <code>transcript_and_frames_verified</code> before use.</p>
+</li>
+
+<li>
+  <div class="h"><span>Run a second research pass that tries to prove the first wrong</span><span class="tag">diet_dig.py</span></div>
+  <p>The V1–V4 research concluded there was "no verified diet in the public record". That conclusion was false — the Rogan interview contains a first-person diet discussion at 87–91 minutes and the Airrack documentary films the training itself. A dedicated adversarial pass found it. <strong>The first research pass is assumed wrong until something has tried to break it.</strong></p>
+</li>
+
+<li>
+  <div class="h"><span>Write the production standard, and make it binding</span><span class="tag gate">OWNER GATE</span></div>
+  <p>472 lines covering: the one-sentence story; a creative filter for what stays and what goes; the click package and thumbnail brief; a second-by-second contract for the first ninety seconds; runtime percentages per act; a five-question chain every chapter must pass; research database requirements; the sound map; mix targets; the graphic system; the retention audit; the three-level ending.</p>
+</li>
+
+<li>
+  <div class="h"><span>Write the script to the material, in three columns</span><span class="tag">§7</span></div>
+  <p><code>Picture/evidence | Speech | Sound</code> — and <em>each column must add different information</em>. Never show, narrate and caption the same fact. Every sequence expresses <code>because → decision → partial solution → new problem</code>, using causal connectors, with chronology that has no causal effect removed.</p>
+</li>
+
+<li>
+  <div class="h"><span>Run two echo detectors as blockers</span><span class="tag">echo_check.py · repetition_check.py</span></div>
+  <p><code>echo_check</code> catches narration restating the clip beside it: a <strong>number echo</strong> (a figure from the bite reappearing in adjacent narration) is a hard failure; a <strong>phrase echo</strong> (a shared content bigram across the boundary) is a warning. It ships with a known-bad control — <code>py -3.12 pipeline/echo_check.py V3</code> — so the detector itself is tested.</p>
+  <p><code>repetition_check</code> catches a different defect: narration repeating <em>itself</em> across the film. It reports concept frequency, content trigrams appearing in two or more blocks, and the same figure restated in two or more blocks.</p>
+</li>
+
+<li>
+  <div class="h"><span>Audit every bite against the actual audio</span><span class="tag">bite_audit.py · word_times.py</span></div>
+  <p>For each bite, transcribe a padded window with word timestamps and report <strong>START MID-SENTENCE</strong>, <strong>END MID-SENTENCE</strong> and <strong>TAIL DRIFT</strong> — the last sentence introducing a subject absent from the rest of the cut. It prints the exact word times of every sentence boundary near the edges, so a corrected in/out point is <em>chosen</em> rather than guessed.</p>
+</li>
+
+<li>
+  <div class="h"><span>Build and deliver the radio edit</span><span class="tag gate">OWNER GATE · mrbeast_radio.py</span></div>
+  <p>The pivot of the whole method. It parses the three-column master, resolves bite ids through the soundbite manifest, generates <strong>free draft narration</strong> one contiguous run at a time, fits the EDL to <strong>measured</strong> TTS rather than estimated durations, enforces the gates, and renders a reviewable radio MP4. <em>No paid TTS and no picture edit are used here.</em></p>
+  <p>The standard states this is <strong>"a mandatory approval gate for every new CelebWorkout video, not just a MrBeast review step."</strong> The audio-only review asks: is every person introduced? Does each chapter change the situation or our understanding? Does every 2–4 minutes produce a partial payoff? Are any facts repeated? Do quotations reveal character rather than merely inform? Can the reversals be felt without visuals? Does the ending answer the opening anomaly? Where does attention drift?</p>
+</li>
+
+<li>
+  <div class="h"><span>Validate the timeline before a single image is made</span><span class="tag">edl.py · qc_v11.py</span></div>
+  <p><code>edl.py</code> has <strong>no I/O at all</strong> — no ffmpeg, no subprocess, no file access. That is deliberate: it makes every gate a pure function of the cut list, and therefore unit-testable. <code>qc_v11.py</code> runs the pure validators and, given a rendered file, adds V7: the render matches the timeline.</p>
+</li>
+
+<li>
+  <div class="h"><span>Only now, picture — with three separate rejection stages</span><span class="tag">bite_windows · clean_windows · apply_verdicts</span></div>
+  <p><code>bite_windows.py</code> finds the picture that <em>is</em> the bite, in sync, by enumerating the uninterrupted runs inside each bite's span — because a 22-second bite crosses the podcast's own camera cuts, and a naive window lands half on the host. That is precisely how Rogan and Bartlett ended up in a film they are banned from.</p>
+  <p><code>clean_windows.py</code> OCRs the bands where burned-in text lives and rejects any window containing third-party captions, watermarks, location cards or channel logos. The V6 cut shipped "who's gonna puke first?", <code>www.Bandicam.com</code> and <code>BYRON BAY, AUSTRALIA</code> before this existed.</p>
+  <p><code>apply_verdicts.py</code> requires human eyes-on identity verdicts, one file per reviewer so two reviewers cannot race, matched on a stable <code>sid@t0</code> key. A window is drawable only if <strong>both</strong> gates pass: subject verified <em>and</em> no text. And <code>blame_shots.py</code> traces any flagged shot in the finished cut back to its source file by perceptual hashing, because the review flags shot numbers and the allow-list holds file names.</p>
+</li>
+
+</ol>
+
+<!-- ================================================================= -->
+<h2 id="gates"><span class="n">IV.</span> The seven format gates, exactly</h2>
+
+<p>Constants as they stand in <code>pipeline/edl.py</code>. Segment kinds are <code>bite</code> (real archival audio, plays with its own audio as a J-cut), <code>narr</code> (our voiceover), <code>card</code> (graphic), <code>beat</code> (music and picture, nobody speaking).</p>
+
+<div class="tw">
+<table>
+  <caption>V11 format gates and their thresholds</caption>
+  <thead><tr><th>Gate</th><th>Constant</th><th class="n">Value</th><th>What it prevents</th></tr></thead>
+  <tbody>
+    <tr><td>V1 voice ratio</td><td><code>MIN_VOICE_RATIO</code></td><td class="n">0.40</td><td>A film that talks <em>about</em> someone instead of letting them speak</td></tr>
+    <tr><td>V1 chorus rule</td><td><code>MAX_BITE_S</code></td><td class="n">30.0 s</td><td>One long monologue satisfying the ratio on its own</td></tr>
+    <tr><td>V2 card containment</td><td>—</td><td class="n">—</td><td>Graphics sprayed through the film instead of one earned Protocol Act</td></tr>
+    <tr><td>V3 promise resolved</td><td>—</td><td class="n">—</td><td>A cold open that withholds nothing, or an ending that pays nothing off</td></tr>
+    <tr><td>V4 silence budget</td><td><code>MIN_BEAT_RATIO</code><br><code>MIN_BEAT_COUNT</code></td><td class="n">0.025<br>6</td><td>A wall of talk with no room to breathe</td></tr>
+    <tr><td>V5 speaker cap</td><td><code>MAX_SUPPORT_SPEAKER_S</code></td><td class="n">90.0 s</td><td>A host or expert taking the film over. Subject exempt.</td></tr>
+    <tr><td>V6 fitness ratio</td><td><code>MIN_FITNESS_OVERALL</code><br><code>MIN_FITNESS_PROTOCOL</code></td><td class="n">0.35<br>0.90</td><td>A fitness channel making a film with no training on screen. Measured on <em>picture</em>.</td></tr>
+    <tr><td>V8 chapter contiguity</td><td>—</td><td class="n">—</td><td>A chapter scattered through the timeline, which breaks music scoring</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box">
+  <h4>Why V7 is missing from that list</h4>
+  <p>V1–V6 and V8 are pure timeline validators. <strong>V7 is the render check</strong> — it compares the finished file against the EDL within <code>SYNC_TOLERANCE</code> and therefore needs a rendered artefact, so it lives in <code>qc_v11.py</code> rather than <code>edl.py</code>. Note also that <code>qc_v11.report()</code> <em>refuses</em> to compare an unfitted EDL against a render: if <code>fit_run_durations()</code> has not replaced placeholder narration durations with TTS-measured ones, the comparison is meaningless and the tool says so instead of passing.</p>
+</div>
+
+<!-- ================================================================= -->
+<h2 id="conflict"><span class="n">V.</span> The conflict you must resolve</h2>
+
+<p>V1 requires real archival voice to carry at least 40% of runtime. Your YouTube copyright rule requires one clip per source video, no clip over ten seconds, no repeats. <strong>These cannot both hold.</strong></p>
+
+<div class="tw">
+<table>
+  <caption>The arithmetic</caption>
+  <thead><tr><th>Quantity</th><th class="n">Value</th></tr></thead>
+  <tbody>
+    <tr><td>Current runtime</td><td class="n">767.5 s</td></tr>
+    <tr><td>V1 requirement at 40%</td><td class="n">307.0 s of archival voice</td></tr>
+    <tr><td>Maximum per clip under your rule</td><td class="n">10 s</td></tr>
+    <tr><td>Clips therefore required</td><td class="n">31</td></tr>
+    <tr><td>Distinct sources therefore required</td><td class="n">31</td></tr>
+    <tr class="hi"><td><strong>Sources in SOURCES.md</strong></td><td class="n"><strong>5</strong></td></tr>
+    <tr class="fail"><td>Maximum achievable voice ratio</td><td class="n">50 s = <strong>6.5%</strong></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>MrBeast resolved this by using fourteen sources — and the note in <code>SOURCES.md</code> records exactly that reasoning: <em>"The previous film took 8 bites from a single Rogan episode; under this rule it needed 14 sources."</em> Hemsworth's research found five. Four options:</p>
+
+<div class="tw">
+<table>
+  <thead><tr><th>Option</th><th>Effect</th><th>Cost</th></tr></thead>
+  <tbody>
+    <tr><td><strong>A. Find 25 more video sources</strong></td><td>V1 holds unchanged</td><td>Days of research; most Hemsworth Alzheimer's material traces to the same few originals, so this may not exist</td></tr>
+    <tr class="hi"><td><strong>B. Replace V1 with an evidence ratio</strong> — archival voice <em>plus</em> on-screen primary documents ≥ 40%</td><td>Print quotes rendered as <code>source_highlight</code> count as evidence. This is what <code>SOURCES.md</code> already proposes: <em>"a print source needs no clip at all"</em></td><td>New gate to write; ~1 hour</td></tr>
+    <tr><td><strong>C. Lower V1 for narration-led films</strong></td><td>Honest but weakens the gate that would have caught this film's central failure</td><td>Free</td></tr>
+    <tr><td><strong>D. Shorten the film to ~2 minutes</strong></td><td>Arithmetically satisfies V1</td><td>Not a film</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="box">
+  <h4>My recommendation: B</h4>
+  <p>An evidence ratio measures what V1 was actually protecting — that the film shows you the record rather than asserting it — while staying inside your copyright rule. A Vanity Fair sentence marked on the page is primary evidence in a way a synthetic narrator reading it is not. It also makes the <code>source_highlight</code> and <code>headline_over</code> effects load-bearing rather than decorative, which is what they were built for. I would keep V1 as a separate, lower floor — <strong>real archival voice ≥ 5%</strong> — so "no human voice at all" remains impossible.</p>
+</div>
+
+<!-- ================================================================= -->
+<h2 id="plan"><span class="n">VI.</span> The Hemsworth rebuild</h2>
+
+<p>Ordered. Owner gates marked. Nothing after a gate starts until you sign the gate.</p>
+
+<ol class="stages">
+<li>
+  <div class="h"><span>Write <code>dossier/hemsworth/PRODUCTION_STANDARD.md</code></span><span class="tag gate">OWNER GATE 1</span></div>
+  <p>One-sentence story; creative filter; click package and three thumbnail briefs; the 90-second opening contract beat by beat; act percentages; the five-question chain for every chapter; the sound map. Drafted from the thesis already in <code>SOURCES.md</code> — the man watching his own future happen to his father, and filming it.</p>
+</li>
+<li>
+  <div class="h"><span>Acquire the five video sources and build the sound bank</span><span class="tag">soundbank.py</span></div>
+  <p>GMA is in. Limitless ep. 5, A Road Trip to Remember, Men's Health and Centr to acquire. Transcribe all five with faster-whisper, punctuated, word-timestamped, into <code>manifest/hemsworth_soundbites.json</code>. Then an adversarial second pass in the spirit of <code>diet_dig.py</code> — assume the first pass missed the best material, because on MrBeast it did.</p>
+</li>
+<li>
+  <div class="h"><span>Rewrite the script to the material, three columns</span><span class="tag">rewrite</span></div>
+  <p><code>SCRIPT_V1.md</code> is 1,625 words written blind, with ten quote blocks that assume a narrator reads them. Rewrite so each bite is a real indexed utterance and narration sets up, frames or moves on — never restates.</p>
+</li>
+<li>
+  <div class="h"><span>Run the detectors as blockers, not warnings</span><span class="tag">echo · repetition · bite_audit</span></div>
+  <p>Every number echo is a blocker. Every mid-sentence bite edge is a blocker. Tail drift is a blocker. The standard's own words: <em>treat every hit as a blocker, not a warning.</em></p>
+</li>
+<li>
+  <div class="h"><span>Build the radio edit and send it to you</span><span class="tag gate">OWNER GATE 2</span></div>
+  <p>Free draft narration, real bites, intentional pauses, temporary chapter score, chapter transitions. Delivered as an audio file with the eight review questions attached. <strong>No image is generated until you sign this.</strong> This is the gate whose absence produced everything you have complained about.</p>
+</li>
+<li>
+  <div class="h"><span>Port the gates to Hemsworth and run them</span><span class="tag">edl.py · qc_v11.py</span></div>
+  <p><code>edl.py</code> is already subject-agnostic. Add the evidence-ratio gate from §V, plus a new <strong>V9 aspect gate</strong>: no source image may enter the renderer unless it is 16:9 within 1.5%, or has been cover-cropped to it.</p>
+</li>
+<li>
+  <div class="h"><span>Final voice, then picture planning</span><span class="tag gate">OWNER GATE 3</span></div>
+  <p>Paid TTS generated once, against the locked script. Then shot prompts written per <em>argument</em>, not per keyword, and a 104-thumbnail contact sheet put in front of you before anything renders.</p>
+</li>
+<li>
+  <div class="h"><span>Render, QC, deliver</span><span class="tag gate">OWNER GATE 4</span></div>
+  <p>Aspect-correct render, camera moves and the FX library applied, brand identity applied, retention audit in 30-second blocks, then the definition-of-done checklist below.</p>
+</li>
+</ol>
+
+<!-- ================================================================= -->
+<h2 id="story"><span class="n">VII.</span> Story architecture</h2>
+
+<h4>The thesis, from SOURCES.md</h4>
+<blockquote>
+  <p>Chris Hemsworth carries two copies of APOE4 — eight to ten times the population risk of Alzheimer's. His grandfather had it. His father Craig, 71, has it now. In 2025 he drove his father around Australia to visit the places tied to Craig's memories, while Craig was losing them.</p>
+  <p>He is not a man told about a risk. He is a man watching his own future happen to his father, and filming it.</p>
+</blockquote>
+
+<p>That reframes the fitness material completely: the training is not vanity and not longevity theatre, it is the one lever he has been told might matter, applied by a man who has seen where the road goes.</p>
+
+<h4>Act percentages, adapted from §4</h4>
+<div class="tw">
+<table>
+  <thead><tr><th class="n">Portion</th><th>Function</th><th>Hemsworth implementation</th></tr></thead>
+  <tbody>
+    <tr><td class="n">0–7%</td><td>Hook and promise</td><td>The photograph that has been on the internet for fifteen years — and what it does not show</td></tr>
+    <tr><td class="n">7–20%</td><td>Origin and desire</td><td>Thor: the role that required a body, and the decade of holding it</td></tr>
+    <tr><td class="n">20–40%</td><td>Progress and success</td><td>The method, published and unglamorous: push, pull, legs, 4×12, one minute rest</td></tr>
+    <tr><td class="n">40–55%</td><td>First reversal</td><td>The blood test. The doctor who would not say it on camera.</td></tr>
+    <tr><td class="n">55–75%</td><td>Escalating complications</td><td>Two copies of APOE4. The grandfather. The father. The road trip.</td></tr>
+    <tr><td class="n">75–90%</td><td>Crisis / confrontation</td><td>What training can and cannot do. No cure is claimed.</td></tr>
+    <tr><td class="n">90–98%</td><td>Payoff and meaning</td><td>He stopped building the body and started training for something else</td></tr>
+    <tr><td class="n">Final 2%</td><td>Bridge</td><td>Thematic, to another Celeb Workout film. No spoken like-and-subscribe.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h4>The five-question chain</h4>
+<p>Every chapter must answer all five before the script locks: <strong>entry question · discovery · status change · partial payoff · exit question</strong>. A chapter that cannot answer all five is not a chapter; it is material.</p>
+
+<h4>Narration rules, §8</h4>
+<ul>
+  <li>Conversational 135–165 WPM · fast montage 165–185 · emotional and medical passages <strong>110–140</strong></li>
+  <li>Typical sentence 8–18 words; a consequential statement occasionally 2–7</li>
+  <li>A new narrative beat every 20–45 seconds; a meaningful pause of 0.5–2 s after major lines</li>
+  <li>Narration may establish context, connect cause to consequence, compress time, direct attention to evidence, or frame the next question</li>
+  <li><strong>Narration must not describe visible action or paraphrase a quotation the viewer just heard</strong></li>
+  <li>Source voices carry confessions, bodily experience, promises, contradictions, high-value numbers and character-revealing language</li>
+</ul>
+
+<!-- ================================================================= -->
+<h2 id="sound"><span class="n">VIII.</span> Sound and mix specification</h2>
+
+<div class="tw">
+<table>
+  <caption>Sound map, adapted from §10</caption>
+  <thead><tr><th>Chapter / function</th><th>Music direction</th><th>Atmosphere</th><th>Transition</th></tr></thead>
+  <tbody>
+    <tr><td>The famous body</td><td>Minimal, unresolved</td><td>Room tone where authentic</td><td>Source voice enters before picture</td></tr>
+    <tr><td>The method</td><td>Precise rhythmic pulse</td><td>Plates, footsteps, breathing</td><td>Rhythm grows through the causal montage</td></tr>
+    <tr><td>The test</td><td>Restrained, low density</td><td>Consulting-room quiet</td><td>Subtract layers before the key number</td></tr>
+    <tr><td>The result</td><td>Remove rhythm, add space</td><td>Near-silence before "not a cure"</td><td>Music changes when the cost appears</td></tr>
+    <tr><td>The father</td><td>Warmth, gradual expansion</td><td>Car, road, Australian exterior</td><td>Early sound returns with new meaning</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Six available layers — narration, primary dialogue, production sound, music, atmosphere, designed effects — of which <strong>only one or two may dominate at a time</strong>. Every music cue requires a documented entrance, development, peak, exit and handoff. No cue continues merely because the track is long.</p>
+
+<h4>Mix requirements, §11</h4>
+<ul>
+  <li>Narration at <strong>48 kHz</strong> in the assembly pipeline. <span class="w">The current Hemsworth audio is 44.1 kHz — a deviation to correct.</span></li>
+  <li>Music ducking beneath complex speech begins in the <strong>6–14 dB</strong> range, adjusted by ear</li>
+  <li>Reduce percussion and melodic density beneath explanations</li>
+  <li>Preserve J-cuts and L-cuts for source dialogue; starting overlap 0.5–3 s where structurally useful</li>
+  <li>Audio joins stay <strong>butt-joined with edge fades</strong> — never crossfade chunks, which shortens the result ~0.3 s per junction and accumulates into audible A/V drift</li>
+  <li>Check on phone speakers, at quiet playback, and in mono</li>
+  <li>Final target ≈ <strong>−14 LUFS integrated, −1 dBTP</strong>, with dialogue intelligibility taking precedence</li>
+  <li>Silence is created by subtraction and room tone, not dead digital silence</li>
+</ul>
+
+<!-- ================================================================= -->
+<h2 id="picture"><span class="n">IX.</span> Picture specification</h2>
+
+<h4>Evidence priority, §12</h4>
+<pre><code>actual event footage  &gt;  primary evidence  &gt;  specific contextual B-roll
+   &gt;  purposeful reconstruction/animation  &gt;  metaphor  &gt;  generic stock</code></pre>
+
+<p>The current film sits almost entirely in the fifth band. Every shot must <strong>prove, explain, locate, humanise, contrast, foreshadow, recall or transition</strong> — and cut when the idea, power relationship, evidence, speaker, emotion or comprehension changes, never to create arbitrary motion.</p>
+
+<div class="tw">
+<table>
+  <caption>Starting shot durations</caption>
+  <thead><tr><th>Type</th><th class="n">Duration</th></tr></thead>
+  <tbody>
+    <tr><td>Energetic montage</td><td class="n">0.5–2.5 s</td></tr>
+    <tr><td>Explanatory B-roll</td><td class="n">2–6 s</td></tr>
+    <tr><td>Documents, maps, diagrams</td><td class="n">4–10 s, or long enough to read</td></tr>
+    <tr><td>Emotional reaction</td><td class="n">4–12 s</td></tr>
+    <tr><td>Revelatory hold</td><td class="n">Longer when earned</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>Note the tension with <strong>EDIT_RULES R2</strong>, which sets an 8–12 s default hold after your verdict that the MrBeast cut was "just images after images". R2 governs: these ranges are floors for specific shot <em>types</em>, not licence to return to four-second cutting.</p>
+
+<h4>Binding hygiene gates</h4>
+<ul>
+  <li>≥ 60% training and physique footage among footage beats where the ledger requires it</li>
+  <li>No source window crosses a shot boundary · no repeated scene · no third-party watermarks</li>
+  <li>No blurred pillarbox · no low-resolution upscale · no misleading archive date</li>
+  <li>Every final crop re-verified · fitness cards use real evidence and appear only in the contiguous Protocol Act</li>
+</ul>
+
+<h4>Graphic system — a conflict to settle</h4>
+<p>§13 of the MrBeast standard specifies channel red <code>#E3120B</code>. Your later brand document, <code>docs/BRAND.md</code>, specifies <strong>Celebrity Red <code>#B22B1A</code></strong>, with Training Black <code>#0D0D0D</code>, Warm White <code>#F4F2EF</code>, Steel Gray <code>#A9A9A9</code>, Deep Shadow <code>#252525</code>, a 70/20/10 ratio, and chapters THE ROLE / THE WORKOUT / THE DIET / THE RESULTS. <strong>BRAND.md is the later and authoritative document and governs.</strong> The older hex is still scattered through the code and needs replacing.</p>
+
+<p>Also: three of the vendored Archivo faces — <code>Archivo-Regular.ttf</code>, <code>Archivo-Medium.ttf</code>, <code>Archivo-SemiBold.ttf</code> — are <strong>HTML error pages saved with a .ttf extension</strong>. Anton, Allura, ArchivoBlack and Archivo-Variable are genuine. Re-download the three broken faces before any graphics work.</p>
+
+<!-- ================================================================= -->
+<h2 id="dod"><span class="n">X.</span> Definition of done</h2>
+
+<ul class="chk">
+  <li>Three-column master script exists</li>
+  <li>Every chapter passes the five-question chain</li>
+  <li>Radio edit passes without visuals, and is signed off</li>
+  <li>Evidence ratio (archival voice + on-screen primary documents) ≥ 40%</li>
+  <li>Real archival voice ≥ 5% — no film with zero human voice can ship</li>
+  <li>No single bite over 30 s; no clip over 10 s; one clip per source</li>
+  <li>Each chapter has a documented sound instruction</li>
+  <li>Every music cue has entrance, development, peak, exit and handoff</li>
+  <li>Every factual claim maps to the research database</li>
+  <li>Every 30-second block passes the retention audit</li>
+  <li>Opening anomaly is answered at factual, character and universal levels</li>
+  <li>Opening image and sound return with changed meaning</li>
+  <li>Three thumbnail variants pass the 10% size test</li>
+  <li>Final 2% bridges naturally to another channel video</li>
+  <li><strong>V9: every source image is 16:9 within 1.5% before the renderer sees it</strong></li>
+  <li>Narration at 48 kHz; master ≈ −14 LUFS, −1 dBTP; checked on phone, quiet and mono</li>
+  <li>Music attribution present in the video description (Scott Buckley, CC BY 4.0, per cue)</li>
+  <li>No third-party broadcast furniture visible in any frame</li>
+</ul>
+
+<!-- ================================================================= -->
+<h2 id="decisions"><span class="n">XI.</span> Decisions I need from you</h2>
+
+<div class="tw">
+<table>
+  <thead><tr><th>#</th><th>Decision</th><th>My recommendation</th></tr></thead>
+  <tbody>
+    <tr><td class="n">1</td><td>V1 versus the copyright rule (§V)</td><td><strong>Option B</strong> — evidence ratio ≥ 40%, with real archival voice ≥ 5% as a separate floor</td></tr>
+    <tr><td class="n">2</td><td>Rebuild from the radio edit, or patch the current cut?</td><td><strong>Rebuild.</strong> The current cut fails at the script layer; patching picture cannot fix a script written without material</td></tr>
+    <tr><td class="n">3</td><td>The 46 badly stretched stills: crop to 16:9, or regenerate?</td><td><strong>Crop.</strong> Free and instant, and cannot make a composition worse than the one that exists</td></tr>
+    <tr><td class="n">4</td><td>Acquire the four missing sources?</td><td><strong>Yes</strong> — Limitless ep. 5, A Road Trip to Remember, Centr, and Men's Health for Zocchi-as-Zocchi, honestly labelled</td></tr>
+    <tr><td class="n">5</td><td>Target runtime</td><td><strong>14–18 min</strong> per §4, unless the radio edit proves a shorter film is stronger</td></tr>
+  </tbody>
+</table>
+</div>
+
+<footer>
+  <p><strong>Primary sources for this document.</strong>
+  <code>dossier/mrbeast/PRODUCTION_STANDARD.md</code> (472 lines) ·
+  <code>pipeline/edl.py</code> ·
+  <code>pipeline/qc_v11.py</code> ·
+  <code>pipeline/soundbank.py</code> ·
+  <code>pipeline/mrbeast_radio.py</code> ·
+  <code>pipeline/echo_check.py</code> ·
+  <code>pipeline/repetition_check.py</code> ·
+  <code>pipeline/bite_audit.py</code> ·
+  <code>pipeline/bite_windows.py</code> ·
+  <code>pipeline/clean_windows.py</code> ·
+  <code>pipeline/apply_verdicts.py</code> ·
+  <code>pipeline/diet_dig.py</code> ·
+  <code>pipeline/music.py</code> ·
+  <code>docs/EDIT_RULES.md</code> ·
+  <code>docs/BRAND.md</code> ·
+  <code>dossier/hemsworth/SOURCES.md</code></p>
+  <p>Measurements taken 3 August 2026 from <code>work/hemsworth/blocks.json</code>, <code>work/hemsworth/shots.json</code>, <code>work/hemsworth/cues.json</code> and the 104 generated stills in <code>work/hemsworth/stills/</code>. Gate results computed against the constants in <code>pipeline/edl.py</code> as committed.</p>
+</footer>
+
+</div>

@@ -1,0 +1,262 @@
+<title>What actually takes the time — every lever, ranked</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:55rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.28rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:1px solid var(--rule);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.05em .3em;}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.83rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.5rem .7rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 10%,transparent);color:var(--ink);}
+  .save{font-weight:700;color:var(--good);white-space:nowrap;}
+  .free{color:var(--good);font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;}
+  .paid{color:var(--red);font-weight:700;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;}
+  .measured{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--good);font-weight:700;}
+  .est{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);font-weight:700;}
+
+  .bars{margin:1.3rem 0 1.4rem;font-family:var(--sans);font-size:.8rem;}
+  .bar{display:grid;grid-template-columns:10rem 1fr 4.6rem;gap:.7rem;align-items:center;margin-bottom:.42rem;}
+  .bar .lab{color:var(--body);text-align:right;}
+  .bar .track{background:var(--panel);height:1.2rem;}
+  .bar .fill{background:var(--red);height:100%;}
+  .bar .fill.q{background:var(--mute);}
+  .bar .val{color:var(--mute);}
+  .bar.big .lab,.bar.big .val{color:var(--ink);font-weight:700;}
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.4rem 0 1.6rem;}
+
+  /* waterfall */
+  .wf{margin:1.5rem 0 1rem;font-family:var(--sans);font-size:.8rem;}
+  .wfr{display:grid;grid-template-columns:13rem 1fr 4.4rem;gap:.8rem;align-items:center;
+       padding:.28rem 0;}
+  .wfr .lab{text-align:right;color:var(--body);}
+  .wfr .track{height:1.5rem;position:relative;background:var(--panel);}
+  .wfr .seg{position:absolute;top:0;bottom:0;}
+  .wfr .seg.base{background:var(--mute);}
+  .wfr .seg.cut{background:color-mix(in srgb,var(--good) 55%,transparent);}
+  .wfr .seg.add{background:var(--red);}
+  .wfr .val{color:var(--mute);font-variant-numeric:tabular-nums;}
+  .wfr.tot .lab,.wfr.tot .val{font-weight:700;color:var(--ink);}
+  .wfr.tot .seg.base{background:var(--good);}
+  .wfl{display:flex;gap:1.2rem;font-size:.7rem;color:var(--mute);margin:.6rem 0 1.4rem;
+       justify-content:flex-end;}
+  .wfl i{display:inline-block;width:.7rem;height:.7rem;margin-right:.3rem;vertical-align:-.05em;font-style:normal;}
+
+  @media (max-width:640px){
+    .bar,.wfr{grid-template-columns:1fr;gap:.15rem;}
+    .bar .lab,.wfr .lab{text-align:left;}
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Time analysis <span>· Celeb Workout · every lever, ranked</span></div>
+  <h1>What actually takes the time</h1>
+  <p class="stand">Eight hours and six minutes, measured. Seventeen of those minutes were the computer
+  doing the job. Everything else is recoverable, and most of it is free.</p>
+  <div class="byline"><span>3 August 2026</span><span>Baseline: Hemsworth build, 02:26–10:32</span></div>
+</header>
+
+<h2><span class="n">I.</span> Where the eight hours went</h2>
+
+<div class="bars">
+  <div class="bar big"><div class="lab">Idle — waiting on you</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="val">385 m</div></div>
+  <div class="bar"><div class="lab">Render</div><div class="track"><div class="fill q" style="width:15.6%"></div></div><div class="val">60 m</div></div>
+  <div class="bar"><div class="lab">Crash recovery</div><div class="track"><div class="fill q" style="width:6.5%"></div></div><div class="val">25 m</div></div>
+  <div class="bar"><div class="lab">Script</div><div class="track"><div class="fill q" style="width:2.6%"></div></div><div class="val">10 m</div></div>
+  <div class="bar"><div class="lab">Everything else</div><div class="track"><div class="fill q" style="width:1.8%"></div></div><div class="val">7 m</div></div>
+</div>
+<p class="note"><span class="measured">Measured</span> from process logs. Crash recovery was time lost
+to segfaults whose root cause was a full disk, not a code defect. Outcome of the eight hours: a
+rejected cut.</p>
+
+<div class="verdict">
+  <div class="lab">Note</div>
+  <p>This build had <strong>no sourcing stage at all.</strong> Nothing searched for or cut real footage
+  of the subject. So the good version of this pipeline has to <em>add</em> time in one place while
+  removing it everywhere else.</p>
+</div>
+
+<h2><span class="n">II.</span> Every lever, ranked by minutes saved</h2>
+
+<div class="tw">
+<table>
+  <caption>Ranked — biggest first</caption>
+  <tr><th>Lever</th><th>What it does</th><th class="n">Saves</th><th class="n">Cost</th><th class="n">Evidence</th></tr>
+
+  <tr class="hi"><td><strong>Run unattended</strong></td>
+    <td>Agents keep working between your messages. The rejection routes itself instead of waiting for you to wake up.</td>
+    <td class="n save">385 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="measured">measured</span></td></tr>
+
+  <tr class="hi"><td><strong>Transcript-first search</strong></td>
+    <td>Pull YouTube captions in ~200 ms with <em>no download</em>. Search 200 videos, download only the 8 that matter. Today we downloaded 193 MB to discover a workout the captions revealed in 2 seconds.</td>
+    <td class="n save">20–40 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="measured">measured</span></td></tr>
+
+  <tr class="hi"><td><strong>Half-resolution warp</strong></td>
+    <td>The push-in is a per-pixel remap: 0.538 s/frame at 1080p × 18,420 frames = 60 min. At half res it is 3.4× faster. You are magnifying the image anyway, so visible loss is small.</td>
+    <td class="n save">42 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="measured">measured</span></td></tr>
+
+  <tr><td><strong>Disk pre-flight</strong></td>
+    <td>Refuse to start below 20 GB free. Every segfault in the last build was <em>paging file too small</em> in disguise.</td>
+    <td class="n save">25 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="measured">measured</span></td></tr>
+
+  <tr><td><strong>Skip the warp on graphics</strong></td>
+    <td>Cards, titles and music beats gain nothing from depth parallax. ~22 of the shots never need warping at all.</td>
+    <td class="n save">8–12 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="est">estimate</span></td></tr>
+
+  <tr><td><strong>Parallel fan-out</strong></td>
+    <td>Story research 5×, video research 12× (one agent per beat), 5 script drafts at once. Converts serial minutes into wall-clock minutes.</td>
+    <td class="n save">15–25 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="est">estimate</span></td></tr>
+
+  <tr><td><strong>Content-fingerprint cache</strong></td>
+    <td>Cache renders on content, not shot name. Change one prompt and exactly one shot re-renders. Turns a revision from a rebuild into seconds.</td>
+    <td class="n save">revisions →~0</td><td class="n"><span class="free">free</span></td><td class="n"><span class="est">in SETUP.md</span></td></tr>
+
+  <tr><td><strong>Parallel narration</strong></td>
+    <td>Generate narration by section concurrently instead of one serial call.</td>
+    <td class="n save">1–2 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="est">estimate</span></td></tr>
+
+  <tr><td><strong>Pre-scored music library</strong></td>
+    <td>Score once, keyed to beat type — cold open, turn, reveal, close. No per-film music selection.</td>
+    <td class="n save">5 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="est">estimate</span></td></tr>
+
+  <tr><td><strong>Cold open as a template</strong></td>
+    <td>Gavia's five-part formula is fixed. It is slot-filling, not writing.</td>
+    <td class="n save">3–5 m</td><td class="n"><span class="free">free</span></td><td class="n"><span class="measured">§17</span></td></tr>
+
+  <tr><td>Warm corpus / librarian</td>
+    <td>Index celebrities continuously in the background so research is amortised, not per-film. <em>Deferred — proving one celebrity first.</em></td>
+    <td class="n save">8–12 m<br><span class="est">2nd film on</span></td><td class="n"><span class="free">free</span></td><td class="n"><span class="est">estimate</span></td></tr>
+
+  <tr><td>Rented GPU for the warp</td>
+    <td>Compute is ~2 min, but boot, upload and download make wall clock ~25 min. <strong>Slower than the free half-res fix.</strong> Rent it to buy real motion, not speed.</td>
+    <td class="n" style="color:var(--bad);font-weight:700">−7 m</td><td class="n"><span class="paid">$0.32</span></td><td class="n"><span class="measured">measured</span></td></tr>
+</table>
+</div>
+
+<h2><span class="n">III.</span> The waterfall</h2>
+
+<div class="wf">
+  <div class="wfr"><div class="lab">Measured baseline</div>
+    <div class="track"><div class="seg base" style="left:0;width:100%"></div></div><div class="val">486 m</div></div>
+  <div class="wfr"><div class="lab">− run unattended</div>
+    <div class="track"><div class="seg base" style="left:0;width:20.8%"></div><div class="seg cut" style="left:20.8%;width:79.2%"></div></div><div class="val">101 m</div></div>
+  <div class="wfr"><div class="lab">− disk pre-flight</div>
+    <div class="track"><div class="seg base" style="left:0;width:15.6%"></div><div class="seg cut" style="left:15.6%;width:5.2%"></div></div><div class="val">76 m</div></div>
+  <div class="wfr"><div class="lab">− half-res warp</div>
+    <div class="track"><div class="seg base" style="left:0;width:7%"></div><div class="seg cut" style="left:7%;width:8.6%"></div></div><div class="val">34 m</div></div>
+  <div class="wfr"><div class="lab" style="color:var(--red)">+ sourcing <em>(new stage)</em></div>
+    <div class="track"><div class="seg base" style="left:0;width:7%"></div><div class="seg add" style="left:7%;width:2.1%"></div></div><div class="val">44 m</div></div>
+  <div class="wfr"><div class="lab" style="color:var(--red)">+ script loop</div>
+    <div class="track"><div class="seg base" style="left:0;width:9.1%"></div><div class="seg add" style="left:9.1%;width:1%"></div></div><div class="val">49 m</div></div>
+  <div class="wfr tot"><div class="lab">First film, cold subject</div>
+    <div class="track"><div class="seg base" style="left:0;width:10.1%"></div></div><div class="val">~49 m</div></div>
+  <div class="wfr tot"><div class="lab">Repeat / warm corpus</div>
+    <div class="track"><div class="seg base" style="left:0;width:4.1%"></div></div><div class="val">~20 m</div></div>
+</div>
+<div class="wfl">
+  <span><i style="background:var(--mute)"></i>remaining</span>
+  <span><i style="background:color-mix(in srgb,var(--good) 55%,transparent)"></i>removed</span>
+  <span><i style="background:var(--red)"></i>added on purpose</span>
+</div>
+
+<div class="verdict">
+  <div class="lab">The honest answer</div>
+  <p><strong>20 minutes is reachable — but not on the first film for a new celebrity.</strong> Cold
+  start lands near 50 minutes, because downloading eight sources is real work no trick removes. The
+  20-minute number arrives on the second pass, or once the corpus is warm.</p>
+</div>
+
+<h2><span class="n">IV.</span> The lever that dwarfs all of them</h2>
+
+<p class="lede">Everything above optimises <em>one</em> pass through the pipeline. But the Hemsworth
+film has had <strong>three complete scripts and a full render, all binned</strong> — and the MrBeast
+film ran through audio v3–v6 and picture v3–v9 before you rejected it.</p>
+
+<p>At eight hours a cycle, that is not an eight-hour project. <strong>It is a forty-hour project with
+nothing published at the end of it.</strong> Two films finished, zero shipped.</p>
+
+<div class="tw">
+<table>
+  <caption>Cost of finding one defect, by where it is found</caption>
+  <tr><th>Found at</th><th class="n">Costs</th><th>Example from this project</th></tr>
+  <tr class="hi"><td>Script — text only</td><td class="n save">seconds · $0</td><td>"eight movements" named zero times — a <code>grep</code> would have caught it</td></tr>
+  <tr><td>Radio edit — free draft audio</td><td class="n">minutes · $0</td><td>narrator restating the bite; interviewer "uh"</td></tr>
+  <tr><td>Picture — after generation</td><td class="n">1 h · $4–10</td><td>84% generated stills, no subject on screen</td></tr>
+  <tr><td><strong>You watch it</strong></td><td class="n" style="color:var(--bad);font-weight:700">a whole night</td><td><em>every defect in the voice note</em></td></tr>
+</table>
+</div>
+
+<p><strong>Every complaint you have ever made was detectable in text, for free, before a frame
+existed.</strong> Moving detection from the bottom row to the top row is worth more than every render
+optimisation on this page put together.</p>
+
+<h2><span class="n">V.</span> What to build, by return on effort</h2>
+
+<div class="tw">
+<table>
+  <caption>Minutes saved per hour of build</caption>
+  <tr><th class="n">#</th><th>Build</th><th class="n">Build cost</th><th class="n">Saves / film</th><th class="n">Ratio</th></tr>
+  <tr class="hi"><td class="n">1</td><td>Disk pre-flight</td><td class="n">10 min</td><td class="n save">25 m</td><td class="n">150×</td></tr>
+  <tr class="hi"><td class="n">2</td><td>Transcript-first discovery — <code>discover.py</code></td><td class="n">1 h</td><td class="n save">20–40 m</td><td class="n">~30×</td></tr>
+  <tr><td class="n">3</td><td>Half-res warp + skip graphics</td><td class="n">2 h</td><td class="n save">50 m</td><td class="n">25×</td></tr>
+  <tr><td class="n">4</td><td>Unattended agent loop</td><td class="n">4 h</td><td class="n save">385 m</td><td class="n">96×</td></tr>
+  <tr><td class="n">5</td><td>Gates that convict both rejected films</td><td class="n">3 h</td><td class="n save"><em>whole cycles</em></td><td class="n">—</td></tr>
+</table>
+</div>
+
+<p class="note">Rows 1 and 2 are half a day between them and remove roughly an hour per film. Row 4 is
+the big one but depends on row 5 existing first — an unattended loop with no judge just produces
+rejected cuts faster.</p>
+
+</div>

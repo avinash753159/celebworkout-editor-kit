@@ -1,0 +1,1269 @@
+<title>The Aniston Build</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --red:#B22B1A; --econ:#E3120B; --ink:#121212; --body:#2E2E2E; --rule:#D4D4D4; --hair:#EAEAEA;
+    --paper:#FFFFFF; --panel:#F7F6F3; --mute:#6B6B6B; --good:#1F6F4A; --warn:#8A5A00; --bad:#A32A17;
+    --serif:"Milo Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    color-scheme: light;
+  }
+  html,body{background:#fff;}
+  body{background:#fff;color:var(--body);font-family:var(--serif);font-size:16px;line-height:1.55;
+       margin:0;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.6rem 7rem;}
+  .wide{max-width:78rem;}
+  header.mast{margin-top:2.6rem;}
+  .kicker{display:inline-block;background:var(--econ);color:#fff;font-family:var(--sans);
+          font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+          padding:.24rem .62rem;margin-bottom:.9rem;}
+  h1{font-size:clamp(2.2rem,5.4vw,3.3rem);line-height:1.05;margin:.4rem 0 .7rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.02em;}
+  .stand{font-size:1.2rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:44rem;margin:0 0 1.5rem;}
+  .byline{font-family:var(--sans);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+          padding:.6rem 0;margin-bottom:2.2rem;display:flex;gap:1.6rem;flex-wrap:wrap;}
+  h2{font-family:var(--sans);font-size:1.22rem;font-weight:700;color:var(--ink);
+     margin:3rem 0 .7rem;padding-top:.9rem;border-top:3px solid var(--econ);letter-spacing:-.01em;}
+  h3{font-family:var(--sans);font-size:.94rem;font-weight:700;color:var(--ink);
+     margin:2rem 0 .5rem;letter-spacing:-.005em;}
+  h4{font-family:var(--sans);font-size:.72rem;font-weight:700;color:var(--mute);
+     text-transform:uppercase;letter-spacing:.1em;margin:1.5rem 0 .45rem;}
+  p{margin:0 0 1rem;max-width:44rem;}
+  .wide p{max-width:none;}
+  a{color:var(--econ);text-decoration:none;border-bottom:1px solid #f4c3c1;}
+  strong{color:var(--ink);}
+  em.lede{font-style:normal;font-weight:700;color:var(--ink);}
+  ul,ol{margin:0 0 1.1rem;padding-left:1.15rem;max-width:44rem;}
+  li{margin-bottom:.34rem;}
+  code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.08em .3em;
+       color:var(--ink);}
+  .tw{overflow-x:auto;margin:1.1rem 0 2rem;border:1px solid var(--rule);}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.78rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);background:#fff;
+     border-bottom:1.5px solid var(--ink);padding:.5rem .65rem;font-size:.63rem;
+     letter-spacing:.06em;text-transform:uppercase;white-space:nowrap;}
+  td{padding:.5rem .65rem;border-bottom:1px solid var(--hair);vertical-align:top;}
+  tr:hover td{background:#FBFAF7;}
+  td.n{text-align:right;color:var(--mute);white-space:nowrap;}
+  td.k{font-family:var(--mono);font-size:.74rem;color:var(--ink);white-space:nowrap;}
+  .chip{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.62rem;
+        padding:.12em .5em;border-radius:2px;color:#fff;white-space:nowrap;letter-spacing:.03em;}
+  .c-still{background:#3C5A78;} .c-video{background:#B22B1A;} .c-diagram{background:#2E6B4F;}
+  .c-card{background:#121212;} .c-bite{background:#7C3A2A;} .c-doc{background:#8A5A00;}
+  .tier{display:inline-block;font-family:var(--sans);font-size:.6rem;font-weight:700;
+        letter-spacing:.06em;padding:.08em .42em;}
+  .t-ok{background:#E6F2EC;color:var(--good);}
+  .t-mid{background:#FDF3E3;color:var(--warn);}
+  .t-no{background:#FBEAE8;color:var(--bad);}
+  pre.p{font-family:var(--mono);font-size:.75rem;line-height:1.6;background:var(--panel);
+        border-left:3px solid var(--econ);padding:1rem 1.1rem;overflow-x:auto;margin:.9rem 0 1.6rem;
+        color:#1a1a1a;white-space:pre-wrap;}
+  pre.p b{color:#000;}
+  .note{font-family:var(--sans);font-size:.79rem;color:var(--mute);line-height:1.55;
+        margin:-.5rem 0 1.7rem;max-width:44rem;}
+  .rule{border:0;border-top:1px solid var(--rule);margin:2.6rem 0;}
+  .box{border:1px solid var(--rule);background:#fff;padding:1.1rem 1.2rem;margin:1.2rem 0 1.8rem;}
+  .box.warn{border-left:3px solid var(--bad);}
+  .box.good{border-left:3px solid var(--good);}
+  .box h4{margin-top:0;}
+  .box p:last-child{margin-bottom:0;}
+  .sw{display:inline-block;width:2.6rem;height:1.1rem;vertical-align:-.2rem;
+      border:1px solid rgba(0,0,0,.15);margin-right:.5rem;}
+  .toc{font-family:var(--sans);font-size:.8rem;columns:2;column-gap:2.5rem;
+       border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1rem 0;margin-bottom:2.4rem;}
+  .toc a{display:block;padding:.16rem 0;border:0;color:var(--body);}
+  .toc a:hover{color:var(--econ);}
+  .toc b{color:var(--ink);}
+  .kpi{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);margin:1.2rem 0 2rem;}
+  .kpi div{flex:1 1 8rem;padding:.85rem 1rem;border-right:1px solid var(--hair);}
+  .kpi div:last-child{border-right:0;}
+  .kpi .v{font-family:var(--sans);font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1.1;}
+  .kpi .l{font-family:var(--sans);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;
+          color:var(--mute);margin-top:.28rem;}
+  footer{font-family:var(--sans);font-size:.72rem;color:var(--mute);border-top:1px solid var(--ink);
+         padding-top:.9rem;margin-top:3.5rem;}
+  @media (max-width:640px){ .toc{columns:1;} }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <span class="kicker">Celeb Workout · Production</span>
+  <h1>The Aniston Build</h1>
+  <p class="stand">Every element that goes into a Celeb&nbsp;Workout film, what each one is for,
+  and the exact prompts that produce it — written against the Jennifer Aniston film, which is
+  already built three times over and waiting on a decision.</p>
+  <div class="byline">
+    <span>Repo · C:\Users\avina\ytceleb</span>
+    <span>Binding · docs/THE_STANDARD.html</span>
+    <span>Subject · Jennifer Aniston</span>
+    <span>State · V13 mastered, not uploaded</span>
+  </div>
+</header>
+
+<nav class="toc">
+  <a href="#state"><b>0</b> &nbsp;Where this film already stands</a>
+  <a href="#anatomy"><b>1</b> &nbsp;The anatomy — twelve elements</a>
+  <a href="#params"><b>1.1</b> &nbsp;Fixed parameters</a>
+  <a href="#coldopen"><b>1.2</b> &nbsp;The cold open</a>
+  <a href="#spine"><b>1.3</b> &nbsp;The spine — chapters and beats</a>
+  <a href="#kinds"><b>1.4</b> &nbsp;Shot kinds</a>
+  <a href="#programme"><b>1.5</b> &nbsp;The programme</a>
+  <a href="#effects"><b>1.6</b> &nbsp;Effect vocabulary</a>
+  <a href="#brand"><b>1.7</b> &nbsp;The brand system</a>
+  <a href="#audio"><b>1.8</b> &nbsp;Audio</a>
+  <a href="#rights"><b>1.9</b> &nbsp;Copyright arithmetic</a>
+  <a href="#gates"><b>1.10</b> &nbsp;The gates</a>
+  <a href="#prompts"><b>2</b> &nbsp;The prompt library</a>
+  <a href="#kickoff"><b>2.1</b> &nbsp;The kickoff prompt</a>
+  <a href="#agents"><b>2.2</b> &nbsp;The seven agent prompts</a>
+  <a href="#assetprompts"><b>2.3</b> &nbsp;Prompts per asset kind</a>
+  <a href="#audit"><b>2.4</b> &nbsp;The audit prompt</a>
+  <a href="#failures"><b>2.5</b> &nbsp;Five ways a prompt fails</a>
+  <a href="#tools"><b>3</b> &nbsp;Tools — and code as B-roll</a>
+  <a href="#order"><b>4</b> &nbsp;Build order and budget</a>
+  <a href="#open"><b>5</b> &nbsp;What is still open</a>
+</nav>
+
+
+<h2 id="state">0 · Where this film already stands</h2>
+
+<p><em class="lede">Before writing a prompt, know that the Aniston film exists.</em>
+Three separate production runs are on disk, and the third is a finished 1080p master
+that has never been uploaded. "How do I make the Jennifer Aniston video" is therefore
+two different questions, and it is worth being clear which one you are asking.</p>
+
+<div class="tw">
+<table>
+<tr><th>Run</th><th>What it is</th><th>Runtime</th><th>On disk</th><th>Status</th></tr>
+<tr>
+  <td class="k">jennifer_aniston</td>
+  <td>The research build. Charter, 16-beat sheet, 122&nbsp;kB shot-list generator, 59-agent dossier, angle tournament. <b>No film rendered.</b></td>
+  <td class="n">—</td>
+  <td class="k">dossier/jennifer_aniston/<br>docs/SHOTLIST_ANISTON.html</td>
+  <td><span class="tier t-mid">PLAN ONLY</span></td>
+</tr>
+<tr>
+  <td class="k">jennifer_aniston_five</td>
+  <td>Five complete films from one dossier — five different angles on the same subject, each with its own script, mix master, captions and Premiere package.</td>
+  <td class="n">~21:54 ea.</td>
+  <td class="k">deliverables/jennifer_aniston_five/<br>final_videos/JA0{1..5}_1080p.mp4</td>
+  <td><span class="tier t-no">SUPERSEDED</span></td>
+</tr>
+<tr>
+  <td class="k">jennifer_aniston_v13</td>
+  <td>The current best. 106 shots, 4 bites from 4 sources, 9 named movements, original score, deterministic exercise diagrams, thumbnail and full YouTube metadata generated.</td>
+  <td class="n">15:58</td>
+  <td class="k">deliverables/jennifer_aniston_v13/<br>JA_V13.mp4 · 589&nbsp;MB</td>
+  <td><span class="tier t-ok">MASTERED</span></td>
+</tr>
+</table>
+</div>
+
+<div class="kpi">
+  <div><div class="v">15:58</div><div class="l">V13 runtime</div></div>
+  <div><div class="v">106</div><div class="l">shots</div></div>
+  <div><div class="v">9.0s</div><div class="l">median hold</div></div>
+  <div><div class="v">4</div><div class="l">bites · 4 sources</div></div>
+  <div><div class="v">9</div><div class="l">named movements</div></div>
+  <div><div class="v">$6.50</div><div class="l">picture cost target</div></div>
+</div>
+
+<div class="box warn">
+<h4>The honest read on V13</h4>
+<p>Its own metadata file records a deliberate brand departure: the thumbnail carries
+<b>no photograph and no likeness of Jennifer Aniston</b>, because all four sources spent their
+one permitted clip inside the film, so a frame lifted from a bite would be a second use of that
+source. The dominant element is the film's own joint-skeleton figure over the red circular field.
+<code>BRAND.md</code>'s "celebrity recognisable first" is <b>not met</b>. That is the single
+biggest open question on this film, and it is a thumbnail question, not a film question.</p>
+</div>
+
+<p>So: if you want <b>this film out the door</b>, the work is a watch-through, a thumbnail
+decision, and an upload. If you want to <b>make it again properly</b> — or make the next
+celebrity — everything below is the recipe.</p>
+
+
+<h2 id="anatomy">1 · The anatomy — twelve elements</h2>
+
+<p>A Celeb Workout film is not a video with sections. It is twelve elements assembled to
+fixed tolerances. Each one has an owner, a source of truth, and a way of failing.</p>
+
+<div class="tw">
+<table>
+<tr><th>#</th><th>Element</th><th>What it is</th><th>Owner</th><th>Source of truth</th></tr>
+<tr><td class="n">1</td><td><b>Fixed parameters</b></td><td>Runtime, hold length, bite share, source count, pace, loudness</td><td>Showrunner</td><td class="k">THE_STANDARD.html §II</td></tr>
+<tr><td class="n">2</td><td><b>The cold open</b></td><td>A five-slot template, not a style. Promise spoken aloud before 0:40</td><td>Showrunner</td><td class="k">THE_STANDARD.html §II</td></tr>
+<tr><td class="n">3</td><td><b>The title</b></td><td>The [NOUN] That [VERB]ED [SUBJECT] — hidden cause plus effect</td><td>Showrunner</td><td class="k">GOAL.md §3</td></tr>
+<tr><td class="n">4</td><td><b>The spine</b></td><td>Four permanent chapters over a 16-beat Save-the-Cat structure</td><td>Showrunner</td><td class="k">BEAT_SHEET_&lt;NAME&gt;.html</td></tr>
+<tr><td class="n">5</td><td><b>The dossier</b></td><td>Every fact tiered CONFIRMED / REPORTED / RUMOUR, with the trainer found first</td><td>Archivist</td><td class="k">dossier/&lt;name&gt;/WORKOUT.md</td></tr>
+<tr><td class="n">6</td><td><b>The bite bank</b></td><td>Real footage: source, timecode, complete-thought boundaries, identity verdict</td><td>Hunter</td><td class="k">manifest/&lt;name&gt;/bites.json</td></tr>
+<tr><td class="n">7</td><td><b>The shot plan</b></td><td>One row per argument, ~8–12s, carrying kind, prompt, verdict, fingerprint</td><td>Cutter</td><td class="k">manifest/&lt;name&gt;/shots.json</td></tr>
+<tr><td class="n">8</td><td><b>The EDL</b></td><td>The only source of timing. Every duration is a whole number of frames out of it</td><td>Cutter</td><td class="k">manifest/&lt;name&gt;/edl_full.json</td></tr>
+<tr><td class="n">9</td><td><b>The programme</b></td><td>Named movements with sets, reps and one coaching cue each, delivered progressively</td><td>Archivist</td><td class="k">pipeline/ja13_movements.py</td></tr>
+<tr><td class="n">10</td><td><b>The brand layer</b></td><td>One red, three families, four chapters, the red circular field, one LUT</td><td>Compositor</td><td class="k">docs/BRAND.md</td></tr>
+<tr><td class="n">11</td><td><b>The audio stack</b></td><td>Narration, score, sparse SFX, −14 LUFS, butt-joins never crossfades</td><td>Cutter</td><td class="k">THE_STANDARD.html §VII</td></tr>
+<tr><td class="n">12</td><td><b>Delivery</b></td><td>Title, tags, chapters, description, credits, thumbnail, medical disclaimer</td><td>Cutter</td><td class="k">METADATA.md</td></tr>
+</table>
+</div>
+
+
+<h3 id="params">1.1 · Fixed parameters</h3>
+
+<p>These are measured off eight Patrick Gavia fight films, not invented. Where V13 departs,
+it is shown.</p>
+
+<div class="tw">
+<table>
+<tr><th>Parameter</th><th>Standard</th><th>V13 actual</th><th>Why the number exists</th></tr>
+<tr><td>Runtime</td><td class="n">20 min ±1</td><td class="n">15:58</td><td>Owner decision, 3 Aug</td></tr>
+<tr><td>Median shot hold</td><td class="n">8–12 s</td><td class="n">~9.0 s</td><td>"Very fragmented … images after images"</td></tr>
+<tr><td>Minimum cutaway</td><td class="n">4 s</td><td class="n">4 s</td><td>Applies to still/video/diagram only — a card is as long as it takes to read, a bite as long as the sentence</td></tr>
+<tr><td>Real voice, share of runtime</td><td class="n">≥ 40%</td><td class="n">low</td><td>Gavia is bite-dominant from ~2:00. <b>V13 misses this deliberately</b> — see §1.9</td></tr>
+<tr><td>Max share from one source</td><td class="n">≤ 20%</td><td class="n">1 clip each</td><td>"So many clips from the same one"</td></tr>
+<tr><td>Distinct sources</td><td class="n">10–15</td><td class="n">4</td><td>Sourcing floor</td></tr>
+<tr><td>Generated stills, share of picture</td><td class="n">≤ 15%</td><td class="n">~70%</td><td>V3 ran at 84%. <b>V13 inverts this on purpose</b> — generated picture carries no claim risk</td></tr>
+<tr><td>Narration pace</td><td class="n">140–155 wpm</td><td class="n">—</td><td>Gavia measured 141 / 153 / 173</td></tr>
+<tr><td>Music-only beats</td><td class="n">≈ 2.5%</td><td class="n">—</td><td>Gavia median, 8 films</td></tr>
+<tr><td>Mix target</td><td class="n">−14 LUFS, −1 dBTP</td><td class="n">−13.9 / −1.0</td><td>YouTube normalisation</td></tr>
+<tr><td>Frame rate · canvas</td><td class="n">24 or 30 fps · 1920×1080</td><td class="n">30 fps · 1080p</td><td>Assembler refuses anything else</td></tr>
+</table>
+</div>
+
+<div class="box">
+<h4>The two parameters V13 breaks, and why it is defensible</h4>
+<p><b>Real voice</b> and <b>generated share</b> both fail the Standard, and they fail
+<em>together</em>, for one reason: the copyright rule. One clip per source, ten seconds maximum,
+never repeated. Four sources buys you roughly forty seconds of her voice in a sixteen-minute
+film. Getting to 40% real voice needs <b>forty-plus distinct sources</b> — which is a sourcing
+project, not a picture decision. Until that pass is run, generated picture carries the film.
+Do not treat this as a bug to patch in the edit; it is a research budget.</p>
+</div>
+
+
+<h3 id="coldopen">1.2 · The cold open — a template with slots</h3>
+
+<p>All three Gavia films analysed open identically. This is not a house style; it is five
+slots that must be filled in order, and slot 3 is the one that decides whether the viewer
+stays.</p>
+
+<div class="tw">
+<table>
+<tr><th>#</th><th>Slot</th><th>Rule</th><th>Aniston V13</th></tr>
+<tr><td class="n">1</td><td>Direct address to a specific real artifact</td><td>Never a biography, never a date</td><td>A worn rubber tread belt on an old cardio machine</td></tr>
+<tr><td class="n">2</td><td>The artifact is a genuine recorded document</td><td>A photo, a post, a capture, an object</td><td>Her own recorded words on the injury (bite <code>JA-INJURY</code>, 2.0s)</td></tr>
+<tr><td class="n">3</td><td><b>An explicit withheld promise, spoken aloud, before 0:20</b></td><td>The single highest-leverage line in the film</td><td>"The plan ran out" — the method she threw away</td></tr>
+<tr><td class="n">4</td><td>Rapid cascade of archival voices</td><td>Several sources, fast, minimal narration</td><td>Compressed — only 4 sources exist</td></tr>
+<tr><td class="n">5</td><td>The central question, spoken aloud</td><td>Ends the cold open</td><td>What do you do when every method you own asks the body for the one thing it can no longer give?</td></tr>
+</table>
+</div>
+
+<p class="note">V13's cold open runs 0:00–0:48. The earlier plan opened on 72 seconds of silent
+object shots and was cut to ~9 seconds after direct owner review — 72 seconds of silence read as
+far too long on watch-back. That correction is recorded in <code>GOAL.md §14</code>.</p>
+
+
+<h3 id="spine">1.3 · The spine — four permanent chapters over sixteen beats</h3>
+
+<p>Two structures run at once. The <b>chapters</b> are fixed brand furniture and never change
+between films. The <b>beats</b> are the story engine underneath them.</p>
+
+<h4>The four chapters — every film, every time</h4>
+<div class="tw">
+<table>
+<tr><th>Chapter</th><th>Job</th><th>V13 timing</th></tr>
+<tr><td class="k">— cold open —</td><td>The promise</td><td class="n">0:00</td></tr>
+<tr><td class="k">THE ROLE</td><td>What the body was being asked to do, and by whom</td><td class="n">0:48</td></tr>
+<tr><td class="k">THE WORKOUT</td><td>The programme, movement by movement</td><td class="n">5:08</td></tr>
+<tr><td class="k">THE DIET</td><td>Patterns, never prescriptions</td><td class="n">11:23</td></tr>
+<tr><td class="k">THE RESULTS</td><td>What it produced, and the honest limit</td><td class="n">13:30</td></tr>
+</table>
+</div>
+
+<h4>The sixteen beats — the Aniston sheet as built</h4>
+<div class="tw">
+<table>
+<tr><th>#</th><th>Beat</th><th>Save the Cat</th><th>What it argues</th></tr>
+<tr><td class="n">1</td><td>THE ARTIFACT</td><td>opening image</td><td>Two objects held together argue, before a word, that the subject is the private practice under the public products</td></tr>
+<tr><td class="n">2</td><td>THE PROMISE</td><td>theme stated</td><td>Nobody put <em>this</em> on a magazine cover — then proof of how much of her life did</td></tr>
+<tr><td class="n">3</td><td>THE BODY</td><td>set up</td><td>Six failed pilots and survival jobs: an ordinary working actor with zero leverage</td></tr>
+<tr><td class="n">4</td><td>THE TRAIT</td><td>character traits</td><td>Self-possession was a survival trait before it was a fitness trait</td></tr>
+<tr><td class="n">5</td><td>WHAT IT WAS FOR</td><td>catalyst</td><td>1994 is the hinge — fame arrives and a magazine names who she is</td></tr>
+<tr><td class="n">6</td><td>THE CONSTRAINT</td><td>debate</td><td>Her body stops being her own story. Find something the tabloids cannot touch, or lose control of everything</td></tr>
+<tr><td class="n">7</td><td>WHO BUILT IT</td><td><b>B story opens</b></td><td>The practice had a builder — Mandy Ingber, on record since at least 2006, never once a headline</td></tr>
+<tr><td class="n">8</td><td>THE METHOD</td><td>break into two</td><td>Yogalosophy is a specific ownable system — a pose paired with a toning move — not "she does yoga"</td></tr>
+<tr><td class="n">9</td><td>THE PROGRAMME, IN FULL</td><td>fun &amp; games</td><td>Walk the named sequence pose by pose. What was dismissed as "just yoga" is engineered</td></tr>
+<tr><td class="n">10</td><td>IT WORKED</td><td>midpoint</td><td>The proof is not a before/after — it is that the practice survived a punishing production, trainer on set</td></tr>
+<tr><td class="n">11</td><td>THE COST</td><td>bad guys close in</td><td>The toll, entirely in her own words. The price that makes the untouched practice matter</td></tr>
+<tr><td class="n">12</td><td>THE TURN</td><td>all is lost</td><td>An on-set back injury forces the first real evolution. The discipline was never one method</td></tr>
+<tr><td class="n">13</td><td>WHY IT LANDED</td><td><b>B story pays</b></td><td>A second named collaborator brought inside the circle — the Ingber pattern, repeating</td></tr>
+<tr><td class="n">14</td><td>SHE CHANGED THE OBJECTIVE</td><td>break into three</td><td>The goal shifts from aesthetic control to functional resilience</td></tr>
+<tr><td class="n">15</td><td>SECOND PROGRAMME + THE LIMIT</td><td>finale</td><td>Present-day method in full, with the honest boundary stated in the same breath</td></tr>
+<tr><td class="n">16</td><td>THE CLOSE</td><td><b>B story bookends</b></td><td>Both objects in one frame — everything else changed hands, this never became someone else's property</td></tr>
+</table>
+</div>
+
+<p class="note">Beat 1 and Beat 16 are the same two objects. That is the bookend, and it is the
+reason Beat 1 is shot at all — an opening image that does not return is just a nice shot.
+The B story (trainer relationships) opens at 7, pays at 13, bookends at 1 and 16.</p>
+
+
+<h3 id="kinds">1.4 · Shot kinds — what routes the work</h3>
+
+<p>Every row in the shot plan carries a <b>kind</b>, and the kind decides who does the work,
+what it costs, and what can go wrong with it. V13 uses five; the older nine-class scheme in
+<code>shotlist_jennifer_aniston.py</code> splits the real-footage classes more finely.</p>
+
+<div class="tw">
+<table>
+<tr><th>Kind</th><th>What it is</th><th>Made by</th><th>Cost</th><th>V13 count</th><th>Failure mode</th></tr>
+<tr><td><span class="chip c-still">still</span></td><td>Generated image + depth push-in</td><td>Gemini image API + DIBR</td><td class="n">$0.04</td><td class="n">62</td><td>Illustrates a word, not the argument</td></tr>
+<tr><td><span class="chip c-video">video</span></td><td>Generated motion, 4 / 6 / 8 s only</td><td>Veo</td><td class="n">$0.05/s</td><td class="n">12</td><td>Motion that carries no meaning a frame couldn't</td></tr>
+<tr><td><span class="chip c-diagram">diagram</span></td><td>Looping exercise animation</td><td><b>Code</b> — deterministic skeleton</td><td class="n">free</td><td class="n">9</td><td>None. That is the point</td></tr>
+<tr><td><span class="chip c-card">card</span></td><td>Brand graphic — chapter, stat, quote, end card</td><td>Compositor, locally</td><td class="n">free</td><td class="n">19</td><td>Three type families in one frame</td></tr>
+<tr><td><span class="chip c-bite">bite</span></td><td>Real footage of her or an associate speaking</td><td>Hunter</td><td class="n">free</td><td class="n">4</td><td>Cut mid-thought; second clip from one source</td></tr>
+</table>
+</div>
+
+<h4>The older nine-class scheme — still useful when the film runs on real footage</h4>
+<div class="tw">
+<table>
+<tr><th>Class</th><th>Meaning</th><th>Owner</th><th>Prescribed treatment</th></tr>
+<tr><td class="k">REAL-V</td><td>Her or an associate on camera</td><td>Hunter</td><td>House LUT, light touch. Hold. J-cut: audio leads picture by 1.2s. <b>Lower-third credit required</b></td></tr>
+<tr><td class="k">REAL-A</td><td>Archive: press, set, premiere</td><td>Hunter</td><td><code>archive_treatment</code> grain + house LUT, era-matched. Slow push 1.00→1.04</td></tr>
+<tr><td class="k">DOC</td><td>A real page or record</td><td>Hunter</td><td><code>source_highlight</code>. Macro, never a full page view</td></tr>
+<tr><td class="k">DEMO</td><td>Exercise demonstration, real footage</td><td>Hunter</td><td>House LUT. <b>Never a stand-in performing what narration attributes to her</b></td></tr>
+<tr><td class="k">ANIM</td><td>Exercise animation</td><td>Compositor</td><td>Pure white ground, figure neutral grey, working muscle <code>#B22B1A</code>, 2–3 rep seamless loop</td></tr>
+<tr><td class="k">CARD</td><td>Brand graphic</td><td>Compositor</td><td>Brand black, Anton numerals, Archivo Black names, one red bar</td></tr>
+<tr><td class="k">STOCK</td><td>Object b-roll, no people</td><td>Hunter</td><td>Desaturate harder than archive. <b>Any human limb in frame disqualifies the clip</b></td></tr>
+<tr><td class="k">GEN-S</td><td>Generated still</td><td>Compositor</td><td>$0.04 · house style suffix mandatory</td></tr>
+<tr><td class="k">GEN-V</td><td>Generated video</td><td>Compositor</td><td>$0.25/5s · reserved for the film's biggest beats</td></tr>
+</table>
+</div>
+
+<div class="box good">
+<h4>The house rules that apply to every kind</h4>
+<p><b>Frame:</b> full bleed. No inset, no stroke, no branded border. Burned-in captions bottom
+third, bold sans, all caps, speaker name as a hyphen prefix on bites.<br>
+<b>Grade:</b> one LUT across the whole film — cool shadows, warm skin, reduced background
+saturation, controlled contrast, mild grain. Archive is graded to <em>match</em>, never left
+as delivered.<br>
+<b>Move:</b> no shot is dead static. Minimum is a 1.02 breath over its full length, except where
+a row's own note calls for a true static hold.<br>
+<b>Cut:</b> every picture change lands on a narration boundary or a beat, never mid-word.</p>
+</div>
+
+
+<h3 id="programme">1.5 · The programme — the thing they clicked for</h3>
+
+<p>The contract with the viewer: <em>they came for the workout, they must leave with it — named,
+complete, and doable on Monday.</em> A film that withholds the programme has broken the contract
+no matter how good the story is. It is delivered <b>progressively</b>, each movement attached to
+the story beat that justifies it, never as one summary card.</p>
+
+<h4>V13 — nine movements, one week</h4>
+<div class="tw">
+<table>
+<tr><th>#</th><th>Movement</th><th>Sets</th><th>Reps</th><th>Focus</th><th>The one cue</th></tr>
+<tr><td class="n">1</td><td>Bodyweight Squat</td><td class="n">3</td><td class="n">12</td><td>legs</td><td>Sit the hips back and keep the knees tracking over the toes</td></tr>
+<tr><td class="n">2</td><td>Glute Bridge</td><td class="n">3</td><td class="n">15</td><td>glutes</td><td>Drive through the heels and keep the ribs down</td></tr>
+<tr><td class="n">3</td><td>Standing Hip Abduction</td><td class="n">3</td><td class="n">12 each side</td><td>glutes</td><td>Lift the leg out to the side without letting the torso tip</td></tr>
+<tr><td class="n">4</td><td>Side-Lying Leg Lift</td><td class="n">3</td><td class="n">12 each side</td><td>glutes</td><td>Stack the hips and lift with the glute, not the low back</td></tr>
+<tr><td class="n">5</td><td>Dumbbell Row</td><td class="n">3</td><td class="n">10</td><td>back</td><td>Hinge at the hips and pull the elbow back past the ribs</td></tr>
+<tr><td class="n">6</td><td>Overhead Press</td><td class="n">3</td><td class="n">10</td><td>shoulders</td><td>Squeeze the glutes and press straight overhead</td></tr>
+<tr><td class="n">7</td><td>Dead Bug</td><td class="n">3</td><td class="n">8 each side</td><td>core</td><td>Press the low back into the floor before you reach</td></tr>
+<tr><td class="n">8</td><td>Cat-Cow</td><td class="n">2</td><td class="n">8</td><td>mobility</td><td>Move one vertebra at a time and let the breath set the pace</td></tr>
+<tr><td class="n">9</td><td>Boxing Jab-Cross</td><td class="n">3</td><td class="n">30 sec</td><td>shoulders</td><td>Rotate the back foot and snap the hand straight back to the chin</td></tr>
+</table>
+</div>
+
+<div class="box warn">
+<h4>The disclosure that must survive every edit</h4>
+<p>The weekly schedule is an <b>Aniston-inspired synthesis</b> assembled from modalities she has
+publicly described. It is not her programme, and nobody outside her training has that. V13 says
+this on screen at <code>WO-12</code> and again in the description. No calorie target, macro split,
+meal plan or fasting prescription appears anywhere. Nothing frames the method as treatment or a
+cure. The film hands you a structure; it cannot look at your back.</p>
+</div>
+
+<p>The <em>research</em> dossier holds three named on-record trainers — Mandy Ingber
+(Yogalosophy, documented since at least 2006), Dani Coleman (low-impact resistance, from 2021),
+and Leyon Azubuike (boxing/HIIT, Gloveworx). Two further leads were investigated and
+<b>killed</b>: no named spin instructor and no named Pilates instructor tie to her. Do not
+resurrect them without a direct on-record source naming her specifically.</p>
+
+
+<h3 id="effects">1.6 · Effect vocabulary — what makes it one brand</h3>
+
+<p>Consistency is not "use nice effects." It is <b>the same treatment for the same job, every
+film</b>. A beat type maps to one prescribed effect. Improvisation here is exactly what reads as
+cut-and-paste. All of these cost nothing per shot — they composite material already owned.</p>
+
+<div class="tw">
+<table>
+<tr><th>When the beat is…</th><th>Use</th><th>Pinned from</th></tr>
+<tr><td>The cold-open title, a chapter, one loud word</td><td><code>text_matte</code> — footage plays <em>through</em> the glyphs; type overflows the frame; everything outside is near-black so the letters are the only light</td><td>Cleo Abram @ 1:07</td></tr>
+<tr><td><b>A claim resting on a document, study, article or post</b> — the channel's signature move</td><td><code>source_highlight</code> — macro page, one sharp line, hard-edged highlight rectangle</td><td>Johnny Harris @ 0:21 · 7 frames saved</td></tr>
+<tr><td>Quoting a headline while narration continues</td><td><code>headline_over</code> — accent colour lands on the exact word as it is spoken, driven by <code>words.json</code></td><td>Cleo Abram @ 10:04</td></tr>
+<tr><td>Walking the viewer through evidence on an image</td><td><code>annotate</code> — circle, then arrow, then underline, drawn on in sequence</td><td>no pinned reference — build last</td></tr>
+<tr><td>An exercise being introduced</td><td>Exercise card + diagram — name in Archivo Black, sets/reps in Anton, one red bar, red arc tracing the working joint's path</td><td>BRAND motion spec</td></tr>
+<tr><td>Before into after</td><td><code>transform_morph</code> — 468 landmarks, eyes and jaw anchored, not a crossfade to mush</td><td>the channel's most-repeated idea</td></tr>
+<tr><td>"What is happening inside her"</td><td><code>zoom_through</code> / <code>layer_peel</code></td><td>Generative Powers of Ten</td></tr>
+<tr><td>Archive footage of any age</td><td><code>archive_treatment</code> grain — consistent across every film</td><td>built</td></tr>
+<tr><td>A still that must move</td><td><code>flow_dibr</code> push-in or <code>orbit</code></td><td>judder fix 1.008px → 0.031px</td></tr>
+</table>
+</div>
+
+<div class="box">
+<h4><code>source_highlight</code> — the exact numbers, because this one resolves a standing fight</h4>
+<p>A previous film was rejected <b>four separate times</b> for showing websites — <em>"Again it's a
+website. I did not want this."</em> — while the rules demand that a claim resting on a published
+source shows the actual page. This treatment satisfies both. Build to these numbers:</p>
+<ul>
+<li><b>Scale</b> — macro, not a page view. Only 5–8 words span the full frame width. Cap-height ≈ 12–14% of frame height. You are reading over someone's shoulder.</li>
+<li><b>Focus</b> — the highlighted line is the <em>only</em> sharp band. One line out is visibly soft; two lines out is heavily blurred. <b>This single parameter is what stops it reading as a screenshot.</b></li>
+<li><b>Highlight</b> — hard-edged rectangle, not a hand-drawn swipe. Top at ascender, bottom just under the baseline, overhanging ~0.15em each side. Desaturated warm red, semi-opaque, multiply blend — paper texture stays visible through it, black text fully legible on top.</li>
+<li><b>Ground</b> — warm off-white paper with visible fibre. Never pure white, never a UI background.</li>
+<li><b>Geometry</b> — baseline off-horizontal by 0.5–1.5°, plus a very slow drift. It must read as a physical page that was photographed.</li>
+<li><b>Cut pattern</b> — two highlighted claims that contradict each other, then a hard cut to footage of the person. The effect stages an argument, then puts a face on it.</li>
+</ul>
+</div>
+
+
+<h3 id="brand">1.7 · The brand system</h3>
+
+<p>The failure to avoid, in the owner's words: <em>"it's very easy to tell that it was generated
+with AI — the fonts, animations, layouts and overall design look like the default style Claude
+uses for almost every project."</em> Identity is cumulative. It will not be fixed by restyling
+one video.</p>
+
+<h4>Colour — 70% black/white/photography · 20% neutral · 10% red</h4>
+<div class="tw">
+<table>
+<tr><th>Swatch</th><th>Name</th><th>Hex</th><th>Purpose</th></tr>
+<tr><td><span class="sw" style="background:#B22B1A"></span></td><td>Celebrity Red</td><td class="k">#B22B1A</td><td>Names, highlights, circles, bars</td></tr>
+<tr><td><span class="sw" style="background:#0D0D0D"></span></td><td>Training Black</td><td class="k">#0D0D0D</td><td>Backgrounds and strong type</td></tr>
+<tr><td><span class="sw" style="background:#F4F2EF"></span></td><td>Warm White</td><td class="k">#F4F2EF</td><td>Main text and editorial backgrounds</td></tr>
+<tr><td><span class="sw" style="background:#A9A9A9"></span></td><td>Steel Gray</td><td class="k">#A9A9A9</td><td>Secondary information</td></tr>
+<tr><td><span class="sw" style="background:#252525"></span></td><td>Deep Shadow</td><td class="k">#252525</td><td>Panels, gradients, image backgrounds</td></tr>
+<tr><td><span class="sw" style="background:#E3120B"></span></td><td><s>Wrong red</s></td><td class="k">#E3120B</td><td><b>Banned.</b> A gate greps for it and raises. No oranges, blues or neon per celebrity</td></tr>
+</table>
+</div>
+
+<h4>Type — four roles, three families, never more than two families in one frame</h4>
+<div class="tw">
+<table>
+<tr><th>Role</th><th>Face</th><th>Use</th><th>Constraint</th></tr>
+<tr><td>Hero condensed</td><td><b>Anton</b></td><td>Chapter titles, thumbnail headlines, major numbers</td><td>All caps, max two lines, tracking ≈ −2%, line height 88–94%. Never paragraphs. No outlines</td></tr>
+<tr><td>Bold grotesque</td><td><b>Archivo Black</b></td><td>Logo, celebrity names, exercise names, series labels</td><td>Red rectangular nameplates, white text. Never stretched or condensed</td></tr>
+<tr><td>Utility</td><td><b>Archivo</b> Reg/Med/SemiBold</td><td>Captions, facts, body copy, sets and reps</td><td>Sentence case; all caps only for short labels</td></tr>
+<tr><td>Script accent</td><td><b>Allura</b></td><td>One or two words: "with", "inside", "secrets"</td><td>Max three words, never caps, never essential, 35–55% of adjacent headline height</td></tr>
+</table>
+</div>
+<p class="note">Fonts live in <code>graphics/public/fonts/</code>, all OFL and cleared for commercial
+video. Known trap: <code>Archivo-Medium/Regular/SemiBold.ttf</code> in this repo are corrupt and
+will not load — <code>Archivo-Variable.ttf</code> is intact and is used instead. The diagram
+renderer checks the sfnt magic bytes and raises with a readable message rather than failing
+downstream.</p>
+
+<h4>Permanent devices</h4>
+<p>The signature device is the <b>large red circular field behind overlapping cut-out subjects</b>.
+It is permanent brand, not decoration. Also: red arcs and half-circles · black-and-white portraits
+at 10–20% opacity · halftone or printed-paper texture · red rectangular labels · hard vertical
+crops · warm-white editorial space · occasional hand-drawn red underline.</p>
+<p><b>Avoid:</b> glowing gym graphics, blue lightning, metallic text, lens flares, mixed outline
+styles, more than one script font.</p>
+
+<h4>Thumbnails — three elements, always</h4>
+<p>One dominant person, one short headline, one red label. Headlines 3–6 words. Max two text
+sizes. Subject 40–55% of frame, eyes in the upper third, chest-up or waist-up. One prop at most.
+Soft black shadow behind the subject; a thin warm-white edge <em>only</em> where separation is
+needed. Test at phone size.</p>
+<div class="tw">
+<table>
+<tr><th>Format</th><th>Headline</th><th>Red label</th></tr>
+<tr><td>A — profile</td><td>WORKOUT &amp; DIET PLAN</td><td>the name</td></tr>
+<tr><td>B — transformation</td><td>TRAIN LIKE</td><td>the character</td></tr>
+<tr><td>C — investigation</td><td>THE REAL WORKOUT</td><td>the name</td></tr>
+</table>
+</div>
+
+<h4>The intro — under four seconds</h4>
+<p>Black-and-white celebrity image → red arc wipes across → image resolves to colour →
+CELEB WORKOUT wordmark → script accent writes on → hard cut into the story.</p>
+
+
+<h3 id="audio">1.8 · Audio</h3>
+
+<p>Four bugs are baked into this architecture. Every one of them shipped once. Never regress
+them.</p>
+<ol>
+<li><code>amix</code> renormalises when a short input ends → clipping. Use <code>normalize=0</code>.</li>
+<li>Mono SFX + stereo VO in <code>amix</code> → narration comes out +3 dB hot. <code>aformat</code> both to stereo first.</li>
+<li><b>Never slice narration per beat.</b> Per-beat AAC re-encode puts an audible glitch at every join. Narration plays continuously between interludes.</li>
+<li><b>Never <code>acrossfade</code> audio chunks.</b> Each crossfade overlaps its inputs, shortening total audio ~0.3s per junction → cumulative A/V drift. Butt-join with 30 ms edge fades.</li>
+</ol>
+<p>Keep the hard sync gate: refuse to mux if <code>|video_dur − audio_dur| &gt; 0.25s</code>.</p>
+
+<div class="tw">
+<table>
+<tr><th>Layer</th><th>Source</th><th>Rule</th></tr>
+<tr><td>Narration</td><td>edge-tts draft → paid TTS on the locked script</td><td><b>AUDIO LAST.</b> Build the whole visual cut on the free draft. Paid TTS fires <em>once</em>. Check for a pre-staged <code>voiceover_&lt;slug&gt;.mp3</code> before spending anything</td></tr>
+<tr><td>Music — primary</td><td>Scott Buckley, CC BY 4.0 · <code>library/music/</code></td><td>On-screen or description attribution required. V13 instead used an original score written for the film — no third-party music at all, which is cleaner</td></tr>
+<tr><td>Music — safe spine</td><td>YouTube Audio Library</td><td>Cannot be Content-ID claimed against this channel</td></tr>
+<tr><td>Music — fill</td><td>Pixabay, Uppbeat</td><td>Must be Content-ID verified before use; <code>pipeline/music.py</code> gates this</td></tr>
+<tr><td>SFX / room tone</td><td>Pixabay SFX</td><td><b>Sparse.</b> Room tone and at most one or two accents per film. Never wall-to-wall foley — silence is deployed, not filled</td></tr>
+<tr><td>Ducking</td><td>—</td><td>6–14 dB under narration</td></tr>
+</table>
+</div>
+
+
+<h3 id="rights">1.9 · Copyright arithmetic — the rule that shapes the script</h3>
+
+<p>Three rules, stated by the owner verbatim, twice. They are not tradeable against production
+convenience, and rule 3 is the one that gets rationalised away.</p>
+
+<ol>
+<li>No clip longer than <b>10 seconds</b>.</li>
+<li><b>Never repeat</b> a clip.</li>
+<li><b>One clip per source video</b> — not one per scene. If a 90-minute podcast yields a perfect moment, take that moment and <em>nothing else</em> from that video.</li>
+</ol>
+
+<p>Rule 3 applies to b-roll and background footage exactly as it applies to soundbites.
+A "background clip" is a clip. Which produces this arithmetic, and there is no other lever:</p>
+
+<div class="tw">
+<table>
+<tr><th>Real footage wanted</th><th>Distinct source videos required</th></tr>
+<tr><td class="n">60 s</td><td class="n">6+</td></tr>
+<tr><td class="n">120 s</td><td class="n">12+</td></tr>
+<tr><td class="n">300 s (5 min)</td><td class="n">30+</td></tr>
+<tr><td class="n">600 s (10 min)</td><td class="n">60+</td></tr>
+</table>
+</div>
+
+<p><b>Why:</b> Content ID matches against a reference file. Ten separate ten-second clips from ten
+different sources present ten trivial matches. Ten ten-second clips from one source present a
+hundred-second match against one rights holder. <em>Duration against a single reference is the
+risk, not total screen time.</em></p>
+
+<p><b>What does not consume the budget:</b> print and document sources rendered as
+<code>source_highlight</code> or <code>headline_over</code> (unlimited — the cheapest way to raise
+the evidence ratio) · our own generated picture (costs money, not rights) · licensed stock and
+CC-BY music used per licence · brand graphics rendered locally.</p>
+
+<p><b>V13's four sources</b>, each credited on screen and in the description, each used once:
+The Drew Barrymore Show · Allure · Harper's Bazaar UK · a Jennifer Aniston / Reese Witherspoon
+joint interview. Two further quotations appear as on-screen document cards rather than footage,
+which costs nothing against the budget.</p>
+
+
+<h3 id="gates">1.10 · The gates — every one was previously a printed warning</h3>
+
+<p>These raise. They do not warn. <code>pipeline/ja13_gates.py</code> defines
+<code>GateFailed(AssertionError)</code> with the docstring <em>"A binding rule was broken. Not a
+warning."</em> — because the multiple-clips check was printed and ignored on two prior versions.</p>
+
+<div class="tw">
+<table>
+<tr><th>Gate</th><th>Checks</th><th>Bought by</th></tr>
+<tr><td class="k">check_clip_lengths</td><td>Every clip ≤ 10.0 s, measured on the rendered file</td><td>Copyright rule 1</td></tr>
+<tr><td class="k">check_one_clip_per_source</td><td><code>Counter(source_id)</code>, every count must be 1</td><td>Rule 3, broken twice in production</td></tr>
+<tr><td class="k">check_no_repeats</td><td>No <code>(source, in, out)</code> triple appears twice</td><td>Rule 2</td></tr>
+<tr><td class="k">check_brand_red</td><td>Greps <code>#e3120b</code> case-insensitively</td><td>The wrong red is still in <code>fx.py</code></td></tr>
+<tr><td class="k">commercial-name gate</td><td>The prohibited brand name, product names and partnership language (<em>partner, ambassador, investor, sponsored, endorsement, affiliate…</em>) must have zero hits in script, EDL and captions</td><td>Owner decision on V13</td></tr>
+<tr><td class="k">audit()</td><td>No generated shot still marked FAIL · every prompt &gt; 20 chars · no banned in-frame word · no banned subject word · <code>needs_video == (kind=="video")</code> · every diagram names a movement · every shot's block exists in the script</td><td>Runs <b>before money is spent</b></td></tr>
+<tr><td class="k">frame reconciliation</td><td>Shots under a block must sum exactly to that block's frame count, or <code>build()</code> raises</td><td>A 3.8s rounding drift once "fixed" with an 18-second frozen frame</td></tr>
+<tr><td class="k">echo_check.py</td><td>Narration must not restate a bite, before or after</td><td>"If the narrator's not providing value, you don't need the narrator"</td></tr>
+<tr><td class="k">sync gate</td><td>Refuse to mux if <code>|video − audio| &gt; 0.25 s</code></td><td>Crossfade drift</td></tr>
+</table>
+</div>
+
+<h4>The thirteen hard rules</h4>
+<div class="tw">
+<table>
+<tr><th>#</th><th>Owner</th><th>Rule</th></tr>
+<tr><td class="n">R1</td><td>Cutter</td><td>A shot illustrates the <b>argument of the paragraph</b>, never a word in the sentence. If the image connects to only one word it is wrong even when beautiful</td></tr>
+<tr><td class="n">R2</td><td>Cutter</td><td>Fewer shots, held longer. Median 8–12 s</td></tr>
+<tr><td class="n">R3</td><td>Hunter</td><td>A bite plays a complete thought or it is not used. Interviewer <em>questions</em> are allowed — they carry content. Interviewer filler never is</td></tr>
+<tr><td class="n">R4</td><td>Cutter</td><td>Narration never restates a bite. It sets up, turns, or lands a judgement</td></tr>
+<tr><td class="n">R5</td><td>Hunter</td><td>No single source exceeds 20% of total bite time. Draw on 10–15 sources</td></tr>
+<tr><td class="n">R6</td><td>Cutter</td><td>Every frame carries the brand. Identity is cumulative</td></tr>
+<tr><td class="n">R7</td><td>Showrunner</td><td>If the narrator adds nothing, cut the narrator</td></tr>
+<tr><td class="n">R8</td><td>Archivist</td><td>Nothing invented, nothing conflated. Every on-screen claim CONFIRMED or visibly labelled REPORTED</td></tr>
+<tr><td class="n">R9</td><td>Hunter</td><td><b>No stand-ins.</b> Nobody but the subject performs what the narration attributes to the subject</td></tr>
+<tr><td class="n">R10</td><td>Showrunner</td><td>The programme is delivered progressively, movement by movement. Never one summary card</td></tr>
+<tr><td class="n">R11</td><td>Cutter</td><td>SFX is sparse. Silence is deployed, not filled</td></tr>
+<tr><td class="n">R12</td><td>Cutter</td><td>Every licensed music or SFX track logged — source, licence, attribution — before publish</td></tr>
+<tr><td class="n">R13</td><td>Compositor</td><td><b>No generated faces, ever.</b> Anonymous figures, silhouettes, hands or objects only. Real archive is the only legitimate source for a face on screen</td></tr>
+</table>
+</div>
+
+
+<h2 id="prompts">2 · The prompt library</h2>
+
+<p><em class="lede">Prompts are the film.</em> Not a step in making it — the thing itself. An
+audit of the MrBeast film graded 88 KEEP / 20 WEAK / 10 FAIL, and the failures were systemic
+rather than isolated. Three principles govern everything below.</p>
+
+<div class="box">
+<h4>The three principles</h4>
+<p><b>1 · Write against the argument, not the sentence.</b> Before any prompt is written, ask:
+what does this <em>paragraph</em> claim, and does this image advance that claim? The failure mode
+is keyword-triggered literalism — the line says "cling", a shot of clinging appears.</p>
+<p><b>2 · Show the state, not a symbol of it.</b> The viewer gets one read of a 4–12 second image.
+Literal beats metaphorical. A shot that needs explaining has failed.</p>
+<p><b>3 · Wording is the only negative prompt you have.</b> The Gemini Developer API rejects
+<code>negative_prompt</code> — along with <code>seed</code>, <code>person_generation</code>,
+<code>fps</code>, <code>enhance_prompt</code>, <code>generate_audio</code> and six others. It
+raises <code>ValueError</code> client-side before any request is sent, so these cost $0 but look
+exactly like the API being broken. Only <code>aspect_ratio</code>, <code>duration_seconds</code>,
+<code>resolution</code>, <code>number_of_videos</code>, <code>last_frame</code>,
+<code>reference_images</code> and <code>http_options</code> are accepted. <b>No seed means no
+reproducibility: a rejected shot can only be re-rolled, never refined.</b> Anti-text and anti-logo
+defence lives entirely in the prompt's own wording plus post-hoc QC.</p>
+</div>
+
+
+<h3 id="kickoff">2.1 · The kickoff prompt — the whole input</h3>
+
+<p>Copy the block. This is the Aniston-specific version of
+<code>NEW_CELEB_PROMPT.md</code>, with the facts you already have filled in — which is what
+separates a two-day build from a two-week one.</p>
+
+<pre class="p">Make a Celeb Workout documentary about Jennifer Aniston.
+
+READ THESE FIRST, IN THIS ORDER. Do not start until you have.
+
+1. file:///C:/Users/avina/ytceleb/docs/THE_STANDARD.html
+   BINDING. Format, brand, the agents, the effect vocabulary, hard rules
+   R1-R13. Where this and anything else disagree, this wins.
+
+2. C:/Users/avina/ytceleb/deliverables/jennifer_aniston_v13/documentation/
+   SCRIPT_LOCK.md and FACT_LEDGER.md
+   THE WORKED EXAMPLE. A finished 15:58 film already exists on this subject.
+   Read it before you write a word. Say explicitly what you are changing and
+   why, or you are re-doing work that is already done.
+
+3. C:/Users/avina/ytceleb/dossier/jennifer_aniston/WORKOUT.md
+   Three named on-record trainers, every movement named, two leads
+   investigated and KILLED. Do not resurrect a killed lead without a direct
+   on-record source naming her specifically.
+
+4. C:/Users/avina/ytceleb/dossier/jennifer_aniston/SOURCES.md and
+   SOURCES_FACTS.md
+   The angle tournament (3 pitches, 3 judges, won 2-1), every surviving fact
+   tiered, and the one factual error adversarial review caught.
+
+5. file:///C:/Users/avina/ytceleb/docs/BEAT_SHEET_ANISTON.html
+   The 16 beats, already filled against the verified dossier.
+
+WHAT I ALREADY KNOW - use it, do not re-derive it.
+
+  Trainers      Mandy Ingber (Yogalosophy, on record since at least 2006);
+                Dani Coleman (low-impact resistance, from 2021, VP of
+                Training); Leyon Azubuike (boxing/HIIT, Gloveworx, newest and
+                least time-tested).
+  The turn      A 2021 on-set back injury from a wire harness. Nothing she did
+                in a gym caused it. Every method she owned asked the body to
+                absorb force, and that was the one thing her back could no
+                longer give.
+  The thesis    She kept the goal and threw away the method. The question
+                changed from "how hard can I go" to "what can I do well today."
+  B story       Ingber -> Coleman. The one relationship three decades of
+                tabloid scrutiny never touched. Opens beat 7, pays beat 13,
+                bookends beats 1 and 16.
+  Do not name   The commercial low-impact brand, its product names, and any
+                partnership / ambassador / investor / sponsorship language.
+                A gate greps for these across script, EDL and captions.
+  Duration trap Outlets disagree on how long Ingber has trained her (15, 20,
+                25+ years). On screen: "documented since at least 2006,
+                credibly older." Never state a decade or a founding year.
+
+PRODUCE, IN THIS ORDER. Do not skip forward.
+
+0. INVENTORY  - before any research. Walk every jennifer_aniston* directory in
+   dossier/ and deliverables/. Report what each file actually contains. Four
+   minutes of this once produced 30 named exercises and 560k characters of
+   unused interview that three script versions had missed.
+
+1. SOURCE PASS FIRST, NOT SCRIPT FIRST. The copyright rule is one clip per
+   source, 10s max, never repeated. Real voice at 40% of a 16-minute film
+   needs 40+ distinct sources. Find them BEFORE writing narration. Pull
+   captions with youtube-transcript-api before downloading anything -
+   searching is free, downloading is not.
+   GATE: report the source count before you write a line of script.
+
+2. BEAT SHEET - 16 beats. Each beat states what it ARGUES, never what it
+   says. Cold open is the fixed five-part formula, promise spoken aloud
+   before 0:40. The programme is delivered progressively, never as one card.
+
+3. SHOT PLAN  - one row per ARGUMENT at 8-12s, as
+   pipeline/shotlist_&lt;name&gt;.py emitting manifest/&lt;name&gt;/shots.json. Every row
+   carries kind, seconds (whole frames out of the EDL), prompt, verdict
+   (KEEP/WEAK/FAIL) and movement. Run the argument audit BEFORE spending.
+
+4. RENDER    - stills floor first so the film is always complete, then let
+   video upgrade over it as quota allows.
+
+THE GATES. Run them; they raise, they do not warn.
+
+  every clip <= 10.0s        exactly one clip per source_id
+  no moment used twice       no #e3120b anywhere
+  zero narration echo        no bite cut mid-thought
+  every movement named       promise before 0:40
+  programme before halfway   shots sum exactly to EDL frames
+  no generated face          no banned word in any prompt
+
+WHAT NOT TO DO - each of these sank a previous film.
+
+  - Do not write narration before the footage is known. Both rejected films
+    did this, and the picture department then invented what did not exist.
+  - Do not generate a person who exists. Ever.
+  - Do not use footage of a stand-in performing what the narration
+    attributes to her. Use a diagram from the movement library.
+  - Do not cut a bite mid-thought, and never include interviewer filler.
+  - Do not show a raw screenshot. Use source_highlight.
+  - Do not exceed $8.00. Narration fires once, on the locked script. Build
+    everything on free edge-tts first.
+
+Ask me nothing until the inventory and the source count are done. If you
+cannot get past 10 distinct sources, stop and tell me - that is the one
+blocker worth waking me for.</pre>
+
+
+<h3 id="agents">2.2 · The seven agent prompts</h3>
+
+<p>Four agents, three critics. <b>Each agent is the previous agent's editor — nobody signs off on
+their own work.</b> The Showrunner writes the structure; the Cutter writes the words. Conflating
+those two passes is exactly how V1–V3 produced sixty polished narration blocks built on footage
+that did not exist.</p>
+
+<h4>01 · Archivist — the dossier</h4>
+<pre class="p">You are the Archivist on a Celeb Workout film about &lt;NAME&gt;.
+
+Produce dossier/&lt;name&gt;/WORKOUT.md and SOURCES_FACTS.md.
+
+FIND THE TRAINER FIRST, THEN RESEARCH THE TRAINER. They talk more freely than
+the celebrity does, and it is what cracked the Hemsworth project. Check for an
+owned fitness platform, published books, DVDs, or a company.
+
+Fan out by life phase: childhood, breakout, peak, crisis, now.
+
+Every fact carries a TIER and a source:
+  CONFIRMED  primary source, named outlet, date, and you have read it
+  REPORTED   secondary coverage, or outlets that disagree
+  RUMOUR     tabloid or unattributed. Usable ONLY as critique, never as claim
+
+For every trainer lead you investigate and reject, write a KILLED entry saying
+who, why, and what evidence would revive it. A killed lead with no reasoning
+gets resurrected by the next pass.
+
+Where outlets disagree on a duration or a date, do not average them and do not
+pick one. State the disagreement and give the on-screen wording that is
+defensible: "documented since at least &lt;year&gt;, credibly older."
+
+GATE: you cannot hand off until the training programme is named movement by
+movement. Not "she does yoga" - the named poses, the sets, the reps, and one
+coaching cue per movement that makes it work.
+
+Then adversarially re-check your own verbatim quotes. On the Aniston pass,
+8 of 11 verbatim quotes could not be independently re-confirmed and one was
+actively wrong - attributed to the wrong outlet entirely. Any quote that
+survives only on your first search becomes narrator paraphrase, and you say so
+in the note field.</pre>
+
+<h4>02 · Showrunner — the beat sheet</h4>
+<pre class="p">You are the Showrunner. You have the Archivist's dossier. You write STRUCTURE,
+not words. This is ~2 minutes of skeleton, not a script.
+
+Produce docs/BEAT_SHEET_&lt;NAME&gt;.html - 16 beats mapped to Save the Cat.
+
+For each beat give:
+  ARGUES   what the beat claims. Never what it says. If you find yourself
+           writing dialogue, stop - that is the Cutter's job.
+  TIME     target duration and row count
+  PICTURE  the sequence of shot kinds, in order
+  BITE     how many, from which named sources, or "zero by design" plus why
+  FACTS    the tiered facts this beat rests on
+
+Fixed requirements:
+  - Cold open is the five-part formula. Slot 3 is an explicit withheld
+    promise, spoken aloud, before 0:40. Write the actual promise line.
+  - Title follows the grammar: The [NOUN] That [VERB]ED [SUBJECT].
+  - The four chapters (THE ROLE / THE WORKOUT / THE DIET / THE RESULTS) are
+    fixed furniture. Map your 16 beats onto them.
+  - The programme is delivered PROGRESSIVELY - each movement attached to the
+    story beat that justifies it. If all the exercises land in one block, the
+    structure is wrong.
+  - The B story opens in act one and pays in act three, and beat 1 and beat 16
+    are the same object or image. An opening image that does not return is
+    just a nice shot.
+
+Then apply R7 to your own work: for every beat, name what the narrator does
+that the picture and the quote cannot - supply context, make a link, land a
+judgement, or turn the story. A beat where the narrator only describes what is
+on screen gets deleted, not rewritten.</pre>
+
+<h4>03 · Hunter — the bite bank (run ×12, one per source lead)</h4>
+<pre class="p">You are a Hunter. You get ONE source lead. Find at most ONE usable clip in it,
+under 10 seconds, and then you are done with that source forever.
+
+Transcript first. Pull captions with youtube-transcript-api before downloading
+anything - searching is free, downloading is not.
+
+Return, or return NO FOOTAGE EXISTS plus what does exist:
+  source_id      stable id for the source video
+  url            canonical URL
+  rights_holder  who gets credited on screen
+  in / out       timecodes of a COMPLETE THOUGHT
+  transcript     the exact words, verbatim
+  identity       is the subject unambiguously on camera for the whole window?
+  burned_text    any watermark, bug, lower-third or caption in frame
+
+Boundaries are the job:
+  - A bite starts at the beginning of a thought and ends at the end of one.
+    Never mid-sentence.
+  - Interviewer QUESTIONS are allowed - they carry content and create
+    structure. Interviewer filler ("uh", "right", "mm-hm") never is.
+  - If the clean thought exceeds 10 seconds, do not trim it to fit. Report it
+    as "document card candidate" - the quote becomes on-screen type instead,
+    which costs nothing against the copyright budget.
+  - If a second person is on camera and is not named in the film, the window
+    is rejected. Reframe subject-left or subject-right only if the subject
+    stays unambiguously dominant for the full duration.
+
+You may not propose a second clip from this source. Not "it's only b-roll."
+Not "the trailer is promotional." One source, one clip, ever.</pre>
+
+<h4>04 · Cutter — the script and the shot plan</h4>
+<pre class="p">You are the Cutter. You write the words, and you write them AFTER the footage
+is known. You have the beat sheet and the bite bank.
+
+Produce the narration script and pipeline/shotlist_&lt;name&gt;.py.
+
+NARRATION
+  - 140-155 wpm.
+  - Never restate a bite, before or after. Set up, turn, or land a judgement,
+    then cut away. Run echo_check.py and treat every hit as a blocker.
+  - Voice: confident and specific. "Here is how she trained for the role."
+    "The published routine included..." "This is what can realistically be
+    adapted." Never "this secret guarantees" or "doctors don't want you to
+    know" or "this one exercise created her entire physique."
+  - No word appears six or more times in the film.
+
+SHOT PLAN - one row per ARGUMENT, not per sentence
+  Above each block, write the ARGUMENT that block makes as a comment. Then
+  write the shots under it and grade each one against that argument.
+
+  Each row carries:
+    kind      still | video | diagram | card | bite
+    seconds   a whole number of frames taken out of edl_full.json
+    prompt    literal, self-contained, describing a STATE
+    verdict   KEEP | WEAK | FAIL   (build() refuses to emit a FAIL)
+    movement  required if kind == diagram
+
+  Default hold is 8-12s. Minimum cutaway is 4s and applies to still, video and
+  diagram only - a card is as long as it takes to read, a bite is exactly as
+  long as the sentence.
+
+  kind == "video" ONLY where motion carries meaning a single frame cannot.
+  Ask it explicitly for every candidate. ~30 video shots in a 20-minute film
+  is a healthy ratio. Video durations must be 4, 6 or 8 seconds - the model
+  accepts nothing else.
+
+Do not author timing and do not author cost. Both must be derived from the
+modules that will actually spend and actually submit, or the plan will
+authorise a spend it cannot afford. A previous plan costed video at a flat
+$0.30/shot against a per-second rate and was wrong by 45%.</pre>
+
+<h4>Critic · Viewer</h4>
+<pre class="p">Watch this as a man aged 25-40 who searched "&lt;celeb&gt; workout" on YouTube.
+
+You are not a critic. Do not assess craft. Report the FELT EXPERIENCE:
+  - At what timecode did you first want to skip? What was on screen?
+  - Did you get the workout? Name every movement you could repeat from memory.
+  - Did the narrator ever tell you something the picture had just told you?
+  - Did any stretch read as "just images after images"?
+  - Would you watch the next one from this channel? Why or why not?
+
+Quote the timecode for every complaint. "It drags in the middle" is useless;
+"7:40 to 8:20 is four shots of the same idea" is actionable.</pre>
+
+<h4>Critic · Fact-checker</h4>
+<pre class="p">Every on-screen claim, tiered and sourced, or it comes out.
+
+For each claim:
+  - Find the PRIMARY source independently. Do not accept the dossier's
+    citation - re-derive it.
+  - A verbatim quote must be findable verbatim. If you can only find it
+    paraphrased in secondary coverage, it is not verbatim; convert it to
+    narrator paraphrase and say so.
+  - A magazine reconstruction is never CONFIRMED.
+  - Check the arithmetic of every stated fact. On the Aniston angle, the
+    thesis said "three marriages ended in public." She has married twice. Two
+    of three judges scored the angle 8.5+ without catching it.
+
+Report every claim you could NOT confirm, including the ones you believe are
+true. The list of unconfirmed claims is the deliverable, not a footnote.</pre>
+
+<h4>Critic · Editor</h4>
+<pre class="p">Score against docs/THE_STANDARD.html. Report violations with timecodes.
+
+  R1  Any shot that illustrates a WORD rather than the paragraph's argument
+  R2  Any run where median hold drops below 8s
+  R3  Any bite cut mid-thought, or containing interviewer filler
+  R4  Any narration line that restates the bite next to it
+  R5  Any source_id appearing more than once; any source over 20% of bite time
+  R6  Any frame using a third type family, the wrong red, or no brand device
+  R7  Any narration block that only describes what is on screen
+  R13 Any generated face
+
+Then zoom out and answer one question: does this read as ONE BRAND THEME, or
+as cut and paste? Name the three frames that most break the identity.</pre>
+
+
+<h3 id="assetprompts">2.3 · Prompts per asset kind</h3>
+
+<h4><span class="chip c-still">still</span> &nbsp;The generated still — 62 of V13's 106 shots</h4>
+
+<p><b>The formula.</b> Subject state → composition → light → colour → depth → explicit exclusions.
+In that order, one sentence, no line breaks. It must describe a <em>state the sentence
+describes</em>, not a symbol of it.</p>
+
+<pre class="p">&lt;concrete object or place, in the exact state the argument claims&gt;,
+&lt;framing: close and low / wide lens / symmetrical composition / overhead&gt;,
+&lt;single named light source and its quality&gt;,
+&lt;colour: cool grey / muted green and grey / warm off-white&gt;,
+&lt;shallow depth of field | flat fluorescent&gt;,
+no people, mild grain,
+&lt;when the composition would naturally carry type: an explicit,
+ exhaustive statement that every surface is blank&gt;</pre>
+
+<p><b>Three real V13 prompts, and what each is doing.</b></p>
+
+<div class="tw">
+<table>
+<tr><th>Shot</th><th>Prompt</th><th>The argument it advances</th></tr>
+<tr><td class="k">sh003<br>11.57s</td><td>A worn rubber tread belt on an old cardio machine, close and low, decades of shoe scuffs polished into the surface, one hard overhead lamp, cool grey light, plain unmarked machine, shallow depth of field, no people, mild grain</td><td>Thirty years of the same high-impact answer. <b>"Decades of shoe scuffs polished into the surface"</b> is the whole argument in five words — the picture carries the time span so the narrator does not have to</td></tr>
+<tr><td class="k">sh005<br>12.77s</td><td>A wall of identical grey archive drawers in a cold storeroom, one drawer pulled open to show it is completely empty, flat fluorescent light, symmetrical composition, no people, muted colour, fine grain, <b>every drawer front and every rail completely blank with no lettering, labels, numbering or markings of any kind anywhere in frame</b></td><td>The plan ran out. Note the exclusion clause: archive drawers <em>always</em> generate with labels on them, so the prompt spends 20 words forbidding it — because there is no <code>negative_prompt</code></td></tr>
+<tr><td class="k">sh006<br>12.73s</td><td>A footpath worn bare into grass by years of the same route, running straight up to a new chain-link fence that closes it off, low evening light, wide lens, no people, muted green and grey</td><td>The method she had always used is now closed to her. Literal, not metaphorical — the viewer reads it in one pass with no decoding</td></tr>
+</table>
+</div>
+
+<p><b>The house style suffix</b>, appended to any generated prompt that needs the film look
+locked down. Note it carries its own inline negative list, which is the only place a negative can
+live:</p>
+
+<pre class="p">shot on 35mm film, anamorphic, shallow depth of field, single motivated light
+source, cool shadows and warm highlights, desaturated palette, controlled
+contrast, deep blacks that stay open, mild organic grain, no bloom, no lens
+flare, photographic not rendered, documentary stillness, nobody present, no
+people, no hands, no text, no signage, no logos, no watermark, 16:9, full bleed
+  ||  NEGATIVE: cgi, 3d render, illustration, hdr, oversaturated, neon, glow,
+vignette burn, people, faces, hands, text, logos, watermark, tilt-shift, fisheye</pre>
+
+<div class="box warn">
+<h4>Words that must never appear in a prompt — a gate greps for them</h4>
+<p><b>Banned in frame:</b> <code>text</code> · <code>caption</code> · <code>subtitle</code> ·
+<code>logo</code> · <code>watermark</code> · <code>sign reading</code> · <code>words</code><br>
+<b>Banned subject:</b> <code>jennifer</code> · <code>aniston</code> · <code>celebrity</code> ·
+<code>famous actress</code></p>
+<p>The subject list is R13 enforced mechanically: you cannot ask an image model for the
+subject's likeness, so you cannot accidentally ship one. The in-frame list is subtler — writing
+"no text" puts the token <em>text</em> in the prompt, and diffusion models are unreliable at
+negation. Say it positively instead: "every surface completely blank with no lettering, labels or
+markings of any kind."</p>
+</div>
+
+<h4><span class="chip c-video">video</span> &nbsp;The Veo shot — 12 of 106, and each one earns it</h4>
+
+<p><b>The test, asked out loud for every candidate:</b> <em>does motion carry meaning a single
+frame cannot?</em> Process, change over time, scale revealed by movement, organic motion, the
+film's biggest beats. Everything else is a still with a depth push-in, at one seventh the price
+and sharper.</p>
+
+<p><b>Constraints that are not negotiable:</b> duration must be exactly 4, 6 or 8 seconds — the
+model accepts nothing else, and a plan authoring 7.3s durations was caught in review. Veo attaches
+an AAC track that cannot be disabled; map video explicitly at assembly rather than relying on
+<code>-shortest</code>. Quota (429) is periodic and is <em>not</em> spent budget — the model stays
+reachable, so generate stills as a floor and let video upgrade over them.</p>
+
+<pre class="p">&lt;the same subject as the still it upgrades, named identically&gt;,
+&lt;the change: X moving from state A to state B&gt;,
+&lt;what else changes as a consequence&gt;,
+&lt;camera: locked-off | slow push&gt;,
+&lt;light, unchanged from the still&gt;,
+no people, &lt;the resolution the motion arrives at&gt;</pre>
+
+<p><b>The real V13 example</b> — and note it is deliberately paired with <code>sh003</code>, the
+same tread belt, so the film returns to an established object rather than introducing a new one:</p>
+
+<pre class="p">The same worn tread belt slowing from a steady roll to a complete standstill,
+dust settling out of the air, the overhead lamp unchanged, locked-off camera,
+cool grey light, no people, continuous motion resolving into stillness</pre>
+
+<p class="note">"Continuous motion resolving into stillness" is the sentence doing the work. It
+tells the model where the clip <em>ends</em>, which is the single most common failure in generated
+video — a clip that is still moving at the out point cannot be cut cleanly.</p>
+
+<div class="box warn">
+<h4>The failure pattern that cost five shots on one film</h4>
+<p><b>"Objects moved by nothing visible."</b> Five separate shots on the MrBeast film asked for
+something to move with no visible cause — a chair sliding, a page turning, a door opening. The
+model resolves the ambiguity by inventing a hand, which then trips R13 and the no-people rule.
+The operator rejected two by eye; the audit found the pattern. If a thing must move, name the
+force: wind, gravity, its own momentum winding down, water. If you cannot name the force, it is a
+still.</p>
+</div>
+
+<h4><span class="chip c-diagram">diagram</span> &nbsp;The exercise animation — not a prompt at all</h4>
+
+<p>This is the most important structural decision in the pipeline, and it is the opposite of
+prompting. <code>pipeline/ja13_figure.py</code> defines a 2D joint skeleton — nine joints, eight
+bones — with keyframed poses per movement. Its own docstring states the case:</p>
+
+<div class="box good">
+<p><em>"Deterministic geometry beats a generated demonstrator: correct form every render, no AI
+anatomy failures, no photographic person who is not the subject, and a rep-count change costs a
+re-render rather than a re-roll."</em></p>
+</div>
+
+<p>Four rules against R9 and R13 in one stroke. There is no stand-in performing what the narration
+attributes to her, because there is no person. Form is correct every time because it is
+coordinates, not a sample. And it is free.</p>
+
+<p>The renderer (<code>ja13_diagram.py</code>) draws it on brand: two families only, figure in the
+left column at 3–44% of frame width, type in the right, and <b>a red arc tracing the path the
+working joint travels</b> — which is what makes the movement copyable from a single glance. The
+traced joint is chosen per focus area: <code>glutes→hip</code>, <code>core→shoulder</code>,
+<code>legs→knee</code>, <code>back→shoulder</code>, <code>shoulders→wrist</code>,
+<code>mobility→wrist</code>. Interpolation is sine ease-in-out, not linear, because
+<em>"real movement accelerates and decelerates; linear interpolation reads as a machine and makes
+tempo impossible to copy."</em></p>
+
+<p><b>So the "prompt" for a diagram is a data structure:</b></p>
+
+<pre class="p">Movement(
+    name  = "Dumbbell Row",
+    sets  = "3",
+    reps  = "10",
+    cue   = "Hinge at the hips and pull the elbow back past the ribs.",
+    focus = "back",                 # selects the traced joint
+    keyframes = [
+        Pose(joints={...start position, normalised 0..1, y down...}),
+        Pose(joints={...end position...}),
+    ],
+)</pre>
+
+<p class="note">A rep is a round trip: keyframes are traversed forward across the first half of the
+phase and reversed across the second, so the loop is seamless by construction rather than by
+crossfade.</p>
+
+<h4><span class="chip c-card">card</span> &nbsp;Brand graphics — 19 of 106</h4>
+
+<p>Cards are drawn locally. <b>Nothing in a card is sent to an image API.</b> There is a
+non-obvious reason the card copy lives separately from the shot's <code>prompt</code> field: the
+two document cards must credit the rights holder by name on screen, and a real person's name in
+<code>prompt</code> trips the generated-subject gate. So render copy lives in a <code>cards</code>
+section of <code>shots.json</code>, and <code>prompt</code> carries only a short label.</p>
+
+<p>That label is not decorative either. The cache key is a content fingerprint that
+<em>deliberately excludes</em> <code>shot_id</code> and <code>block_id</code>, both of which are
+positional — so four chapter cards that all carried an empty prompt would share one content
+address and one cached render. Every card gets a distinct label for this reason alone.</p>
+
+<div class="tw">
+<table>
+<tr><th>Card type</th><th>Spec</th></tr>
+<tr><td>Chapter</td><td>Anton over brand black, with a red number or red vertical bar. Four of them, fixed</td></tr>
+<tr><td>Stat / number</td><td>Anton numeral in Celebrity Red, Archivo Black label, one red bar as the only accent</td></tr>
+<tr><td>Exercise</td><td>Name in Archivo Black, sets and reps in Anton, explanation in Archivo Regular, one red line</td></tr>
+<tr><td>Document / quote</td><td>The quote as type, rights holder credited on screen. Costs nothing against the copyright budget — this is how a &gt;10s thought gets used</td></tr>
+<tr><td>Lower third</td><td>Black translucent rectangle, red vertical bar, name in Archivo Black, context in Archivo Medium. <b>Required on every interview bite</b></td></tr>
+<tr><td>End card</td><td>"Train like the icons"</td></tr>
+</table>
+</div>
+
+<h4><span class="chip c-bite">bite</span> &nbsp;Real footage — the only place a face appears</h4>
+
+<p>A bite's "prompt" is a search brief for a Hunter, given in §2.2. What matters at the shot-plan
+level is that a bite's duration is <b>dictated by content, not by pacing</b> — it is exactly as
+long as the sentence. Round 1 of the V13 plan applied the 4-second cutaway floor to bites, which
+forced two of the four out of the film as picture, including the cold open. Round 2 gave them
+back. The floor governs <code>still</code>, <code>video</code> and <code>diagram</code> only.</p>
+
+<h4><span class="chip c-doc">document</span> &nbsp;<code>source_highlight</code> — the free lever</h4>
+
+<p>Print and document sources do not consume the copyright budget at all. Unlimited. This is
+the cheapest way to raise the evidence ratio in a film that cannot get to 40% real voice, and
+every sourced claim in a Celeb Workout film uses it. Build to the seven measured parameters
+in §1.6 — the focus falloff is the one that matters, because it is what stops it reading as a
+screenshot.</p>
+
+
+<h3 id="audit">2.4 · The audit prompt — run this before you spend a cent</h3>
+
+<p><code>audit()</code> in <code>ja13_shots.py</code> is the mechanical half: it checks that no
+generated shot is still marked FAIL, that each prompt is longer than 20 characters, that no banned
+word appears, that <code>needs_video</code> and <code>kind</code> agree, that every diagram names a
+movement, and that no shot is attached to a block the script does not contain. The judgement half
+is a prompt:</p>
+
+<pre class="p">Audit this shot plan against its own narration, row by row. You are looking
+for pictures that do not advance the argument they sit under.
+
+For each row I give you: the ARGUMENT of its block, the narration paragraph,
+and the prompt.
+
+Grade each KEEP / WEAK / FAIL.
+
+  FAIL if any of these are true:
+    - the image connects to one WORD in the sentence rather than to the
+      paragraph's claim
+    - the image contradicts its own line (three chairs under "room for
+      exactly one")
+    - the meaning IS a sequence of events, not a state, so it collapses to
+      nothing as a still (a calendar igniting, a grid filling)
+    - something moves with no visible cause, so the model will invent a hand
+    - it needs the narrator to explain what you are looking at
+    - a visible human would have to read as the subject and will not
+
+  WEAK if it is decorative but not wrong, or if a stronger literal image of
+  the same state exists. Say what that stronger image is.
+
+Then step back from the individual rows and report PATTERNS. On the last film
+this pass found that "objects moved by nothing visible" drove five separate
+shots and that a quarter of the script was a sequence of events rather than an
+image - neither of which was visible one row at a time.
+
+For every FAIL, write the replacement prompt. For every row whose meaning IS
+the change over time, mark it needs_video so it goes onto the expensive path
+deliberately rather than by accident.
+
+Output a table: shot_id, verdict, one-line reason, replacement prompt.</pre>
+
+<p class="note">On the MrBeast film this graded 88 KEEP / 20 WEAK / 10 FAIL. The value was not the
+ten failures — the operator had already rejected two of them by eye. It was the patterns, which
+are invisible row by row.</p>
+
+
+<h3 id="failures">2.5 · Five ways a prompt fails</h3>
+
+<div class="tw">
+<table>
+<tr><th>#</th><th>Failure</th><th>Looks like</th><th>Fix</th></tr>
+<tr><td class="n">1</td><td><b>Keyword literalism</b></td><td>The line says "cling", a shot of clinging appears. Beautiful, and wrong</td><td>Write the prompt against the paragraph's claim. If the image connects to one word, throw it out</td></tr>
+<tr><td class="n">2</td><td><b>Objects moved by nothing visible</b></td><td>A chair slides, a page turns. The model invents a hand, breaking R13</td><td>Name the force — wind, gravity, momentum winding down — or make it a still</td></tr>
+<tr><td class="n">3</td><td><b>Sequence, not image</b></td><td>Calendars igniting, grids filling. Collapses to nothing as a still</td><td>Mark <code>needs_video</code> deliberately, or rewrite the argument so a single state carries it</td></tr>
+<tr><td class="n">4</td><td><b>Self-contradiction</b></td><td>Three chairs under "room for exactly one"</td><td>Count the things in your own prompt against the numbers in the line</td></tr>
+<tr><td class="n">5</td><td><b>A person who reads as a young &lt;subject&gt;</b></td><td>A generated figure the viewer tries to identify and cannot</td><td>Anonymous body detail, silhouettes, hands on equipment, or a figure at distance. Worse than no shot is a shot the viewer interrogates</td></tr>
+</table>
+</div>
+
+
+<h2 id="tools">3 · Tools — and the case for code as B-roll</h2>
+
+<div class="tw">
+<table>
+<tr><th>Job</th><th>Tool</th><th>Note</th></tr>
+<tr><td>Generated stills</td><td><code>generate_content</code> with <code>gemini-3.1-flash-lite-image</code></td><td><b>Imagen 4 is closed to new users (404).</b> Do not retry it</td></tr>
+<tr><td>Generated motion</td><td>Veo (<code>veo-3.1-lite-generate-preview</code>)</td><td>4/6/8s only · unremovable AAC track · 429 is periodic, not spend</td></tr>
+<tr><td>Still → motion</td><td><code>flow_dibr.dolly_in</code></td><td>Depth-Anything-V2-Small + <code>cv2.remap</code>, float32 maps. <b>Never round a coordinate</b> — integer rounding of the crop box reads as judder (1.008px vs 0.031px subpixel)</td></tr>
+<tr><td>Exercise animation</td><td><b>Code</b> — <code>ja13_figure</code> + <code>ja13_diagram</code> (PIL)</td><td>Deterministic, free, correct form every render</td></tr>
+<tr><td>Cards and effects</td><td>Python + OpenCV + ffmpeg</td><td>Contract: <code>effect(sources, frames, **params) -&gt; Path</code>, exactly <code>frames</code> frames at 1920×1080. The assembler refuses anything else</td></tr>
+<tr><td>Draft narration</td><td>edge-tts</td><td>Free. Build the entire visual cut on it</td></tr>
+<tr><td>Final narration</td><td>ElevenLabs</td><td>Fires <b>once</b>, on the locked script</td></tr>
+<tr><td>Transcripts / search</td><td>youtube-transcript-api, then yt-dlp <code>--download-sections</code></td><td>Searching is free, downloading is not</td></tr>
+<tr><td>Assembly</td><td>ffmpeg</td><td>Do the final concat and mux in the <b>foreground</b> — background renders get killed at tool boundaries. Never re-encode an already-encoded body. Write to a fresh filename; a locked output path silently produces <code>moov atom not found</code></td></tr>
+</table>
+</div>
+
+<div class="box good">
+<h4>On three.js — you are already doing this, and it is the right instinct</h4>
+<p>The argument from the Bilawal Sidhu conversation is that <b>code-generated visuals beat
+generated video wherever accuracy matters</b>: a diffusion model will make a beautiful, wrong
+picture of a wave, and a coded scene will make a correct one you can scrub. That is exactly the
+reasoning already written into <code>ja13_figure.py</code>'s docstring for exercise form.</p>
+<p>Where three.js would pay on this channel, in order of value:</p>
+<ol>
+<li><b>The exercise diagrams in 3D.</b> The current figure is a 2D skeleton. A three.js rig gives you a real orbit around a movement, a plane change (which is the entire argument of the low-impact method — load through position and range, trained in more than one plane), and correct joint angles from any camera. Same determinism, same zero cost, far better <code>orbit</code> and <code>layer_peel</code> treatments.</li>
+<li><b>The muscle highlight.</b> BRAND specifies the working muscle in <code>#B22B1A</code> on a neutral grey figure. In 2D that is a coloured bone; in three.js it is a shader on an actual mesh.</li>
+<li><b>Timeline and anatomy infographics</b> — the "thirty years of high impact" argument, the force-through-the-joint explanation. These are Cleo-Abram-class explainer graphics that a video model cannot render truthfully.</li>
+<li><b>Render path.</b> Keep the existing contract: three.js renders a numbered PNG sequence to <code>frames</code> exact frames at 1920×1080, ffmpeg encodes, the assembler never knows the difference. Do <em>not</em> introduce a live WebGL layer into the render pipeline.</li>
+</ol>
+<p><b>Remotion</b> is the other one worth a look, for cards and lower thirds specifically — the
+brand-consistency complaint ("it didn't seem like one brand theme") is a motion-design problem,
+and React components with locked-down tokens are a stronger guarantee than PIL calls scattered
+across renderers. The path-drawn camera trick (draw a trajectory on a still, hand it to a video
+model) is real and cheap, but it is a <em>location</em> tool — of limited use here, where the
+picture is objects and figures rather than places.</p>
+</div>
+
+
+<h2 id="order">4 · Build order and budget</h2>
+
+<div class="tw">
+<table>
+<tr><th>#</th><th>Step</th><th>Output</th><th>Cost</th><th>Gate before proceeding</th></tr>
+<tr><td class="n">0</td><td>Inventory</td><td>What is actually on disk</td><td class="n">$0</td><td>—</td></tr>
+<tr><td class="n">1</td><td>Dossier + trainer gate</td><td><code>WORKOUT.md</code>, <code>SOURCES_FACTS.md</code></td><td class="n">$0</td><td><b>Programme named movement by movement</b></td></tr>
+<tr><td class="n">2</td><td>Source pass</td><td>10–15 distinct sources, transcripts pulled</td><td class="n">$0</td><td>Source count reported before any narration</td></tr>
+<tr><td class="n">3</td><td>Beat sheet</td><td>16 beats, each stating what it argues</td><td class="n">$0</td><td>Promise line written; programme distributed</td></tr>
+<tr><td class="n">4</td><td>Script + EDL</td><td>Narration, <code>edl_full.json</code></td><td class="n">$0</td><td><code>echo_check.py</code> clean</td></tr>
+<tr><td class="n">5</td><td>Shot plan</td><td><code>shots.json</code>, every row graded</td><td class="n">$0</td><td><b>Argument audit — no FAIL survives</b></td></tr>
+<tr><td class="n">6</td><td>Draft audio</td><td>edge-tts narration</td><td class="n">$0</td><td>—</td></tr>
+<tr><td class="n">7</td><td>Stills floor</td><td>One still for <em>every</em> generated shot, video included</td><td class="n">~$3.00</td><td>Film is complete and watchable from here on</td></tr>
+<tr><td class="n">8</td><td>Motion upgrade</td><td>Veo over the shots that earned it</td><td class="n">~$3.50</td><td>Quota permitting; failure degrades to the still</td></tr>
+<tr><td class="n">9</td><td>Diagrams + cards</td><td>Rendered locally</td><td class="n">$0</td><td>Two families per frame</td></tr>
+<tr><td class="n">10</td><td>Final narration</td><td>Paid TTS, fires once</td><td class="n">small</td><td>Script is locked</td></tr>
+<tr><td class="n">11</td><td>Assemble + mux</td><td>Master MP4</td><td class="n">$0</td><td>Sync gate ±0.25s; all rights gates raise</td></tr>
+<tr><td class="n">12</td><td><b>Eyes-on pass</b></td><td>Contact sheets, sampled watch</td><td class="n">$0</td><td><b>Every previous build was machine-clean and still failed review</b></td></tr>
+<tr><td class="n">13</td><td>Delivery</td><td>Title, tags, chapters, description, thumbnail</td><td class="n">$0</td><td>Owner reviews before upload</td></tr>
+</table>
+</div>
+
+<div class="box">
+<h4>Money safety, for a worker that spends unattended</h4>
+<ul>
+<li><b>Charge the ledger when the API accepts the job</b> — not at parse-success (which leaves <code>spent</code> at $0.00 so the cap never trips and the worker burns the whole backlog while printing <code>spent $0.00</code>), and not before the call (which books money a client-side <code>ValueError</code> never spent).</li>
+<li><b>Circuit breaker: halt after 3 consecutive failures</b>, plus a total-failure budget — a consecutive-streak breaker is starved by alternating fail/succeed.</li>
+<li><b>Split submit from download.</b> A failed download retries the download. Resubmitting buys the same video twice.</li>
+<li><b>A file on disk is not proof of a usable clip.</b> Quota-halted attempts leave truncated files indistinguishable from finished ones. Trust <code>ledger.is_done(fingerprint)</code>, never <code>path.exists()</code>.</li>
+<li><b>The project key file beats an ambient env var.</b> A stale <code>GOOGLE_API_KEY</code> from another project cost three runs here. Print which source the key came from, masked. The key goes in <code>?key=</code>, never as an OAuth bearer — bearer returns <code>API_KEY_SERVICE_BLOCKED</code>, which reads exactly like a revoked key.</li>
+<li><b>Cache on a content fingerprint, not the shot name.</b> Shot names are positional; swap a clip and a name-keyed cache serves the stale render. A re-roll then costs $0.04 and the assembler stitches around it.</li>
+</ul>
+</div>
+
+
+<h2 id="open">5 · What is still open on this film</h2>
+
+<div class="tw">
+<table>
+<tr><th>#</th><th>Question</th><th>Why it is blocking</th><th>Cheapest resolution</th></tr>
+<tr><td class="n">1</td><td><b>Ship V13, or rebuild?</b></td><td>A 15:58 1080p master exists and has never been uploaded. Everything else is downstream of this</td><td>Watch it end to end. It is the only thing that answers the question</td></tr>
+<tr><td class="n">2</td><td><b>The thumbnail has no likeness of her</b></td><td>All four sources spent their single permitted clip inside the film, so a frame lifted from a bite is a second use. BRAND's "celebrity recognisable first" is not met, deliberately</td><td>Licence one editorial still, or find a fifth source used <em>only</em> for the thumbnail frame</td></tr>
+<tr><td class="n">3</td><td><b>Four sources against a 10–15 floor</b></td><td>Drives the real-voice miss and the 70% generated share in one go</td><td>A dedicated Hunter pass. This is the single highest-value unit of work left on the subject</td></tr>
+<tr><td class="n">4</td><td><b>Which DEMO rows are real footage with audible speech</b></td><td>Reclassifying them to REAL-V materially changes the real-voice number</td><td>Watch the sourced demos; it is a one-hour job</td></tr>
+<tr><td class="n">5</td><td><b>Five JA0x films from the earlier run are unused</b></td><td>Five finished 21-minute films on the same subject, superseded but not deleted</td><td>Decide: archive, or harvest their bite banks into the V13 lineage</td></tr>
+<tr><td class="n">6</td><td><b>The old shot-list generator still emits the inset-frame spec</b></td><td>THE_STANDARD §IV corrected the frame to full bleed; the <code>HOUSE</code> dict in <code>shotlist_hemsworth.py</code> was never updated, so regenerating a shotlist reintroduces the contradiction</td><td>One edit to <code>HOUSE</code></td></tr>
+</table>
+</div>
+
+<div class="box warn">
+<h4>The one red flag above all others</h4>
+<p><em>Shipping without an eyes-on pass.</em> Every previous build on this channel was
+machine-clean — gates green, durations exact, loudness in spec — and still failed review. The
+gates catch rule violations. They have never once caught a boring film.</p>
+</div>
+
+<footer>
+Celeb Workout · production reference · compiled from THE_STANDARD.html, BRAND.md, EDIT_RULES.md,
+COPYRIGHT_RULES.md, FX_CATALOGUE.md, the jennifer_aniston dossiers and the ja13 pipeline.
+Where this and THE_STANDARD disagree, THE_STANDARD wins.
+</footer>
+
+</div>

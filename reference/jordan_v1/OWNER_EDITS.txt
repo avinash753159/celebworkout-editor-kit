@@ -1,0 +1,408 @@
+================================================================================
+OWNER EDITS — EVERY INSTRUCTION GIVEN, AND WHAT WAS DONE ABOUT IT
+Michael Jordan episode / Celeb Workout
+Project: C:\Users\avina\OneDrive\Desktop\Claude Projects\YouTube\jordan_v1
+Compiled: 29 Aug 2026
+================================================================================
+
+Deliverable:  jordan_v1\MICHAEL_JORDAN_V1.mp4
+              15:08 · 1280x720 · 30fps · 27,227 frames · one audio stream
+              -14.1 LUFS · A/V sync exact
+
+Every instruction below is quoted verbatim from what you actually said, in the
+order you said it, followed by exactly what changed and where.
+
+
+================================================================================
+ROUND 1 — 27 Aug — THE BRIEF
+================================================================================
+
+INSTRUCTION 1.1  "/celebvid Michael Jordan"
+    Build a Celeb Workout episode about Michael Jordan.
+
+    DONE. Full pipeline in jordan_v1/. Before starting I asked four questions
+    because they would have changed the whole build. Your answers:
+
+      - WHICH JORDAN ....... the basketball player (not Michael B. Jordan, who
+                             the channel already has a Short on)
+      - ERA ................ prime, 1989-1998 (not Wizards, not present-day)
+      - SECOND VOICE ....... Tim Grover (primary), plus Chip Schaefer and the
+                             Breakfast Club players
+      - SCOPE .............. run the whole pipeline, steps 0-10
+
+    Recorded in jordan_v1/BRIEF.md, which governs the build.
+
+INSTRUCTION 1.2  "do it, dont wait till you have the final video - open the
+                  video when done - im going to sleep - just do"
+
+    DONE. Ran autonomously overnight: harvested 106 sources (8GB), transcribed
+    30.5 hours, mined and read the bites, wrote the script, built and rendered
+    the film, then opened it in Media Player.
+
+
+================================================================================
+ROUND 2 — 28 Aug — THE FIRST REVIEW  (ten separate instructions)
+================================================================================
+
+INSTRUCTION 2.1  "The audio is complete crap. You need to get a better voice
+                  actor or a better voice. Use the Brian thing from Eleven Labs"
+
+    DONE AT THE TIME, THEN SUPERSEDED BY YOU IN ROUND 4.
+    All 46 narration blocks were re-synthesised with ElevenLabs voice "Brian"
+    (voice id nPczCjzI2devNBz1zQrb). The free edge-tts draft was discarded.
+    See INSTRUCTION 4.2 — you later rejected Brian as well.
+
+INSTRUCTION 2.2  "whenever it mentions other players like Scotty Pippen or
+                  whoever it is, you need to have pictures of them"
+
+    DONE. Built jordan_v1/cues.py — a system that pins a specific picture to a
+    specific narration block, so a named person is on screen while the narration
+    names them. Cues deliberately bypass the face-identity gate, because a
+    picture of Dean Smith is supposed to be somebody other than Jordan.
+
+    In the film now:
+      Scottie Pippen ....... 4:12
+      Ron Harper ........... 4:18
+      Tim Grover ........... 2:36 and 3:06
+      Dean Smith ........... 1:18
+
+    NOTE: my first attempt at this was inadequate and you called it out in
+    Round 3. See INSTRUCTION 3.1 for what actually fixed it.
+
+INSTRUCTION 2.3  "when you're talking about his childhood and all that stuff,
+                  it needs to be a picture of him as a kid"
+INSTRUCTION 2.4  "Why is it that you're using the footage when you should
+                  really be using him as a kid or something like that?"
+
+    DONE (properly, in Round 3). The childhood and early-life blocks (R1, R2,
+    R3) now play black-and-white photographs of a young Jordan, not Bulls game
+    footage. Visible 0:48-1:25.
+
+    Honest limit: no freely-licensed photograph of Jordan as a child at Laney
+    High School exists in the sources available. The youngest verifiable images
+    are 1984-85, age 21 — draft-day and rookie portraits. Those are what is used.
+
+INSTRUCTION 2.5  "When you're talking about him being scrawny, it should be him
+                  looking really skinny and then you should have a comparison of
+                  him being built right next to it"
+
+    DONE. Built a dedicated card, "c_transform", that exists only for this.
+    Plays at 2:06:
+
+        LEFT   1985 · 195 LB · ROOKIE      (B&W, wiry, Bulls 23)
+        RIGHT  1997 · +15 LB OF MUSCLE     (colour, muscular, Spalding ball)
+        Title  THE SAME MAN
+
+    The same skinny/built pair also plays either side of the +15 LB gauge card
+    at 4:00. Source file: hf/cards/gen_cards.py, card id c_transform.
+
+INSTRUCTION 2.6  "Some of the frames don't make sense. For example you have
+                  'subscribe' and 'like' or something but really that has
+                  nothing to do with the video."
+
+    DONE — AND I FOUND THE EXACT FRAME YOU MEANT.
+    A Chip Schaefer bite (source D1sKOv7WFBA, window 3018-3040s) played over a
+    podcast guest-cam carrying a burned-in SUBSCRIBE button, a "GIMME THE HOT
+    SAUCE PODCAST" banner and an Instagram handle.
+
+    Action: that bite ("schaefer_role") was cut from the film entirely, its
+    narration setup (block W14b) was rewritten so the section still works, and
+    the source window is out of the picture pool. The neighbouring Schaefer bite
+    at 2968-2992s is clean (a plain 3-person studio) and was kept.
+
+    Evidence: qc/SCHAEFER.jpg shows the overlay appearing and where it stops.
+
+INSTRUCTION 2.7  "Your background audio track is super weird. Remove the
+                  complete background audio track. Just have it be the voiceover
+                  part and even in the interviews don't put sound over their
+                  voice or anything like that. Just remove that whole background
+                  audio track."
+
+    DONE. The music bed is gone completely. The film has ONE audio stream:
+    narration plus the bites' own recorded sound. Nothing plays over anyone's
+    voice. No amix at all.
+
+    Verified: ffprobe reports 1 audio stream; integrated loudness -14.1 LUFS.
+
+    music.py and qc/MOOD_TIMELINE.md are still generated but NOT mixed, so the
+    analysis survives if you ever want a bed back.
+
+INSTRUCTION 2.8  "Make sure you're using a lot of the tools to make the
+                  infographics card a lot better than infographics. The cards
+                  that you're using are complete crap. They look horrible and
+                  they are not the right ones to use. Make sure that you are
+                  using the hyper frames GitHub."
+                  (https://github.com/heygen-com/hyperframes)
+
+    DONE. Cards were rebuilt as HyperFrames HTML compositions rendered to MP4
+    through headless Chrome, replacing the old static PNGs entirely. Installed
+    hyperframes v0.8.17 under hf/. Each card now animates in a way that belongs
+    to its data.
+
+    Superseded in Round 4 — you said they were still not good enough. See 4.3.
+
+INSTRUCTION 2.9  "each info card needs to be different looking than the other
+                  info cards"
+
+    DONE. 13 cards, 13 distinct layouts, no repetition:
+      record · concept · event · counter · gauge · clock · checklist
+      versus · split · clockface · bracket · bignumber · transform
+
+    render_cards() refuses to build if two blocks resolve to the same card.
+
+INSTRUCTION 2.10 "only give me the output for the final video. Don't ask me any
+                  more questions, just final video as the output."
+
+    DONE. No further questions asked from that point on.
+
+
+================================================================================
+ROUND 3 — 28 Aug — THE IMAGES WERE STILL NOT FIXED
+================================================================================
+
+INSTRUCTION 3.1  "why haven't you fixed the images of him as a kid and him
+                  scronny, him with pipppin etc"
+                  + seven Google Images search links:
+                      michael jordan kid
+                      michael jordan workout
+                      michael jordan skinny
+                      michael jordan skinny vs big
+                      michael jordan young vs old
+                      michael jordan pippen
+                      michael jordan workout routine basketball
+                  "redo the videos - and give me the final video - redo it -
+                   listen to what i had said - and impliment it"
+
+    YOU WERE RIGHT. What I had shipped was four weak pictures plus video frames
+    standing in for photographs. Here is what actually happened when I redid it:
+
+    a) Harvested 229 candidate images against your searches.
+
+    b) Bing image search returned MICHAEL JACKSON for "michael jordan kid" —
+       13 of 14 results — and then served the SAME cached result set for every
+       query regardless of what was asked. Caught by checking distinctness:
+       only 57 distinct files out of 196. Bing discarded as a source.
+
+    c) Wikimedia Commons worked, but its filenames lie about their contents:
+         "Michael Jordan North Carolina.JPG" .... a jersey in a display case
+         "Pistons Bad Boys" ..................... a box score sheet
+         "Randy Brown" .......................... an awards-show stage
+         "Scottie Pippen" ....................... a wide court shot, tiny figures
+         "Dean Smith North Carolina" ............ an arena banner
+         "Magic Johnson" ........................ an unrelated crowd scene
+       All seven were deleted.
+
+    d) Commons also rate-limited with HTTP 429, and my error handling was
+       reporting that as "no results found" — eleven of fourteen pictures
+       vanished silently. Fixed with throttling and a raised error.
+
+    e) Ran all 229 candidates through Jordan's own face-recognition reference
+       to discard the wrong men automatically, then looked at the survivors by
+       eye. One candidate scored 0.332 and was a religious icon painting of the
+       Archangel Michael — which is why the eye pass still happens.
+
+    FINAL VERIFIED PHOTO SET (jordan_v1/photos/):
+       mj_young1, mj_young2 ...... young Jordan, B&W portraits, 1984
+       mj_skinny, mj_skinny2 ..... 1985, wiry, Bulls 23 — the "scrawny" shots
+       mj_built, mj_built2 ....... mid-90s, muscular, Spalding ball
+       mj_dunk87 ................. 1987 dunk, Bulls red
+       scottie_pippen ............ Pippen, BULLS 33
+       ron_harper ................ Ron Harper
+       dean_smith ................ Dean Smith portrait
+       tim_grover_a, tim_grover_b  Grover, two different appearances
+
+    Cue count went from 12 pictures across 9 blocks to 18 across 11 blocks.
+    31 cue-and-card shots in the finished film.
+
+
+================================================================================
+ROUND 4 — 28/29 Aug — THE SKILL, THE VOICE, AND THE CARDS AGAIN
+================================================================================
+
+INSTRUCTION 4.1  "update /celebvid to ensure you doi this all the time"
+
+    DONE. The skill at C:\Users\avina\.claude\skills\celebvid\SKILL.md is now
+    V16 (was V15). Backup of the previous version kept as SKILL.md.v15bak.
+
+    Added a new section at the very top — "§0 THE STANDING RULINGS" — so none of
+    your notes has to be given twice. It contains:
+      · the voice decision, with the full rejection history
+      · NO MUSIC BED AT ALL
+      · pictures pinned to names and eras — build cues.py before the first cut
+      · the skinny-vs-built transformation card as a standing requirement
+      · how each of the three image sources lies (Commons titles, Bing caching,
+        Michael Jackson), and the identity-filter-then-eyeball order
+      · the full glass / HyperFrames / Material 3 card specification
+      · the burned-in-channel-graphics warning
+
+    Also rewrote the pipeline steps: new step 8b (photographs and cues) and a
+    rewritten step 9 (HyperFrames glass cards, replacing static PNGs).
+
+INSTRUCTION 4.2  "elevelabs brian deosn't work - can you use
+                  https://github.com/abus-aikorea/voice-pro"
+
+    DONE, with one substitution I want to be explicit about.
+
+    Voice-Pro itself could not be used directly: it is a Gradio web app that
+    needs an NVIDIA GPU, ~20GB of disk and a browser, and documents no CLI or
+    API — so it cannot be driven headlessly across 46 narration blocks.
+
+    What Voice-Pro IS, is a front end onto a set of engines. Its own README
+    ranks KOKORO as the strongest (#2 on the HuggingFace TTS Arena). Kokoro
+    ships as an ONNX model that runs locally on CPU with no key, no quota and
+    no network — a better fit for a batch build than any hosted API.
+
+    So: all 46 narration blocks are now Kokoro, voice "am_michael".
+      · installed kokoro-onnx (NOT kokoro — it needs spacy, which does not
+        build on Python 3.14)
+      · models in jordan_v1/models/kokoro/
+      · measured 158 wpm against the channel's own measured 161 wpm
+      · auditioned and rejected: am_onyx (flatter), am_eric (193 wpm, too
+        fast), bm_george (British, wrong register)
+
+    No ElevenLabs, no edge-tts, anywhere in the film.
+
+INSTRUCTION 4.3  "the cards are still shit - do better - use hyperframes and
+                  Material Design by Google or these Radix Primitives ...
+                  Primer by GitHub ... https://github.com/voltagent/awesome-design-md
+                  - just make the cards better - the cards should be transparent
+                  a bit - 3d looking like - just make them better"
+
+    DONE. All 13 cards rebuilt from scratch as a proper design system:
+
+    TRANSPARENT — every card is a translucent glass plate floating over a
+    blurred, darkened frame taken from the film's OWN footage (the weight room,
+    the court, a crowd). The picture is genuinely behind the data rather than
+    replaced by it. Backdrop blur 22px, saturate 1.25.
+
+    3D — plates enter on a perspective transform, rotating in from z:-260 with
+    their contents on separate Z planes so the layers separate as the plate
+    settles. A specular sheen sweeps once across the glass on arrival.
+    Perspective 1600px on the root.
+
+    DEPTH — Material Design 3 elevation, which uses TWO signals rather than one:
+    a shadow AND a surface tint that lightens as the plane rises. Levels 2, 4
+    and 5 in use. Plus a 1px inner highlight along the top edge — the line where
+    a real pane of glass catches light — and a 1px dark line along the bottom.
+
+    TYPE — Nike's system, pulled from the awesome-design-md repository you
+    linked: extreme contrast between a towering uppercase display face (Anton)
+    and small, quiet information type (Archivo), with colour reserved for one
+    accent (#E8121A) and nothing else.
+
+    Source: hf/cards/gen_cards.py. Rendered by HyperFrames to
+    hf/cards/renders/*.mp4. All 13 in the film.
+
+INSTRUCTION 4.4  "just make the cards better" / "make them better"
+                  (restated twice in the same message)
+
+    Covered by 4.3. Before-and-after contact sheets:
+      qc/CARDS.jpg .......... round 1, static PNG panels
+      qc/CARDS_HF.jpg ....... round 2, flat HyperFrames
+      qc/CARDS_GLASS.jpg .... round 3, glass + Material 3 + 3D  (current)
+      qc/CARDS_INFILM.jpg ... the current cards as they appear in the film
+
+
+================================================================================
+ROUND 5 — 29 Aug
+================================================================================
+
+INSTRUCTION 5.1  "open" / "open mj" / "open the folder"
+    DONE each time — Media Player for the film, Explorer for jordan_v1.
+
+INSTRUCTION 5.2  "what were all the edits that you had to make that i told you -
+                  give me all that in a txt file"
+    This file.
+
+
+================================================================================
+SUMMARY — 17 INSTRUCTIONS, ALL IMPLEMENTED
+================================================================================
+
+  1.1  Build the MJ episode ................................ DONE
+  1.2  Run autonomously, open when done .................... DONE
+  2.1  Better voice — ElevenLabs Brian ..................... DONE, then replaced
+       by your Round 4 instruction
+  2.2  Pictures of named players (Pippen etc) .............. DONE
+  2.3  Picture of him as a kid for childhood ............... DONE
+  2.4  Stop using footage where a photo belongs ............ DONE
+  2.5  Skinny vs built comparison side by side ............. DONE (2:06)
+  2.6  Remove the subscribe/like frame ..................... DONE (found + cut)
+  2.7  Remove the entire background audio track ............ DONE
+  2.8  Use HyperFrames for the cards ....................... DONE
+  2.9  Every card a different layout ....................... DONE (13/13)
+  2.10 No more questions, just the video ................... DONE
+  3.1  Actually fix the images — redo it ................... DONE (229 candidates
+       harvested, filtered, eyeballed; 7 mislabelled files deleted)
+  4.1  Update /celebvid so this happens every time ......... DONE (V16, §0)
+  4.2  Drop ElevenLabs, use voice-pro ...................... DONE (Kokoro
+       am_michael, the strongest engine in the Voice-Pro stack)
+  4.3  Better cards: transparent, 3D, Material/Nike ........ DONE
+  4.4  Make the cards better (restated) .................... DONE
+  5.1  Open the file / folder .............................. DONE
+  5.2  This document ....................................... DONE
+
+
+================================================================================
+THINGS I GOT WRONG ALONG THE WAY (so they are on the record)
+================================================================================
+
+  · I shipped the first cut with weak images and told you it was done. You had
+    to ask twice. That was the biggest failure in this build.
+
+  · My Commons error handling turned an HTTP 429 rate-limit into "no results
+    found", which hid eleven missing photographs behind what looked like an
+    honest negative.
+
+  · My card-trim cache was keyed on the card's FILENAME, so after I replaced
+    the transform card's photographs and labels the film still showed the old
+    version reading "1987 · 195 LB". Same stale-cache mistake the skill warns
+    about elsewhere. Now keyed on file content.
+
+  · I rejected a frame by eye off a 300px contact sheet as "not Jordan"; at
+    560px it was plainly him and the face recogniser had been right. Contact
+    sheets for identity decisions are now rendered large.
+
+  · An early build stalled for 40 minutes in shot planning with no output,
+    because the shot picker re-measured tens of thousands of windows per shot.
+    Fixed with a bounded scan and a dead-window registry.
+
+
+================================================================================
+WHAT IS STILL OPEN (not asked for, but you should know)
+================================================================================
+
+  · RUNTIME is 15:08. The brief in BRIEF.md asks for 20-25 minutes. There are
+    ~50 unused mined trainer bites in manifest/bite_candidates.json if you want
+    it longer.
+
+  · PACING: median shot 3.4s. The channel's own Aniston video measures 1.4s
+    median with 323 cuts. Controlled by SHOT_MIN/SHOT_MAX in build.py.
+
+  · A few pool-filler shots still drift — a baseball batting-cage clip sits
+    under the diet section around 9:30.
+
+  · No childhood photograph earlier than age 21 exists in the free sources.
+
+
+================================================================================
+KEY FILES
+================================================================================
+
+  MICHAEL_JORDAN_V1.mp4 ......... the film
+  OWNER_EDITS.txt ............... this document
+  BRIEF.md ...................... the locked brief, governs the build
+  HANDOFF.md .................... build state, bans, known gaps
+  METADATA.md ................... title, description, chapters, tags
+  script.md ..................... 63 blocks
+  quotes.json ................... 17 bites, all verified against their audio
+  claims.json ................... every factual claim + on-screen source
+  cues.py ....................... pictures pinned to names and eras
+  voice.py ...................... Kokoro narration
+  hf/cards/gen_cards.py ......... the 13 glass cards
+  qc/ ........................... every contact sheet and QC report
+
+  Skill updated at:
+  C:\Users\avina\.claude\skills\celebvid\SKILL.md   (V16)
+
+================================================================================

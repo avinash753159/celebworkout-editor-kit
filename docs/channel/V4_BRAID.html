@@ -1,0 +1,476 @@
+<title>Where the picture comes from — Hemsworth V4</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F;
+    --story:#3C5A78; --work:#B22B1A;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --story:#7FA6C9;--work:#E4573F;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --story:#7FA6C9;--work:#E4573F;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;
+          --story:#3C5A78;--work:#B22B1A;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:54rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:41rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.28rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:1px solid var(--rule);}
+  h2 .n{color:var(--red);font-variant-numeric:tabular-nums;margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:.94rem;font-weight:700;color:var(--ink);
+     margin:1.9rem 0 .35rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  strong{color:var(--ink);font-weight:700;}
+  a{color:var(--red);}
+  blockquote{margin:1.2rem 0;padding-left:1.1rem;border-left:3px solid var(--rule);
+     font-style:italic;color:var(--mute);}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.85rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+     padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.44rem .7rem .44rem 0;border-bottom:1px solid var(--rule);vertical-align:baseline;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 9%,transparent);font-weight:600;color:var(--ink);}
+  .yes{color:var(--good);font-weight:700;} .no{color:var(--bad);font-weight:700;}
+
+  .bars{margin:1.4rem 0 1.8rem;font-family:var(--sans);font-size:.8rem;}
+  .bar{display:grid;grid-template-columns:11rem 1fr 5.6rem;gap:.7rem;align-items:center;
+       margin-bottom:.42rem;}
+  .bar .lab{color:var(--body);text-align:right;}
+  .bar .track{background:var(--panel);height:1.15rem;position:relative;}
+  .bar .fill{background:var(--red);height:100%;}
+  .bar .fill.q{background:var(--mute);}
+  .bar .fill.g{background:var(--good);}
+  .bar .val{font-variant-numeric:tabular-nums;color:var(--mute);}
+  .bar.big .lab,.bar.big .val{color:var(--ink);font-weight:700;}
+
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;
+        margin:-.6rem 0 1.6rem;}
+
+  /* stacked mix bar */
+  .mix{margin:1.1rem 0 .4rem;font-family:var(--sans);}
+  .mix .ml{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+     color:var(--mute);margin-bottom:.3rem;}
+  .mix .strip{display:flex;height:2rem;overflow:hidden;}
+  .mix .seg{display:flex;align-items:center;justify-content:center;font-size:.66rem;
+     font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;}
+  .k-real{background:#B22B1A;} .k-arch{background:#7C3A2A;} .k-doc{background:#3C5A78;}
+  .k-card{background:#4A4438;} .k-gen{background:#A9A19A;color:#12100E;}
+  .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.1rem;font-family:var(--sans);
+     font-size:.72rem;color:var(--mute);margin:.55rem 0 1.7rem;}
+  .legend i{display:inline-block;width:.72rem;height:.72rem;margin-right:.35rem;
+     vertical-align:-.05em;font-style:normal;}
+
+  /* the braid */
+  .braid{margin:1.5rem 0 2rem;font-family:var(--sans);font-size:.82rem;}
+  .braid .hdr{display:grid;grid-template-columns:3.2rem 1fr 1fr;gap:.8rem;
+     font-size:.64rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+     color:var(--mute);padding-bottom:.45rem;border-bottom:1.5px solid var(--ink);}
+  .braid .hdr .s{color:var(--story);} .braid .hdr .w{color:var(--work);}
+  .row{display:grid;grid-template-columns:3.2rem 1fr 1fr;gap:.8rem;
+     padding:.7rem 0;border-bottom:1px solid var(--rule);align-items:stretch;}
+  .row .t{color:var(--mute);font-size:.72rem;font-weight:700;padding-top:.15rem;}
+  .cell{padding:.45rem .6rem;line-height:1.4;}
+  .cell.s{border-left:3px solid var(--story);background:color-mix(in srgb,var(--story) 8%,transparent);}
+  .cell.w{border-left:3px solid var(--work);background:color-mix(in srgb,var(--work) 8%,transparent);}
+  .cell.empty{background:none;border-left:3px solid var(--rule);opacity:.4;}
+  .cell b{display:block;color:var(--ink);font-size:.78rem;margin-bottom:.15rem;}
+  .cell .pic{display:block;margin-top:.3rem;font-size:.7rem;color:var(--mute);}
+  .pill{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.08em;
+     text-transform:uppercase;padding:.1rem .34rem;border-radius:2px;color:#fff;
+     margin-right:.25rem;vertical-align:.05em;}
+
+  /* three column script sample */
+  .script{font-family:var(--sans);font-size:.82rem;margin:1.3rem 0 1.8rem;
+     border-top:1.5px solid var(--ink);}
+  .script .sh{display:grid;grid-template-columns:5.2rem 1fr 1fr;gap:.9rem;
+     font-size:.62rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+     color:var(--mute);padding:.5rem 0;border-bottom:1px solid var(--rule);}
+  .script .sr{display:grid;grid-template-columns:5.2rem 1fr 1fr;gap:.9rem;
+     padding:.75rem 0;border-bottom:1px solid var(--rule);align-items:start;}
+  .script .tag{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  .script .tag.narr{color:var(--mute);} .script .tag.bite{color:var(--work);}
+  .script .tag.card{color:var(--story);}
+  .script .txt{line-height:1.5;color:var(--body);}
+  .script .txt em{color:var(--ink);font-style:italic;}
+  .script .vis{line-height:1.45;font-size:.76rem;color:var(--mute);}
+  .script .vis b{color:var(--ink);font-weight:700;display:block;}
+
+  ol.rank{list-style:none;counter-reset:r;padding:0;margin:1.2rem 0 0;}
+  ol.rank li{counter-increment:r;position:relative;padding:1rem 0 1rem 3.2rem;
+     border-bottom:1px solid var(--rule);}
+  ol.rank li::before{content:counter(r);position:absolute;left:0;top:.85rem;
+     font-family:var(--sans);font-size:1.5rem;font-weight:700;color:var(--red);line-height:1;}
+  ol.rank .h{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:.98rem;
+     display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;}
+  ol.rank .tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+     font-weight:700;white-space:nowrap;}
+  ol.rank p{margin:.3rem 0 0;font-size:.95rem;}
+
+  @media (max-width:640px){
+    .row,.braid .hdr,.script .sr,.script .sh{grid-template-columns:1fr;gap:.4rem;}
+    .braid .hdr{display:none;} .script .sh{display:none;}
+    .bar{grid-template-columns:1fr;gap:.15rem;} .bar .lab{text-align:left;}
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Script architecture <span>· Hemsworth V4 · Celeb Workout</span></div>
+  <h1>Where the picture comes from</h1>
+  <p class="stand">V3 spends eight minutes talking about a workout it never gives you, and asks the
+  picture department to illustrate an argument with nothing but generated stills. Both problems have
+  the same fix, and it is structural.</p>
+  <div class="byline">
+    <span>V3 measured · 1,564 narration words · 6 bites</span>
+    <span>3 August 2026</span>
+  </div>
+</header>
+
+<h2><span class="n">I.</span> What V3 actually is</h2>
+
+<p class="lede">Before proposing anything, here is the current script counted rather than
+described. Every figure below comes from parsing <span style="font-family:var(--mono);font-size:.85em">dossier/hemsworth/SCRIPT_V3.md</span>
+directly.</p>
+
+<div class="tw">
+<table>
+  <caption>SCRIPT_V3.md against the standard</caption>
+  <tr><th>Measure</th><th class="n">V3</th><th class="n">Standard</th><th>Source of standard</th></tr>
+  <tr class="hi"><td>Exercises named in the film</td><td class="n no">0</td><td class="n">8</td><td>It is a workout channel</td></tr>
+  <tr class="hi"><td>Runtime (narration + bites + beats)</td><td class="n no">~11.6 min</td><td class="n">20 min</td><td>Owner decision, 3 Aug — under the Gavia band</td></tr>
+  <tr><td>Real-voice ratio</td><td class="n no">7.5%</td><td class="n">≥40%</td><td>Gavia bite-dominant · §17 F3</td></tr>
+  <tr><td>Bite time</td><td class="n no">52.2s · 6 bites</td><td class="n">≥8 min · ~32 bites</td><td>40% of 20 min, ~15s each</td></tr>
+  <tr><td>Narration blocks</td><td class="n">60 · 1,564 w</td><td class="n">—</td><td>10.4 min at 150 wpm</td></tr>
+  <tr><td>Distinct sources drawn on</td><td class="n no">6</td><td class="n">10–15</td><td>Sourcing floor</td></tr>
+</table>
+</div>
+
+<div class="verdict">
+  <div class="lab">Correction</div>
+  <p>I told you earlier the film was roughly 60% illness. Counted, it is not — <strong>50.7% of the
+  narration is about his body and training.</strong> That makes the finding worse, not better. It
+  talks about the workout for nearly eight minutes and never once tells you what to do.</p>
+</div>
+
+<div class="bars">
+  <div class="bar big"><div class="lab">Body &amp; training</div><div class="track"><div class="fill" style="width:50.7%"></div></div><div class="val">793 w · 50.7%</div></div>
+  <div class="bar"><div class="lab">Illness &amp; family</div><div class="track"><div class="fill q" style="width:37.8%"></div></div><div class="val">591 w · 37.8%</div></div>
+  <div class="bar"><div class="lab">Cold open</div><div class="track"><div class="fill q" style="width:11.5%"></div></div><div class="val">180 w · 11.5%</div></div>
+  <div class="bar big" style="margin-top:.9rem"><div class="lab">…of which instruction</div><div class="track"><div class="fill" style="width:0%"></div></div><div class="val no">0 w · 0%</div></div>
+</div>
+<p class="note">Word counts per <span style="font-family:var(--mono)">### PART</span> heading. The
+final row is a substring search for every common movement name — row, press, squat, deadlift, curl,
+lunge, pull-up, push-up, bench, plank, clean, dip. Zero hits that are not incidental
+(&ldquo;nar<em>row</em>&rdquo;, &ldquo;audio, <em>clean</em>, alone&rdquo;).</p>
+
+<p>The script says <em>&ldquo;eight movements, eight reps, three rounds&rdquo;</em> four separate
+times, and closes by telling the viewer:</p>
+
+<blockquote>&ldquo;If you came for the programme, you have it.&rdquo;</blockquote>
+
+<p>They don't have it. Then, ninety words later, it says <em>&ldquo;most people watching should not
+want it&rdquo;</em> — on a channel whose tagline is TRAIN LIKE THE ICONS. That is the incoherence
+you felt. It isn't a prose problem and no amount of rewriting sentences fixes it.</p>
+
+<p>Part Five — <em>What He Trains For Now</em>, which is the actual thesis of the film — is
+<strong>72 words. Twenty-nine seconds.</strong> The payoff gets 4.6% of the runtime.</p>
+
+<h2><span class="n">II.</span> Where the visual comes from — the real answer</h2>
+
+<p>You asked where the picture is. Here it is, and it explains &ldquo;images after images&rdquo;
+better than any note in the edit rules.</p>
+
+<p>V3 has <strong>80 PICTURE cues</strong>. Six of them are footage of Chris Hemsworth. The rest are
+instructions like <em>&ldquo;a consulting room. A page, face down on a desk. Nobody in frame&rdquo;</em>,
+<em>&ldquo;a search bar, mid-type&rdquo;</em>, <em>&ldquo;a calendar grid, productions
+overlapping&rdquo;</em>. Every one of those is a generated still, because nothing else can produce
+them. The script <em>writes the picture department into a corner</em> — it asks for images that
+exist nowhere, so the machine invents them, and inventions look invented.</p>
+
+<div class="mix">
+  <div class="ml">V3 — 80 picture cues, as written</div>
+  <div class="strip">
+    <div class="seg k-real" style="width:7.5%">7.5%</div>
+    <div class="seg k-arch" style="width:0%"></div>
+    <div class="seg k-doc" style="width:2.5%"></div>
+    <div class="seg k-card" style="width:6%">6%</div>
+    <div class="seg k-gen" style="width:84%">84% generated</div>
+  </div>
+</div>
+
+<div class="mix">
+  <div class="ml">V4 — target mix</div>
+  <div class="strip">
+    <div class="seg k-real" style="width:34%">34% real footage</div>
+    <div class="seg k-arch" style="width:16%">16% archive</div>
+    <div class="seg k-doc" style="width:14%">14% doc</div>
+    <div class="seg k-card" style="width:22%">22% card</div>
+    <div class="seg k-gen" style="width:14%">14%</div>
+  </div>
+</div>
+
+<div class="legend">
+  <span><i class="k-real"></i>Real footage — the subject on camera, a bite</span>
+  <span><i class="k-arch"></i>Archive — film, set, press; he is present</span>
+  <span><i class="k-doc"></i>Document — real screenshot, article, study</span>
+  <span><i class="k-card"></i>Card — brand graphic, exercise card, comparison</span>
+  <span><i class="k-gen"></i>Generated still — last resort</span>
+</div>
+
+<div class="verdict">
+  <div class="lab">The rule</div>
+  <p>A generated still is only allowed where <strong>no real artefact could exist.</strong> If the
+  thing is real — a tweet, an article, a study, a set photo, a piece of equipment, a person speaking
+  — the picture is the real thing, not a rendering of it. Generation is the floor under the pool,
+  not the pool.</p>
+</div>
+
+<p>This is also why a workout guide is <em>easier</em> to picture than a documentary. An exercise
+is a real, filmable, demonstrable object. Every one of the eight movements is a card plus a
+demonstration plus a reason. That is 22% of the film that builds itself, on brand, at zero
+generation cost — and it is the 22% the viewer actually came for.</p>
+
+<h2><span class="n">III.</span> The braid</h2>
+
+<p>V3 segregates. Story block, workout block, story block — so half the audience is always waiting
+out the half they didn't come for. The fix comes straight out of the writing principles you sent:
+<em>&ldquo;every element does more than one thing… single-purpose prose makes fiction go
+flat.&rdquo;</em></p>
+
+<p>So the two tracks run together. Each movement of the programme is attached to the story beat that
+explains why it exists. Nothing is delivered as a summary card at minute four and nothing waits
+eleven minutes for its payoff.</p>
+
+<div class="braid">
+  <div class="hdr"><div>Time</div><div class="s">Story thread</div><div class="w">Workout thread</div></div>
+
+  <div class="row">
+    <div class="t">0:00</div>
+    <div class="cell s"><b>The photograph everyone copied</b>
+      Direct address to a real artefact — the physique still. No biography, no date.
+      <span class="pic"><span class="pill k-arch">ARCH</span>the still, full frame, held</span></div>
+    <div class="cell w"><b>The promise, stated out loud</b>
+      &ldquo;Eight movements. I'll give you all eight. The last one is the one he kept doing
+      after he stopped caring how he looked.&rdquo;
+      <span class="pic"><span class="pill k-card">CARD</span>eight slots, seven blank</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">1:10</div>
+    <div class="cell s"><b>Not a transformation — a condition of employment</b>
+      Eleven years, nine films, eight weeks between wraps.
+      <span class="pic"><span class="pill k-doc">DOC</span>real release-date table</span></div>
+    <div class="cell w"><b>Movement 1 · why it goes first</b>
+      The posture problem the job created, and the pull that answers it.
+      <span class="pic"><span class="pill k-card">CARD</span><span class="pill k-real">REAL</span>card, then Zocchi demonstrating</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">2:35</div>
+    <div class="cell s"><b>Who actually wrote it</b>
+      Not a magazine reconstruction. A friend from the same stretch of coast.
+      <span class="pic"><span class="pill k-real">REAL</span>Zocchi, on camera</span></div>
+    <div class="cell w"><b>Movements 2–3 · the travelling kit</b>
+      Two dumbbells and whatever room the production put him in.
+      <span class="pic"><span class="pill k-arch">ARCH</span>real set/trailer footage</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">4:35</div>
+    <div class="cell s"><b>The lie you were sold</b>
+      Ten thousand copies of a five-day split nobody ever published.
+      <span class="pic"><span class="pill k-doc">DOC</span>the actual articles, tiled, real</span></div>
+    <div class="cell w"><b>Movements 4–6 · where the difficulty lives</b>
+      Not the movements. The gap that isn't there.
+      <span class="pic"><span class="pill k-card">CARD</span>the circuit, assembling</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">7:20</div>
+    <div class="cell s"><b>The cost — 4,500 kcal, sourced and hedged</b>
+      The least photogenic thing in the story and most of the actual work.
+      <span class="pic"><span class="pill k-doc">DOC</span>source_highlight on the interview</span></div>
+    <div class="cell w"><b>Movements 7–8 · the circuit closes</b>
+      Core work in the rest you were counting on.
+      <span class="pic"><span class="pill k-card">CARD</span>all eight slots filled</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">10:00</div>
+    <div class="cell s"><b>The consulting room</b>
+      A doctor stops a camera. APOE4, two copies. Paid here, not at 22:00.
+      <span class="pic"><span class="pill k-real">REAL</span>Limitless bite · <span class="pill k-doc">DOC</span>Association page</span></div>
+    <div class="cell empty">—<span class="pic">The programme is already delivered. The viewer
+      who came for it has what they came for and is now staying for the story.</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">12:20</div>
+    <div class="cell s"><b>Why it landed — grandfather, then Craig</b>
+      Two generations. Then the road trip, filmed while it was still true.
+      <span class="pic"><span class="pill k-real">REAL</span>road-trip bites · <span class="pill k-arch">ARCH</span>family photograph</span></div>
+    <div class="cell empty">—</div>
+  </div>
+
+  <div class="row">
+    <div class="t">16:10</div>
+    <div class="cell s"><b>He changed the objective</b>
+      In his industry that costs something — it makes you smaller on camera.
+      <span class="pic"><span class="pill k-real">REAL</span>him, on it, current</span></div>
+    <div class="cell w"><b>The second programme, in full</b>
+      The one he does now. Same treatment as the first: named, carded, demonstrated.
+      <span class="pic"><span class="pill k-card">CARD</span>then / now, side by side</span></div>
+  </div>
+
+  <div class="row">
+    <div class="t">19:15</div>
+    <div class="cell s"><b>The limit</b>
+      No proven prevention. Association, across populations. Not a promise to anyone.
+      <span class="pic"><span class="pill k-card">CARD</span>plain type, brand black, no imagery</span></div>
+    <div class="cell w"><b>What transfers</b>
+      Which of the sixteen movements are worth your Monday, and which were a job requirement.
+      <span class="pic"><span class="pill k-card">CARD</span>the honest short list</span></div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="lab">The change</div>
+  <p>The reveal moves from <strong>10:30 of an 11.6-minute film — 90% of the way in — to 10:00 of a
+  20-minute film, the exact midpoint.</strong> Not a smaller wait dressed up: the audience now
+  reaches it already paid, with the whole programme in hand, and the back half is the story they
+  stayed for rather than the thing they were made to wait through.</p>
+</div>
+
+<h2><span class="n">IV.</span> What a braided segment reads like</h2>
+
+<p>One movement, in the three-column form the pipeline consumes. Forty seconds that delivers an
+exercise, the reason it is in the programme, and a story beat about what the job demanded — the
+economy principle, applied.</p>
+
+<div class="script">
+  <div class="sh"><div>Block</div><div>Audio</div><div>Picture &amp; source</div></div>
+
+  <div class="sr">
+    <div class="tag narr">NARR</div>
+    <div class="txt">Every session opened the same way, before anything he'd be filmed doing.</div>
+    <div class="vis"><b><span class="pill k-arch">ARCH</span>Set footage, 5am call</b>Real. Trailer,
+      lights, nobody performing. Sourced, not generated.</div>
+  </div>
+
+  <div class="sr">
+    <div class="tag card">CARD</div>
+    <div class="txt"><em>01 — BENT-OVER ROW · 8 reps · 3 rounds</em></div>
+    <div class="vis"><b><span class="pill k-card">CARD</span>Exercise card</b>Archivo Black name,
+      Anton numbers, one red bar. Per BRAND.md motion spec.</div>
+  </div>
+
+  <div class="sr">
+    <div class="tag narr">NARR</div>
+    <div class="txt">Thor holds a hammer at arm's length for eleven years. The shot only works if the
+      back holds the shoulder where it belongs — so the physique everyone copied was built, first,
+      out of a posture problem.</div>
+    <div class="vis"><b><span class="pill k-arch">ARCH</span>The pose, then the row</b>Real film
+      frame cut against the movement. The rhyme is the argument — R1 satisfied at
+      <em>paragraph</em> level, not word level.</div>
+  </div>
+
+  <div class="sr">
+    <div class="tag bite">BITE</div>
+    <div class="txt"><em>Zocchi, on why it leads.</em> A complete thought, in and out clean — no
+      mid-sentence cut, no interviewer &ldquo;uh&rdquo;.</div>
+    <div class="vis"><b><span class="pill k-real">REAL</span>Zocchi to camera</b>Counts toward the
+      40% real-voice floor. Capped at ≤20% of total bite time from this source.</div>
+  </div>
+
+  <div class="sr">
+    <div class="tag narr">NARR</div>
+    <div class="txt">Which is the opposite of what the magazines guessed — and it changes what the
+      next seven are for.</div>
+    <div class="vis"><b><span class="pill k-card">CARD</span>Slot 1 fills, 7 blank</b>Turns and hands
+      forward. Does not restate the bite — R4.</div>
+  </div>
+</div>
+
+<p class="note">Note what the narration never does here: it does not summarise the bite after it
+plays, and it does not describe the picture. Each block poses, turns, or lands a judgement. That is
+R7 and it is checkable by machine before a cent of narration is bought.</p>
+
+<h2><span class="n">V.</span> What has to happen before this can be written</h2>
+
+<ol class="rank">
+  <li>
+    <div class="h"><span>Find the eight movements</span><span class="tag">blocking · ~1 hour</span></div>
+    <p>They are not in the dossier. Not one. Zocchi's published Centr programming, the Men's Health
+    footage already on disk, and the set interviews are the places to look. Until this exists there is
+    no guide, and V4 is V3 with better sentences.</p>
+  </li>
+  <li>
+    <div class="h"><span>Acquire 10–15 sources</span><span class="tag">blocking · sourcing team</span></div>
+    <p>Six bites cannot carry 26 minutes at a 40% real-voice floor. Of the five sources in
+    SOURCES.md, one is acquired. This is the stage SPEED_PLAN identified as missing entirely.</p>
+  </li>
+  <li>
+    <div class="h"><span>Re-outline to the braid</span><span class="tag">story-planning</span></div>
+    <p>Sixteen movements across two programmes, each pinned to the story beat that justifies it.
+    Twenty minutes: the first programme fully delivered by 7:20, the reveal at the 10:00 midpoint,
+    the second programme at 16:10.</p>
+  </li>
+  <li>
+    <div class="h"><span>Draft V4, then reader-sim it</span><span class="tag">reader-sim</span></div>
+    <p>Persona: <em>man, 25–40, searched &ldquo;Chris Hemsworth workout&rdquo;, wants to know what to
+    do Monday.</em> Your voice note was this test performed by hand. It runs before ElevenLabs, not
+    after.</p>
+  </li>
+  <li>
+    <div class="h"><span>llm-writing pass</span><span class="tag">language discipline</span></div>
+    <p>V3 fires <em>&ldquo;It is not X. It is Y.&rdquo;</em> thirteen times. Once it's rhetoric.
+    Thirteen times it's a machine with one move.</p>
+  </li>
+</ol>
+
+<div class="verdict" style="margin-top:2rem">
+  <div class="lab">Bottom line</div>
+  <p>The script isn't broken because the prose is weak. It's broken because <strong>nobody ever
+  found out what the workout was</strong>, and every other defect — the missing picture, the
+  narrator doing all the work, the withheld reveal in the wrong place — grew in the space that left.</p>
+</div>
+
+</div>

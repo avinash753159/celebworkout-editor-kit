@@ -1,0 +1,268 @@
+<title>What's missing — the Hemsworth flow, and the gaps in it</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#121212; --body:#2E2E2E; --rule:#D4D4D4; --hair:#EAEAEA;
+    --paper:#FFFFFF; --panel:#F4F4F4; --mute:#6B6B6B; --good:#1F6F4A; --bad:#A32A17;
+    --done:#1F6F4A; --missing:#A32A17; --partial:#B8860B;
+    --serif:"Milo Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    color-scheme: light;
+  }
+  html,body{background:#fff;}
+  body{background:#fff;color:var(--body);font-family:var(--serif);
+       font-size:16.5px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:56rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{padding-top:0;margin-top:2.4rem;}
+  .kicker{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);
+          font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+          padding:.22rem .6rem;margin-bottom:.9rem;}
+  .kicker span{color:#F3C9C2;}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.2rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.2rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:2.9rem 0 .55rem;padding-top:.9rem;border-top:3px solid var(--red);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:.98rem;font-weight:700;color:var(--ink);margin:1.9rem 0 .4rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  blockquote{margin:1rem 0;padding-left:1rem;border-left:3px solid var(--rule);
+     font-style:italic;color:var(--mute);}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .rule{border-left:3px solid var(--ink);background:var(--panel);padding:.6rem .9rem;
+     margin:.6rem 0 1rem;font-size:.92rem;line-height:1.5;}
+  .rule b{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;
+     text-transform:uppercase;color:var(--mute);margin-bottom:.2rem;}
+
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.83rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.44rem .7rem .44rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 9%,transparent);font-weight:600;color:var(--ink);}
+
+  .stt{font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.08em;
+     text-transform:uppercase;padding:.12rem .45rem;white-space:nowrap;color:#fff;}
+  .s-done{background:var(--done);} .s-missing{background:var(--missing);} .s-partial{background:var(--partial);}
+
+  /* pipeline / worklist */
+  .pipe{margin:1.6rem 0 1rem;font-family:var(--sans);}
+  .st{display:grid;grid-template-columns:2.1rem 1fr;gap:1rem;padding:0 0 1.5rem;position:relative;}
+  .st:not(:last-child)::before{content:"";position:absolute;left:1.02rem;top:2.3rem;bottom:0;
+     width:2px;background:var(--rule);}
+  .st .num{width:2.1rem;height:2.1rem;border-radius:50%;display:flex;align-items:center;
+     justify-content:center;font-weight:700;font-size:.82rem;color:#fff;background:var(--done);z-index:1;}
+  .st.missing .num{background:var(--missing);}
+  .st.partial .num{background:var(--partial);}
+  .st .bd{padding-top:.1rem;}
+  .st h4{margin:0 0 .2rem;font-size:1rem;font-weight:700;color:var(--ink);
+     display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap;}
+  .st .what{font-size:.86rem;line-height:1.5;margin:.3rem 0 .5rem;color:var(--body);}
+  .st .gate{font-size:.78rem;background:var(--panel);border-left:3px solid var(--ink);
+     padding:.45rem .7rem;line-height:1.45;}
+  .st .gate b{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);
+     display:block;margin-bottom:.1rem;}
+  .st .runs{font-size:.74rem;color:var(--mute);margin-top:.4rem;}
+  .st .runs code{background:none;padding:0;color:var(--red);}
+
+  .bars{margin:1.3rem 0 1.6rem;font-family:var(--sans);font-size:.8rem;}
+  .bar{display:grid;grid-template-columns:9.5rem 1fr 6rem;gap:.7rem;align-items:center;margin-bottom:.42rem;}
+  .bar .lab{color:var(--body);text-align:right;}
+  .bar .track{background:var(--panel);height:1.15rem;}
+  .bar .fill{background:var(--red);height:100%;}
+  .bar .fill.g{background:var(--good);}
+  .bar .val{color:var(--mute);}
+
+  @media(max-width:640px){
+    .st{grid-template-columns:1.7rem 1fr;gap:.7rem;} .st .num{width:1.7rem;height:1.7rem;font-size:.72rem;}
+    .st:not(:last-child)::before{left:.82rem;}
+    .bar{grid-template-columns:1fr;gap:.15rem;} .bar .lab{text-align:left;}
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Status <span>&middot; Hemsworth &middot; v2, same session</span></div>
+  <h1>What's missing</h1>
+  <p class="stand">Six items were open this morning. Four are done and verified. One is half-done and
+  paused on a real budget decision. One surfaced two misclassified sources nobody knew about. This is
+  the current state, not the plan that preceded it.</p>
+  <div class="byline"><span>4 August 2026</span><span>v2 &mdash; supersedes the first pass this
+  session</span><span>Every status below is a real file check or a real run, not carried forward
+  unverified</span></div>
+</header>
+
+<h2><span class="n">I.</span> Scoreboard</h2>
+
+<table class="tw"><tr><th class="n">#</th><th>Item</th><th>Status</th><th>Evidence</th></tr>
+<tr><td class="n">1</td><td>Fix <code>HOUSE</code> frame spec to full bleed</td><td><span class="stt s-done">DONE</span></td><td>Rewrote <code>assemble_film.py</code>'s <code>look()</code> and <code>card_png()</code>, not just the doc text. Regenerated the shotlist doc clean.</td></tr>
+<tr><td class="n">2</td><td>Mine caption files toward the voice gate</td><td><span class="stt s-done">DONE (research)</span></td><td>6 candidate bites found, plus 2 sources discovered misclassified &mdash; see &sect;IV. Not yet cut into the film.</td></tr>
+<tr class="hi"><td class="n">3</td><td>Rebuild + generate the 4-row Veo batch</td><td><span class="stt s-partial">PAUSED</span></td><td>2 of 4 clips real and on disk. 2 remaining blocked on a cost decision &mdash; see &sect;III.</td></tr>
+<tr><td class="n">4</td><td>Trace the wrong-footage bug</td><td><span class="stt s-done">DONE</span></td><td>Root cause found and fixed in <code>assemble_film.py</code>.</td></tr>
+<tr><td class="n">5</td><td>Build the SFX layer</td><td><span class="stt s-done">DONE</span></td><td><code>pipeline/sfx.py</code> written; not yet run &mdash; needs SFX manually sourced from Pixabay first (no API exists for that, matched the existing music-library pattern instead).</td></tr>
+<tr><td class="n">6</td><td>Build <code>inventory.py</code></td><td><span class="stt s-done">DONE + RUN</span></td><td>Ran for real against all 12 Hemsworth sources in ~2 minutes. <code>manifest/inventory_hemsworth.json</code>.</td></tr>
+<tr><td class="n">7</td><td>Build the <code>gates/</code> suite</td><td><span class="stt s-done">DONE + VALIDATED</span></td><td>13 of 29 gates pass against the known-bad V7 render (correctly convicted). Fixed a real bug in its own frame gate along the way.</td></tr>
+<tr><td class="n">8</td><td>This page</td><td><span class="stt s-done">DONE</span></td><td>You're reading it.</td></tr>
+</table>
+
+<h2><span class="n">II.</span> What actually got fixed</h2>
+
+<div class="rule"><b>1 &middot; Full bleed, for real, not just in the doc</b>
+<code>pipeline/assemble_film.py</code>'s <code>look()</code> filter chain and <code>card_png()</code>
+both drew the old 36px inset + 5px stroke frame on every single shot. Both rewritten: no inset, no
+pad, no <code>drawbox</code>. The dead <code>INSET</code>/<code>STROKE</code> constants were removed
+rather than left to rot. The doc-generating <code>HOUSE</code> dict in
+<code>shotlist_hemsworth.py</code> was updated to match and the doc regenerated clean.</div>
+
+<div class="rule"><b>2 &middot; The wrong-footage bug, found and fixed</b>
+Root cause: <code>assemble_film.py</code>'s own docstring says "generation is never used here" &mdash;
+there was no branch for GEN-S/GEN-V rows at all. They fell into the same generic footage-pool fallback
+as everything else, and that pool sorts hero windows first &mdash; one of which is <code>CENTR.mp4</code>
+(workout footage). Row 2.01 ("a doctor sat down&hellip;holding a piece of paper") is early in the shot
+list, so it got first pick. Fixed by excluding GEN-S/GEN-V from that fallback; they now land on the
+existing text-card path instead of stealing unrelated footage. <strong>Not a full fix</strong> &mdash;
+until the assembler is taught to look up a real generated clip per row (see &sect;III), these rows show
+a text card, not the intended picture. Honest, not wrong, which is the improvement.</div>
+
+<div class="rule"><b>3 &middot; SFX layer built, sourcing pattern corrected</b>
+The original directive assumed a Pixabay SFX API mirroring the Pexels b-roll pattern. <strong>No such
+API exists</strong> &mdash; Pixabay documents Images and Videos endpoints only. Rather than invent an
+integration, <code>pipeline/sfx.py</code> matches how <code>library/music/</code> actually works today:
+manually downloaded, hand-catalogued in a JSON ledger. Enforces R11 (accent cap) and R12 (logged
+licence/attribution) in code, not just as a written rule.</div>
+
+<div class="rule"><b>4 &middot; Inventory and gates, built and actually run</b>
+<code>inventory.py</code> transcribed the 2 genuinely uncaptioned sources (a third, CENTRPOWER, turned
+out silent &mdash; confirms it's a trailer stinger, not a session) and indexed all 12. The
+<code>gates/</code> suite wraps <code>qc_render.py</code> and <code>shotlist_hemsworth.py</code>'s
+existing checks rather than reimplementing them, and in doing so <strong>fixed a bug that would have
+broken forever</strong>: its own frame gate still tested for the old inset signature, which the full-bleed
+fix would have failed on every future correct render. Validated against <code>HEMSWORTH_V7_review.mp4</code>:
+13 of 29 gates pass, correctly convicted on the same known defects (12:58 runtime, 2.6s median hold,
+18.2% real voice, 3 crowd shots).</div>
+
+<h2><span class="n">III.</span> The Veo batch &mdash; why it's paused</h2>
+
+<p>2.01 (consulting room) and 2.03 (boom mic) generated cleanly on the lite model &mdash; no reference
+image needed, $0.40 each, exactly as estimated. The problem is 2.04 and 12.03, which were designed to
+carry a shared reference image from 2.01 for pixel-consistency (the room, the report). The lite model
+rejects <code>reference_images</code> outright: <em>"referenceImages isn't supported by this model."</em></p>
+
+<div class="verdict">
+  <div class="lab">The mistake</div>
+  <p>Finding the correct payload shape for the non-lite model took two live API probes. The first was
+  rejected client-side (free). The second was accepted &mdash; and only then did it become clear the
+  non-lite model bills at <strong>$0.40/second, not $0.05/s</strong> (that rate was lite-only). The
+  accepted probe used a throwaway test prompt, not a real row, and cost <strong>$3.20</strong> for
+  nothing usable. That should have been checked before testing live, not after.</p>
+</div>
+
+<div class="tw">
+<table><caption>Actual spend so far</caption>
+<tr><th>Item</th><th class="n">Cost</th></tr>
+<tr><td>Reference still (row 2.01, shared)</td><td class="n">$0.04</td></tr>
+<tr><td>Row 2.01 video (lite, no reference needed)</td><td class="n">$0.40</td></tr>
+<tr><td>Row 2.03 video (lite, no reference needed)</td><td class="n">$0.40</td></tr>
+<tr class="hi"><td>Accidental test-probe generation (non-lite, throwaway prompt)</td><td class="n">$3.20</td></tr>
+<tr class="hi"><td><b>Total spent</b></td><td class="n"><b>$4.04</b></td></tr>
+</table>
+</div>
+
+<p>Finishing both remaining rows (2.04, 12.03) with the reference image, at the now-known correct rate,
+would cost $3.20 each &mdash; $6.40 more, landing the project at <strong>$10.44</strong>, over the
+project's own stated $10 ceiling. <strong>Paused here on the owner's explicit instruction, awaiting a
+decision</strong> between: both rows via the cheap lite model with no reference (prose-consistency
+only, $0.80 more); a mixed approach (reference for whichever row needs it more, roughly $3.60 more);
+both via the expensive model and accept going slightly over the ceiling; or leave these two rows unbuilt
+for now. No further spend happens until that call is made.</p>
+
+<p class="rule"><b>Separately, not blocking, but real</b> Even once all 4 clips exist,
+<code>assemble_film.py</code> still doesn't know how to pick one up as a row's asset &mdash; the wrong-footage
+fix (&sect;II.2) only stopped it from grabbing the <em>wrong</em> footage; it still falls back to a text
+card rather than a generated clip. That wiring hasn't been built.</p>
+
+<h2><span class="n">IV.</span> What the caption mining actually found</h2>
+
+<p>This was meant to be a targeted spot-check of 2 of 7 sources, not an exhaustive pass &mdash; and it
+still turned up something nobody had flagged:</p>
+
+<div class="verdict">
+  <div class="lab">Misclassified sources</div>
+  <p><strong>TODAYAU.mp4 and BBCNORTON.mp4 are both actually about the father/Alzheimer's road
+  trip</strong>, not the generic "physique era" / "press-junket register" the shot list currently
+  labels them. BBCNORTON in particular is 4:16 of Hemsworth talking almost uninterrupted about making
+  <em>A Road Trip to Remember</em> &mdash; high-value first-person material sitting under the wrong
+  label this whole time.</p>
+</div>
+
+<div class="bars">
+  <div class="bar"><div class="lab">Current</div><div class="track"><div class="fill" style="width:21%"></div></div><div class="val">8.5%</div></div>
+  <div class="bar"><div class="lab">This batch alone</div><div class="track"><div class="fill g" style="width:52%"></div></div><div class="val">~21% (est.)</div></div>
+  <div class="bar"><div class="lab">Gate</div><div class="track"><div class="fill" style="width:100%;opacity:.35"></div></div><div class="val">40%</div></div>
+</div>
+<p class="rule">6 candidate bites (~150s) from a partial pass of SHETTY and ATTIA alone would roughly
+2.5x the current real-voice share &mdash; still short of 40%, but from mining a fraction of what's on
+disk. SHETTY (113min) and ATTIA (76min) together still hold most of their material unmined; a full pass
+plus properly isolating Hemsworth's lines from TODAYAU (mixed speakers) would likely close most of the
+remaining gap.</p>
+
+<h3>The 6 candidates</h3>
+<table class="tw"><tr><th>Source / time</th><th>Len</th><th>What it does</th></tr>
+<tr><td><code>SHETTY 49:16&ndash;49:44</code></td><td class="n">28s</td><td>The APOE4 reveal, his own words &mdash; upgrades 12.06/12.07 from web-sourced DOC/CARD to his own voice</td></tr>
+<tr><td><code>SHETTY 50:15&ndash;50:33</code></td><td class="n">18s</td><td>His mother urging his father get tested &mdash; new material, complements Craig's ROADTRIP bites</td></tr>
+<tr><td><code>SHETTY 51:47&ndash;52:15</code></td><td class="n">28s</td><td>His ethical hesitation about making the documentary &mdash; fills a real gap in beats 13/14</td></tr>
+<tr class="hi"><td><code>ATTIA 38:10&ndash;38:29</code></td><td class="n">19s</td><td><strong>Exact fill for the existing row 15.15 placeholder</strong>, which literally asks for this quote</td></tr>
+<tr><td><code>ATTIA 37:52&ndash;38:01</code></td><td class="n">9s</td><td>"My grandfather has Alzheimer's" &mdash; upgrades row 13.05 from REPORTED toward CONFIRMED</td></tr>
+<tr class="hi"><td><code>BBCNORTON 03:36&ndash;04:16</code></td><td class="n">40s</td><td>The strongest single bite found &mdash; "I asked him in the dark&hellip;he said, I just don't want to be a burden." Candidate anchor for beat 13, possibly stronger than the current 13.10</td></tr>
+</table>
+<p class="rule"><b>Not done yet</b> These are text-verified as his own words by context, not
+identity-verified against <code>verified_windows_hemsworth.json</code> per R9 &mdash; that pass has to
+happen before any of these go on screen. None have been cut into <code>shotlist_leads.py</code> yet.</p>
+
+<h2><span class="n">V.</span> New items found along the way</h2>
+
+<div class="rule"><b>Narration-density gates disagree, three ways</b> <code>qc_render.py</code> and
+<code>shotlist_hemsworth.py</code> both check 90&ndash;150 wpm; <code>THE_STANDARD.html</code> &sect;II
+states 140&ndash;155 wpm. Pre-existing, not introduced this session, not yet resolved.</div>
+
+<div class="rule"><b>V7 passed the new full-bleed gate</b> 0 of 24 sampled frames from
+<code>HEMSWORTH_V7_review.mp4</code> showed the old inset signature &mdash; meaning V7 likely rendered
+through a different path than <code>assemble_film.py</code> entirely (this project has several parallel
+render scripts). Not investigated further; means the full-bleed gate's positive case (does a
+<em>correct</em> render actually pass it) is still unverified.</div>
+
+<h2><span class="n">VI.</span> The plan from here</h2>
+
+<table class="tw"><tr><th class="n">#</th><th>Next</th><th>Depends on</th></tr>
+<tr class="hi"><td class="n">1</td><td><strong>Owner decides how to finish the Veo batch</strong> (&sect;III)</td><td>Nothing &mdash; blocking everything else in Picture</td></tr>
+<tr><td class="n">2</td><td>Wire <code>assemble_film.py</code> to consume a real generated clip per row, once the batch is finished</td><td>#1</td></tr>
+<tr><td class="n">3</td><td>Identity-verify the 6 candidate bites (R9) and cut them into <code>shotlist_leads.py</code></td><td>Independent &mdash; can start now</td></tr>
+<tr><td class="n">4</td><td>Fix the TODAYAU/BBCNORTON misclassification in the shot list's own source notes</td><td>Independent &mdash; can start now</td></tr>
+<tr><td class="n">5</td><td>Full mining pass of SHETTY + ATTIA (still mostly unmined) to actually reach the 40% gate</td><td>#3 as a template</td></tr>
+<tr><td class="n">6</td><td>Source real SFX from Pixabay and catalogue them; run <code>pipeline/sfx.py</code> for real</td><td>Nothing &mdash; can happen anytime</td></tr>
+<tr><td class="n">7</td><td>Resolve the 90&ndash;150 vs 140&ndash;155 wpm gate disagreement</td><td>Nothing &mdash; small, standalone</td></tr>
+</table>
+
+</div>

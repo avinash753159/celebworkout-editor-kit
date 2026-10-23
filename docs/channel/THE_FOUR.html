@@ -1,0 +1,407 @@
+<title>The Four — agent roles, responsibilities and the protocol between them</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F;
+    --a1:#3C5A78; --a2:#B22B1A; --a3:#7C3A2A; --a4:#4A4438;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --a1:#7FA6C9;--a2:#E4573F;--a3:#C87D63;--a4:#A69C87;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --a1:#7FA6C9;--a2:#E4573F;--a3:#C87D63;--a4:#A69C87;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;
+          --a1:#3C5A78;--a2:#B22B1A;--a3:#7C3A2A;--a4:#4A4438;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:55rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.28rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:1px solid var(--rule);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+
+  /* agent card */
+  .agent{margin:2.2rem 0;border:1px solid var(--rule);border-top:5px solid var(--ac);}
+  .agent.a1{--ac:var(--a1)} .agent.a2{--ac:var(--a2)}
+  .agent.a3{--ac:var(--a3)} .agent.a4{--ac:var(--a4)}
+  .agent .hd{padding:1rem 1.2rem .8rem;background:color-mix(in srgb,var(--ac) 8%,transparent);}
+  .agent .no{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.16em;
+     text-transform:uppercase;color:var(--ac);}
+  .agent .nm{font-family:var(--sans);font-size:1.55rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;line-height:1.1;margin:.15rem 0 .1rem;}
+  .agent .rl{font-family:var(--sans);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+     color:var(--mute);font-weight:700;}
+  .agent .md{font-size:1.06rem;font-style:italic;color:var(--ink);margin:.7rem 0 0;
+     padding-left:.9rem;border-left:3px solid var(--ac);}
+  .agent .bd{padding:1.1rem 1.2rem 1.3rem;}
+  .agent h4{font-family:var(--sans);font-size:.66rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--mute);margin:1.2rem 0 .3rem;}
+  .agent h4:first-child{margin-top:0;}
+  .agent p,.agent li{font-size:.92rem;line-height:1.55;}
+  .agent ul{margin:.2rem 0 0;padding-left:1.1rem;}
+  .agent li{margin-bottom:.25rem;}
+  .io{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:.2rem;}
+  .io .box{background:var(--panel);padding:.6rem .8rem;font-family:var(--sans);font-size:.82rem;line-height:1.5;}
+  .io .box b{display:block;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;
+     color:var(--mute);margin-bottom:.25rem;}
+  .refuse{background:color-mix(in srgb,var(--bad) 10%,transparent);
+     border-left:3px solid var(--bad);padding:.6rem .8rem;font-size:.88rem;margin-top:.3rem;}
+  .sig{background:color-mix(in srgb,var(--good) 11%,transparent);
+     border-left:3px solid var(--good);padding:.6rem .8rem;font-size:.88rem;margin-top:.3rem;}
+  .prev{font-family:var(--sans);font-size:.82rem;color:var(--mute);margin-top:.3rem;line-height:1.5;}
+  .prev em{color:var(--ink);font-style:italic;}
+  .gate{border:1px dashed var(--ac);padding:.6rem .8rem;font-family:var(--sans);font-size:.82rem;
+     line-height:1.5;margin-top:.3rem;}
+  .gate b{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ac);display:block;margin-bottom:.2rem;}
+
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.83rem;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.5rem .7rem .5rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 10%,transparent);color:var(--ink);}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .flow{font-family:var(--mono);font-size:.8rem;line-height:1.85;background:var(--panel);
+     padding:1.1rem 1.2rem;overflow-x:auto;white-space:pre;margin:1.2rem 0 1.4rem;color:var(--body);}
+  .flow b{color:var(--red);}
+
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.4rem 0 1.6rem;}
+
+  @media (max-width:640px){ .io{grid-template-columns:1fr;} }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">System design <span>· four agents · Celeb Workout</span></div>
+  <h1>The Four</h1>
+  <p class="stand">Gavia's four production stages, given identities, mandates, and the right to refuse
+  each other's work. Every rule below exists because a specific rejected cut proved it was needed.</p>
+  <div class="byline"><span>3 August 2026</span><span>Input: a celebrity name. Output: a finished film.</span></div>
+</header>
+
+<h2><span class="n">I.</span> The principle that makes it work</h2>
+
+<p class="lede">Four agents is easy. Four agents that <em>catch each other</em> is the design. The rule
+is simple and it comes from how real production works:</p>
+
+<div class="verdict">
+  <div class="lab">The rule</div>
+  <p><strong>Each agent is the previous agent's editor.</strong> Nobody signs off on their own work.
+  The Showrunner can reject the dossier. The Hunter can reject a beat. The Cutter can reject a bite.
+  A refusal travels back up the chain, not sideways into a workaround.</p>
+</div>
+
+<p>That single rule is the fix for the worst failure in the project so far: SCRIPT_V3 demanded shots
+that exist nowhere on earth — <em>"a consulting room. A page, face down on a desk. Nobody in
+frame"</em> — and nothing in the pipeline was allowed to say <em>no such footage exists.</em> So the
+picture layer invented it, 84% of the film became generated stills, and you called it "images after
+images." The Hunter's right of refusal is that failure, designed out.</p>
+
+<!-- ============ 1 ============ -->
+<div class="agent a1">
+  <div class="hd">
+    <div class="no">Agent 01</div>
+    <div class="nm">THE ARCHIVIST</div>
+    <div class="rl">Story research</div>
+    <p class="md">Know more about this person than anyone who will ever watch the film.</p>
+  </div>
+  <div class="bd">
+
+    <h4>Owns</h4>
+    <ul>
+      <li>Every fact, and the source under it</li>
+      <li>The life timeline, dated</li>
+      <li><strong>The training programme — named, exercise by exercise</strong></li>
+      <li>The candidate source list, transcript-scored</li>
+    </ul>
+
+    <h4>Does not own</h4>
+    <p>What the story <em>is</em>. What's interesting. Anything about structure. It reports; it does
+    not select.</p>
+
+    <div class="io">
+      <div class="box"><b>In</b>A name. Nothing else.<br><code>"Chris Hemsworth"</code></div>
+      <div class="box"><b>Out</b><code>dossier.json</code> — dated events with citations and a
+      confidence tier · the programme · the trainer · owned platforms · ranked candidate sources</div>
+    </div>
+
+    <h4>Signature move</h4>
+    <div class="sig"><strong>Find the trainer, then research the trainer.</strong> Every famous
+    physique has a named professional behind it, and the trainer talks far more freely than the
+    celebrity does. This is the move that cracked Hemsworth: Zocchi's name → Centr → thirty named
+    movements, after three script versions had found zero.</div>
+
+    <h4>Must refuse</h4>
+    <div class="refuse">Any claim without a source. Every fact carries a tier —
+    <strong>CONFIRMED</strong> (primary document or on-camera), <strong>REPORTED</strong> (press,
+    single source), <strong>RUMOUR</strong> (never usable on screen). A magazine reconstruction is
+    never CONFIRMED.</div>
+
+    <h4>Gate before handoff</h4>
+    <div class="gate"><b>Blocks the Showrunner until</b>≥40 sourced events · the training programme
+    located and named movement by movement · ≥10 candidate sources with captions already pulled ·
+    every claim tiered</div>
+
+    <p class="prev"><strong>Prevents:</strong> <em>a workout film with no workout in it.</em> The
+    Archivist cannot hand off until the programme is found, so V3's central hole is structurally
+    impossible.</p>
+  </div>
+</div>
+
+<!-- ============ 2 ============ -->
+<div class="agent a2">
+  <div class="hd">
+    <div class="no">Agent 02</div>
+    <div class="nm">THE SHOWRUNNER</div>
+    <div class="rl">Beat sheet</div>
+    <p class="md">Decide what the film is about, and what happens in what order.</p>
+  </div>
+  <div class="bd">
+
+    <h4>Owns</h4>
+    <ul>
+      <li>The thesis — one sentence, the whole film</li>
+      <li>The beat sheet: 12–16 beats, scene by scene</li>
+      <li>The cold open, the title, the runtime shape</li>
+      <li><strong>The brief handed to each Hunter</strong></li>
+    </ul>
+
+    <h4>Does not own</h4>
+    <p>Facts (the Archivist's). Prose (the Cutter's). What footage exists (the Hunter's). It works in
+    <strong>two hours of thinking, not sixty blocks of writing</strong> — Gavia's beat sheet takes two
+    hours because it is a skeleton, not a script.</p>
+
+    <div class="io">
+      <div class="box"><b>In</b><code>dossier.json</code></div>
+      <div class="box"><b>Out</b><code>beats.json</code> — per beat: what it <em>argues</em>, the
+      picture brief, target duration, which facts it spends</div>
+    </div>
+
+    <h4>Rules baked in</h4>
+    <ul>
+      <li>Cold open is the fixed five-part formula — real artifact addressed directly, withheld
+      promise <strong>spoken aloud by 0:20</strong>, archival voice cascade, central question stated</li>
+      <li>Title grammar: <code>The [NOUN] That [VERB]ED [SUBJECT]</code> — hidden cause, known subject</li>
+      <li><strong>The programme is delivered progressively, never as one summary card.</strong> Each
+      movement attaches to the story beat that justifies it</li>
+      <li>A beat states what it <em>argues</em>, never what it says</li>
+    </ul>
+
+    <h4>Must refuse</h4>
+    <div class="refuse">A beat that exists only because it is interesting. Every beat advances the
+    thesis or it is cut. And it refuses <em>the Archivist</em> — sending the dossier back if the facts
+    cannot carry a thesis, or the programme is missing.</div>
+
+    <h4>Gate before handoff</h4>
+    <div class="gate"><b>Blocks the Hunter until</b>thesis in one sentence · 12–16 beats, each with a
+    picture brief a stranger could act on · cold-open formula present · every movement of the
+    programme assigned to a beat · runtime projection 20 min ±2</div>
+
+    <p class="prev"><strong>Prevents:</strong> <em>"the story doesn't make sense."</em> Structure is
+    decided once, on paper, for pennies — instead of three times, after rendering.</p>
+  </div>
+</div>
+
+<!-- ============ 3 ============ -->
+<div class="agent a3">
+  <div class="hd">
+    <div class="no">Agent 03 · fans out 12×, one per beat</div>
+    <div class="nm">THE HUNTER</div>
+    <div class="rl">Video research</div>
+    <p class="md">Find what actually exists. Never invent, never approximate, never accept a substitute quietly.</p>
+  </div>
+  <div class="bd">
+
+    <h4>Owns</h4>
+    <ul>
+      <li>The bite bank — every usable clip, with source and timecode</li>
+      <li>Complete-thought boundaries, cut on word-level timings</li>
+      <li>Identity verification — is the subject actually in this frame</li>
+      <li>Per-source caps and clearance</li>
+    </ul>
+
+    <h4>Does not own</h4>
+    <p>What the beats say. It does not rewrite the film — it reports what the world contains.</p>
+
+    <div class="io">
+      <div class="box"><b>In</b>One beat brief. Twelve Hunters run at once, one per beat.</div>
+      <div class="box"><b>Out</b><code>bitebank.json</code> — per beat: real footage with source,
+      timecode, thought boundaries, identity verdict · <strong>or a refusal</strong></div>
+    </div>
+
+    <h4>Signature move</h4>
+    <div class="sig"><strong>Transcript-first. Never download a video to find out what is in it.</strong>
+    Captions pull in ~200 ms with no download, so the Hunter searches two hundred videos and downloads
+    the eight that matter. The last build downloaded 193 MB to discover a workout the captions
+    revealed in two seconds.</div>
+
+    <h4>The power of refusal — the most important line in this document</h4>
+    <div class="refuse"><strong>The Hunter can return <code>NO FOOTAGE EXISTS</code></strong> and
+    propose what does. That refusal goes back to the Showrunner and the beat is rewritten
+    <em>before</em> anything is generated. This is the mechanism that stops a script demanding an
+    empty consulting room and getting a hallucination instead.</div>
+
+    <h4>Must also refuse</h4>
+    <div class="refuse">A bite that starts or ends mid-thought · interviewer filler ("uh", "right") ·
+    any source exceeding 20% of total bite time · any frame containing someone who is not the subject ·
+    a stand-in performing what the narration attributes to the subject</div>
+
+    <h4>Gate before handoff</h4>
+    <div class="gate"><b>Blocks the Cutter until</b>≥10 distinct sources · ≥8 min of usable bite time ·
+    no source over 20% · every bite a complete thought · every bite identity-verified</div>
+
+    <p class="prev"><strong>Prevents:</strong> <em>"images after images"</em> · <em>a Hemsworth film
+    with no Hemsworth in it</em> · <em>"so many clips taken from the same one."</em></p>
+  </div>
+</div>
+
+<!-- ============ 4 ============ -->
+<div class="agent a4">
+  <div class="hd">
+    <div class="no">Agent 04 · single, never parallel</div>
+    <div class="nm">THE CUTTER</div>
+    <div class="rl">Edit</div>
+    <p class="md">Make the film. Every word written to footage that already exists.</p>
+  </div>
+  <div class="bd">
+
+    <h4>Owns</h4>
+    <ul>
+      <li>The script — written <em>after</em> the footage is known, never before</li>
+      <li>Narration, the radio edit, music placement</li>
+      <li>Picture placement, shot length, effects</li>
+      <li>The render</li>
+    </ul>
+
+    <h4>Does not own</h4>
+    <p>Facts, structure, or what exists. If the Cutter wants something that isn't in the bank, it
+    asks the Hunter — it does not invent it. <strong>Runs alone. One intelligence holds the whole
+    cut</strong> — this is the one stage Gavia refuses to delegate even to a full-time assistant
+    editor, and the one stage that must not be parallelised.</p>
+
+    <div class="io">
+      <div class="box"><b>In</b><code>beats.json</code> + <code>bitebank.json</code></div>
+      <div class="box"><b>Out</b>The film. Plus the radio edit, gated before a cent of narration is
+      bought.</div>
+    </div>
+
+    <h4>Rules baked in</h4>
+    <ul>
+      <li>Narration <strong>sets up, turns, or lands a judgement</strong> — it never restates the bite
+      beside it, before or after</li>
+      <li>Never summarise a bite after it plays. Cut away instead</li>
+      <li>Median hold 8–12 s, not 4–6</li>
+      <li>Picture serves the <strong>paragraph's argument</strong>, never a word in the sentence</li>
+      <li>A generated still only where no real artifact could exist</li>
+    </ul>
+
+    <h4>Must refuse</h4>
+    <div class="refuse">Its own narration, when it echoes an adjacent bite. And it refuses <em>the
+    Hunter</em> — sending back bites that will not cut, or a bank too thin to reach 40% real voice.</div>
+
+    <h4>Gate before release</h4>
+    <div class="gate"><b>Ships only when</b>real voice ≥40% · zero echo · median hold 8–12 s · every
+    movement named on screen · generated share ≤15% · runtime 20 min ±1 · brand sampled ·
+    <strong>and the three critic lenses pass twice running</strong></div>
+
+    <p class="prev"><strong>Prevents:</strong> <em>"the narrator says it, then he says the exact same
+    thing"</em> · <em>"he hasn't finished his sentence"</em> · <em>"it was just cut and paste."</em></p>
+  </div>
+</div>
+
+<h2><span class="n">II.</span> How they talk</h2>
+
+<div class="flow">  ARCHIVIST ──── dossier ─────────▶ SHOWRUNNER
+            ◀─── "no programme found,
+                  dig again" ────────
+
+ SHOWRUNNER ──── beat brief ×12 ────▶ HUNTER
+            ◀─── <b>"NO FOOTAGE EXISTS.</b>
+                  <b>here is what does."</b> ──   ◀── the one that matters
+
+     HUNTER ──── bite bank ─────────▶ CUTTER
+            ◀─── "these won't cut,
+                  find alternates" ──
+
+     CUTTER ──── the film ──────────▶ THREE CRITICS
+            ◀─── verdict, routed to
+                  whoever caused it ──</div>
+
+<div class="tw">
+<table>
+  <caption>Who judges whom</caption>
+  <tr><th>Agent</th><th>Is judged by</th><th>On</th></tr>
+  <tr><td>Archivist</td><td>Showrunner</td><td>Can these facts carry a thesis? Is the programme here?</td></tr>
+  <tr class="hi"><td>Showrunner</td><td><strong>Hunter</strong></td><td><strong>Can this beat actually be shot?</strong></td></tr>
+  <tr><td>Hunter</td><td>Cutter</td><td>Do these bites cut? Is there enough real voice?</td></tr>
+  <tr><td>Cutter</td><td>Three critics</td><td>Is it a film someone would watch?</td></tr>
+</table>
+</div>
+
+<h2><span class="n">III.</span> The three critics</h2>
+
+<p>Not one reviewer saying yes. Three lenses that disagree, majority convicts, and a verdict routes
+back to the agent that caused the defect — not to you.</p>
+
+<div class="tw">
+<table>
+  <caption>The return path</caption>
+  <tr><th>Lens</th><th>Asks</th><th>Routes failures to</th></tr>
+  <tr><td><strong>The Viewer</strong><br><span style="color:var(--mute)">searched "&lt;celeb&gt; workout"</span></td>
+      <td>Do I know what to do on Monday? Was I bored? Would I rather just watch the original interview?</td><td>Showrunner</td></tr>
+  <tr><td><strong>The Fact-Checker</strong></td>
+      <td>Is every claim sourced and tiered? Is anything invented, conflated, or over-promised?</td><td>Archivist</td></tr>
+  <tr><td><strong>The Editor</strong></td>
+      <td>Echo? Mid-sentence cuts? One source over-mined? Fragmented? Off-brand?</td><td>Cutter or Hunter</td></tr>
+</table>
+</div>
+
+<div class="verdict">
+  <div class="lab">How they earn trust</div>
+  <p>The critics are not graded on whether they run. They are graded on whether they <strong>convict
+  the two films you already rejected</strong> — <code>MRBEAST_V6</code> and
+  <code>THE_BODY_HE_STOPPED_BUILDING</code> — for the reasons you gave in the voice note. A critic
+  panel that passes either one is broken and does not ship.</p>
+</div>
+
+<p class="note">The Fact-Checker's first catch is already known: SCRIPT_V3 presents the Men in Black
+dumbbell circuit as the Thor programme. Zocchi says on camera that the look was <em>"more athletic,
+less bulky than Thor"</em> and calls it <em>"the man in black workout."</em> That error survived three
+drafts, a full render, and a five-way review.</p>
+
+</div>

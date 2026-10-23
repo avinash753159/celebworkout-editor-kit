@@ -1,0 +1,401 @@
+<title>The Four Pillars — mastering script, audio, footage and effects</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F; --warn:#B8860B;
+    --p1:#3C5A78; --p2:#5B4B8A; --p3:#7C3A2A; --p4:#4A6B4A;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;--warn:#D6A83A;
+          --p1:#7FA6C9;--p2:#A093D0;--p3:#C87D63;--p4:#8DB88D;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;--warn:#D6A83A;
+          --p1:#7FA6C9;--p2:#A093D0;--p3:#C87D63;--p4:#8DB88D;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;--warn:#B8860B;
+          --p1:#3C5A78;--p2:#5B4B8A;--p3:#7C3A2A;--p4:#4A6B4A;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:58rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.4rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:2px solid var(--ink);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:.98rem;font-weight:700;color:var(--ink);margin:1.8rem 0 .4rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  a{color:var(--red);}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .tw{overflow-x:auto;margin:1.2rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.82rem;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.48rem .7rem .48rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 10%,transparent);color:var(--ink);}
+
+  /* pillar card */
+  .pil{border:1px solid var(--rule);border-top:5px solid var(--pc);margin:1.7rem 0;}
+  .pil.p1{--pc:var(--p1)} .pil.p2{--pc:var(--p2)} .pil.p3{--pc:var(--p3)} .pil.p4{--pc:var(--p4)}
+  .pil .hd{padding:.9rem 1.2rem .75rem;background:color-mix(in srgb,var(--pc) 9%,transparent);
+     display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;}
+  .pil .nm{font-family:var(--sans);font-size:1.35rem;font-weight:700;color:var(--ink);line-height:1.1;}
+  .pil .sub{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+     color:var(--mute);font-weight:700;margin-top:.15rem;}
+  .pil .score{font-family:var(--sans);font-size:1.5rem;font-weight:700;color:var(--pc);white-space:nowrap;}
+  .pil .score small{font-size:.7rem;color:var(--mute);font-weight:700;}
+  .pil .bd{padding:1rem 1.2rem 1.2rem;}
+  .pil dl{display:grid;grid-template-columns:7.5rem 1fr;gap:.42rem .9rem;margin:0;
+     font-family:var(--sans);font-size:.84rem;}
+  .pil dt{color:var(--mute);font-weight:700;font-size:.64rem;letter-spacing:.1em;
+     text-transform:uppercase;padding-top:.18rem;}
+  .pil dd{margin:0;line-height:1.5;}
+  .gap{background:color-mix(in srgb,var(--bad) 10%,transparent);border-left:3px solid var(--bad);
+     padding:.6rem .8rem;font-size:.9rem;margin-top:.9rem;}
+  .gap b{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+     color:var(--bad);display:block;margin-bottom:.15rem;}
+
+  .tick{color:var(--good);font-weight:700} .cross{color:var(--bad);font-weight:700}
+  .part{color:var(--warn);font-weight:700}
+  .st{display:inline-block;font-family:var(--sans);font-size:.6rem;font-weight:700;
+     letter-spacing:.09em;text-transform:uppercase;padding:.1rem .42rem;color:#fff;border-radius:2px;}
+  .st.ok{background:var(--good)} .st.no{background:var(--bad)} .st.opt{background:var(--mute)}
+  .st.free{background:var(--p4)}
+
+  pre{background:var(--panel);padding:.9rem 1.1rem;overflow-x:auto;font-family:var(--mono);
+      font-size:.78rem;line-height:1.6;margin:1rem 0 1.4rem;}
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.4rem 0 1.6rem;}
+
+  @media (max-width:640px){ .pil dl{grid-template-columns:1fr;} }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Mastery framework <span>· Celeb Workout</span></div>
+  <h1>The Four Pillars</h1>
+  <p class="stand">Script, audio, footage, effects. Each one gets the same four-part apparatus — a
+  standard, a library, an owner, a gate. Three of the four are missing at least one piece, and one
+  of them is missing all four.</p>
+  <div class="byline"><span>v1 · 3 August 2026</span><span>Scored honestly, not aspirationally</span></div>
+</header>
+
+<h2><span class="n">I.</span> The method — identical for all four</h2>
+
+<p class="lede">A pillar is mastered when four things exist. Not three. This is the whole framework,
+and it is deliberately the same for every pillar so that progress is comparable.</p>
+
+<div class="tw">
+<table>
+  <caption>The apparatus</caption>
+  <tr><th class="n">#</th><th>Piece</th><th>Question it answers</th><th>Fails without it</th></tr>
+  <tr><td class="n">1</td><td><strong>A standard</strong></td><td>What does "good" mean, in numbers?</td><td>Taste arguments with no resolution</td></tr>
+  <tr><td class="n">2</td><td><strong>A library</strong></td><td>What does excellent look like, pinned to real examples?</td><td>Reinvented from memory every film</td></tr>
+  <tr><td class="n">3</td><td><strong>An owner</strong></td><td>Which agent is accountable?</td><td>Nobody does it; it silently disappears</td></tr>
+  <tr><td class="n">4</td><td><strong>A gate</strong></td><td>How is it checked before it costs money?</td><td>Found when you watch it — a whole night</td></tr>
+</table>
+</div>
+
+<div class="verdict">
+  <div class="lab">How a gate earns trust</div>
+  <p>Every gate is validated the same way: <strong>it must convict the two films you already
+  rejected</strong>, for the reasons in the voice note. A gate that passes <code>MRBEAST_V6</code> or
+  <code>THE_BODY_HE_STOPPED_BUILDING</code> is broken and does not ship. That is what makes an
+  AI-only review defensible rather than a rubber stamp.</p>
+</div>
+
+<h2><span class="n">II.</span> What Patrick Gavia actually does</h2>
+
+<p class="lede">The reference channel. ~300k subscribers, 21M+ views, sixteen documentaries, median
+26.9 minutes. Four people. Everything below is from his own account, not inferred from the films.</p>
+
+<div class="tw">
+<table>
+  <caption>His four production stages — in order</caption>
+  <tr><th class="n">#</th><th>Stage</th><th>What happens</th><th>Who</th><th class="n">Time</th></tr>
+  <tr><td class="n">1</td><td><strong>Story research</strong></td><td><em>"Everything that happened throughout the subject's life"</em></td><td>part-time researcher</td><td class="n">~1 wk</td></tr>
+  <tr class="hi"><td class="n">2</td><td><strong>Beat sheet</strong></td><td><em>"A scene-by-scene outline of what should happen in the documentary"</em></td><td><strong>him</strong></td><td class="n">~2 hours</td></tr>
+  <tr><td class="n">3</td><td><strong>Video research</strong></td><td>Gathering all the footage the beats call for</td><td>full-time researcher</td><td class="n">~1 wk</td></tr>
+  <tr class="hi"><td class="n">4</td><td><strong>Edit</strong></td><td>The cut</td><td><strong>him, never delegated</strong></td><td class="n">the rest</td></tr>
+</table>
+</div>
+
+<p>Team of four: a full-time video researcher, a full-time assistant editor, a full-time social and
+accounting person, and a part-time story researcher. He delegates everything except being on camera
+and <strong>the edit</strong> — <em>"you have to accept that at first, that person will not do it as
+well as you… but with time they will catch up."</em></p>
+
+<div class="verdict">
+  <div class="lab">The 20:1 ratio</div>
+  <p><strong>Two hours structuring. Forty hours finding footage.</strong> He spends roughly twenty
+  times more effort on the hunt than on the plan. Your pipeline ran it inverted — three complete
+  scripts and a full render with <em>zero</em> sourcing — and four minutes of real footage-searching
+  then produced 30 named exercises and 560k characters of unused interview.</p>
+</div>
+
+<h3>His four are stages. Ours are pillars. They cross.</h3>
+
+<p>This is the useful part: his four are a <strong>sequence of work</strong>, the four below are
+<strong>dimensions of quality</strong>. Every stage touches more than one pillar, which is why a
+stage can complete and a pillar still fail.</p>
+
+<div class="tw">
+<table>
+  <caption>Stage × pillar — where quality is actually decided</caption>
+  <tr><th>Gavia stage</th><th>① Script</th><th>② Audio</th><th>③ Footage</th><th>④ Effects</th></tr>
+  <tr><td><strong>Story research</strong></td><td>●</td><td></td><td>●</td><td></td></tr>
+  <tr><td><strong>Beat sheet</strong></td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+  <tr><td><strong>Video research</strong></td><td></td><td>●</td><td>●</td><td></td></tr>
+  <tr><td><strong>Edit</strong></td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+</table>
+</div>
+
+<p class="note">The beat sheet is two hours of work that touches all four pillars — the highest
+leverage document in the whole process, and the one your pipeline never had. Note also that
+<strong>video research is the only stage carrying the audio pillar besides the edit</strong>: bites
+are audio before they are picture, which is why pillar ② scores 0.5 while ③ scores 2.</p>
+
+<div class="verdict">
+  <div class="lab">What not to copy</div>
+  <p>He writes the beat sheet <em>before</em> the footage hunt because he knows the MMA archive by
+  heart. You do not have that per celebrity — so an inventory pass substitutes for it:
+  <strong>inventory → beat sheet → targeted hunt.</strong> And do not automate the edit first; it is
+  the one thing he will not hand over even to a full-time assistant editor.</p>
+</div>
+
+<h2><span class="n">III.</span> The four, scored</h2>
+
+<!-- SCRIPT -->
+<div class="pil p1">
+  <div class="hd">
+    <div><div class="nm">① SCRIPT</div><div class="sub">Story · structure · words</div></div>
+    <div class="score">2.5<small>/4</small></div>
+  </div>
+  <div class="bd">
+    <dl>
+      <dt>Standard</dt><dd><span class="tick">✓</span> Runtime 20 min · beat sheet · cold-open five-part formula · title grammar · R1/R4/R7/R10 · 140–155 wpm</dd>
+      <dt>Library</dt><dd><span class="cross">✗</span> <strong>Nothing pinned.</strong> Gavia's format is measured from transcripts, but no reference script or beat sheet is on disk to write against.</dd>
+      <dt>Owner</dt><dd><span class="tick">✓</span> Showrunner (structure) · Cutter (words) — two jobs, two owners</dd>
+      <dt>Gate</dt><dd><span class="part">◐</span> 24 skills installed at <code>.claude/skills/</code>; <code>echo_check.py</code> exists. <strong>Nothing wired into a loop.</strong></dd>
+      <dt>Toolchain</dt><dd><code>creative-writing-skills</code> · <code>reader-sim</code> · <code>story-review</code> · <code>llm-writing</code> · <code>echo_check.py</code></dd>
+    </dl>
+    <div class="gap"><b>To close it</b>Pull the transcripts of Gavia's three highest-performing films and
+    <strong>reverse-engineer them into beat sheets</strong>. That gives the Showrunner something to
+    write against instead of writing from taste. Then wire the five-draft loop.</div>
+  </div>
+</div>
+
+<!-- AUDIO -->
+<div class="pil p2">
+  <div class="hd">
+    <div><div class="nm">② AUDIO</div><div class="sub">Score · voice · mix · radio edit</div></div>
+    <div class="score">0.5<small>/4</small></div>
+  </div>
+  <div class="bd">
+    <dl>
+      <dt>Standard</dt><dd><span class="part">◐</span> Ratios exist — real voice ≥40%, music beats ≈2.5%, bites are complete thoughts. <strong>Nothing about mix</strong>: no LUFS target, no duck depth, no J-cut convention, no music-under-narration level.</dd>
+      <dt>Library</dt><dd><span class="cross">✗</span> <strong>No music library.</strong> Scoring is picked per film. Only CC-BY Scott Buckley has ever been used. No voice profile beyond "Brian". No SFX at all.</dd>
+      <dt>Owner</dt><dd><span class="cross">✗</span> <strong>Nobody.</strong> Audio is currently a side-effect of the Cutter.</dd>
+      <dt>Gate</dt><dd><span class="cross">✗</span> None. The radio edit is the cheapest, highest-value gate available and it has never been built.</dd>
+      <dt>Toolchain</dt><dd>ElevenLabs (paid, configured) · <code>edge-tts</code> (free draft) · <code>music.py</code>, <code>soundbank.py</code> exist but are per-film</dd>
+    </dl>
+    <div class="gap"><b>The weakest pillar by a distance — and the cheapest to fix</b>
+    Audio is where <strong>four of your seven original complaints live</strong>: narrator echo,
+    mid-sentence bite cuts, interviewer "uh", one source over-mined. All four are audible with no
+    picture at all. A radio edit costs nothing (<code>edge-tts</code> is free) and catches every one
+    of them <em>before</em> a frame is rendered or a credit is spent.</div>
+  </div>
+</div>
+
+<!-- FOOTAGE -->
+<div class="pil p3">
+  <div class="hd">
+    <div><div class="nm">③ FOOTAGE</div><div class="sub">Research · sourcing · the cut</div></div>
+    <div class="score">2<small>/4</small></div>
+  </div>
+  <div class="bd">
+    <dl>
+      <dt>Standard</dt><dd><span class="tick">✓</span> 10–15 sources · ≤20% per source · complete thoughts on word-level timings · identity verified · no stand-ins · ≥8 min bite time</dd>
+      <dt>Library</dt><dd><span class="part">◐</span> Per-film only. <strong>No standing corpus</strong> — every celebrity starts cold. Today proved the cost: 30 movements and 560k chars of interview were sitting untranscribed on disk.</dd>
+      <dt>Owner</dt><dd><span class="tick">✓</span> Archivist (research) · Hunter ×12 (footage)</dd>
+      <dt>Gate</dt><dd><span class="part">◐</span> Rules written, not executable. The Hunter's <code>NO FOOTAGE EXISTS</code> refusal is designed but not built.</dd>
+      <dt>Toolchain</dt><dd><code>yt-dlp</code> · <code>youtube-transcript-api</code> · <code>faster-whisper</code> · Pexels · Wikimedia · <code>detect_shots</code>, <code>word_times</code>, <code>verify_pool</code></dd>
+    </dl>
+    <div class="gap"><b>To close it</b><strong>Transcript-first search</strong> — captions in ~200 ms
+    with no download, so you search 200 videos and download 8. Then an inventory pass that indexes
+    what is already on disk before anything is fetched.</div>
+  </div>
+</div>
+
+<!-- EFFECTS -->
+<div class="pil p4">
+  <div class="hd">
+    <div><div class="nm">④ EFFECTS</div><div class="sub">Look · treatment · brand</div></div>
+    <div class="score">3.5<small>/4</small></div>
+  </div>
+  <div class="bd">
+    <dl>
+      <dt>Standard</dt><dd><span class="tick">✓</span> Brand tokens · beat→treatment map · the contract <code>effect(sources, frames, **params) -> Path</code></dd>
+      <dt>Library</dt><dd><span class="tick">✓</span> <strong><code>VFX_LIBRARY.html</code></strong> — 4 effects pinned to real frames, 47 reference frames on disk, ~37 treatments inventoried</dd>
+      <dt>Owner</dt><dd><span class="tick">✓</span> The Compositor</dd>
+      <dt>Gate</dt><dd><span class="part">◐</span> Brand sampling and the Editor critic are specified, not built</dd>
+      <dt>Toolchain</dt><dd>ffmpeg · OpenCV · PIL · mediapipe · <code>fx.py</code> (13) · <code>fx_camera.py</code> (15) · <code>fx_text.py</code> · <code>flow_dibr.py</code></dd>
+    </dl>
+    <div class="gap"><b>Why this one is ahead</b>It is the only pillar where all four pieces were
+    built deliberately — and it took about four minutes of watching reference video to do it.
+    <strong>That is the template. Apply it to the other three.</strong></div>
+  </div>
+</div>
+
+<div class="verdict">
+  <div class="lab">The finding</div>
+  <p>Effects — the pillar that <em>feels</em> most advanced — is the one already in the best shape.
+  <strong>Audio is at 0.5 out of 4 with no owner at all</strong>, and it is where most of your
+  original complaints actually live. It is also the cheapest to fix, because a free draft voice and
+  the real bites are all a radio edit needs.</p>
+</div>
+
+<h2><span class="n">IV.</span> The missing owner — agent 06</h2>
+
+<div class="pil p2" style="margin-top:1.2rem">
+  <div class="hd">
+    <div><div class="nm">THE COMPOSER</div><div class="sub">Agent 06 · score · voice · mix</div></div>
+  </div>
+  <div class="bd">
+    <p style="font-style:italic;color:var(--ink);border-left:3px solid var(--p2);padding-left:.9rem;margin:0 0 .9rem">
+    Make the film work with the picture turned off.</p>
+    <dl>
+      <dt>Owns</dt><dd>The music library and cue assignment · voice profile and delivery · the mix (levels, ducking, J-cuts) · <strong>the radio edit</strong> — the whole film as audio, gated before a cent is spent</dd>
+      <dt>Doesn't own</dt><dd>The words (Cutter) · which bites exist (Hunter)</dd>
+      <dt>Signature</dt><dd><strong>Free draft first, paid narration once.</strong> Build and gate the entire film on <code>edge-tts</code>; ElevenLabs fires a single time, on the locked script. Already the stated rule in <code>SETUP.md</code> — it has never had an owner to enforce it.</dd>
+      <dt>Refuses</dt><dd>Narration that echoes an adjacent bite · a bite cut mid-thought · music selected per film instead of drawn from the library · paid narration on an ungated script</dd>
+      <dt>Judged by</dt><dd>The Viewer critic, listening with no picture: <em>is this worth hearing?</em></dd>
+    </dl>
+  </div>
+</div>
+
+<h2><span class="n">V.</span> Service registry</h2>
+
+<div class="verdict" style="border-left-color:var(--bad)">
+  <div class="lab" style="color:var(--bad)">⚠ Live exposure — act on this</div>
+  <p>The Pexels key below is <strong>hardcoded into 13 Python files that are tracked by git</strong>
+  and pushed to <code>github.com/avinash753159/ytceleb</code>. It has been in the repo since the first
+  commit. <strong>It is public right now.</strong> Rotate it at
+  <a href="https://www.pexels.com/api/">pexels.com/api</a>, then move the new one to
+  <code>pexels_key.txt</code> and delete the literal from every file.</p>
+</div>
+
+<h3>Live keys</h3>
+
+<p class="note">This file is <strong>gitignored</strong> — <code>.gitignore</code> allowlists only
+<code>*.py</code>, <code>*.md</code> and a few JSON files, so no HTML doc ever reaches GitHub. These
+values stay on this machine.</p>
+
+<div class="tw">
+<table>
+  <caption>Key values — local reference</caption>
+  <tr><th>Service</th><th>Key</th><th>Lives in</th></tr>
+  <tr><td><strong>Google Flow / Veo / Gemini</strong></td>
+      <td style="font-family:var(--mono);font-size:.72rem;word-break:break-all">AQ.Ab8RN6JQEv3F285u4VgGZJESdGxC6hGr_i1qqc3_GgAszauGqw</td>
+      <td><code>.veo_key</code><br><span style="color:var(--good);font-weight:700">already matches — no change</span></td></tr>
+  <tr><td><strong>Pexels</strong></td>
+      <td style="font-family:var(--mono);font-size:.72rem;word-break:break-all">OqvEHNfwvEjuuvosrZXe5keUApJkPuapj79araQgOWtaxZ1xRY9DRsC8</td>
+      <td>hardcoded in 13 tracked <code>.py</code> files<br><span style="color:var(--bad);font-weight:700">→ rotate, then <code>pexels_key.txt</code></span></td></tr>
+</table>
+</div>
+
+<p class="note">Sent as an <code>Authorization</code> header by <code>fetch_pexels_hd.py</code>,
+<code>fetch_broll.py</code>–<code>fetch_broll7.py</code>, <code>fetch_stills.py</code>,
+<code>DOWNLOAD_VIDEOS.py</code> and others. The Flow key goes in <code>?key=</code>, never as a bearer
+token — a bearer returns <code>API_KEY_SERVICE_BLOCKED</code>, which reads exactly like a revoked key.</p>
+
+<div class="tw">
+<table>
+  <caption>Every service the pipeline touches</caption>
+  <tr><th>Service</th><th>Pillar</th><th>Used for</th><th>Key location</th><th class="n">Cost</th><th>Status</th></tr>
+  <tr class="hi"><td><strong>Google AI Studio</strong><br><span style="color:var(--mute)">Veo · Gemini image · "Flow"</span></td><td>④</td><td>Generated stills and video, last-resort picture</td><td><code>.veo_key</code></td><td class="n">$0.04/still<br>$0.05/s video</td><td><span class="st ok">configured</span></td></tr>
+  <tr class="hi"><td><strong>ElevenLabs</strong></td><td>②</td><td>Final narration only</td><td><code>elevenlabs_key.txt</code></td><td class="n">0.5 cr/char<br>~4,800/film</td><td><span class="st ok">configured</span></td></tr>
+  <tr><td><strong>edge-tts</strong></td><td>②</td><td><strong>Draft narration · the radio edit</strong></td><td>none needed</td><td class="n">free</td><td><span class="st free">free</span></td></tr>
+  <tr><td><strong>Pexels</strong></td><td>③④</td><td>Object b-roll only — never people</td><td>built in</td><td class="n">free</td><td><span class="st free">free</span></td></tr>
+  <tr><td><strong>yt-dlp</strong></td><td>③</td><td>Targeted downloads · reference frame grabs</td><td>none</td><td class="n">free</td><td><span class="st free">free</span></td></tr>
+  <tr class="hi"><td><strong>youtube-transcript-api</strong></td><td>③</td><td><strong>Transcript-first search — the biggest single speed lever</strong></td><td>none</td><td class="n">free</td><td><span class="st free">free</span></td></tr>
+  <tr><td><strong>faster-whisper</strong></td><td>②③</td><td>Local transcription where captions don't exist</td><td>local model</td><td class="n">free</td><td><span class="st free">free</span></td></tr>
+  <tr><td><strong>Wikimedia Commons</strong></td><td>③</td><td>Medical and archive stills — CC, attribution required</td><td>none</td><td class="n">free</td><td><span class="st free">free</span></td></tr>
+  <tr><td><strong>DigitalOcean</strong></td><td>④</td><td>GPU droplet — for motion, not speed</td><td><code>do_token.txt</code></td><td class="n">$0.76–1.57/hr</td><td><span class="st ok">configured</span></td></tr>
+  <tr><td><strong>Anthropic API</strong></td><td>①</td><td>Automated script drafting</td><td><code>anthropic_key.txt</code></td><td class="n">per token</td><td><span class="st no">missing</span></td></tr>
+  <tr class="hi"><td><strong>Music library</strong><br><span style="color:var(--mute)">Epidemic · Artlist · Musicbed</span></td><td>②</td><td><strong>Scored cue library keyed to beat type</strong></td><td>—</td><td class="n">~$15–60/mo</td><td><span class="st no">none — gap</span></td></tr>
+  <tr><td><strong>Freesound</strong></td><td>②</td><td>SFX — risers, impacts, room tone</td><td>—</td><td class="n">free + key</td><td><span class="st no">not set up</span></td></tr>
+  <tr><td><strong>Archive.org</strong></td><td>③</td><td>Public-domain archive footage</td><td>none</td><td class="n">free</td><td><span class="st opt">unused</span></td></tr>
+</table>
+</div>
+
+<h3>One loader, one place</h3>
+
+<p>Right now keys are read ad hoc and <code>SETUP.md</code> documents a real trap — a stale
+<code>GOOGLE_API_KEY</code> in the environment silently overriding the project file. One loader
+removes the whole class of problem:</p>
+
+<pre>services.yaml          # tracked — names, purpose, cost, limits, key FILENAME. never values.
+pipeline/keys.py       # single loader. file beats environment. prints source, masked.
+.veo_key               # gitignored
+elevenlabs_key.txt     # gitignored
+anthropic_key.txt      # gitignored — MISSING
+do_token.txt           # gitignored
+freesound_key.txt      # gitignored — TO ADD
+music_key.txt          # gitignored — TO ADD</pre>
+
+<p class="note">Also worth knowing: <code>.gitignore</code> allowlists only <code>*.py</code>,
+<code>*.md</code> and a few JSON files — so <strong>none of these HTML documents are tracked by
+git.</strong> They exist only on this machine. Worth adding <code>!docs/*.html</code> if you want
+them versioned and backed up.</p>
+
+<h2><span class="n">VI.</span> Build order</h2>
+
+<div class="tw">
+<table>
+  <caption>Ranked by pillar weakness × cost to fix</caption>
+  <tr><th class="n">#</th><th>Build</th><th>Pillar</th><th class="n">Effort</th><th>Closes</th></tr>
+  <tr class="hi"><td class="n">1</td><td><strong>The radio edit + its gate</strong> — whole film as free draft audio</td><td>②</td><td class="n">3 h</td><td>4 of your 7 original complaints, before any spend</td></tr>
+  <tr class="hi"><td class="n">2</td><td><strong>Music cue library</strong> — scored once, keyed to beat type</td><td>②</td><td class="n">4 h + sub</td><td>the empty library; removes per-film music selection</td></tr>
+  <tr><td class="n">3</td><td><code>discover.py</code> — transcript-first search</td><td>③</td><td class="n">1 h</td><td>20–40 min per film; the standing corpus starts here</td></tr>
+  <tr><td class="n">4</td><td><strong>Gavia beat sheets</strong> — reverse-engineer his 3 best films</td><td>①</td><td class="n">2 h</td><td>the missing script library</td></tr>
+  <tr><td class="n">5</td><td><code>services.yaml</code> + <code>keys.py</code></td><td>all</td><td class="n">40 min</td><td>the key trap; one place to look</td></tr>
+  <tr><td class="n">6</td><td>Build <code>source_highlight</code> and <code>book_plate</code> to the pinned specs</td><td>④</td><td class="n">3 h</td><td>the signature look, at zero per-shot cost</td></tr>
+</table>
+</div>
+
+<p><strong>Rows 1 and 2 are the same pillar and they are the ones to do first.</strong> Not because
+audio is glamorous, but because it is at 0.5/4, it owns most of the complaints, and a free draft
+voice plus the real bites is all a radio edit needs.</p>
+
+</div>

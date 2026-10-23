@@ -1,0 +1,224 @@
+<title>The Exercise Animation Library</title>
+<style>
+:root{--red:#B22B1A;--ink:#121212;--body:#2E2E2E;--rule:#D4D4D4;--hair:#EAEAEA;
+ --panel:#F4F4F4;--mute:#6B6B6B;--good:#1F6F4A;--bad:#A32A17;--anim:#C2410C;
+ --serif:"Milo Serif","Iowan Old Style",Georgia,serif;
+ --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+ --mono:"Cascadia Mono",Consolas,monospace;color-scheme:light;}
+html,body{background:#fff}
+body{color:var(--body);font-family:var(--serif);font-size:16.5px;line-height:1.56;margin:0}
+.wrap{max-width:58rem;margin:0 auto;padding:0 1.4rem 6rem}
+.tab{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);font-size:.62rem;
+ font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.22rem .6rem;margin:2.4rem 0 .9rem}
+h1{font-size:clamp(1.95rem,4.6vw,2.8rem);line-height:1.05;margin:0 0 .5rem;color:var(--ink);
+ font-weight:700;letter-spacing:-.015em}
+.stand{font-size:1.15rem;color:var(--mute);max-width:43rem;margin:0 0 1.2rem}
+.byline{font-family:var(--sans);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+ color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+ padding:.5rem 0;margin-bottom:2.2rem;display:flex;gap:1.3rem;flex-wrap:wrap}
+h2{font-family:var(--sans);font-size:1.14rem;font-weight:700;color:var(--ink);margin:2.7rem 0 .5rem;
+ padding-top:.85rem;border-top:3px solid var(--red)}
+h2 .n{color:var(--red);margin-right:.4rem}
+h3{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--ink);margin:1.6rem 0 .35rem}
+p{margin:0 0 .92rem}strong{color:var(--ink)}
+code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.04em .28em}
+a{color:var(--red)}
+.box{background:var(--panel);border-top:2px solid var(--red);padding:.82rem 1rem;margin:.95rem 0 1.35rem}
+.box .lab{font-family:var(--sans);font-size:.58rem;font-weight:700;letter-spacing:.13em;
+ text-transform:uppercase;color:var(--red);margin-bottom:.22rem}
+.box p{margin:0;font-size:.96rem}
+table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.79rem}
+caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.61rem;font-weight:700;
+ letter-spacing:.13em;text-transform:uppercase;color:var(--mute);padding-bottom:.42rem}
+th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+ padding:.36rem .6rem .36rem 0;font-size:.64rem;letter-spacing:.05em;text-transform:uppercase}
+td{padding:.4rem .6rem .4rem 0;border-bottom:1px solid var(--hair);vertical-align:top}
+td.n,th.n{text-align:right;padding-right:0}
+tr.hi td{background:#FBEDEA;color:var(--ink)}
+.tw{overflow-x:auto;margin:1.1rem 0 1.5rem}
+.ref{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.1rem 0 .5rem;align-items:start}
+.ref figure{margin:0}
+.ref img{width:100%;height:auto;display:block;border:1px solid var(--rule)}
+.ref figcaption{font-family:var(--sans);font-size:.7rem;color:var(--mute);margin-top:.35rem;line-height:1.4}
+.pill{display:inline-block;font-family:var(--sans);font-size:.56rem;font-weight:700;letter-spacing:.08em;
+ text-transform:uppercase;padding:.08rem .34rem;color:#fff;background:var(--anim);margin-right:.25rem}
+.core{background:var(--red)}.spec{background:var(--mute)}
+.note{font-family:var(--sans);font-size:.74rem;color:var(--mute);line-height:1.48;margin:-.3rem 0 1.5rem}
+.mono{font-family:var(--mono);font-size:.74rem}
+pre{background:var(--panel);border-left:2px solid var(--rule);padding:.8rem 1rem;overflow-x:auto;
+ font-family:var(--mono);font-size:.74rem;line-height:1.55;margin:.9rem 0 1.3rem;color:var(--ink)}
+@media(max-width:640px){.ref{grid-template-columns:1fr}}
+</style>
+
+<div class="wrap">
+
+<div class="tab">Standing library · pillar ④ · owned by the Compositor</div>
+<h1>The Exercise Animation Library</h1>
+<p class="stand">A grey anatomical figure on white, the working muscle lit in brand red. Built once,
+reused in every film the channel ever makes — because every celebrity programme is made of the same
+thirty movements.</p>
+<div class="byline"><span>v1 · 3 August 2026</span><span>28 movements needed for Hemsworth</span><span>~20 are channel core</span></div>
+
+<h2><span class="n">I.</span> The reference, pinned</h2>
+
+<div class="ref">
+  <figure><img src="data:image/jpeg;base64,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" alt=""><figcaption><strong>Dumbbell bench press.</strong> Grey figure, no face detail.
+  Working muscle — the pectorals — lit in orange-red. Pure white ground. Black equipment.</figcaption></figure>
+  <figure><img src="data:image/jpeg;base64,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" alt=""><figcaption><strong>Same movement, eccentric phase.</strong> The highlight stays
+  on the working muscle through the whole range. The loop is the teaching.</figcaption></figure>
+</div>
+<p class="note">Frames from <a href="https://www.youtube.com/@Gymworkout143/shorts">@Gymworkout143</a>,
+saved to <code>dossier/references/exercise_anim/</code>. <strong>Reference only — these are licensed
+stock assets belonging to someone else and must not be reused.</strong> The style is what we take;
+the files are not.</p>
+
+<div class="box">
+  <div class="lab">The lucky part</div>
+  <p>That highlight colour is almost exactly <code>#B22B1A</code>. <strong>The style is already on
+  brand</strong> — grey, white, one red accent, no gradients or glow. It drops straight into the
+  70/20/10 ratio without modification.</p>
+</div>
+
+<h3>Style specification</h3>
+<div class="tw">
+<table>
+  <tr><th>Parameter</th><th>Spec</th></tr>
+  <tr><td>Figure</td><td>Anatomical, muscled, <strong>neutral grey, no face detail, no hair, no clothing</strong>. Not a character — an instrument.</td></tr>
+  <tr class="hi"><td>Highlight</td><td>The <strong>working muscle only</strong>, in <code>#B22B1A</code>, held through the full range of motion. This is the pedagogy — it is what footage cannot do.</td></tr>
+  <tr><td>Ground</td><td>Pure white. No floor shadow beyond a soft contact shadow.</td></tr>
+  <tr><td>Equipment</td><td>Matte black. Dumbbells, bench, band. No branding.</td></tr>
+  <tr><td>Camera</td><td>Fixed three-quarter view. No orbit, no cuts inside a movement.</td></tr>
+  <tr><td>Loop</td><td>2–3 clean reps, seamless, 3–5 s. Concentric and eccentric both readable.</td></tr>
+  <tr><td>Format</td><td>16:9 for the film. 9:16 variant for Shorts, same asset re-framed.</td></tr>
+  <tr><td>Never</td><td>A face · a likeness · clothing that dates · gym backgrounds · glow · lens flare</td></tr>
+</table>
+</div>
+
+<h2><span class="n">II.</span> Why animation, not footage</h2>
+
+<div class="tw">
+<table>
+  <tr><th></th><th>Filmed demonstrator</th><th>3D animation</th></tr>
+  <tr class="hi"><td><strong>Rule 9 — stand-ins</strong></td><td>A person on screen performing what the film attributes to the subject. This is the exact problem that got 20 stock clips withdrawn from the MrBeast cut.</td><td><strong>Not a person.</strong> No casting, no likeness, no ambiguity about who it is.</td></tr>
+  <tr><td><strong>Teaching</strong></td><td>You see the movement.</td><td>You see the movement <strong>and which muscle is doing it</strong>. Footage cannot show that.</td></tr>
+  <tr><td><strong>Reuse</strong></td><td>Reshoot per film.</td><td><strong>Build once, use forever.</strong> A goblet squat is a goblet squat in every video.</td></tr>
+  <tr><td><strong>Consistency</strong></td><td>Different demonstrator, lighting and room each time.</td><td>Identical every film. This is what "one brand" means.</td></tr>
+  <tr><td><strong>Cost per film</strong></td><td>A shoot, or licensed stock per clip.</td><td>Zero, after the library exists.</td></tr>
+</table>
+</div>
+
+<div class="box">
+  <div class="lab">What this replaces</div>
+  <p>Nine rows in the Hemsworth shot list were pointing at <code>MENSHEALTH.mp4</code> — footage of
+  <strong>"Bob"</strong>, a presenter Zocchi jokes about on camera because <em>"we can't get him,
+  mate, he's too expensive."</em> Those rows are now <code>ANIM</code>. The Men's Health timecode
+  stays on each row as the <strong>authority for what the movement is</strong>, not as the picture.</p>
+</div>
+
+<h2><span class="n">III.</span> The movements Hemsworth needs</h2>
+
+<p><span class="pill core">core</span> appears in most celebrity programmes — build these first, they
+pay back immediately. <span class="pill spec">specific</span> is Hemsworth-only for now.</p>
+
+<div class="tw">
+<table>
+  <caption>28 distinct movements across three programmes</caption>
+  <tr><th>Movement</th><th>Programme</th><th>Highlight</th><th>Tier</th></tr>
+  <tr class="hi"><td>Bodyweight squat</td><td>MIB warm-up · Centr</td><td>quads, glutes</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Push-up</td><td>Centr Power</td><td>pectorals, triceps</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Plank (punch-out · pulse · pike)</td><td>MIB core block</td><td>abdominals</td><td><span class="pill core">core ×3</span></td></tr>
+  <tr class="hi"><td>Goblet squat</td><td>MIB 3</td><td>quads, core</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Reverse lunge</td><td>Centr · MIB 5 variant</td><td>glutes, quads</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Lateral raise</td><td>MIB 6</td><td>lateral deltoid</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Front raise</td><td>MIB 7</td><td>anterior deltoid</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Upright row</td><td>MIB 8</td><td>traps, deltoid</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Dumbbell bench press</td><td>Centr Power 1</td><td>pectorals</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Skull crusher</td><td>Centr Power 5</td><td>triceps</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Rope pushdown</td><td>Centr Power 6</td><td>triceps</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Mountain climber</td><td>Centr</td><td>core, hip flexors</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Burpee</td><td>MIB 1 · Centr</td><td>full body</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Bear crawl</td><td>MIB warm-up · Centr</td><td>shoulders, core</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Bicep curl</td><td>base for MIB 2 &amp; 5</td><td>biceps</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Overhead press</td><td>base for MIB 2</td><td>deltoids</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Russian twist</td><td>Centr</td><td>obliques</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Jump lunge</td><td>Centr</td><td>glutes, quads</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>High knees</td><td>Centr</td><td>hip flexors</td><td><span class="pill core">core</span></td></tr>
+  <tr class="hi"><td>Standing triceps extension</td><td>MIB 4</td><td>triceps</td><td><span class="pill core">core</span></td></tr>
+  <tr><td>Weighted burpee</td><td>MIB 1</td><td>full body</td><td><span class="pill spec">variant</span></td></tr>
+  <tr><td>Curl and press</td><td>MIB 2</td><td>biceps + deltoids</td><td><span class="pill spec">combo</span></td></tr>
+  <tr><td>Reverse lunge curl</td><td>MIB 5</td><td>legs + biceps</td><td><span class="pill spec">combo</span></td></tr>
+  <tr><td>Walkout · walkout with push-up</td><td>Centr</td><td>core, shoulders</td><td><span class="pill spec">specific ×2</span></td></tr>
+  <tr><td>Sit-through</td><td>Centr</td><td>core, obliques</td><td><span class="pill spec">specific</span></td></tr>
+  <tr><td>Squat with pulse</td><td>Centr</td><td>quads</td><td><span class="pill spec">variant</span></td></tr>
+  <tr><td>Banded chest fly · band-resisted push-up</td><td>Centr Power</td><td>pectorals</td><td><span class="pill spec">specific ×2</span></td></tr>
+</table>
+</div>
+
+<div class="box">
+  <div class="lab">Why this is the best asset the channel could own</div>
+  <p><strong>Twenty of these twenty-eight are the core movements of nearly every celebrity
+  programme.</strong> Build those twenty and the next film needs almost no new animation. The film
+  after that, none. This is the one library where the cost falls to zero and the quality does not.</p>
+</div>
+
+<h2><span class="n">IV.</span> Where the animations come from</h2>
+
+<div class="tw">
+<table>
+  <tr><th>Route</th><th>Cost</th><th>Time</th><th>Verdict</th></tr>
+  <tr class="hi"><td><strong>License a 3D exercise animation library</strong><br><span style="color:var(--mute)">Muscle &amp; Motion, 3DLabz, stock packs on Envato/TurboSquid in BLEND/FBX/glTF</span></td><td>one-off or subscription</td><td>days</td><td><strong>Recommended.</strong> Anatomically correct on day one, muscle highlighting already modelled, hundreds of movements. Check the licence covers monetised YouTube.</td></tr>
+  <tr><td><strong>Build in Blender</strong><br><span style="color:var(--mute)">rigged anatomical model, animate each movement, red emission on the working muscle</span></td><td>free tools, real labour</td><td>~1 day per 5 movements</td><td>Full brand control and no licence questions. Slow, and form accuracy is on us.</td></tr>
+  <tr><td><strong>Film a demonstrator on white</strong></td><td>a shoot</td><td>one day</td><td>Real, but reintroduces a person on screen and cannot show the muscle. Loses both advantages.</td></tr>
+  <tr><td><strong>Generate with Flow / Veo</strong></td><td>~$0.25/5s</td><td>minutes</td><td><strong>No.</strong> Exercise form must be anatomically correct, and generated video cannot be trusted to get joint angles right. This is an educational fitness channel — wrong form is a safety problem, not a style problem.</td></tr>
+</table>
+</div>
+
+<div class="box">
+  <div class="lab">The hard line</div>
+  <p><strong>Generation never touches exercise demonstration.</strong> Everywhere else in the
+  pipeline, a generated still is a cost-saving fallback. Here it is a liability: a viewer copying a
+  hallucinated joint angle gets hurt. Animation is licensed or built, never generated.</p>
+</div>
+
+<h2><span class="n">V.</span> How a movement is composited</h2>
+
+<p>The animation is the base layer. The brand card and the count sit on top. One prescribed
+composite, every movement, every film.</p>
+
+<pre>┌──────────────────────────────────────────────┐
+│                                              │
+│         [3D ANIM — grey figure, white]       │   base    loop 3-5s
+│         working muscle in #B22B1A            │
+│                                              │
+│   ┌────────────────────────────────┐         │
+│   │ ▌ 03  GOBLET SQUAT             │         │   card    Archivo Black
+│   │   8 REPS · 3 ROUNDS            │         │           Anton numerals
+│   └────────────────────────────────┘         │           one red bar
+│                                              │
+└──────────────────────────────────────────────┘
+   NARR: "Three. A goblet squat. The weight held at the
+          chest pulls you forward, so the core is working
+          the whole set."                                    ~10s</pre>
+
+<p class="note">Card spec is already in <code>BRAND.md</code> under Motion: <em>"Exercise cards: name
+in Archivo Black, sets and reps in Anton, explanation in Archivo Regular, a red line or block as the
+only accent."</em> Nothing new is being invented — the animation slots underneath a card format the
+channel already has.</p>
+
+<h2><span class="n">VI.</span> What changed in the shot list</h2>
+
+<div class="tw">
+<table>
+  <tr><th></th><th class="n">Before</th><th class="n">After</th></tr>
+  <tr><td>Rows using footage of a stand-in</td><td class="n">9</td><td class="n">0</td></tr>
+  <tr class="hi"><td>Rows using <code>ANIM</code></td><td class="n">0</td><td class="n">9</td></tr>
+  <tr><td>Generated share of runtime</td><td class="n">16.8%</td><td class="n">16.8%</td></tr>
+  <tr><td>Rule 9 exposure</td><td class="n">9 rows</td><td class="n">none</td></tr>
+</table>
+</div>
+
+<p class="note">Regenerate any time with <code>python pipeline/shotlist_hemsworth.py</code> —
+<code>manifest/shotlist_hemsworth.json</code> is the source of truth and
+<code>docs/SHOTLIST_HEMSWORTH.html</code> is a view of it.</p>
+
+</div>

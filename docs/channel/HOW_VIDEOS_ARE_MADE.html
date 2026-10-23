@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a Celeb Workout Film Is Made</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --red: #E3120B;
+    --ink: #0C0C0C;
+    --grey: #595959;
+    --grey-light: #8C8C8C;
+    --rule: #D6D6D6;
+    --rule-soft: #ECECEC;
+    --tint: #F7F7F7;
+    --blue: #2A5D8F;
+    --blue-light: #9DBBD8;
+    --paper: #FFFFFF;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+    --measure: 66ch;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.55;
+    padding-inline: 20px;
+    padding-block: 0 96px;
+  }
+  a { color: var(--blue); text-decoration: none; border-bottom: 1px solid var(--blue-light); }
+  a:hover, a:focus-visible { border-bottom-color: var(--blue); outline: none; }
+  a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+  /* Masthead */
+  .masthead {
+    max-width: 1080px; margin: 0 auto;
+    border-bottom: 1px solid var(--ink);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    padding-block: 18px 12px; flex-wrap: wrap;
+  }
+  .brand {
+    background: var(--red); color: #fff; font-family: var(--sans);
+    font-weight: 600; letter-spacing: .08em; text-transform: uppercase; font-size: 13px;
+    padding: 10px 14px; line-height: 1;
+  }
+  .brand span { display: block; font-weight: 400; letter-spacing: .04em; text-transform: none; font-size: 12px; margin-top: 6px; opacity: .92; }
+  .dateline { font-family: var(--sans); font-size: 13px; color: var(--grey); letter-spacing: .02em; }
+  .dateline b { color: var(--ink); font-weight: 600; }
+
+  /* Head */
+  .head { max-width: 1080px; margin: 0 auto; padding-block: 40px 28px; border-bottom: 1px solid var(--rule); }
+  .kicker { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 0 0 14px; }
+  .kicker::before { content: ""; display: block; width: 40px; height: 4px; background: var(--red); margin-bottom: 10px; }
+  h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -.01em; margin: 0 0 18px; max-width: 22ch; text-wrap: balance; }
+  .standfirst { font-size: 21px; line-height: 1.4; color: var(--grey); max-width: 60ch; margin: 0; font-weight: 400; text-wrap: pretty; }
+
+  /* Body grid */
+  .page { max-width: 1080px; margin: 0 auto; }
+  section { padding-block: 40px 8px; border-bottom: 1px solid var(--rule-soft); }
+  section:last-of-type { border-bottom: 0; }
+  h2 { font-family: var(--serif); font-weight: 700; font-size: 30px; line-height: 1.15; margin: 0 0 18px; max-width: 26ch; text-wrap: balance; }
+  h3 { font-family: var(--serif); font-weight: 600; font-size: 21px; line-height: 1.25; margin: 34px 0 10px; max-width: 30ch; }
+  p { max-width: var(--measure); margin: 0 0 16px; text-wrap: pretty; }
+  ul, ol { max-width: var(--measure); padding-left: 22px; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+  li::marker { color: var(--red); font-family: var(--sans); font-size: 14px; }
+  .lede::first-letter { font-size: 3.1em; float: left; line-height: .82; padding: 6px 8px 0 0; font-weight: 700; color: var(--ink); }
+  small, .small { font-family: var(--sans); font-size: 13px; color: var(--grey); }
+  code { font-family: var(--mono); font-size: .85em; background: var(--tint); padding: 1px 5px; border-radius: 2px; color: var(--ink); }
+  pre { font-family: var(--mono); font-size: 13px; line-height: 1.5; background: var(--tint); border-left: 3px solid var(--rule); padding: 16px 18px; overflow-x: auto; margin: 0 0 20px; max-width: 100%; }
+  pre code { background: none; padding: 0; font-size: inherit; }
+
+  /* Two-col with side notes at width */
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  @media (min-width: 900px) { .cols { grid-template-columns: minmax(0, 66ch) minmax(220px, 1fr); align-items: start; } }
+  .aside { font-family: var(--sans); font-size: 13.5px; line-height: 1.5; color: var(--grey); border-top: 3px solid var(--red); padding-top: 10px; }
+  .aside b { color: var(--ink); font-weight: 600; }
+  .aside p { margin-bottom: 10px; max-width: none; }
+
+  /* Pull quote */
+  blockquote { margin: 26px 0; padding: 4px 0 4px 20px; border-left: 4px solid var(--red); max-width: var(--measure); font-size: 20px; line-height: 1.35; font-style: italic; color: var(--ink); }
+  blockquote cite { display: block; font-style: normal; font-family: var(--sans); font-size: 13px; color: var(--grey); margin-top: 8px; }
+
+  /* Tables */
+  .tablewrap { overflow-x: auto; margin: 8px 0 26px; }
+  table { border-collapse: collapse; width: 100%; font-family: var(--sans); font-size: 14px; line-height: 1.4; min-width: 560px; }
+  caption { text-align: left; font-family: var(--serif); font-weight: 600; font-size: 17px; padding: 0 0 10px; color: var(--ink); caption-side: top; }
+  thead th { text-align: left; font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--grey); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 10px 12px 8px 0; vertical-align: bottom; }
+  tbody td { border-bottom: 1px solid var(--rule-soft); padding: 10px 12px 10px 0; vertical-align: top; }
+  tbody tr:last-child td { border-bottom: 1px solid var(--rule); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-right: 0; }
+  td.step { font-weight: 600; color: var(--red); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td code, td .path { font-family: var(--mono); font-size: 12.5px; }
+  .tablenote { font-family: var(--sans); font-size: 12.5px; color: var(--grey); margin-top: -18px; margin-bottom: 26px; }
+
+  /* Chart */
+  figure { margin: 8px 0 28px; max-width: 720px; }
+  figcaption { font-family: var(--serif); font-weight: 600; font-size: 17px; margin-bottom: 4px; }
+  figcaption small { display: block; font-weight: 400; margin-top: 2px; }
+  .chart svg { width: 100%; height: auto; display: block; }
+  .chart .lbl { font-family: var(--sans); font-size: 12px; fill: var(--grey); }
+  .chart .val { font-family: var(--sans); font-size: 12px; font-weight: 600; fill: var(--ink); }
+  .chart .valw { font-family: var(--sans); font-size: 12px; font-weight: 600; fill: #fff; }
+  .source { font-family: var(--sans); font-size: 12px; color: var(--grey-light); margin-top: 8px; }
+
+  /* Key–value register */
+  .register { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 18px; font-family: var(--sans); font-size: 14px; max-width: 760px; margin: 0 0 22px; }
+  .register dt { font-weight: 600; color: var(--grey); text-transform: uppercase; letter-spacing: .06em; font-size: 11.5px; padding-top: 3px; }
+  .register dd { margin: 0; }
+  @media (max-width: 520px) { .register { grid-template-columns: minmax(0, 1fr); gap: 2px 0; } .register dd { margin-bottom: 8px; } }
+
+  /* Rule blocks */
+  .rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0 32px; max-width: 1080px; }
+  .rules div { border-top: 1px solid var(--rule); padding: 14px 0 18px; }
+  .rules h4 { font-family: var(--sans); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin: 0 0 8px; font-weight: 600; }
+  .rules p { font-size: 15.5px; margin-bottom: 8px; }
+
+  /* Callout */
+  .callout { background: var(--tint); border-top: 3px solid var(--ink); padding: 18px 22px 8px; max-width: 800px; margin: 8px 0 28px; }
+  .callout h4 { font-family: var(--sans); font-size: 12.5px; letter-spacing: .1em; text-transform: uppercase; margin: 0 0 12px; color: var(--ink); }
+  .callout p, .callout li { font-size: 15.5px; }
+
+  /* Path lists */
+  .paths { font-family: var(--sans); font-size: 14px; max-width: 900px; }
+  .paths li { margin-bottom: 10px; }
+  .paths .path { font-family: var(--mono); font-size: 12.5px; word-break: break-all; }
+  .paths .what { color: var(--grey); }
+
+  .footer { max-width: 1080px; margin: 48px auto 0; border-top: 1px solid var(--ink); padding-top: 14px; font-family: var(--sans); font-size: 12.5px; color: var(--grey); }
+  @media (prefers-reduced-motion: no-preference) { a { transition: border-color .15s; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brand">Celeb Workout<span>Production brief for humans and machines</span></div>
+  <div class="dateline"><b>September 13th 2026</b> &middot; process as of the Zendaya / Matt Damon / Priyanka Chopra trio (built Sep 8th 2026)</div>
+</header>
+
+<div class="head">
+  <p class="kicker">The method</p>
+  <h1>How a Celeb Workout film is made</h1>
+  <p class="standfirst">A twenty-minute documentary in which the celebrity and their trainer speak for themselves, assembled by scripts, proven by re-transcription, narrated by ElevenLabs' Titan, and handed to an editor as a Premiere package. This is the process in its current form, with every file, tool and rule an AI would need to run it again.</p>
+</div>
+
+<main class="page">
+  <section id="v6-owner-standard">
+  <h2>Current owner standard: the Lamine Yamal V6 documentary</h2>
+  <p><b>September 14th 2026:</b> after approving V6, the owner asked to make this the normal way of producing future videos, retaining its effects and making each new film better. This section supersedes older conflicting style, generated-picture and narrator defaults elsewhere in this page. V6 is the starting quality baseline; its subject, statistics, runtime and exact shot count are not templates for other people.</p>
+  <p>The reusable skill is <a href="file:///C:/Users/avina/.codex/skills/celeb-documentary/SKILL.md">celeb-documentary</a>. The machine-readable default is <code>C:\Users\avina\ytceleb\video_defaults.json</code>. This section also contains the baseline for builds instructed to use only this HTML guide.</p>
+  <ol>
+    <li><b>Story:</b> one supported central question, a compelling real opening, connected chapters and an ending that pays off the opening. Use the supplied MrBeast documentary's concise, concrete narration style. Narration adds context instead of repeating the interview answer. Let the evidence determine runtime and chapter count.</li>
+    <li><b>Picture:</b> real moving footage is the backbone. Verify interview windows, use the subject's actual video for their words, and choose distinct relevant cutaways. Do not fall back automatically to generated stills, generic strangers, repeated source windows or frozen padding. Generated explanatory visuals may be used deliberately, without presenting them as archive evidence.</li>
+    <li><b>Design:</b> use V6's broad Archivo Regular/SemiBold typography, warm cream <code>#FFEDD7</code>, warm dark <code>#100904</code>, restrained orange <code>#F07739</code>, generous spacing, cream chapter side panels and large chapter numbers. The approved influences are <a href="https://godly.design/website/superpower/">Superpower on Godly</a> and <a href="https://styles.refero.design/style/1f204e95-454a-437e-845b-c1b169d35607">ORYZO on Refero Styles</a>. Inspect specific references and adapt them coherently to each subject. The correct catalog is <code>styles.refero.design</code>.</li>
+    <li><b>Effects:</b> retain masked upward text reveals with staggered easing, source credits and translation badges, numbered process stages, verified metric callouts, restrained sound bars, smooth opacity blends, and paced closing phases. Use source-aware grading, motivated camera moves, speech-ducked score and selected sound accents. Apply effects where they serve the story, not every effect on every shot. The decorative orbit, spiral and concentric circles remain retired, as does the old acid-lime condensed title default.</li>
+    <li><b>Voice and translation:</b> use the current <code>narration_defaults.json</code> profile: ElevenLabs Brian, <code>nPczCjzI2devNBz1zQrb</code>, <code>eleven_turbo_v2_5</code>, stability 0.5, similarity 0.75, style 0, speaker boost on, speed 1.0. Keep voice settings consistent. For non-English interviews in an English film, preserve the real video and provide a faithful English question/answer dub with matching English subtitles and separate original-language audio. Independently check words, names, meaning and turn timing. No invented answers or celebrity voice clone is implied.</li>
+    <li><b>Improvement:</b> begin each film with an <code>IMPROVEMENT_PLAN.md</code> identifying the V6 strengths to preserve and concrete gains for the new story. Preview the opening, title and chapter treatment before the long render. Compare final storytelling, picture, readability, motion and sound against the plan and approved V6 examples. Record real improvements and remaining limits. A new palette or extra effects alone is not proof of a better film. Promote future shared defaults after owner approval, not automatically after an experiment.</li>
+    <li><b>Two checks:</b> verify the completed local MP4 and package, fix issues, then independently reopen the final files, preferably fresh downloads, for the second pass. Check full decode, format/frame totals, loudness/peak and speech alignment, source/claim/translation accuracy, graphic phases, subtitle placement, coverage and flagged freezes/duplicates, XML bounds, relative media paths, package hashes and ZIP integrity. Tie reports to final hashes. An unchanged encoded audio stream may inherit prior speech evidence in a graphics-only revision; do not claim repeated listening or ASR when it was not done.</li>
+    <li><b>Delivery:</b> finished MP4 plus matching editable Premiere XML ZIP, all media, graphic source code/specs, fonts and licenses, script/subtitles/chapters, source timecodes, claim and rights ledgers, credits and truthful QC. Preserve previous deliveries. Resolve a subject-specific authorized Drive folder rather than copying Lamine's folder ID, and verify remote size/hash/parent. Email after each check when those messages and the recipient are authorized for the current project; record blocked sends honestly. Never claim continuous playback, Premiere import, AE execution or phoneme-level lip sync unless actually verified.</li>
+  </ol>
+  <p><b>Approved reference:</b> <a href="https://drive.google.com/file/d/1pmSozoF9gifjGjulSMJ0PV-nSEWKuB4B/view">V6 review video</a> and <a href="https://drive.google.com/file/d/1vw3_kS_Q_rqDWmC75RIFcojC1ZFrtz2h/view">editable package</a>. Local project: <code>work/lamine-yamal/v6</code>. It contains 34 graphic/label overlays, 131 primary picture clips and 132 added subtitle cues over 16:34.3; these are reference counts only. The portable effect engine is also preserved in the skill, generalized for new subject names and factual metrics. Older sections below retain useful production mechanics and history, subject to this latest ruling.</p>
+  </section>
+
+<section>
+  <div class="cols">
+    <div>
+      <h2>In brief</h2>
+      <p class="lede">The channel is <b>Celeb Workout</b>, at <a href="https://www.youtube.com/@CelebWorkout/videos">youtube.com/@CelebWorkout/videos</a>. Each episode asks how one performer built a body for a role, and answers it mostly in that performer's own recorded words. The current process turns a name into four things: a 20&ndash;25 minute review MP4 with a complete stereo mix, a portable Adobe Premiere package with every clip on its own track, a set of ledgers that tie every claim and every frame to a dated source, and a verified upload to a shared Google Drive folder.</p>
+      <p>Nothing is generated except the narrator's voice, selected through the latest owner ruling in the narrator section. No stills are padded to fill runtime, no people are synthesised, and no clip is trusted until its cut has been transcribed a second time and its frames have been looked at. The whole build runs on one Windows machine with ffmpeg, Python and a CPU; the only paid input is the electricity.</p>
+      <p>The process has been through several rejected generations since July 2026. The one described here is what produced four accepted films in a row: Dita Von Teese V2, Zendaya V1, Matt Damon V1 and Priyanka Chopra V1. The lineage, and what each earlier generation got wrong, is set out near the end.</p>
+    </div>
+    <aside class="aside">
+      <p><b>The channel</b></p><p>Celeb Workout &middot; <a href="https://www.youtube.com/@CelebWorkout/videos">youtube.com/@CelebWorkout/videos</a></p><p><b>Where the process lives</b></p>
+      <p>Repo: <code>C:\Users\avina\ytceleb</code> (GitHub <code>avinash753159/ytceleb</code>).</p>
+      <p>Current helper scripts: <code>C:\Users\avina\OneDrive\Desktop\Claude Projects\YouTube\production_trio_2026_09_08\</code></p>
+      <p>Reference build: <code>ytceleb\work\dita-von-teese\rebuild_v2</code> (voice environment, models, XML exporter and its test).</p>
+      <p>Per-film project: <code>ytceleb\work\&lt;slug&gt;\v&lt;N&gt;\</code></p>
+      <p><b>Last four deliveries</b></p>
+      <p>Dita V2 20:10 &middot; Zendaya 21:34 &middot; Matt Damon 21:20 &middot; Priyanka Chopra 22:43</p>
+    </aside>
+  </div>
+</section>
+
+<section>
+  <h2>The object being made</h2>
+  <p>Before the pipeline, the target. These are the properties every accepted film has had, as stated in the owner's request of September 8th 2026 (<a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/USER_REQUEST.txt">USER_REQUEST.txt</a>) and the editorial feedback of the same day (<a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/EDITOR_FEEDBACK.md">EDITOR_FEEDBACK.md</a>).</p>
+
+  <dl class="register">
+    <dt>Format</dt><dd>1920&times;1080, 30 fps constant, 48 kHz stereo, H.264 review MP4. Sequence named <code>&lt;SUBJECT&gt;_V&lt;N&gt;_MASTER</code>.</dd>
+    <dt>Runtime</dt><dd>20&ndash;25 minutes, only where verified story and distinct footage support it. Padding is a defect, not a fix.</dd>
+    <dt>Opening</dt><dd>The celebrity speaking, immediately, on training, food or something relatable. Then a 30&ndash;45 second fast montage with dramatic, ducked music. No title card, no slideshow.</dd>
+    <dt>Picture</dt><dd>At least 90% real moving footage by runtime. Interviews, training, rehearsals, performances, behind-the-scenes. Stills only when editorially necessary. No shot, still or window used twice, including stills the publisher embedded inside their own video.</dd>
+    <dt>Voice</dt><dd>Subject and trainer carry the film in their own audio. A narrator bridges, dates claims and never restates a bite. Narration is the ElevenLabs voice <b>Titan &ndash; Deep, Bold, and Powerful</b>, the earlier default (superseded by the later MrBeast V12 reference ruling in the narrator section). Nobody is cloned.</dd>
+    <dt>Music</dt><dd>CC BY 4.0 tracks by Scott Buckley, ducked under all speech, credited in the description.</dd>
+    <dt>Graphics</dt><dd>Restrained, removable overlays over moving footage: a source label top-left, occasional lower-third titles, an animated three-phase closing (comment prompt, like, subscribe). Full-screen information cards were rejected and are gone.</dd>
+    <dt>Delivery</dt><dd>Review MP4 with the complete mix, plus a Premiere portable ZIP: XML, Media folder, separate picture / interview / narration / music / overlay tracks, HOW TO OPEN, script, ledgers, credits, QC. Uploaded to Drive and verified by size and MD5.</dd>
+    <dt>Honesty</dt><dd>The QC report names what was and was not checked. No claim of having watched, listened or imported into Premiere unless it happened.</dd>
+  </dl>
+
+  <figure class="chart">
+    <figcaption>Who is talking<small>Priyanka Chopra V1, 22:43. Share of runtime, seconds.</small></figcaption>
+    <svg viewBox="0 0 720 96" role="img" aria-label="Stacked bar: 887 seconds of the subject's own interview audio, 476 seconds of narration and montage, out of 1,363 seconds.">
+      <rect x="0" y="22" width="468" height="34" fill="#2A5D8F"></rect>
+      <rect x="468" y="22" width="252" height="34" fill="#9DBBD8"></rect>
+      <text class="valw" x="10" y="44">Subject speaking &middot; 887 s (65%)</text>
+      <text class="val" x="478" y="44" fill="#0C0C0C">Narration and montage &middot; 476 s</text>
+      <line x1="0" y1="66" x2="720" y2="66" stroke="#D6D6D6"></line>
+      <text class="lbl" x="0" y="84">0</text>
+      <text class="lbl" x="360" y="84" text-anchor="middle">11:21</text>
+      <text class="lbl" x="720" y="84" text-anchor="end">22:43</text>
+    </svg>
+    <div class="source">Source: COPYRIGHT_REVIEW.md in the Priyanka Chopra V1 package; interview picture clips summed. Sixteen interview excerpts across thirteen distinct source videos.</div>
+  </figure>
+</section>
+
+<section>
+  <h2>The pipeline, stage by stage</h2>
+  <p>Every stage is a small Python script that reads a project folder, writes one ledger, and refuses to proceed on stale input. The order matters and the numbering below is the real order. Scripts live in the production-trio folder unless noted; the project argument is the per-film folder such as <code>work\priyanka-chopra\v1</code>.</p>
+
+  <div class="tablewrap">
+  <table>
+    <caption>Twenty stages from name to verified Drive link</caption>
+    <thead><tr><th>#</th><th>Stage</th><th>What happens</th><th>Tool</th><th>Writes</th></tr></thead>
+    <tbody>
+      <tr><td class="step">1</td><td>Brief</td><td>Write <code>BRIEF.md</code> in the project: the central question, the rights basis, the owner's words verbatim, including any reversal of an earlier rule with both halves side by side.</td><td>By hand</td><td><code>BRIEF.md</code>, <code>project.json</code></td></tr>
+      <tr><td class="step">2</td><td>Discover</td><td>Read-only YouTube search, eight results per query, for the subject's interviews, the trainer's interviews, making-of and stunt featurettes. Writes provenance only; selects nothing.</td><td><code>discover_sources.py</code> via yt-dlp <code>ytsearch8:</code></td><td><code>discovery/&lt;slug&gt;/NN.json</code></td></tr>
+      <tr><td class="step">3</td><td>Research</td><td>Build <code>research.json</code> and <code>sources.json</code>: each candidate with id, title, publisher, role, date. Find the trainer first; they talk more freely than the celebrity. Tier every fact confirmed / reported / rumour.</td><td>By hand, from captions and articles</td><td><code>sources.json</code>, <code>research.json</code></td></tr>
+      <tr><td class="step">4</td><td>Acquire</td><td>Download the highest offered quality (<code>bv*+ba/b</code>), remux to MP4, probe, SHA-256, record every format offered. Retry with compatible player clients on 403. Three consecutive failures halt the batch.</td><td><code>acquire.py</code> via yt-dlp + ffprobe</td><td><code>hd/&lt;id&gt;.mp4</code>, <code>manifest/acquisition.json</code></td></tr>
+      <tr><td class="step">5</td><td>Captions</td><td>Pull publisher or auto captions as json3 and index them with word timings. This is a research index, never quote verification.</td><td><code>captions.py</code></td><td><code>asr/&lt;id&gt;.captions.json</code>, <code>.txt</code></td></tr>
+      <tr><td class="step">6</td><td>Transcribe</td><td>Local ASR for anything without captions: faster-whisper <code>base</code>, int8, VAD on, word timestamps, in resumable 180-second slices keyed on the file hash.</td><td><code>transcribe_sources.py</code></td><td><code>asr/&lt;id&gt;.json</code>, <code>asr/parts/</code></td></tr>
+      <tr><td class="step">7</td><td>Script</td><td>A per-subject generator writes <code>script.json</code> as ordered blocks: <code>interview</code> (source id, in/out frames, editorial note), <code>narration</code> (text, supporting source ids), and one <code>montage</code>. The film opens on an interview block. Narration exists only to set up and connect bites.</td><td><code>build_&lt;name&gt;_script.py</code></td><td><code>script.json</code></td></tr>
+      <tr><td class="step">8</td><td>Prove the bites</td><td>Cut each interview window's audio, re-transcribe it with whisper <code>small</code>, and lay out a nine-frame contact sheet from the actual cut. A human reads the ASR against the intended thought and looks at the frames for identity and burned-in graphics.</td><td><code>review_bites.py --asr</code></td><td><code>manifest/cut_qc.json</code>, <code>qc/bites/</code></td></tr>
+      <tr><td class="step">9</td><td>Conform interviews</td><td>Render each bite as an individually editable 1080p30 picture clip with one-second handles and a level-matched stereo PCM WAV (two-pass loudnorm, I=-14.3, TP=-2.5). Asserts the frame count before accepting.</td><td><code>conform_interviews.py</code></td><td><code>prepared/interviews/</code>, <code>manifest/bites.json</code></td></tr>
+      <tr><td class="step">10</td><td>Picture plan</td><td>For every narration block and the montage, a list of unique source windows with an intent line each ("Chopra rehearsing boxing for the camera"). A source that supplies a bite is chosen for picture only where the frames were reviewed. Capacity must exceed the narration length or the build refuses.</td><td><code>&lt;name&gt;_picture_plan.py</code></td><td><code>picture_plan.json</code></td></tr>
+      <tr><td class="step">11</td><td>Conform picture</td><td>Render each planned window to its own silent 1080p30 clip with handles, fingerprinted on source hash plus frames. Contact sheets per source for eyes-on review.</td><td><code>conform_picture.py</code>, <code>picture_contacts.py</code></td><td><code>prepared/picture/</code>, <code>manifest/picture.json</code>, <code>qc/picture_contacts/</code></td></tr>
+      <tr><td class="step">12</td><td>Narrate</td><td>ElevenLabs text-to-speech, using the latest <code>narration_defaults.json</code> profile copied into the project (see narrator section), one request per narration block with <code>previous_text</code> / <code>next_text</code> for continuity, fired once on the locked script. Cache key is a hash of the text plus voice, model and settings, never the block id. Build the whole cut on a free draft voice first so credits are spent once. Details in the narrator section below. Chatterbox Nano (<code>narrate.py</code>) stays as the offline fallback.</td><td>ElevenLabs API via <code>requests</code>; pattern in <code>pipeline/ja_rebuild_audio.py</code></td><td><code>voice/</code>, <code>manifest/voice.json</code></td></tr>
+      <tr><td class="step">13</td><td>Voice QC</td><td>Trim silences over 0.7 s (keeping 100 ms either side), normalise, pad to whole frames, then independently ASR the result and diff it against the script text. Mis-said names get the sentence rewritten and regenerated. Raw outputs and the trim map are kept.</td><td><code>voice_qc.py</code></td><td><code>prepared/voice/</code>, <code>manifest/voice_qc.json</code>, <code>qc/VOICE_EDITORIAL_REVIEW.json</code></td></tr>
+      <tr><td class="step">14</td><td>Build timeline</td><td>The canonical EDL. Integer frames only, summed exactly; a short clip is an error, never padded or looped. Each block becomes clips on tracks: V1 picture, V2 interview picture, V3 overlays; A1/2 interview, A3/4 narration, A5/6 music. Markers per block. Overlays are made here.</td><td><code>build_timeline.py</code> + <code>graphics.py</code></td><td><code>timeline.json</code>, <code>prepared/graphics/</code></td></tr>
+      <tr><td class="step">15</td><td>Render</td><td>Renders exactly the EDL: silent picture segments cached by content fingerprint, then one continuous mix. Music is ducked by a speech envelope (fast attack, slow release, gain 0.16 under speech), loudnormed to about -15 LUFS, and muxed with the picture.</td><td><code>render_edit.py</code></td><td><code>render/&lt;PREFIX&gt;_REVIEW.mp4</code>, <code>_MIX.wav</code></td></tr>
+      <tr><td class="step">16</td><td>Verify render</td><td>Frame count equals the EDL, full-file decode with zero errors, integrated loudness and true peak measured, and a sample from every speech block correlated at 0.90 or better against the frame-aligned mix. Records that listening and Premiere import were not performed.</td><td><code>verify_render.py</code></td><td><code>qc/TECHNICAL_RENDER_QC.json</code>, <code>qc/FINAL_DECODE.log</code></td></tr>
+      <tr><td class="step">17</td><td>Audit picture</td><td>Sample the edit at 2 fps, perceptual-hash every frame, flag near-identical runs more than ten seconds apart, and build side-by-side contact pages for each candidate pair. Scan the rendered file for black and frozen frames. Every flag is adjudicated by eye.</td><td><code>audit_picture.py</code>, <code>duplicate_contacts.py</code>, <code>scan_render_picture.py</code>, <code>final_contacts.py</code></td><td><code>qc/picture_audit/</code>, <code>qc/duplicate_contacts/</code>, <code>qc/BLACK_FREEZE_SCAN.json</code>, <code>qc/final_frames/</code></td></tr>
+      <tr><td class="step">18</td><td>Editorial approval</td><td>Read every contact page: opening, closing CTA phases, section boundaries, every flagged pair. Fix, re-render the affected block, re-check. Only then write <code>approved_for_delivery: true</code> with the methods and limitations spelled out.</td><td>By eye; recorded in JSON</td><td><code>qc/FINAL_EDITORIAL_QC.json</code>, <code>qc/RENDER_REVIEW_NOTES.md</code></td></tr>
+      <tr><td class="step">19</td><td>Package</td><td>Refuses unless editorial approval and full decode are both true and the MP4's MD5 matches the QC record. Exports Final Cut XML (xmeml) with relative <code>Media/</code> paths, copies every clip, verifies every SHA-256, writes script, timecode CSV, claim ledger, provenance, rights and credits, copyright review, HOW TO OPEN, an After Effects script, chapters and a narration SRT. Zips and CRC-checks.</td><td><code>build_delivery.py</code> + <code>premiere_xml.py</code></td><td><code>delivery/&lt;PREFIX&gt;_PREMIERE_PORTABLE/</code> and <code>.zip</code></td></tr>
+      <tr><td class="step">20</td><td>Upload</td><td>Uploads MP4 then ZIP to the subject's Drive folder with the GWS CLI, reusing an existing upload if its size and MD5 already match, then GETs the remote file and asserts size, MD5, parent and not-trashed. Shares each link as soon as it is verified.</td><td><code>upload_delivery.py</code> via <code>gws drive files</code></td><td><code>manifest/delivery.json</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="tablenote">A queue helper, <code>queued_review.py</code>, chains stages 14 to 17 once all voice and picture ledgers are current. It never approves, packages or uploads; those three remain deliberate.</p>
+
+  <h3>The project folder</h3>
+  <pre><code>work/&lt;slug&gt;/v&lt;N&gt;/
+  BRIEF.md              the owner's words and the central question
+  project.json          subject, prefix, sequence name, fps, size, rights, voice, runtime target
+  sources.json          candidate sources: id, title, publisher, role
+  script.json           ordered blocks: interview | narration | montage
+  picture_plan.json     unique source windows per narration block
+  timeline.json         the canonical EDL (clips, tracks, markers, duration_frames)
+  hd/                   acquired originals + .info.json
+  asr/                  captions and local ASR, resumable parts/
+  voice/                raw Chatterbox WAVs, fingerprint-named
+  prepared/
+    interviews/         bite picture MP4 + level-matched WAV, with handles
+    picture/            silent narration picture clips, with handles
+    voice/              trimmed, normalised narration
+    graphics/           overlay PNGs, closing alpha MOV, editable JSON
+  manifest/             one ledger per stage: acquisition, cut_qc, bites, picture,
+                        voice, voice_qc, music, chatterbox_nano_model, delivery, logs
+  qc/                   contact sheets, duplicate pages, scans, editorial + technical QC
+  render/               &lt;PREFIX&gt;_REVIEW.mp4, &lt;PREFIX&gt;_MIX.wav
+  delivery/             &lt;PREFIX&gt;_PREMIERE_PORTABLE/ and .zip</code></pre>
+</section>
+
+<section>
+  <h2>What is inside the editor's package</h2>
+  <p>The ZIP is modelled on the owner's own MrBeast portable package and was accepted in that form; a native <code>.prproj</code> is not required. An editor extracts the whole archive, imports the XML, opens the MASTER sequence, relinks to the adjacent Media folder if asked, and saves as a project.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Contents of <code>&lt;PREFIX&gt;_PREMIERE_PORTABLE.zip</code></caption>
+    <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><code>&lt;PREFIX&gt;.xml</code></td><td>Final Cut Pro 7 XML (xmeml). Stereo sources are two linked channel clipitems. Picture, interview, narration, music and overlays on separate tracks; nothing locked; nothing flattened.</td></tr>
+      <tr><td><code>Media/</code></td><td>Every clip as its own file, uniquely named by content hash, with up to one-second handles. Picture MP4s are intentionally silent; interview audio is a paired WAV.</td></tr>
+      <tr><td><code>HOW TO OPEN.txt</code>, <code>AE_HOW_TO_OPEN.txt</code>, <code>&lt;PREFIX&gt;_AfterEffects.jsx</code></td><td>Extraction, import, relink and save steps; track map; what was and was not tested.</td></tr>
+      <tr><td><code>SCRIPT.txt</code>, <code>SCRIPT.json</code>, <code>&lt;PREFIX&gt;_NARRATION.srt</code>, <code>&lt;PREFIX&gt;_CHAPTERS.txt</code></td><td>The script with every interview's URL and timecode, narration as subtitles, YouTube chapter list.</td></tr>
+      <tr><td><code>SOURCE_TIMECODES.csv</code>, <code>SOURCE_PROVENANCE.json</code>, <code>TIMELINE_EDL.json</code></td><td>Film in/out to source in/out for every clip; publisher, upload date, URL, SHA-256, formats offered, rights basis.</td></tr>
+      <tr><td><code>CLAIM_SOURCE_LEDGER.json</code></td><td>Each narration block with the sources, interview excerpts and picture ranges that support it.</td></tr>
+      <tr><td><code>RIGHTS_AND_CREDITS.txt</code>, <code>COPYRIGHT_REVIEW.md</code></td><td>The recorded rights basis, music credits for the description, and the measured position against the three copyright rules.</td></tr>
+      <tr><td><code>DELIVERY_QC.md</code>, <code>EDITORIAL_QC.json</code>, <code>TECHNICAL_RENDER_QC.json</code></td><td>Truthful QC: runtime, loudness, decode, sync samples, frame inspection methods, and the standing limitations (360p upscale, no Premiere import test, no subjective listening).</td></tr>
+      <tr><td><code>Graphics_Source/</code></td><td><code>graphics.py</code>, fonts with OFL notices, and a JSON per overlay so any label can be regenerated and swapped as a single clip.</td></tr>
+      <tr><td><code>MEDIA_MANIFEST.json</code>, <code>PACKAGE_MANIFEST.json</code>, <code>PROJECT.json</code></td><td>Every member with bytes and hash; the archive's own verification record.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2>Rules that govern every build</h2>
+  <p>These are the standing rulings as of September 2026. Each one cost a rejected cut. Where an older document disagrees, the newer owner instruction wins, and the older text is kept only so nobody re-applies it from memory.</p>
+  <div class="rules">
+    <div><h4>The subject leads</h4><p>Every point that can be made in the celebrity's or trainer's own voice is. Narration sets up and connects. If the narrator adds nothing, cut the narrator.</p></div>
+    <div><h4>A bite is a complete thought</h4><p>Never cut mid-sentence, never include interviewer filler. Interviewer questions are allowed because they carry content. Keep the context that gives the sentence its meaning.</p></div>
+    <div><h4>Real clip under real words</h4><p>When the subject is quoted, the picture is that interview at that timecode. A quotation over unrelated footage is a defect.</p></div>
+    <div><h4>Picture matches the argument</h4><p>Show what the paragraph claims, not the keyword in the sentence. No weightlifting because it is a fitness channel. No stand-in performing what the narration attributes to the subject.</p></div>
+    <div><h4>Nothing twice</h4><p>No repeated shot, still or source window, and check for the same still embedded in different source videos. Changing a crop does not make a reused image new.</p></div>
+    <div><h4>Date everything</h4><p>A 2019 interview is a 2019 snapshot, not the current routine. Role preparation is not everyday life. Never invent a diet, a split, calories or a transformation.</p></div>
+    <div><h4>Never generate a person who exists</h4><p>No synthetic subject, no voice clone. The only generated audio is the narrator's built-in voice.</p></div>
+    <div><h4>Content fingerprints, not names</h4><p>Every cache is keyed on a hash of the content that produced it. Every stale-render disaster on this project came from a key that was a name or a position.</p></div>
+    <div><h4>Look before you call it fixed</h4><p>A number improving is not verification. Generate the contact sheet and read the frames. Sample the middle of a span, never the end.</p></div>
+    <div><h4>A check that passes on no data is not a check</h4><p>"File exists" does not mean current. An unmeasured window that returns "no cut" is a hole, not a pass. Ask what the check would do with nothing at all.</p></div>
+    <div><h4>Say what was not done</h4><p>Premiere import, continuous playback and listening are disclosed as unperformed when they were. Never claim to have watched something that was only measured.</p></div>
+    <div><h4>The ask goes at the end only</h4><p>Like, subscribe and a subject-specific comment prompt as an animated closing that resolves the film. Never in the opening, never mid-film.</p></div>
+  </div>
+
+  <h3>Rights and copyright: two recorded positions</h3>
+  <p>On August 3rd 2026 the owner set three binding rules, recorded in <a href="file:///C:/Users/avina/ytceleb/docs/COPYRIGHT_RULES.md">docs/COPYRIGHT_RULES.md</a>: no clip over ten seconds, no clip repeated, one clip per source video, b-roll included. The only remedy for more footage under those rules is more distinct sources.</p>
+  <p>On September 8th 2026 the owner answered a direct question about longer excerpts for all three current subjects with "no usage restrictions, I can use all of it", recorded in <a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/RIGHTS_CONFIRMATION.json">RIGHTS_CONFIRMATION.json</a> as a user assertion, not an independent licence. The current films are built under that decision, with complete interview thoughts that run well past ten seconds. Every package still measures itself against the August rules in <code>COPYRIGHT_REVIEW.md</code> so the position is explicit rather than forgotten. A new subject needs its own recorded rights answer before production; the previous confirmation does not extend automatically.</p>
+  <blockquote>I'd rather just watch the original interview, which means your video is useless.<cite>The owner, on a cut that returned to one podcast eight times. Spread the selection across appearances because it cuts better, whatever the rights position.</cite></blockquote>
+</section>
+
+<section>
+  <h2>Brand and graphics</h2>
+  <p>The identity is measured off the channel banner and written up in <a href="file:///C:/Users/avina/ytceleb/docs/BRAND.md">docs/BRAND.md</a>. In the current process it is applied sparingly, as overlays on moving footage, generated by <code>graphics.py</code> with Pillow.</p>
+  <dl class="register">
+    <dt>Red</dt><dd><code>#B22B1A</code>, Celebrity Red. Never a per-celebrity accent; never the Economist's <code>#E3120B</code> in the films.</dd>
+    <dt>Ground</dt><dd>Off-white type <code>#F4F2EF</code> on a dark plate <code>rgba(13,13,13,0.85)</code> with a 5 px red edge.</dd>
+    <dt>Type</dt><dd>Anton for display (titles, closing), Archivo SemiBold / Regular for labels. Never more than two families in a frame. All OFL, shipped in the package.</dd>
+    <dt>Source label</dt><dd>Top-left plate: publisher and year, shown when a source first appears, shortened before the first replacement clip so track 3 never overlaps.</dd>
+    <dt>Title</dt><dd>Lower gradient with a red bar and an Anton headline, used for chapter turns only.</dd>
+    <dt>Closing</dt><dd>A 360-frame alpha MOV (qtrle): JOIN THE CONVERSATION with a question specific to the film, LIKE THIS VIDEO, SUBSCRIBE. Sixteen-frame cubic entrance, progress underline, ten-frame fade.</dd>
+    <dt>Retired</dt><dd>Full-frame HyperFrames glass cards (August 2026) are out of the current format after the owner rejected full-screen information cards. The generator survives in <code>OneDriveDesktopClaude ProjectsYouTubejordan_v1hfrdsgen_cards.py</code> should the brief change back.</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>The narrator: ElevenLabs, with the owner's MrBeast reference</h2>
+  <div id="narrator-owner-update-20260913"><h3>Latest owner ruling: MrBeast V12 voice and storytelling</h3>
+  <p>Later on September 13th 2026, the owner requested a deeper narrator like the audio in <code>C:\Users\avina\OneDrive\Desktop\Claude Projects\YouTube\CelebWorkout\MRBEAST_PREMIERE_PORTABLE\Media\MRBEAST_V12_AUDIO.wav</code>, and asked for the transcript to follow that reference too. This applies to a Lamine Yamal V2 revision and becomes the default for future films. Match the narrator and storytelling in this supplied documentary, not the celebrity's own interview voice. The supplied audio opening has now been transcribed and matches the surviving MrBeast V6 script. Its production driver specifies <b>Brian</b>, voice id <code>nPczCjzI2devNBz1zQrb</code>, model <code>eleven_turbo_v2_5</code>, stability 0.5, similarity 0.75, style 0.0, speaker boost on, speed 1.0. Use this as the default profile, stored in <code>C:\Users\avina\ytceleb\narration_defaults.json</code>, and copy it into each new project. This identification is based on production provenance, not a subjective listening comparison. The user's explicit reference supersedes both the older Brian rejection and the Titan-only requirement. Use a strong central question, concrete detail, short spoken sentences, connected scene turns and an ending that pays off the opening; preserve the new subject's own verified facts.</p>
+  <p>This supersedes the fixed Titan-only choice below where the reference differs. Older voice rulings remain historical evidence. The supplied replacement API key is stored only in <code>elevenlabs_key.txt</code>. The initial account and voice checks lacked read permissions. After the owner enabled them, both checks returned HTTP 200, Brian was present, and the active account had 98,429 characters remaining. Text-to-speech subsequently succeeded for all 18 Lamine Yamal V2 narration blocks using the recorded Brian profile. Revision state: <code>work/lamine-yamal/v2/PRODUCTION_STATE.json</code>.</p></div>
+  <p>The narrator's earlier changes were owner decisions. Before the later MrBeast reference ruling above, the September 13th 2026 choice was the ElevenLabs voice <b>Titan &ndash; Deep, Bold, and Powerful</b>. It is the voice the original charter was built around and it is already added to the account. Both halves of every reversal are recorded so nobody re-applies a dead rule from an older document.</p>
+
+  <div class="tablewrap">
+  <table>
+    <caption>Narrator rulings, oldest to newest</caption>
+    <thead><tr><th>Date</th><th>Voice</th><th>Owner's words or verdict</th></tr></thead>
+    <tbody>
+      <tr><td>July 2026</td><td>edge-tts <code>en-US-ChristopherNeural</code> (draft), ElevenLabs Titan (final)</td><td>Titan was the charter's voice. A plan limit meant several films shipped on the free voice Brian instead. "The audio is complete crap" was said of the edge-tts draft.</td></tr>
+      <tr><td>August 2026</td><td>Kokoro <code>am_michael</code>, local ONNX</td><td>"elevenlabs brian doesn't work." Kokoro became the standard for the Aniston and Jordan builds.</td></tr>
+      <tr><td>September 8th 2026</td><td>Chatterbox Nano built-in voice</td><td>"Use Chatterbox for narration, with a consistent non-impersonating voice." Used on Dita V2, Zendaya, Matt Damon and Priyanka Chopra.</td></tr>
+      <tr><td><b>September 13th 2026</b></td><td><b>ElevenLabs Titan</b></td><td>"Make sure that it's the same voice that I wanted you to use in ElevenLabs: V/O Titan &ndash; Deep, Bold, Powerful." This governs. The owner also named "V/O: Soothing Narrator"; see the note below.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The account and the voice, as verified on September 13th</h3>
+  <dl class="register">
+    <dt>Key</dt><dd>Read from <code>C:\Users\avina\ytceleb\elevenlabs_key.txt</code>, or the <code>ELEVENLABS_API_KEY</code> environment variable. Never written into a script, a ledger or this page. Sent as the <code>xi-api-key</code> header.</dd>
+    <dt>Plan</dt><dd>Creator tier, active. 127,320 characters a month; 24,577 used at the time of writing. Library voices such as Titan need a paid plan, which this is.</dd>
+    <dt>Voice</dt><dd><b>Titan &ndash; Deep, Bold, and Powerful</b>, voice id <code>dtSEyYGNJqjrtBArPCVZ</code>. Category professional (a library voice added to the account), male, American, labelled intense, narrative story. A ten-word test line rendered as 2.5 seconds of audio with HTTP 200 on this key, so the voice is live.</dd>
+    <dt>Voice settings</dt><dd>The voice's stored defaults are stability 0.34, similarity 0.75, style 0.44, speaker boost on, speed 1.0. The charter's code sent stability 0.5, similarity 0.75, style 0.0. Pick one set, record it in <code>project.json</code>, and never change it between blocks of the same film.</dd>
+    <dt>Model</dt><dd><code>eleven_multilingual_v2</code> for quality, <code>eleven_turbo_v2_5</code> for cheaper drafts. <code>eleven_v3</code> is available on the account but changes delivery; do not mix models within a film.</dd>
+    <dt>Output</dt><dd><code>output_format=mp3_44100_128</code>, then conform to 48 kHz stereo PCM for the timeline, as every other audio asset is.</dd>
+    <dt>Cost</dt><dd>One character of text is one credit on multilingual v2, half on turbo. A 22-minute film carries roughly 9,000 to 12,000 characters of narration. Fire once, on the locked script.</dd>
+    <dt>Fallbacks</dt><dd>Brian, <code>nPczCjzI2devNBz1zQrb</code>, is the free premade voice the old code fell back to; the owner rejected it. Chatterbox Nano is the offline fallback if the API is down. Neither ships without the owner's say-so.</dd>
+    <dt>"Soothing Narrator"</dt><dd>No voice of exactly that name is on the account. The library search returns several, the nearest in register being Mark &ndash; Soothing Narrator (<code>U01ZPsXvGMOLMdNr6X34</code>, Canadian, middle-aged) and Christopher &ndash; Narrator and Soothing (<code>8VCkcWZc4STPgdUweai9</code>, American, middle-aged). Titan is the one already on the account and the one the charter named, so Titan is the working choice until the owner picks otherwise.</dd>
+  </dl>
+
+  <h3>The request, block by block</h3>
+  <p>One request per narration block keeps every block replaceable and cached on its own fingerprint. Pass the neighbouring text so the voice carries its energy across the cut. This is the shape already used in <code>pipeline/ja_rebuild_audio.py</code>, with the voice id switched to Titan.</p>
+  <pre><code>POST https://api.elevenlabs.io/v1/text-to-speech/dtSEyYGNJqjrtBArPCVZ?output_format=mp3_44100_128
+xi-api-key: &lt;contents of elevenlabs_key.txt&gt;
+Content-Type: application/json
+
+{
+  "text": "&lt;narration block N07&gt;",
+  "model_id": "eleven_multilingual_v2",
+  "previous_text": "&lt;last 400 characters of N06&gt;",
+  "next_text": "&lt;first 400 characters of N08&gt;",
+  "voice_settings": {
+    "stability": 0.34,
+    "similarity_boost": 0.75,
+    "style": 0.44,
+    "use_speaker_boost": true,
+    "speed": 1.0
+  }
+}</code></pre>
+  <pre><code># Python, the same call, cached on a fingerprint of text + voice + model + settings
+import hashlib, json, requests
+KEY = open(r"C:\Users\avina\ytceleb\elevenlabs_key.txt").read().strip()
+VOICE = "dtSEyYGNJqjrtBArPCVZ"            # Titan - Deep, Bold, and Powerful
+SETTINGS = {"stability": 0.34, "similarity_boost": 0.75, "style": 0.44,
+            "use_speaker_boost": True, "speed": 1.0}
+
+def speak(block_id, text, previous, following, out_dir):
+    cfg = {"text": text, "voice": VOICE, "model": "eleven_multilingual_v2", "settings": SETTINGS}
+    fp = hashlib.sha256(json.dumps(cfg, sort_keys=True).encode()).hexdigest()[:20]
+    dst = out_dir / f"{block_id}_{fp}.mp3"
+    if dst.exists():
+        return dst                        # same words, same voice: never re-spend
+    r = requests.post(f"https://api.elevenlabs.io/v1/text-to-speech/{VOICE}",
+                      params={"output_format": "mp3_44100_128"},
+                      headers={"xi-api-key": KEY, "Content-Type": "application/json"},
+                      json={"text": text, "model_id": cfg["model"],
+                            "previous_text": previous[-400:] or None,
+                            "next_text": following[:400] or None,
+                            "voice_settings": SETTINGS}, timeout=240)
+    r.raise_for_status(); assert len(r.content) > 1000
+    dst.write_bytes(r.content); return dst</code></pre>
+  <p>Three checks around the call. Before: <code>GET /v1/user/subscription</code> and refuse to start if the remaining characters are fewer than the script needs. Before: <code>GET /v1/voices</code> and assert Titan's id is present, so a wrong account fails loudly instead of resolving to a different voice. After: run the same voice QC as any narrator, silence trim, frame pad, independent ASR against the script, and regenerate only the blocks that mis-say a name.</p>
+  <p class="small">Endpoints used: <a href="https://elevenlabs.io/docs/api-reference/text-to-speech/convert">text-to-speech/convert</a>, <a href="https://elevenlabs.io/docs/api-reference/voices/search">voices</a>, <a href="https://elevenlabs.io/docs/api-reference/user/subscription/get">user/subscription</a>, <a href="https://elevenlabs.io/docs/api-reference/voice-library/search">shared-voices</a> for library search, <a href="https://elevenlabs.io/docs/api-reference/models/list">models</a>. Existing call sites in the repo: <code>GENERATE_FINAL_VIDEO.py</code> (sentence-chunked, resolves the voice by name), <code>pipeline/ja_rebuild_audio.py</code> (per-block with context, subscription check, three retries).</p>
+</section>
+
+<section>
+  <h2>Lineage: what each generation got wrong</h2>
+  <p>The process is the residue of rejections. Reading the older documents without this table leads an AI to rebuild a rejected film.</p>
+  <div class="tablewrap">
+  <table>
+    <caption>Six generations, July to September 2026</caption>
+    <thead><tr><th>Generation</th><th>Shape</th><th>Voice</th><th>Verdict and lesson</th></tr></thead>
+    <tbody>
+      <tr><td>RUN.py charter (July)</td><td>8-minute narrator-led montage: Claude-written script, yt-dlp and Pexels b-roll, Gemini vision tags, 4-second shots</td><td>edge-tts, then ElevenLabs "Titan"</td><td>"The audio is complete crap." Generic b-roll, stock models as the subject. Kept only as <code>CELEBVID_CHARTER.md</code>.</td></tr>
+      <tr><td>Hemsworth V8 (Aug 3)</td><td>124-row shot list, 16-beat sheet, 8&ndash;12 s holds, glass cards, one clip per source</td><td>edge-tts draft</td><td>Passed 5 of 12 gates. Interview footage is cut too fast to hold 8 s; real voice stalled at 22%. Lesson: harvest speech, not b-roll.</td></tr>
+      <tr><td>MrBeast V12</td><td>Generated stills with depth push-in, Veo video for key beats</td><td>Kokoro</td><td>"I would never watch that video." Keyword-literal shots, images after images. Lesson: fewer shots, held longer; a shot illustrates the argument.</td></tr>
+      <tr><td>Aniston V12 &rarr; V13 (Aug 25)</td><td>Bite-led: subject and trainer carry the film, narrator bridges; full-frame glass cards; cue photographs; no music bed</td><td>Kokoro <code>am_michael</code></td><td>"This is fantastic" after "it's shit, start again". The difference was harvesting long-form interviews and proving every bite by re-transcription.</td></tr>
+      <tr><td>Jordan V16</td><td>V13 structure plus 13 card layouts enforced in code, pinned photographs per named person</td><td>Kokoro</td><td>Accepted. Then the owner rejected full-screen cards and slideshow feel across the board.</td></tr>
+      <tr><td>Dita V2 and the trio (Sep 8)</td><td>Video-led: cold open on real speech, 30&ndash;45 s montage, &ge;90% moving footage, restrained overlays, music ducked, Premiere package</td><td>Chatterbox Nano, now Titan</td><td>Four accepted deliveries. This page describes this generation, with the narrator switched to ElevenLabs Titan on September 13th.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>Three failure modes explain nearly every defect in that history: a cache key that was a name instead of content; a measurement mistaken for an observation; and a tool whose "no data" answer looked like a pass. The current scripts are shaped around not repeating them.</p>
+</section>
+
+<section>
+  <h2>The prompt that starts a film</h2>
+  <p>The name alone is enough. The trainer's name, an era to centre on, and a recorded rights answer make it faster. This is the shape that produced the last three films; hand it to an AI with this page attached.</p>
+  <div class="callout">
+    <h4>Prompt</h4>
+    <p>Make a Celeb Workout documentary about &lt;NAME&gt;. Read <code>docs/HOW_VIDEOS_ARE_MADE.html</code>, then the request and feedback files in the production-trio folder, then the Priyanka Chopra V1 project as the worked example. Use the trio helper scripts; parameterise, never hard-code a subject.</p>
+    <ol>
+      <li>Write <code>BRIEF.md</code> and <code>project.json</code> in <code>work/&lt;slug&gt;/v1</code>. Record the rights answer verbatim; if there is none, ask for it and research in the meantime.</li>
+      <li>Discover, research, acquire, caption, transcribe. Find the trainer first. Tier every fact and date it.</li>
+      <li>Write <code>script.json</code> opening on the subject's own speech, bites carrying the film, narration bridging. Budget bite-seconds against runtime before writing; if the subject carries under a third, go back to sources.</li>
+      <li>Prove every bite: re-ASR the cut, read the contact sheet, check identity and burned-in graphics.</li>
+      <li>Plan and conform picture with no window used twice and every window matched to the spoken argument.</li>
+      <li>Narrate with the current Brian profile in narration_defaults.json once the script is locked, QC the voice against the script by ASR, regenerate any mis-said block.</li>
+      <li>Build the timeline, render, verify, audit duplicates and black frames, read every contact page, fix, approve truthfully.</li>
+      <li>Package the Premiere ZIP, upload both files to the subject's Drive folder, verify size and MD5, share links.</li>
+    </ol>
+    <p>Gates: 20&ndash;25 minutes; &ge;90% real moving footage; no repeated shot; every claim in the ledger; no generated person; complete stereo mix in the review MP4; unperformed checks disclosed.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Resources</h2>
+  <p>Everything an AI needs to run this again, grouped by what it is for. Local paths are on the production machine; links open on the web.</p>
+
+  <h3>Governing documents, newest first</h3>
+  <ul class="paths">
+    <li><span class="path">This page, narrator section</span> <span class="what">the September 13th 2026 ruling: narration is ElevenLabs Titan; Chatterbox Nano is the fallback. Until it is copied into the production-trio README, this is where it is recorded</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/USER_REQUEST.txt">production_trio_2026_09_08/USER_REQUEST.txt</a></span> <span class="what">the full owner request for the three-film build; takes precedence over older skill defaults</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/EDITOR_FEEDBACK.md">production_trio_2026_09_08/EDITOR_FEEDBACK.md</a></span> <span class="what">editorial steering of Sep 8th: opening, no cards, animated ending, Chatterbox, Drive folder layout</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/README.md">production_trio_2026_09_08/README.md</a></span> and <span class="path">PRODUCTION_CHECKPOINT_03..06.md</span> <span class="what">the build log of the trio, including the helper corrections made to the Dita tooling</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/OneDrive/Desktop/Claude%20Projects/YouTube/production_trio_2026_09_08/VERIFIED_DELIVERIES.md">production_trio_2026_09_08/VERIFIED_DELIVERIES.md</a></span> <span class="what">the six delivered links with checksums and limitations</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/work/dita-von-teese/BRIEF.md">ytceleb/work/dita-von-teese/BRIEF.md</a></span> <span class="what">the revision that turned the process video-led; explains what was rejected and why</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/.claude/skills/celebvid/SKILL.md">~/.claude/skills/celebvid/SKILL.md</a></span> <span class="what">the V16 skill: standing rulings, the five gates, harvesting, proving bites, and the full list of past mistakes. Its voice, music-bed and glass-card sections are superseded by the September documents</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/docs/COPYRIGHT_RULES.md">ytceleb/docs/COPYRIGHT_RULES.md</a></span> <span class="what">the August three rules and the arithmetic behind them</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/docs/EDIT_RULES.md">ytceleb/docs/EDIT_RULES.md</a></span>, <span class="path"><a href="file:///C:/Users/avina/ytceleb/docs/BRAND.md">docs/BRAND.md</a></span> <span class="what">the seven edit rules from the MrBeast review; the measured brand system</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/NEW_CELEB_PROMPT.md">ytceleb/NEW_CELEB_PROMPT.md</a></span>, <span class="path"><a href="file:///C:/Users/avina/ytceleb/docs/THE_STANDARD.html">docs/THE_STANDARD.html</a></span>, <span class="path"><a href="file:///C:/Users/avina/ytceleb/docs/BEAT_SHEET.html">docs/BEAT_SHEET.html</a></span> <span class="what">the shot-list generation's prompt, standard and 16-beat sheet; useful for story structure, superseded on format</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/CELEBVID_CHARTER.md">ytceleb/CELEBVID_CHARTER.md</a></span>, <span class="path"><a href="file:///C:/Users/avina/ytceleb/README.md">README.md</a></span> <span class="what">the original one-command RUN.py builder; historical only</span></li>
+  </ul>
+
+  <h3>Reference builds and delivered films</h3>
+  <ul class="paths">
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/work/priyanka-chopra/v1/">ytceleb/work/priyanka-chopra/v1/</a></span> <span class="what">the worked example: every ledger, QC page and the finished package</span></li>
+    <li><span class="path">ytceleb/work/matt-damon/v1/</span>, <span class="path">ytceleb/work/zendaya/v1/</span> <span class="what">the two sibling builds</span></li>
+    <li><span class="path"><a href="file:///C:/Users/avina/ytceleb/work/dita-von-teese/rebuild_v2/">ytceleb/work/dita-von-teese/rebuild_v2/</a></span> <span class="what">the reference: <code>nano_voice.py</code>, <code>models/chatterbox-nano/</code>, <code>premiere_xml.py</code> with <code>test_premiere_xml.py</code>, <code>qc_render.py</code>, <code>REFERENCE_REVIEW.md</code></span></li>
+    <li><a href="https://drive.google.com/drive/folders/1V-jUQ7YY5jFUIUv04rYUSh8EvpiSbs_i">Drive: Videos &ndash; Celebs</a> <span class="what">the delivery parent; one subfolder per celebrity</span></li>
+    <li>Dita Von Teese V2: <a href="https://drive.google.com/file/d/1JbUocNGX1VcB6J0ATt9yoyzjsqFEn2DG/view">review MP4</a> &middot; <a href="https://drive.google.com/file/d/1giZXPKWZdMHKZdCSLK05LuBoPwKMkuXX/view">Premiere ZIP</a></li>
+    <li>Zendaya V1: <a href="https://drive.google.com/file/d/1oxb2_VuxucS4umMAt9pYlbe67Upmn-sZ/view">review MP4</a> &middot; <a href="https://drive.google.com/file/d/194FSnxRk8c61LxZHPFbxi34pP1BOeMco/view">Premiere ZIP</a> &middot; <a href="https://drive.google.com/drive/folders/1FxJofhk4tdx2Nv8RNW8SRZMGaKFfsDpt">folder</a></li>
+    <li>Matt Damon V1: <a href="https://drive.google.com/file/d/1BNS5fwW8Iqj5iwPdgYtqU5EXNXnMcZyF/view">review MP4</a> &middot; <a href="https://drive.google.com/file/d/1C6Vfof16FU5nCqHVO2A6x1rDLa2p2XG3/view">Premiere ZIP</a> &middot; <a href="https://drive.google.com/drive/folders/1BFszlLZj6DqG4vcfuPyrH85USufK1Pa8">folder</a></li>
+    <li>Priyanka Chopra V1: <a href="https://drive.google.com/file/d/1yP3_qFQTSLli9mXzCGGSbXHMthoEiXgP/view">review MP4</a> &middot; <a href="https://drive.google.com/file/d/1IdJv14M7ryh38dOjrZ8dqYlEFRY1Ky-0/view">Premiere ZIP</a> &middot; <a href="https://drive.google.com/drive/folders/13e6GYu7RyE1gSNcE0CSMn1Iapk98KIP1">folder</a></li>
+    <li>Edit references supplied by the owner: <a href="https://www.youtube.com/watch?v=K4y3Ov_TA38">youtube.com/watch?v=K4y3Ov_TA38</a> &middot; <a href="https://www.youtube.com/watch?v=pYGqI9dAuos">youtube.com/watch?v=pYGqI9dAuos</a> &middot; the channel's own <a href="https://youtu.be/iJyAcSuuuq8">Ryan Reynolds episode</a> for pacing (median shot 1.4 s, measured)</li>
+  </ul>
+
+  <h3>Tools and libraries</h3>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Tool</th><th>Used for</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://github.com/yt-dlp/yt-dlp">yt-dlp</a></td><td>Search, captions, acquisition. Use <code>bv*+ba/b</code>, <code>--no-continue</code> on retries, delete stale <code>.part</code> files; a resumed range request reads as a 403 block and is not one.</td><td>stages 2, 4, 5</td></tr>
+      <tr><td><a href="https://ffmpeg.org/">ffmpeg / ffprobe</a></td><td>Conform, loudnorm, render, mux, blackdetect, freezedetect, full-file decode.</td><td>stages 9, 11, 15, 16, 17</td></tr>
+      <tr><td><a href="https://github.com/SYSTRAN/faster-whisper">faster-whisper</a></td><td>Source ASR (<code>base</code>, int8, VAD) and bite proof (<code>small</code>). Shortest sources first, resumable slices.</td><td>stages 6, 8, 13</td></tr>
+      <tr><td><a href="https://elevenlabs.io/docs/api-reference/text-to-speech/convert">ElevenLabs API</a></td><td>Narration. Voice Titan, model <code>eleven_multilingual_v2</code>, key in <code>ytceleb/elevenlabs_key.txt</code>. Creator plan. See the narrator section.</td><td>stage 12</td></tr>
+      <tr><td><a href="https://github.com/resemble-ai/chatterbox">Chatterbox</a> &middot; <a href="https://huggingface.co/ResembleAI/chatterbox-nano">chatterbox-nano weights</a></td><td>Offline fallback narrator used on the September 8th films. Pinned revision <code>71ccd1d</code>, code commit <code>5de7a54</code>, CPU, torch 2.6. Built-in voice only.</td><td>stage 12, fallback</td></tr>
+      <tr><td><a href="https://python-pillow.org/">Pillow</a>, NumPy, soundfile</td><td>Overlays and contact sheets; audio mixing, ducking and silence trimming in the frequency and sample domain.</td><td>stages 8, 13, 14, 15</td></tr>
+      <tr><td><a href="https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/FinalCutPro_XML/Basics/Basics.html">Final Cut Pro XML (xmeml)</a></td><td>The interchange format Premiere imports. Stereo as two linked channel clipitems; relative paths into <code>Media/</code>.</td><td>stage 19</td></tr>
+      <tr><td><a href="https://github.com/googleworkspace/cli">GWS CLI</a></td><td>Drive listing, upload, remote verification. Authenticated as info@xleagle.com. A token-cache warning on listing is benign.</td><td>stage 20</td></tr>
+      <tr><td><a href="https://www.scottbuckley.com.au/library/">Scott Buckley library</a></td><td>CC BY 4.0 score: Simulacra, Echoes Of Home, Amberlight. Credit line required in the description.</td><td>stage 15</td></tr>
+      <tr><td>Fonts: <a href="https://fonts.google.com/specimen/Anton">Anton</a>, <a href="https://fonts.google.com/specimen/Archivo">Archivo</a></td><td>OFL, installed at <code>ytceleb/graphics/public/fonts</code>, shipped with the package.</td><td>stage 14</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Retired but retained</h3>
+  <ul class="paths">
+    <li><a href="https://github.com/thewh1teagle/kokoro-onnx">kokoro-onnx</a> <span class="what">the August narrator (<code>am_michael</code>); superseded by Chatterbox on Sep 8th, then by ElevenLabs Titan on Sep 13th</span></li>
+    <li><a href="https://github.com/heygen-com/hyperframes">HyperFrames</a> <span class="what">HTML-to-MP4 full-frame glass cards; superseded by removable overlays</span></li>
+    <li><a href="https://github.com/opencv/opencv_zoo">opencv_zoo</a> SFace / YuNet <span class="what">face identity gate used in the Aniston build; the trio verified identity by eye on contact sheets instead</span></li>
+    <li><a href="https://github.com/DepthAnything/Depth-Anything-V2">Depth-Anything-V2</a>, Gemini <a href="https://ai.google.dev/gemini-api/docs/video">Veo</a> and image models <span class="what">the MrBeast generated-picture path; stills and generated people are out of the current format</span></li>
+    <li><a href="https://github.com/voltagent/awesome-design-md">awesome-design-md</a> <span class="what">the design references the owner pointed at for cards</span></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="footer">Compiled September 13th 2026 from the repository, the production-trio folder and the delivered packages. Where this page and a newer owner instruction disagree, the owner's words win; record them in the brief before building.</footer>
+
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Train Like Jason Statham — Production Plan v2</title>
+<style>
+  :root{
+    --red:#E3120B; --ink:#0C0C0C; --grey:#5B5B5B; --rule:#D6D2C8;
+    --paper:#FFFFFF; --tint:#F5F3EE; --steel:#44708E;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--paper);color:var(--ink);
+       font:16px/1.55 "Helvetica Neue",Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .topbar{background:var(--red);height:14px}
+  .masthead{max-width:1060px;margin:0 auto;padding:26px 28px 18px;
+            display:flex;justify-content:space-between;align-items:baseline;
+            border-bottom:3px solid var(--ink)}
+  .masthead .brand{font:700 15px/1 Georgia,serif;letter-spacing:3px;
+                   text-transform:uppercase}
+  .masthead .date{font-size:13px;color:var(--grey)}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 28px 80px}
+  .kicker{color:var(--red);font-weight:700;font-size:13px;
+          letter-spacing:2.5px;text-transform:uppercase;margin:38px 0 10px}
+  h1{font:700 46px/1.12 Georgia,"Times New Roman",serif;
+     letter-spacing:-.5px;max-width:840px}
+  .standfirst{font:400 21px/1.5 Georgia,serif;color:#333;max-width:820px;
+              margin:16px 0 8px}
+  .byline{font-size:13px;color:var(--grey);margin:10px 0 0;
+          padding-bottom:26px;border-bottom:1px solid var(--rule)}
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:44px;margin-top:34px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  h2{font:700 26px/1.25 Georgia,serif;margin:42px 0 6px;
+     padding-top:26px;border-top:1px solid var(--rule)}
+  h2 .no{color:var(--red);font-style:italic;margin-right:10px}
+  h3{font:700 16px/1.3 "Helvetica Neue",Arial,sans-serif;margin:20px 0 6px}
+  p{margin:10px 0;max-width:660px}
+  .lede:first-letter{font:700 54px/0.9 Georgia,serif;float:left;
+                     padding:6px 8px 0 0}
+  ul{margin:8px 0 8px 20px;max-width:640px}
+  li{margin:6px 0}
+  .rail{border-top:6px solid var(--ink);padding-top:14px;height:fit-content;
+        position:sticky;top:20px}
+  .rail h4{font:700 14px/1 Georgia,serif;letter-spacing:2px;
+           text-transform:uppercase;margin-bottom:14px}
+  .fact{display:flex;justify-content:space-between;gap:12px;
+        padding:9px 0;border-bottom:1px solid var(--rule);font-size:14px}
+  .fact b{text-align:right}
+  .swatch{display:inline-block;width:13px;height:13px;border-radius:2px;
+          vertical-align:-1px;margin-right:6px}
+  .chart{margin:26px 0;max-width:660px}
+  .chart .cap{font:700 13px/1 "Helvetica Neue",Arial,sans-serif;
+              letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+  .chart .sub{font-size:12px;color:var(--grey);margin-bottom:12px}
+  .bar{display:grid;grid-template-columns:230px 1fr 90px;gap:10px;
+       align-items:center;margin:7px 0;font-size:13.5px}
+  .bar .track{background:var(--tint);height:20px;position:relative}
+  .bar .fill{position:absolute;inset:0 auto 0 0;background:var(--red)}
+  .bar .fill.steel{background:var(--steel)}
+  .bar .val{text-align:right;font-variant-numeric:tabular-nums;color:#333}
+  table{border-collapse:collapse;width:100%;max-width:660px;font-size:14px;
+        margin:14px 0}
+  th{font:700 12px/1.2 "Helvetica Neue",Arial,sans-serif;letter-spacing:1px;
+     text-transform:uppercase;text-align:left;color:var(--grey);
+     border-bottom:2px solid var(--ink);padding:8px 10px 8px 0}
+  td{border-bottom:1px solid var(--rule);padding:9px 10px 9px 0;
+     vertical-align:top}
+  .decide{background:var(--tint);border-left:5px solid var(--red);
+          padding:18px 22px;margin:26px 0;max-width:660px}
+  .decide .t{font:700 13px/1 "Helvetica Neue",Arial,sans-serif;
+             letter-spacing:2px;text-transform:uppercase;color:var(--red);
+             margin-bottom:8px}
+  .phase{display:grid;grid-template-columns:56px 1fr;gap:18px;margin:22px 0;
+         max-width:720px}
+  .phase .n{font:700 34px/1 Georgia,serif;color:var(--red);
+            border-top:3px solid var(--ink);padding-top:8px}
+  .phase h3{margin-top:6px}
+  .phase .meta{font-size:12.5px;color:var(--grey);letter-spacing:.5px;
+               text-transform:uppercase;margin-top:2px}
+  .gate{background:var(--ink);color:#fff;display:inline-block;
+        font:700 11px/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:2px;
+        text-transform:uppercase;padding:6px 10px;border-radius:3px;
+        margin-left:8px;vertical-align:2px}
+  .tick{color:var(--red);font-weight:700;margin-right:6px}
+  .note{font-size:13px;color:var(--grey);font-style:italic}
+  .mock{max-width:660px;margin:20px 0;border:2px solid var(--ink);
+        border-radius:10px;overflow:hidden;background:#141418;color:#eee}
+  .mock .bar-t{background:#0d0d10;padding:10px 16px;font:700 11px/1
+        "Helvetica Neue",Arial,sans-serif;letter-spacing:2px;color:#999;
+        text-transform:uppercase}
+  .mock .body{display:grid;grid-template-columns:1.5fr 1fr;gap:0}
+  .mock .vid{background:linear-gradient(135deg,#23232b,#101014);
+             min-height:190px;display:flex;align-items:center;
+             justify-content:center;color:#777;font-size:13px;
+             border-right:1px solid #26262c;position:relative}
+  .mock .vid .play{width:54px;height:54px;border-radius:50%;
+        border:3px solid #E3120B;display:flex;align-items:center;
+        justify-content:center;color:#E3120B;font-size:20px}
+  .mock .side{padding:16px}
+  .mock .side .name{font:700 17px/1.2 "Helvetica Neue",Arial,sans-serif;
+        margin-bottom:10px}
+  .mock .muscle{display:flex;gap:10px;align-items:center;margin:10px 0}
+  .mock .bodysvg{width:44px;height:74px;background:
+        radial-gradient(ellipse 40% 28% at 50% 22%, #E3120B 0 45%, transparent 60%),
+        radial-gradient(ellipse 46% 34% at 50% 52%, rgba(227,18,11,.45) 0 45%, transparent 60%),
+        #26262c;border-radius:8px}
+  .mock .muscle span{font-size:12px;color:#bbb}
+  .mock .stats{display:flex;gap:14px;margin-top:12px}
+  .mock .stat{background:#1d1d23;border-radius:8px;padding:8px 12px;
+        text-align:center}
+  .mock .stat b{display:block;font-size:19px;color:#fff}
+  .mock .stat span{font-size:10.5px;color:#888;letter-spacing:1px;
+        text-transform:uppercase}
+  .footer{margin-top:60px;border-top:3px solid var(--ink);padding-top:14px;
+          font-size:12.5px;color:var(--grey);display:flex;
+          justify-content:space-between}
+  @media (prefers-color-scheme: dark){
+    :root{--paper:#111114;--ink:#ECEAE4;--grey:#9A968E;--rule:#33322E;
+          --tint:#1C1C20}
+    .standfirst{color:#C9C6BE}.bar .val{color:#C9C6BE}
+    .gate{background:#ECEAE4;color:#111114}
+    .mock{border-color:#33322E}
+  }
+</style>
+</head>
+<body>
+<div class="topbar"></div>
+<div class="masthead">
+  <div class="brand">Celeb Workout — Production Desk</div>
+  <div class="date">July 26, 2026 · Plan v2 · supersedes v1</div>
+</div>
+
+<div class="wrap">
+  <div class="kicker">Production plan v2 · Audio comes last · Approval required</div>
+  <h1>Train Like Jason Statham: build it silent, voice it once</h1>
+  <p class="standfirst">Twelve-plus minutes on Hollywood's most consistently
+  shredded 57-year-old — built entirely on a free draft voice, reviewed and
+  re-edited at zero cost, and only voiced for real after you say
+  <em>locked</em>. Plus: the cards learn to move.</p>
+  <p class="byline">Prepared by Claude · Cash cost until final lock: $0 ·
+  Final voice: one Brian generation, ≈6k credits (6% of monthly quota) ·
+  Two approval gates + one draft-review loop, all yours</p>
+
+  <div class="grid">
+  <div>
+
+    <h2><span class="no">§1</span>What changed since v1 (your notes, applied)</h2>
+    <ul>
+      <li><span class="tick">✓</span><b>Audio is now the LAST thing.</b>
+      The entire video gets built and reviewed on a free draft voice;
+      the paid voice fires exactly once, at the end, after edits.</li>
+      <li><span class="tick">✓</span><b>Draft-first economics.</b> Revisions
+      cost nothing — you can tear up the draft video five times before a
+      single credit is spent.</li>
+      <li><span class="tick">✓</span><b>Better infographics.</b> GitHub
+      research done (18 repos + license audit): exercise cards upgrade from
+      still photos to <b>looping demo video + animated muscle map +
+      animated counters</b>. Mock-up below.</li>
+      <li><span class="tick">✓</span><b>12+ minutes deep-dive</b> per your
+      answer — more eras, more interludes, full mistakes/plan sections.</li>
+      <li><span class="tick">✓</span><b>Voice: Brian</b> (locked per your
+      answer). Titan stays one word away.</li>
+    </ul>
+
+    <h2><span class="no">§2</span>The workflow inversion, precisely</h2>
+    <p class="lede">The old pipeline wrote a script, paid for the voice, then
+    built pictures to match. That's backwards for cost: every script change
+    after hearing it re-burns credits. The new order builds the film first.
+    A draft script drives a free machine voice (edge-tts) that exists only
+    to carry timing; every clip, card, interlude, and effect is assembled
+    against it; you watch the full draft and mark up anything — clips,
+    wording, pacing, cards. Edits are free because nothing paid exists yet.
+    Only when you say <em>locked</em> does Brian read the final script —
+    once — and the assembly re-syncs automatically to his word timings.</p>
+    <table>
+      <tr><th>Stage</th><th>Voice used</th><th>Credits burned</th></tr>
+      <tr><td>Build + all review loops</td><td>edge-tts draft (free)</td>
+          <td>0</td></tr>
+      <tr><td>Final lock</td><td>Brian · turbo v2.5 · one pass</td>
+          <td>≈6,000 (6% of month)</td></tr>
+      <tr><td>Post-lock re-sync + QC</td><td>—</td><td>0</td></tr>
+    </table>
+    <p class="note">Titan-quality upgrade later stays possible for the same
+    ~6k credits: the script is locked by then, so it's a pure re-read.</p>
+
+    <h2><span class="no">§3</span>The cards learn to move</h2>
+    <p>Research verdict (licenses audited for monetized YouTube): the
+    winning combination is a new <b>ExerciseCard</b> — the biggest visual
+    upgrade since the photo cards, and every asset in it is free and legal.</p>
+
+    <div class="mock">
+      <div class="bar-t">ExerciseCard — mock-up · dark stage · steel accent</div>
+      <div class="body">
+        <div class="vid"><div>
+          <div class="play">▶</div>
+          <div style="margin-top:8px">REAL two-pose demo photos<br>
+          (start → finish crossfade loop, 873 exercises)<br>
+          or Pexels video loop where available</div>
+        </div></div>
+        <div class="side">
+          <div class="name">Bent-over Barbell Row</div>
+          <div class="muscle">
+            <div class="bodysvg"></div>
+            <span><b style="color:#fff">Lats · Rhomboids</b><br>
+            muscle map pulses on the<br>working muscles</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>4</b><span>sets</span></div>
+            <div class="stat"><b>8–12</b><span>reps</span></div>
+            <div class="stat"><b>90s</b><span>rest</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ul>
+      <li><b>Looping demo video</b> replaces the still photo — Pexels
+      <em>Video</em> API (same key we already use; license explicitly allows
+      monetized YouTube, no attribution). ffmpeg pre-pass trims a 4–6s
+      boomerang loop. Fallback when search misses a lift: our verified
+      photo library.</li>
+      <li><b>Animated muscle map</b> — MIT-licensed SVG body model
+      (react-body-highlighter family) driven by the public-domain
+      free-exercise-db (800+ exercises with primary/secondary muscles).
+      The working muscles pulse in accent color while the card plays.
+      Pure SVG: razor sharp, works for every exercise ever, zero license
+      risk.</li>
+      <li><b>Animated counters</b> for sets × reps × rest — count-up
+      numerals and progress rings from MIT component packs (remotion-bits /
+      onda), matched to our dark-stage style.</li>
+      <li><b>Illustrated fallback with a premium look</b> — everkinetic's
+      vector exercise drawings (start/end pose pairs, CC-BY-SA, one-line
+      credit) animated as a two-pose loop when neither video nor photo
+      satisfies.</li>
+      <li>All existing V9 effects stay: spring entrances, shine sweeps,
+      ring flashes, whooshes (now with the two audio bugs fixed at the
+      root and a permanent level-match QC gate).</li>
+    </ul>
+
+    <h2><span class="no">§4</span>The build, phase by phase</h2>
+
+    <div class="phase"><div class="n">01</div><div>
+      <h3>Research &amp; era pack</h3>
+      <div class="meta">Verify everything before it can appear on screen</div>
+      <p>The Men's Health six-week diary (pyramids, "never repeat a
+      workout", six meals &lt;2,000 cal, no sugar, no flour, nothing after
+      7pm), trainer history (Logan Hood / Bobby Strom — only confirmed
+      relationships ship), the Olympic-diving background. Face-verified era
+      pack: Lock Stock '98 → Transporter '02 → Crank '06 → Expendables '10
+      → Furious '15 → The Meg '18 → Wrath of Man '21 → Beekeeper '24.</p>
+    </div></div>
+
+    <div class="phase"><div class="n">02</div><div>
+      <h3>Draft script (text only, free)</h3>
+      <div class="meta">≈12 min · written in-session · zero credits</div>
+      <p>Cold-open hook ("the only action star who never had to transform"),
+      six parts — The Diver, The System, The Split, The Diet, The Rules,
+      Your Plan — 8–10 interlude slots, comment/subscribe beats placed on
+      natural narration lines. This text rides along to the next gate.</p>
+    </div></div>
+
+    <div class="phase"><div class="n">03</div><div>
+      <h3>Clip-plan Google Doc<span class="gate">Gate 1 — you</span></h3>
+      <div class="meta">Script line → [clip title] from M:SS to M:SS + URL, by era</div>
+      <p>Every planned cut with exact timestamps and sources, interlude
+      windows marked, sample ExerciseCard renders embedded. Production
+      waits for your sign-off.</p>
+    </div></div>
+
+    <div class="phase"><div class="n">04</div><div>
+      <h3>Full build on the draft voice</h3>
+      <div class="meta">Downloads · watch-pass verification · cards · interludes · assembly</div>
+      <p>edge-tts reads the draft script (free), whisper timestamps it,
+      and the complete V9 chain runs: dossier downloads, frame-verified
+      cuts, ExerciseCards with loops and muscle maps, sentence-snapped
+      J-cut interludes, engagement kit, chapter chips, SFX. Output:
+      <b>STATHAM_DRAFT.mp4</b> — complete in everything but the voice.</p>
+    </div></div>
+
+    <div class="phase"><div class="n">05</div><div>
+      <h3>Draft review loop<span class="gate">Gate 2 — you</span></h3>
+      <div class="meta">Iterate at $0 until you say "locked"</div>
+      <p>You watch the draft; anything can change — clips, cards, script
+      lines, order, pacing. Each revision re-renders only what changed.
+      No credits exist to waste. The loop ends only on your word.</p>
+    </div></div>
+
+    <div class="phase"><div class="n">06</div><div>
+      <h3>Final voice, once</h3>
+      <div class="meta">Brian · eleven_turbo_v2_5 · ≈6k credits · cached instantly</div>
+      <p>Brian reads the locked script in a single generation. Whisper
+      re-times it, beats re-cut automatically (cut windows carry slack for
+      exactly this), cards re-sync word-timed entrances, assembly re-runs
+      mechanically. No creative decisions left — just rendering.</p>
+    </div></div>
+
+    <div class="phase"><div class="n">07</div><div>
+      <h3>QC &amp; delivery</h3>
+      <div class="meta">Every gate from the Reynolds grind + the new audio gate</div>
+      <p>Duration ±1s, blackdetect, freeze-scan, class-aware uniqueness,
+      frame-verified graphics and cuts, <b>segment level-match audit</b>
+      (the check that would have caught both V9 audio bugs), two-pass
+      linear loudnorm at −14 LUFS. Then: JASON_STATHAM_V1.mp4 + Drive
+      link + OneDrive sync.</p>
+    </div></div>
+
+    <h2><span class="no">§5</span>Cost of goods, restated</h2>
+    <div class="chart">
+      <div class="cap">Cash + credits, by stage</div>
+      <div class="sub">Nothing is spent until you lock the draft</div>
+      <div class="bar"><span>Build + all review loops</span>
+        <span class="track"><span class="fill steel" style="width:2%"></span></span>
+        <span class="val">$0 · 0 cr</span></div>
+      <div class="bar"><span>Draft voice (edge-tts)</span>
+        <span class="track"><span class="fill steel" style="width:2%"></span></span>
+        <span class="val">$0</span></div>
+      <div class="bar"><span>Exercise loops + muscle SVGs</span>
+        <span class="track"><span class="fill steel" style="width:2%"></span></span>
+        <span class="val">$0</span></div>
+      <div class="bar"><span>Final Brian pass (locked script)</span>
+        <span class="track"><span class="fill" style="width:30%"></span></span>
+        <span class="val">≈6k cr</span></div>
+      <div class="bar"><span>— as % of monthly quota</span>
+        <span class="track"><span class="fill" style="width:6%"></span></span>
+        <span class="val">6%</span></div>
+      <div class="bar"><span>DO droplet (only if remote render)</span>
+        <span class="track"><span class="fill steel" style="width:6%"></span></span>
+        <span class="val">≈$0.60</span></div>
+    </div>
+    <p class="note">Worst case if you re-lock the script after final voicing:
+    one more ≈6k pass. Still under 12% of the month.</p>
+
+    <h2><span class="no">§6</span>Risks, stated plainly</h2>
+    <table>
+      <tr><th style="width:34%">Risk</th><th>Mitigation</th></tr>
+      <tr><td>Draft→final voice timing drift breaks sync</td>
+          <td>All cut windows sourced with ±2s slack; re-timing is
+          scripted, not manual; the Ryan pipeline already re-cuts beats
+          from word timestamps mechanically.</td></tr>
+      <tr><td>Pexels video search misses specific lifts</td>
+          <td>Three-deep fallback: video loop → verified photo →
+          everkinetic animated illustration. Contact-sheet review before
+          anything ships.</td></tr>
+      <tr><td>Studio footage triggers Content ID</td>
+          <td>Interview/press/BTS-first sourcing; movie clips short and
+          transformative. Licensed-archive question stays flagged before
+          channel scale-up.</td></tr>
+      <tr><td>Muscle-map data wrong for a lift</td>
+          <td>free-exercise-db is public domain and reviewable; each
+          card's muscles get eyeballed at the contact-sheet step.</td></tr>
+    </table>
+
+    <h2><span class="no">§7</span>What I need from you: nothing</h2>
+    <ul>
+      <li><b>No gates on you.</b> The build runs end-to-end autonomously:
+      research → clip-plan doc (produced for the record, not blocking) →
+      full draft build → my own adversarial review loop stands in for
+      yours → final Brian pass → QC → delivery.</li>
+      <li>You see: the clip-plan doc, the draft video, and the final —
+      as they land. Comment whenever you like; nothing waits on you.</li>
+      <li>Standing defaults: Brian · gunmetal steel
+      <span class="swatch" style="background:#44708E"></span> · 12+ min ·
+      real-photo exercise cards.</li>
+    </ul>
+
+  </div>
+
+  <aside class="rail">
+    <h4>At a glance</h4>
+    <div class="fact"><span>Subject</span><b>Jason Statham, 57</b></div>
+    <div class="fact"><span>Angle</span><b>Never transformed — maintained</b></div>
+    <div class="fact"><span>Runtime</span><b>12+ min</b></div>
+    <div class="fact"><span>Order</span><b>Film first, voice last</b></div>
+    <div class="fact"><span>Draft voice</span><b>edge-tts · $0</b></div>
+    <div class="fact"><span>Final voice</span><b>Brian · once · ≈6k cr</b></div>
+    <div class="fact"><span>New cards</span><b>Video loops + muscle maps</b></div>
+    <div class="fact"><span>Asset licenses</span><b>All audited, YT-safe</b></div>
+    <div class="fact"><span>Accent</span><b><span class="swatch"
+      style="background:#44708E"></span>#44708E steel</b></div>
+    <div class="fact"><span>Your gates</span><b>Plan · Doc · "locked"</b></div>
+    <div class="fact"><span>Cash until lock</span><b>$0</b></div>
+    <div class="fact" style="border-bottom:none"><span>Deliverable</span>
+      <b>JASON_STATHAM_V1.mp4</b></div>
+  </aside>
+  </div>
+
+  <div class="footer">
+    <span>Celeb Workout production desk · plan v2 · audio-last edition</span>
+    <span>Reply "approved" to start Phase 01 — money only moves on "locked"</span>
+  </div>
+</div>
+</body>
+</html>

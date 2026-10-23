@@ -1,0 +1,77 @@
+{
+ "_note": "Every factual claim the narration makes, with the source that carries it on screen. BRIEF.md §7: 'every claim carries its source on screen'. A claim with no source here does not go in the script.",
+
+ "pistons_three_years": {
+  "claim": "Detroit eliminated Chicago in three consecutive postseasons, 1988, 1989 and 1990 — twice in the Eastern Conference Finals.",
+  "card": "1988 · 1989 · 1990 — ELIMINATED BY DETROIT",
+  "sources": ["https://www.cbssports.com/nba/news/how-michael-jordan-bulked-up-to-outmuscle-pistons-win-first-nba-championship-with-bulls"],
+  "kind": "record"
+ },
+ "jordan_rules": {
+  "claim": "Detroit's defensive scheme against him was known as the Jordan Rules — a deliberate policy of physical punishment every time he drove.",
+  "card": "THE JORDAN RULES",
+  "sources": ["https://www.basketballnetwork.net/old-school/heres-where-it-all-began-for-michael-jordan-and-tim-grover"],
+  "kind": "concept"
+ },
+ "grover_approach": {
+  "claim": "Tim Grover approached Jordan in 1989 after reading that he was tired of taking physical abuse from the Pistons.",
+  "card": "1989 — THE TRAINER MAKES CONTACT",
+  "sources": ["https://www.basketballnetwork.net/latest-news/tim-grover-reveals-how-he-ended-up-becoming-michael-jordans-personal-trainer"],
+  "kind": "event"
+ },
+ "thirty_days": {
+  "claim": "Jordan agreed to a thirty-day trial. It ran for fifteen years.",
+  "card": "30 DAYS → 15 YEARS",
+  "sources": ["https://www.basketballnetwork.net/old-school/tim-grover-said-michael-jordan-gained-15-pounds-to-beat-bad-boy-pistons"],
+  "kind": "counter"
+ },
+ "fifteen_pounds": {
+  "claim": "By the 1990-91 season he had added about fifteen pounds of muscle.",
+  "card": "+15 LB OF MUSCLE",
+  "sources": ["https://www.cbssports.com/nba/news/how-michael-jordan-bulked-up-to-outmuscle-pistons-win-first-nba-championship-with-bulls", "https://www.basketballnetwork.net/old-school/tim-grover-said-michael-jordan-gained-15-pounds-to-beat-bad-boy-pistons"],
+  "kind": "gauge"
+ },
+ "breakfast_club": {
+  "claim": "The sessions began between five and seven in the morning at his Highland Park home. Scottie Pippen, Ron Harper and Randy Brown joined them. They called it the Breakfast Club.",
+  "card": "THE BREAKFAST CLUB · 5–7 AM · HIGHLAND PARK",
+  "sources": ["https://www.si.com/media/2016/08/09/jordan-brand-bringing-mjs-famous-breakfast-club-workout-online", "https://balancethegrind.co/celebrity-diets-workouts/michael-jordans-workout-routine-building-a-sports-legend/"],
+  "kind": "clock"
+ },
+ "lift_list": {
+  "claim": "The programme was built on squats, leg extensions, weighted step-ups, deadlifts, good mornings, power cleans, bench press and biceps curls.",
+  "card": "SQUAT · DEADLIFT · POWER CLEAN · STEP-UP · GOOD MORNING · BENCH",
+  "sources": ["https://balancethegrind.co/celebrity-diets-workouts/michael-jordans-workout-routine-building-a-sports-legend/", "https://fadeawayworld.net/michael-jordans-workout-routine-that-helped-him-defeat-the-detroit-pistons-and-win-6-nba-titles"],
+  "kind": "checklist"
+ },
+ "never_stopped": {
+  "claim": "Grover: 'I would give him a certain amount of reps to do, but he would never stop at that number. If I asked for six, I knew he was gonna do twelve.'",
+  "card": "ASKED FOR 6 — DID 12",
+  "sources": ["https://www.basketballnetwork.net/old-school/tim-grover-said-michael-jordan-gained-15-pounds-to-beat-bad-boy-pistons"],
+  "kind": "versus"
+ },
+ "swept_1991": {
+  "claim": "In 1991 Chicago swept Detroit four games to nothing, then beat the Lakers four games to one for the first championship.",
+  "card": "1991 — SWEPT DETROIT 4–0",
+  "sources": ["https://www.cbssports.com/nba/news/how-michael-jordan-bulked-up-to-outmuscle-pistons-win-first-nba-championship-with-bulls"],
+  "kind": "bracket"
+ },
+ "steak_four_hours": {
+  "claim": "His pre-game meal was steak and potato, four hours before tip-off.",
+  "card": "STEAK + POTATO · 4 HOURS BEFORE TIP-OFF",
+  "sources": ["https://thesportsrush.com/nba-news-michael-jordan-had-the-most-odd-pregame-meal-tim-grover-explains-the-reason-behind-why-the-goat-used-to-eat-a-whole-steak-before-bulls-games/", "https://www.slamonline.com/the-magazine/michael-jordan-gameday-routine/"],
+  "kind": "clockface",
+  "also_in_his_own_words": true
+ },
+ "against_the_orthodoxy": {
+  "claim": "The 1980s and 90s prescription for athletes was carbohydrate loading — rice and pasta. His plan did the opposite: the steak slowed digestion and held his blood sugar steady.",
+  "card": "THE ERA SAID CARBS. HE ATE STEAK.",
+  "sources": ["https://thesportsrush.com/nba-news-michael-jordan-had-the-most-odd-pregame-meal-tim-grover-explains-the-reason-behind-why-the-goat-used-to-eat-a-whole-steak-before-bulls-games/"],
+  "kind": "split"
+ },
+ "flu_game": {
+  "claim": "Game 5 of the 1997 Finals: 38 points. Grover says it was not flu but food poisoning, from a pizza delivered to the team hotel in Park City.",
+  "card": "GAME 5, 1997 — 38 POINTS",
+  "sources": ["https://bleacherreport.com/articles/1608036-michael-jordans-trainer-says-mjs-famous-flu-game-was-result-of-poisoning", "https://brobible.com/sports/article/michael-jordan-flu-game-trainer-tim-grover-details/"],
+  "kind": "bignumber"
+ }
+}

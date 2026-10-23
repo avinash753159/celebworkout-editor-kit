@@ -1,0 +1,195 @@
+<title>Audio Plan — Jennifer Aniston</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#121212; --body:#2E2E2E; --rule:#D4D4D4; --hair:#E6E6E6;
+    --paper:#FFFFFF; --panel:#F4F4F4; --mute:#6B6B6B; --good:#1F6F4A; --bad:#A32A17;
+    --serif:"Milo Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    color-scheme: light;
+  }
+  html,body{background:#fff;}
+  body{color:var(--body);font-family:var(--serif);font-size:16.5px;line-height:1.58;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:60rem;margin:0 auto;padding:0 1.5rem 6rem;background:#fff;}
+
+  header.mast{margin-top:2.4rem;}
+  .tab{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);
+       font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+       padding:.22rem .6rem;margin-bottom:.9rem;}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0 0 .55rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
+  .stand{font-size:1.2rem;line-height:1.42;color:var(--mute);max-width:42rem;margin:0 0 1.3rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+          padding:.5rem 0;margin-bottom:2.4rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.18rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.005em;margin:2.9rem 0 .6rem;padding-top:.9rem;border-top:3px solid var(--red);}
+  h2 .n{color:var(--red);margin-right:.45rem;font-variant-numeric:tabular-nums;}
+  h3{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--ink);margin:1.7rem 0 .35rem;}
+  p{margin:0 0 .95rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  .lede{font-size:1.05rem;}
+
+  .box{background:var(--panel);border-top:2px solid var(--red);padding:.85rem 1.05rem;margin:1rem 0 1.4rem;}
+  .box .lab{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.13em;
+     text-transform:uppercase;color:var(--red);margin-bottom:.25rem;}
+  .box p{margin:0;font-size:.98rem;}
+
+  /* timeline strip */
+  .tl{margin:1.2rem 0 .4rem;font-family:var(--sans);}
+  .tl .strip{display:flex;height:2.8rem;overflow:hidden;border:1px solid var(--rule);}
+  .tl .seg{display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:700;
+     color:#fff;text-align:center;line-height:1.1;padding:0 .25rem;overflow:hidden;white-space:nowrap;}
+  .tl .s-music{background:#0D0D0D;} .tl .s-cnb{background:#2B5C7E;} .tl .s-int{background:#B22B1A;}
+  .tl .axis{display:flex;font-size:.62rem;color:var(--mute);margin-top:.3rem;
+     justify-content:space-between;letter-spacing:.06em;}
+
+  .tw{overflow-x:auto;margin:1.2rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.79rem;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.62rem;
+     font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--mute);padding-bottom:.45rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.38rem .7rem .38rem 0;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.5rem .7rem .5rem 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:#FBEDEA;color:var(--ink);}
+
+  ul.rules{list-style:none;padding:0;margin:1rem 0 1.4rem;}
+  ul.rules li{padding:.55rem 0 .55rem 1.6rem;border-bottom:1px solid var(--hair);position:relative;
+     font-size:.94rem;}
+  ul.rules li::before{content:"→";position:absolute;left:0;color:var(--red);font-weight:700;}
+
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.4rem 0 1.6rem;}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="tab">Audio plan · Jennifer Aniston · plan only, nothing recorded</div>
+  <h1>Audio Plan</h1>
+  <p class="stand">Five continuous-narration blocks, not sixteen per-beat clips. Two true
+  music-only stretches (the cold open, the final bookend) — everywhere else the arrangement sits
+  under a -18dB bed. Built on free <code>edge-tts</code> first; paid TTS fires once, per block, only
+  after picture and script are locked.</p>
+  <div class="box" style="border-top-color:#A32A17;background:#FBEDEA;margin-bottom:2rem;">
+    <div class="lab" style="color:#A32A17;">Cold-open timing — fixed, then re-fixed</div>
+    <p><s>An earlier pass found Beat 1 ran 72s of silence against this plan's original 10s estimate,
+    and told the editor to extend the cold-open cue to 1:12.</s> <strong>That is now backwards.</strong>
+    Direct owner review of the assembled tabs flagged 72s of silence as far too long on watch-back —
+    Beat 1 was cut to 2 rows / <strong>9s</strong>. Narration now begins at <strong>~0:09</strong>,
+    close to the plan's original estimate. Every timestamp below the timeline strip still reflects
+    the old 72s version and has not been renumbered row-by-row — treat every clock time on this page
+    as shifted <strong>~63s earlier</strong> than printed. Beat 16's intentional 3–4s trailing-silence
+    close (the second music-only bookend) is unaffected. See <code>GOAL.md</code> §14.</p>
+  </div>
+  <div class="byline"><span>generated from the 59-agent research/synthesis workflow's audio-plan pass</span><span>~1,111s / 18.5 min actual (target was 20:00 — see GOAL.md §14)</span></div>
+</header>
+
+<h2><span class="n">I.</span> The rule that governs everything below</h2>
+
+<div class="box">
+  <div class="lab">Never slice narration per beat</div>
+  <p>16 beats do not mean 16 audio files. Per-beat AAC re-encoding puts an audible glitch at every
+  join. The script is written and recorded as <strong>five unbroken continuous-narration blocks
+  (CNBs)</strong>; beat boundaries inside a block are handled by pacing and emphasis in the copy, not
+  by a file cut. Hard VO stops happen only at the 8 boundary points in the timeline below.</p>
+</div>
+
+<p class="lede">Target narration pace 140–155 wpm throughout. At ~1,130s of continuous narration
+across the runtime, script length should land ~2,650–2,900 words total — trued up against the
+edge-tts draft, not guessed. <strong>Recording workflow:</strong> run the entire locked script
+through free edge-tts first, cut it into the 5 CNB files, drop them against picture to confirm
+sync/pacing across all 125 shot rows, revise until locked — only then re-record the final 5 files
+with paid TTS. One paid pass per CNB, five renders total, never re-run per-beat or per-revision.</p>
+
+<h2><span class="n">II.</span> The timeline</h2>
+
+<div class="tl">
+  <div class="strip">
+    <div class="seg s-music" style="width:0.8%">open</div>
+    <div class="seg s-cnb" style="width:2.5%">CNB-1</div>
+    <div class="seg s-cnb" style="width:17.5%">CNB-2</div>
+    <div class="seg s-int" style="width:0.8%">int</div>
+    <div class="seg s-cnb" style="width:23.3%">CNB-3</div>
+    <div class="seg s-int" style="width:1.3%">int</div>
+    <div class="seg s-cnb" style="width:27.1%">CNB-4</div>
+    <div class="seg s-int" style="width:1.3%">int</div>
+    <div class="seg s-cnb" style="width:23.75%">CNB-5</div>
+    <div class="seg s-music" style="width:1.7%">close</div>
+  </div>
+  <div class="axis"><span>0:00</span><span>4:10</span><span>9:00</span><span>14:40</span><span>20:00</span></div>
+</div>
+
+<div class="tw">
+<table>
+  <caption>The eight segments, in order</caption>
+  <tr><th>Segment</th><th class="n">Start</th><th class="n">End</th><th>What happens</th></tr>
+  <tr class="hi"><td><strong>Cold Open</strong> — music only</td><td class="n">0:00</td><td class="n">1:12</td><td>Beat 1. DVD + RS #729 held, no VO, no bites. Music leads the mix — the only place it's allowed above the -18dB bed.</td></tr>
+  <tr><td>CNB-1: Promise + Cascade + Question</td><td class="n">1:12</td><td class="n">2:13</td><td>Beat 1 tail into Beat 2. Withheld promise stated, cascade, central question lands before 0:40.</td></tr>
+  <tr><td>CNB-2: Body / Trait / Catalyst / Constraint</td><td class="n">0:40</td><td class="n">4:10</td><td>Beats 3–6, single unbroken take. Longest sustained VO block, closes Act One.</td></tr>
+  <tr class="hi"><td>Interlude — B-Story Turn</td><td class="n">4:10</td><td class="n">4:20</td><td>Beat 7 open. Marie Claire/Vogue credit card, music swells briefly, VO thins to a breath.</td></tr>
+  <tr><td>CNB-3: Who Built It / Method / Programme / It Worked</td><td class="n">4:20</td><td class="n">9:00</td><td>Beats 7–10 through the midpoint. Demonstration-heavy but VO stays unbroken.</td></tr>
+  <tr class="hi"><td>Interlude — Midpoint Button</td><td class="n">9:00</td><td class="n">9:15</td><td>Refinery29/Ingber-on-set detail lands; biggest interior swell so far, then resolves.</td></tr>
+  <tr><td>CNB-4: Cost / Turn / B-Story Payoff</td><td class="n">9:15</td><td class="n">14:40</td><td>Beats 11–13, deliberately unbroken — the emotional throughline lands as one argument.</td></tr>
+  <tr class="hi"><td>Interlude — Break Into Three</td><td class="n">14:40</td><td class="n">14:55</td><td>Beat 14 open. Coleman's "feeling good in your body" quote card, music lifts.</td></tr>
+  <tr><td>CNB-5: Objective Shift + Present-Day System</td><td class="n">14:55</td><td class="n">19:40</td><td>Beats 14–16 tail through Pvolve, the boxing caveat, to the final image. Ends clean, no mid-thought cut.</td></tr>
+  <tr class="hi"><td><strong>Final Close</strong> — music only</td><td class="n">19:40</td><td class="n">20:00</td><td>Beat 16. DVD + P.band framed together, no VO. Full swell, 4s fade to silence.</td></tr>
+</table>
+</div>
+
+<p class="note">The two archival-cascade/quote-card interludes (Beat 2's cascade, and the quote
+cards at Beats 7 and 14) are bite-dominant, not silent — VO thins or pauses for on-screen text/
+archival audio, but this time does <strong>not</strong> count against the 2.5% music-only budget.
+That budget is reserved exclusively for the two true no-VO stretches: the cold open and the final
+close.</p>
+
+<h2><span class="n">III.</span> Music</h2>
+
+<div class="box">
+  <div class="lab">The house bed</div>
+  <p>Cinematic drone + subtle percussion, <strong>85 BPM, minor key</strong> (exact key TBD by
+  composer — do not modulate between cues). Deep kick, snare on 2 &amp; 4, off-beat hi-hats, bass on
+  a root progression — matches this channel's other films' bed style. Built once, reused across the
+  film via arrangement layering, not tempo change.</p>
+</div>
+
+<div class="tw">
+<table>
+  <caption>Arrangement, section by section</caption>
+  <tr><th>Window</th><th>What's happening</th></tr>
+  <tr><td class="n">0:00–0:10</td><td>Cold open, music-only: drone + sparse atmospheric texture, little/no kick-snare yet, mixed prominent since no VO competes. 2s fade-in at 0:00.</td></tr>
+  <tr><td class="n">0:10</td><td>VO begins: music ducks to -18dB bed; percussion drops to near-nothing (drone + faint off-beat hi-hat only).</td></tr>
+  <tr><td class="n">0:40–4:10</td><td>CNB-2, Act One build: bed stays minimal, kick/snare very faintly introduced by the end as the slow build progresses.</td></tr>
+  <tr class="hi"><td class="n">4:10–4:20</td><td>Interlude: short swell — snare 2&amp;4 + kick become audible for ~10s marking the B-story pivot, then ducks back.</td></tr>
+  <tr><td class="n">4:20–9:00</td><td>CNB-3: full pattern present (kick, snare, hats, bass) but held at -18dB; intensity creeps up toward the midpoint.</td></tr>
+  <tr class="hi"><td class="n">9:00–9:15</td><td>Interlude: biggest interior swell before the finale — full arrangement briefly surfaces, then resolves.</td></tr>
+  <tr><td class="n">9:15–14:40</td><td>CNB-4: strips back to near-solo drone for the cost material (Beat 11), then cautiously rebuilds through the turn (12) and B-story payoff (13).</td></tr>
+  <tr class="hi"><td class="n">14:40–14:55</td><td>Interlude: another controlled lift echoing the earlier ones, marking the pivot into the finale.</td></tr>
+  <tr><td class="n">14:55–19:40</td><td>CNB-5: full sustained arrangement, the fullest the bed gets while still under narration, continuously building.</td></tr>
+  <tr class="hi"><td class="n">19:40–20:00</td><td>Final close, music-only: full swell, highest point of the piece, minor-key resolution, 4s fade-out to silence.</td></tr>
+</table>
+</div>
+
+<h2><span class="n">IV.</span> Mix rules</h2>
+
+<ul class="rules">
+  <li>Music sits at <strong>-18dB</strong> relative to narration for the full duration of every VO-continuous block. Confirm by meter, not by ear.</li>
+  <li>Only the two true music-only stretches (0:00–0:10, 19:40–20:00) allow music above the -18dB bed — nowhere else, even if a beat feels like it wants a breather. This channel's density rule means silence is concentrated, not sprinkled.</li>
+  <li>2s fade-in at the top of the film and at any full music reintroduction after a drop-out; 4s fade-out at the true end and at any point music fully stops.</li>
+  <li><code>ffmpeg amix</code> must run with <code>normalize=0</code> so short inputs (bite clips, stingers) aren't auto-attenuated relative to the long narration/music beds.</li>
+  <li>Both the narration track and the music bed must pass through <code>aformat=channel_layouts=stereo</code> before the <code>amix</code> stage — a mono layer under a stereo bed otherwise sums roughly +3dB hot.</li>
+  <li>Narration is exported and edited as <strong>5 unbroken CNB files</strong>, never sliced at individual beat boundaries. Cuts only occur at the 6 interludes/bookends, and every cut lands on a narration file boundary, never mid-sentence.</li>
+  <li>Percussion (kick, snare, hats, bass) is introduced or stripped only at the 6 interlude points — never swelled mid-CNB, so it never pulls focus from continuous narration.</li>
+  <li>Recording sequence: full script drafted and timed against free edge-tts across all 5 CNBs first. Paid TTS records once, per CNB, only after script and timing are fully locked — never re-run mid-revision.</li>
+  <li>Consider light sidechain compression keyed from the narration track onto the music bed, on top of the static -18dB level, so hi-hat transients and consonant-heavy passages don't mask each other.</li>
+  <li>Lock relative levels and fades first; apply final integrated-loudness normalization (e.g. -14 LUFS for YouTube) as the last step on the fully mixed output, not before.</li>
+</ul>
+
+<p class="note">This plan assumes the picture is locked and the 40%-real-voice gate in
+<code>GOAL.md</code> §7 has closed — bite audio timing (J-cuts, ducking under sync) depends on which
+REAL-V clips actually clear sourcing. Revisit segment boundaries once that pass completes.</p>
+
+</div>

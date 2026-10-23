@@ -1,0 +1,327 @@
+[
+  {
+    "block": "H1",
+    "text": "In 2021, while shooting Murder Mystery 2, Aniston did harness work hanging from the Eiffel Tower and sustained a back injury.",
+    "source_url": "https://www.youtube.com/watch?v=K3puGMuBWKw",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "On camera, The Drew Barrymore Show, 137.12-154.10s: 'I started Pvolve because I had an injury when I was shooting Murder Mystery with our beloved Adam Sandler... I was doing harness work hanging from the Eiffel Tower, like you do. And so anyway, I had a back injury and I couldn't work out.' Speaker verified frame by frame (see quotes.json/jen_injury). The 2021 date comes from Pvolve's own account: pvolve.com states she began as a member in 2021 during recovery from the back injury (https://www.pvolve.com/blogs/all/jennifer-aniston-fitness-routine).",
+    "picture": "Murder Mystery 2 Paris/Eiffel Tower stills; harness rig; Drew Barrymore Show clip"
+  },
+  {
+    "block": "H1",
+    "text": "Before the injury her training was built on high-impact modalities - running, spinning, jumping rope and boxing.",
+    "source_url": "https://www.youtube.com/watch?v=zbnHO-r5HRs",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "On camera, Mondays with Marlo, 29.92-41.88s: 'I mix it up between spinning and yoga, strength training, circuit training, treadmill training.' Boxing and jump rope are documented by Good Morning America's article on her trainer Leyon Azubuike, whose listed programme opens with jump rope (https://www.goodmorningamerica.com/wellness/story/work-jennifer-aniston-tips-boxing-trainer-57124756).",
+    "picture": "Spin bike, treadmill, jump rope, heavy bag stills"
+  },
+  {
+    "block": "W1",
+    "text": "Mandy Ingber was Aniston's yoga instructor for over a decade, and their format was 20-30 minutes of cardio followed by yoga.",
+    "source_url": "https://www.youtube.com/watch?v=ak5GBTYJArw",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "Good Morning America profile of Ingber. Ingber, on camera at 100.76s: 'What I do with Jennifer Aniston is that I will incorporate you know 20 to 30 minutes of cardio activity and then we'll practice yoga.' The anchor tag at 126.88s: 'she's been training Jennifer Aniston for over 10 years.' Ingber names her method Yogalosophy in the same segment (94.92s).",
+    "picture": "Mandy Ingber GMA segment; yoga mat stills; Yogalosophy book cover"
+  },
+  {
+    "block": "W1",
+    "text": "Sessions with her boxing trainer Leyon Azubuike ran from one to over two hours and were built around jump rope, lat pulldowns, squat-to-rows, military press and wood chops.",
+    "source_url": "https://www.goodmorningamerica.com/wellness/story/work-jennifer-aniston-tips-boxing-trainer-57124756",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "Good Morning America, published 10 Aug 2018 and updated 27 March 2019, states that training sessions with Azubuike run 'from one to over two hours' and lists the ten signature moves in order: jump rope, lat pulldown, squat to row, military press, seated row, Spartan strike and stab, wood chops, kettlebell squat to press, seated lateral raise, front raise.",
+    "picture": "Gloveworx gym stills; pad work; jump rope"
+  },
+  {
+    "block": "W1",
+    "text": "Aniston has described boxing as the longest workout she stayed with consistently, other than yoga.",
+    "source_url": "https://www.goodmorningamerica.com/wellness/story/work-jennifer-aniston-tips-boxing-trainer-57124756",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "The same GMA article prints the description 'the longest workout I've actually stayed with consistently other than yoga' as hers.",
+    "picture": "Boxing gloves; yoga mat split card"
+  },
+  {
+    "block": "W2",
+    "text": "Aniston told InStyle that the mindset of needing 45 minutes of cardio to count as a workout was daunting, that she believed it for so long she burnt out and broke her body.",
+    "source_url": "https://www.foxnews.com/entertainment/jennifer-aniston-admits-used-feel-broken-pain-overdoing-workouts",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "Fox News, 8 June 2023, reporting the InStyle interview: quote in source reads 'When you're in a mindset of, I need to do 45 minutes of cardio or I won't get a good workout, it's daunting' and 'I believed it for so long. I just burnt out and broke my body.' Corroborated locally by subs/_17zulAlAzw.en-orig.vtt (Access Hollywood) 17.68-26.64s, which reads the same words and names InStyle as the outlet.",
+    "picture": "InStyle magazine scan / cover; treadmill clock; stopwatch card reading 45:00"
+  },
+  {
+    "block": "W2",
+    "text": "Her physical therapist gave her a Barbie doll covered in kinesio tape, one strip for every injury of the previous fifteen years.",
+    "source_url": "https://www.foxnews.com/entertainment/jennifer-aniston-admits-used-feel-broken-pain-overdoing-workouts",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "Fox News, 8 June 2023: 'Her physical therapist gave her a Barbie doll that's covered in kinesio tape' with the purpose 'to show every injury I've had in the last 15 years', attributed to the InStyle interview. Corroborated by subs/_17zulAlAzw.en-orig.vtt 26.64-37.64s.",
+    "picture": "Kinesio-taped doll illustration; physio clinic still"
+  },
+  {
+    "block": "W2",
+    "text": "She told InStyle CrossFit was too aggressive - quantity rather than quality and too hard on the body - and that boxing, which she enjoyed, was hard on her wrists.",
+    "source_url": "https://www.yahoo.com/entertainment/jennifer-aniston-partners-fitness-brand-204638294.html",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "The Hollywood Reporter's Pvolve partnership story, read via Yahoo syndication, quotes her InStyle interview: 'Crossfit is too aggressive. It's about quantity, not quality, and it's too hard on the body' and, on boxing, 'I had a great time, but it was really hard on my wrists.' Corroborated by subs/InUyN6CduEA.en-orig.vtt 60.32-74.60s, which reads the same two lines with the same InStyle attribution.",
+    "picture": "CrossFit box still; wrist wraps; boxing gloves"
+  },
+  {
+    "block": "W3",
+    "text": "High-impact work - running, rope, plyometrics, hard spinning - transmits ground reaction force up the kinetic chain into the lumbar spine, which is why a back injury removes those options first.",
+    "source_url": "https://news.exeter.ac.uk/faculty-of-health-and-life-sciences/first-of-its-kind-study-shows-resistance-training-can-improve-physical-function-during-menopause/",
+    "source_kind": "article",
+    "confidence": "medium",
+    "verified_by": "Stated as the general mechanical rationale for low-impact resistance work rather than as a claim about her diagnosis. The University of Exeter release frames the intervention as 'simple resistance exercises' performable at home as an alternative to conventional higher-impact training, and Pvolve's own method description (PR Newswire, 22 Aug 2023) contrasts its approach with 'repetitive stationary motions' on the grounds of joint load. Her own trainer confirms the injury-specific consequence: 'she had a back injury but she can do this workout and not inflame those old injuries' (HELLO!, 2 Feb 2026). No claim is made in the narration about the specific diagnosis, level or severity of her injury.",
+    "picture": "Spine anatomy diagram; runner foot strike slow motion; force arrow overlay"
+  },
+  {
+    "block": "W4",
+    "text": "Pvolve is low-impact resistance training using bands, ankle bands, a weighted ball and light weights, trained through three planes of motion rather than one repeated stationary pattern.",
+    "source_url": "https://www.prnewswire.com/news-releases/pvolve-unveils-its-first-ever-global-ad-campaign-featuring-brand-partner-jennifer-aniston-301906096.html",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "Pvolve press release, 22 Aug 2023: the method 'combines functional movement with patented, proprietary resistance-based equipment' and emphasises 'natural movement patterns (side-to-side, front-to-back, rotational) that mimic everyday activities like sitting, standing, walking, and reaching - rather than repetitive stationary motions.' Equipment names P.band, P.ball and P.3 Trainer are given on pvolve.com (https://www.pvolve.com/blogs/all/jennifer-aniston-fitness-routine) as her favourites.",
+    "picture": "P.band, P.ball, P.3 Trainer product shots; three-plane motion diagram"
+  },
+  {
+    "block": "W4",
+    "text": "Aniston found Pvolve through a friend after the injury, became a member in 2021, and signed as a partner in the company in June 2023.",
+    "source_url": "https://www.pvolve.com/blogs/all/jennifer-aniston-fitness-routine",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "Pvolve's own post states she began as a member in 2021 during back injury recovery and that the partnership was announced on 2 June 2023, moving her from member to company partner. Corroborated on camera by her own account of the friend's recommendation (The Drew Barrymore Show, 147.7s: 'my friend said, you should try Pvolve'). Franchise Times additionally reports she is 'focused on key areas of the business such as product development, marketing, and programming strategy'.",
+    "picture": "Pvolve announcement graphic; June 2023 dateline card"
+  },
+  {
+    "block": "W4",
+    "text": "The Pvolve advertisement in which she says she gets an efficient total body workout in 20 minutes is a paid brand advertisement, not an interview.",
+    "source_url": "https://www.prnewswire.com/news-releases/pvolve-unveils-its-first-ever-global-ad-campaign-featuring-brand-partner-jennifer-aniston-301906096.html",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "The clip at youtube.com/watch?v=voC2DxCL6jQ is Pvolve's global campaign film, announced in the 22 Aug 2023 release as 'its first-ever global advertising campaign featuring brand partner Jennifer Aniston'. The film also carries a lower-third for a second speaker, 'Rachel Katzman, Pvolve Founder', from approx 14s, whose title the same release confirms.",
+    "picture": "Pvolve ad frames; 'ADVERTISEMENT' caption bar"
+  },
+  {
+    "block": "W5",
+    "text": "Her trainer is Dani Coleman, Pvolve's VP of Training and Head Trainer, and they have trained together for nearly five years, three times a week.",
+    "source_url": "https://www.hellomagazine.com/healthandbeauty/health-and-fitness/880838/jennifer-aniston-personal-trainer-exclusive-interview/",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "HELLO! exclusive interview with Coleman, 2 Feb 2026: quote in source reads 'she is the gold standard. The most magical thing about her is that, for [nearly] five years, three times a week, she shows up and hits it.' Coleman's title is given by Pvolve (https://www.pvolve.com/blogs/all/jennifer-aniston-fitness-routine) as Head Trainer, and by Athletech News as VP of Training.",
+    "picture": "Dani Coleman training stills; Pvolve studio"
+  },
+  {
+    "block": "W5",
+    "text": "Their personal training sessions run roughly 30 to 40 minutes.",
+    "source_url": "https://athletechnews.com/trainer-talks-pvolve-dani-coleman-exclusive-interview/",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "Athletech News exclusive with Coleman, 20 Dec 2024: 'We work out a couple of times a week in personal training, when her schedule allows.' The 30-to-40-minute figure is Coleman's, reported as sessions 'anywhere between 30 to 40 minutes, or whatever her busy schedule allows'. Consistent with Aniston's own People statement that she does a 30-minute Pvolve workout (AOL syndication of People, 16 Oct 2025).",
+    "picture": "Clock card 30-40 MIN; studio session"
+  },
+  {
+    "block": "W5",
+    "text": "Their sessions draw on all of Pvolve's formats - strength and sculpt, cardio blocks, light plyometrics - and include heavy weights aimed at muscle mass, metabolic rate and longevity, always full body.",
+    "source_url": "https://athletechnews.com/trainer-talks-pvolve-dani-coleman-exclusive-interview/",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "Athletech News, 20 Dec 2024, quoting Coleman: 'During our workouts, we take a bit from all of our formats, including Strength & Sculpt, cardiovascular elements and some light plyometric work' and 'We also lift heavy weights, with a focus on building muscle mass, boosting metabolic rate and focusing on longevity. It's always full body, and it's very challenging.'",
+    "picture": "Dumbbell rack; sculpt-and-burn class"
+  },
+  {
+    "block": "W5",
+    "text": "Because of the back injury they do a large amount of core work specifically to protect her spine, and use resistance equipment and dumbbells in every session.",
+    "source_url": "https://www.hellomagazine.com/healthandbeauty/health-and-fitness/880838/jennifer-aniston-personal-trainer-exclusive-interview/",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "HELLO! exclusive with Coleman, 2 Feb 2026: 'We do a lot of core work to help protect her spine' and 'we use resistance equipment and dumbbells in every session'; also 'she had a back injury but she can do this workout and not [inflame] those old injuries'.",
+    "picture": "Core work stills; dead bug / plank; band and dumbbell"
+  },
+  {
+    "block": "W5",
+    "text": "She trains across three named Pvolve formats - Strength & Sculpt, Sculpt & Burn and Progressive Weight Training - and Sculpt & Burn, which alternates strengthening blocks with cardio bursts, is the one singled out as her favourite.",
+    "source_url": "https://www.eonline.com/news/1418088/jennifer-anistons-pvolve-workout-routine-with-trainer-dani-coleman",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "E! News, 31 May 2025, quoting Coleman: 'She really trains in all three of our signature formats: Strength & Sculpt, Progressive Weight Training class and Sculpt & Burn.' The same three formats are listed by Coleman in HELLO! (2 Feb 2026): 'We typically train through our three signature formats: strength and sculpt, sculpt and burn, and progressive weight training.' The description of Sculpt & Burn as strengthening blocks with cardio bursts in between is Coleman's, quoted in the locally held package subs/XYcNVESFs4Y.en-orig.vtt at 45.40-53.72s: 'Jen likes a nice balance of our sculpt and burn format which is using strengthening blocks with cardio bursts in between.'",
+    "picture": "Three-format title cards; class thumbnails"
+  },
+  {
+    "block": "W6",
+    "text": "In March 2026 Pvolve released Jen's Express Series: Arms & Abs - six on-demand classes drawn from her favourite quick sessions, each 15 minutes or less, led by Dani Coleman.",
+    "source_url": "https://www.prnewswire.com/news-releases/pvolve-launches-the-quick-arms--abs-workouts-jennifer-aniston-swears-by-302711949.html",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "PR Newswire, 12 March 2026: six on-demand workouts led by Dani Coleman, each class 15 minutes or less, using the P.band, P.ball and P.3 Trainer, curated by Aniston with Coleman.",
+    "picture": "Express series artwork; 15:00 timer card"
+  },
+  {
+    "block": "W6",
+    "text": "The press release attributes to Aniston the line that she has learned consistency does not have to mean long workouts.",
+    "source_url": "https://www.prnewswire.com/news-releases/pvolve-launches-the-quick-arms--abs-workouts-jennifer-aniston-swears-by-302711949.html",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "PR Newswire, 12 March 2026, quote in source reads: 'I've learned that consistency doesn't have to mean long workouts. And that finding movement you love - that makes you feel strong and energized - is everything.' Narration flags it as a press-release attribution rather than an interview.",
+    "picture": "Press release scan; quote bar crediting the release"
+  },
+  {
+    "block": "W7",
+    "text": "A 12-week randomised trial at the University of Exeter, led by Professor Francis Stephens, put 72 women aged 40-60 on either four Pvolve sessions a week or the standard 150 minutes of weekly activity. SESSION LENGTH IS DISPUTED BETWEEN THE TWO SOURCES: the University of Exeter release states all classes were 30-35 minutes; Pvolve's own study page states 30-55 minutes. The narration states both figures out loud and tells the viewer to prefer the university's.",
+    "source_url": "https://news.exeter.ac.uk/faculty-of-health-and-life-sciences/first-of-its-kind-study-shows-resistance-training-can-improve-physical-function-during-menopause/",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "University of Exeter news release: 72 healthy active women aged 40-60, not on HRT, 12-week intervention, randomised to Pvolve resistance training or standard 150 minutes weekly activity; participants 'committed to joining classes four times a week'. DISCREPANCY, RECORDED DELIBERATELY: the Exeter release reads 'All classes were 30 to 35 minutes in duration', whereas Pvolve's own study page (https://www.pvolve.com/blogs/all/healthy-aging-clinical-study) reads '4 Pvolve workouts per week of 30-55 minutes in length'. Both pages were re-read directly in this pass and the wording above is verbatim from each. The larger figure is the funder's and the smaller is the research institution's; the narration gives both and instructs the viewer to take Exeter's, because W7's whole argument is that the sponsor's framing should not be taken on trust. Conducted at Exeter's Nutritional Physiology Research Unit by Professor Francis Stephens' group.",
+    "picture": "Exeter campus / lab stills; study design infographic"
+  },
+  {
+    "block": "W7",
+    "text": "Against the control group the resistance group showed 19% better lower body strength and hip function, 21% better whole-body flexibility, 10% better balance and mobility, and increased lean muscle without increased total body mass.",
+    "source_url": "https://news.exeter.ac.uk/faculty-of-health-and-life-sciences/first-of-its-kind-study-shows-resistance-training-can-improve-physical-function-during-menopause/",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "University of Exeter news release lists 19% increase in hip function and lower body strength, 21% increase in full-body flexibility, 10% increase in dynamic balance, mobility and stability, and increased lean muscle without total body mass gain. The same figures appear on Pvolve's study page, which adds 23% improvement in fatigue and 7.2% in quality of life.",
+    "picture": "Percentage cards 19% / 21% / 10%"
+  },
+  {
+    "block": "W7",
+    "text": "Pvolve funded the study; it was published in Medicine & Science in Sports & Exercise.",
+    "source_url": "https://www.pvolve.com/blogs/all/healthy-aging-clinical-study",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "Pvolve's own study page states the University of Exeter conducted the research and that Pvolve funded it, crediting members with enabling the company to 'fund this research'. Publication in Medicine & Science in Sports & Exercise is stated on the University of Exeter news page. The narration states the funding relationship out loud before giving the numbers.",
+    "picture": "Journal masthead; 'FUNDED BY PVOLVE' disclosure card"
+  },
+  {
+    "block": "D1",
+    "text": "Aniston told Radio Times she does intermittent fasting with no food in the morning, and noticed a big difference going 16 hours without solid food - a 16:8 pattern.",
+    "source_url": "https://www.hellomagazine.com/cuisine/2020070392797/jennifer-aniston-daily-diet/",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "HELLO! prints the direct quotation and names Radio Times as the originating interview: 'I do intermittent fasting, so no food in the morning. I noticed a big difference in going without solid food for 16 hours.' Independently reproduced with the same Radio Times attribution by Yahoo Entertainment, 18 Feb 2026. The 16:8 description (16 hours fasted, 8-hour eating window) is given in both.",
+    "picture": "Radio Times cover scan; 16:8 clock diagram"
+  },
+  {
+    "block": "D3",
+    "text": "Her morning order is juice first, coffee about half an hour later, meditation in between, then feeding the dogs.",
+    "source_url": "https://www.youtube.com/watch?v=lLqtWLL5pXw",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "On camera at 70.10-78.62s: 'I don't do coffee first up. I do a juice first up, and then coffee about a half hour later after meditation, and then feed the dogs.' Two-shot with Reese Witherspoon; speaker established by separate mouth checks on both faces (see quotes.json/jen_juice_first). Consistent with print reporting of her morning liquids (Irish Times, 2019).",
+    "picture": "Green juice; espresso; meditation cushion; her dogs"
+  },
+  {
+    "block": "D3",
+    "text": "She described her breakfast to Elle as warm lemon water on waking, then a shake, or avocado and eggs with a little coconut oil, or oatmeal with an egg white whipped in at the end.",
+    "source_url": "https://www.hellomagazine.com/cuisine/2020070392797/jennifer-aniston-daily-diet/",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "HELLO! prints the quotation and attributes it to Elle magazine: 'When I wake up, I have warm lemon water and then I have a shake or avocado and eggs, which is one of my favourites. I sprinkle a little coconut oil on that. Sometimes, I'll have a puffed millet cereal with a banana or I'll do oatmeal with an egg white whipped in at the end.' Same Elle attribution in Yahoo Entertainment, 18 Feb 2026.",
+    "picture": "Lemon water; avocado and eggs; oatmeal"
+  },
+  {
+    "block": "D3",
+    "text": "Her shake, described to Well + Good, is a pure protein powder with banana, blueberries, frozen cherries, stevia, a greens mix, maca powder and a little cacao.",
+    "source_url": "https://www.yahoo.com/entertainment/celebrity/articles/jennifer-aniston-opens-16-8-003022830.html",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "Yahoo Entertainment, 18 Feb 2026, prints the ingredient list as a direct quotation attributed to Well + Good: 'some sort of pure protein, then bananas, blueberries, frozen cherries, stevia, a vegetable mix of dynamic greens that goes in there, maca powder and a little cacao'.",
+    "picture": "Blender with the named ingredients laid out"
+  },
+  {
+    "block": "D4",
+    "text": "She told Elle that lunch and dinner are much the same - some form of vegetables or salad with protein, 'pretty basic'.",
+    "source_url": "https://www.hellomagazine.com/cuisine/2020070392797/jennifer-aniston-daily-diet/",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "HELLO! attributes to Elle: lunch is 'Some form of vegetables or salad with protein - pretty basic', and reports dinner as the same.",
+    "picture": "Salad with chicken; plated vegetables"
+  },
+  {
+    "block": "D4",
+    "text": "She keeps cut raw vegetables in a Tupperware container, hard-boiled eggs and a head of butter lettuce in the fridge, and a cooked protein such as pulled chicken ready to use.",
+    "source_url": "https://www.yahoo.com/entertainment/celebrity/articles/jennifer-aniston-opens-16-8-003022830.html",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "Yahoo Entertainment, 18 Feb 2026, prints as an Elle quotation: 'I always have cut raw vegetables in a Tupperware container. Hardboiled eggs are always great to have in the fridge, as well as a big head of butter lettuce. I also include protein, such as pulled chicken.'",
+    "picture": "Meal-prep containers; open fridge shelf"
+  },
+  {
+    "block": "D5",
+    "text": "No interview, print or on camera, could be found in which Aniston says 'every Sunday is a cheat day for me'.",
+    "source_url": "https://abcnews.com/blogs/entertainment/2013/05/jennifer-anistons-cheat-day-best-time-to-cheat-on-a-diet/",
+    "source_kind": "observed",
+    "confidence": "high",
+    "verified_by": "Negative result, stated as a negative result. Targeted web search for the exact string returned no interview carrying it; the substantive cheat-day reporting that does exist is the ABC News item of 3 May 2013 (this source_url), which quotes something different: 'Cheat days for me are usually ... it's either Mexican food ... maybe Italian pasta.' In the previous build of this episode the line was placed on a graphic card sourced to a joint Aniston/Witherspoon interview, and the project's own frame check (aniston_v2/METADATA_V6.md, 'The D4 card') concluded the person speaking was Witherspoon and cut the card. The narration in D5 states only that no source was found and asks the viewer to treat the line as unsourced; it does not assert who did say it, because this pass did not re-establish that independently.",
+    "picture": "Screenshot wall of the misattributed quote graphic; a red UNSOURCED stamp",
+    "ON_SCREEN_PROHIBITION": "STOP. READ THIS BEFORE BUILDING ANY CARD FOR D5. The words 'every Sunday is a cheat day for me' are SPOKEN ALOUD in the D5 narration and will therefore appear in the transcript, the SRT and any automatic quote-card pass. THEY ARE NOT A QUOTE. No source for them exists. They MUST NEVER appear on screen as a plain attributed quote card, a lower third, or any graphic bearing Jennifer Aniston's name, her photograph, or quotation marks that imply she said them. Reproducing that card is the exact defect this block exists to correct, and doing it while the narration debunks it would be worse than the original error. ONLY THREE TREATMENTS ARE PERMITTED: (1) the words shown with a visible UNSOURCED / NO SOURCE FOUND marking; (2) the words shown struck through; (3) a screenshot of somebody else's misattributed graphic, framed as the thing being corrected. If none of those three can be built, put NOTHING on screen over that sentence. The debunk lives only in the surrounding narration, which a card generator does not read - so this prohibition, not the context, is what protects the film."
+  },
+  {
+    "block": "D5",
+    "text": "At a Self magazine event in 2013 she said cheat days for her are usually Mexican food or Italian pasta, always in moderation.",
+    "source_url": "https://abcnews.com/blogs/entertainment/2013/05/jennifer-anistons-cheat-day-best-time-to-cheat-on-a-diet/",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "ABC News, 3 May 2013: quote in source reads 'Cheat days for me are usually ... it's either Mexican food ... maybe Italian pasta. But I think you always have to do it in moderation.' The event is identified as a Self magazine book party for her yoga instructor Mandy Ingber.",
+    "picture": "Mexican food stills; pasta; 2013 event photographs"
+  },
+  {
+    "block": "D5",
+    "text": "In September 2025 she told People her comfort foods are pizza nights, burgers or Mexican food, plus a favourite restaurant, a martini and girlfriends.",
+    "source_url": "https://www.yahoo.com/entertainment/celebrity/articles/jennifer-aniston-favorite-cheat-day-004615140.html",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "Yahoo Entertainment, 24 Sept 2025, reporting People: quotes read 'pizza nights, burgers or Mexican food' and 'I'll go to my favorite restaurant with some girlfriends, have a martini, and some delicious meal.'",
+    "picture": "Pizza; burger; martini glass"
+  },
+  {
+    "block": "D5",
+    "text": "She describes the ratio as 80/20 - eighty per cent healthy living, twenty per cent the martini, the pizza and the late night.",
+    "source_url": "https://www.aol.com/articles/jennifer-aniston-much-gentler-her-190410083.html",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "People interview carried via AOL syndication, 16 Oct 2025: quote in source reads 'Eighty percent healthy living and then 20% is go have a martini, go have your pizza and burgers and stay up late with your friends. There's a balance.'",
+    "picture": "80/20 pie chart card"
+  },
+  {
+    "block": "D6",
+    "text": "Aniston has used Vital Proteins collagen since 2016 and became the brand's chief creative officer in 2020; her described routine is a scoop in morning coffee or a smoothie.",
+    "source_url": "https://www.prnewswire.com/news-releases/jennifer-aniston-and-vital-proteins-partner-to-bring-wellness-to-the-world-301176098.html",
+    "source_kind": "press_release",
+    "confidence": "high",
+    "verified_by": "PR Newswire release announcing the partnership states she has used the products since 2016 and joins as Chief Creative Officer, with her quoted line 'Collagen is the glue that holds everything together.' The coffee-or-smoothie routine is stated on the brand's own page (https://www.vitalproteins.com/blogs/stay-vital/jennifer-aniston-vital-proteins). The narration labels this a paid position out loud.",
+    "picture": "Vital Proteins tub; coffee with powder stirred in"
+  },
+  {
+    "block": "D6",
+    "text": "Asked by TODAY in 2025 what she credits, she listed exercise, good nutrition, sleep, meditation, mental health and enjoying life, and said she gives herself days to eat whatever she wants without depriving herself.",
+    "source_url": "https://www.aol.com/news/jennifer-aniston-reveals-4-simple-191010590.html",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "TODAY interview of 11 April 2025, read via AOL syndication (today.com returns 403 to this agent; original at https://www.today.com/health/aging/jennifer-aniston-healthy-aging-habits-rcna200640). Quotes in source read 'I do the same thing I've been doing ... getting (exercise), good nutrition, a good amount of sleep, meditation, taking care of (my) mental health, and enjoying life' and 'I give myself days where I can have whatever I want. I don't deprive myself.'",
+    "picture": "Six-icon card: dumbbell, plate, bed, cushion, brain, table of friends"
+  },
+  {
+    "block": "D6",
+    "text": "She frames the strength work as protecting bone and muscle to avoid osteoporosis or a broken hip from a fall.",
+    "source_url": "https://www.aol.com/news/jennifer-aniston-reveals-4-simple-191010590.html",
+    "source_kind": "interview",
+    "confidence": "high",
+    "verified_by": "Same TODAY interview, 11 April 2025: quote in source reads 'keeping your bones and keeping your muscles strong, so we avoid osteoporosis or falling and breaking a hip'.",
+    "picture": "Bone density illustration; older adult lifting"
+  },
+  {
+    "block": "O2",
+    "text": "In 2025 she told People she is much gentler with her body than in her twenties, and that a 30-minute Pvolve session leaves her drenched with results but without breaking her body.",
+    "source_url": "https://www.aol.com/articles/jennifer-aniston-much-gentler-her-190410083.html",
+    "source_kind": "article",
+    "confidence": "high",
+    "verified_by": "People exclusive, 16 Oct 2025, read via AOL syndication: quotes in source read 'much gentler', 'We love each other now, as corny as that may sound', and 'I can do a 30-minute Pvolve workout and be drenched and have such incredible results without literally breaking my body.'",
+    "picture": "Recent red carpet / gym stills; 30:00 timer card"
+  }
+]

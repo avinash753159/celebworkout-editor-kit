@@ -1,0 +1,338 @@
+<title>The Gavia system — how the reference channel actually makes a film</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F;
+    --him:#3C5A78; --you:#B22B1A;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --him:#7FA6C9;--you:#E4573F;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;
+          --him:#7FA6C9;--you:#E4573F;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;
+          --him:#3C5A78;--you:#B22B1A;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:55rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:42rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.28rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:1px solid var(--rule);}
+  h2 .n{color:var(--red);margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:.94rem;font-weight:700;color:var(--ink);margin:1.9rem 0 .35rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.05em .3em;}
+  blockquote{margin:1.1rem 0;padding-left:1.1rem;border-left:3px solid var(--rule);
+     font-style:italic;color:var(--mute);}
+  blockquote cite{display:block;font-style:normal;font-family:var(--sans);font-size:.72rem;
+     letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-top:.4rem;}
+
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.83rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.44rem .7rem .44rem 0;border-bottom:1px solid var(--rule);vertical-align:top;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 9%,transparent);font-weight:600;color:var(--ink);}
+
+  /* three week timeline */
+  .tl{margin:1.4rem 0 .5rem;font-family:var(--sans);}
+  .tl .strip{display:flex;height:2.6rem;overflow:hidden;}
+  .tl .seg{display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;
+     color:#fff;text-align:center;line-height:1.15;padding:0 .3rem;}
+  .s-story{background:#3C5A78;} .s-beat{background:#B22B1A;}
+  .s-video{background:#7C3A2A;} .s-edit{background:#4A4438;}
+  .tl .axis{display:flex;font-size:.66rem;color:var(--mute);margin-top:.3rem;
+     justify-content:space-between;letter-spacing:.08em;text-transform:uppercase;}
+
+  .bars{margin:1.3rem 0 1.4rem;font-family:var(--sans);font-size:.8rem;}
+  .bar{display:grid;grid-template-columns:11rem 1fr 5.4rem;gap:.7rem;align-items:center;margin-bottom:.42rem;}
+  .bar .lab{color:var(--body);text-align:right;}
+  .bar .track{background:var(--panel);height:1.15rem;}
+  .bar .fill{background:var(--red);height:100%;}
+  .bar .fill.b{background:var(--him);}
+  .bar .val{color:var(--mute);}
+  .bar.big .lab,.bar.big .val{color:var(--ink);font-weight:700;}
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.4rem 0 1.6rem;}
+
+  /* cold open steps */
+  ol.formula{list-style:none;counter-reset:f;padding:0;margin:1.2rem 0 1rem;}
+  ol.formula li{counter-increment:f;position:relative;padding:.75rem 0 .75rem 2.9rem;
+     border-bottom:1px solid var(--rule);font-family:var(--sans);font-size:.88rem;line-height:1.5;}
+  ol.formula li::before{content:counter(f);position:absolute;left:0;top:.72rem;width:1.9rem;
+     height:1.9rem;border-radius:50%;background:var(--him);color:#fff;display:flex;
+     align-items:center;justify-content:center;font-weight:700;font-size:.78rem;}
+  ol.formula b{color:var(--ink);}
+  ol.formula em{color:var(--red);font-style:italic;}
+
+  /* vs table */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:1.4rem 0 1.6rem;font-family:var(--sans);}
+  .vs .hd{font-size:.66rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+     padding:.5rem .8rem;color:#fff;}
+  .vs .hd.h{background:var(--him);} .vs .hd.y{background:var(--you);}
+  .vs .c{padding:.7rem .8rem;font-size:.83rem;line-height:1.45;border-bottom:1px solid var(--rule);}
+  .vs .c.h{border-left:3px solid var(--him);background:color-mix(in srgb,var(--him) 6%,transparent);}
+  .vs .c.y{border-left:3px solid var(--you);background:color-mix(in srgb,var(--you) 6%,transparent);}
+  .vs .c b{display:block;color:var(--ink);font-size:.72rem;letter-spacing:.06em;
+     text-transform:uppercase;margin-bottom:.15rem;color:var(--mute);}
+
+  ul.take{list-style:none;padding:0;margin:1rem 0 0;}
+  ul.take li{padding:.7rem 0 .7rem 1.8rem;border-bottom:1px solid var(--rule);position:relative;
+     font-size:.95rem;}
+  ul.take li::before{position:absolute;left:0;top:.72rem;font-family:var(--sans);font-weight:700;font-size:.9rem;}
+  ul.take li.y::before{content:"✓";color:var(--good);}
+  ul.take li.n::before{content:"✗";color:var(--bad);}
+  ul.take li.a::before{content:"⚙";color:var(--red);}
+
+  @media (max-width:640px){
+    .vs{grid-template-columns:1fr;} .bar{grid-template-columns:1fr;gap:.15rem;}
+    .bar .lab{text-align:left;} .tl .seg{font-size:.58rem;}
+  }
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Reference study <span>· Fight Films by Patrick Gavia · ~300k subs · 21M+ views</span></div>
+  <h1>The Gavia system</h1>
+  <p class="stand">He spends two hours structuring the film and a full week finding the footage. You
+  have been running that ratio upside down, and it explains every complaint in the voice note.</p>
+  <div class="byline"><span>3 August 2026</span><span>Documented from interviews · measured from eight films</span></div>
+</header>
+
+<h2><span class="n">I.</span> Who he is</h2>
+
+<p class="lede">Couldn't get into film school. Taught himself editing and storytelling while working
+at a content company in Montreal, learning what makes things go viral. Posted a video about Jake Paul
+and Dana White in late 2021, found the MMA audience, and never left.</p>
+
+<blockquote>"YouTube is the perfect playground to learn how to edit or tell the story properly."
+<cite>Patrick Gavia</cite></blockquote>
+
+<p>Sixteen documentaries since. All MMA. Most between 20 and 30 minutes. Over 21 million views and
+close to 300,000 subscribers. He is not a studio and he is not a hobbyist — he is one obsessive with
+four employees, which is roughly the scale you are trying to reach.</p>
+
+<h2><span class="n">II.</span> The pipeline</h2>
+
+<p>Four stages, in this order. Everything below is his own account.</p>
+
+<div class="tl">
+  <div class="strip">
+    <div class="seg s-story" style="width:33%">STORY RESEARCH<br>~1 week</div>
+    <div class="seg s-beat" style="width:4%">BEAT<br>2h</div>
+    <div class="seg s-video" style="width:33%">VIDEO RESEARCH<br>~1 week</div>
+    <div class="seg s-edit" style="width:30%">EDIT<br>~1 week</div>
+  </div>
+  <div class="axis"><span>day 0</span><span>"realistically three weeks"</span></div>
+</div>
+
+<div class="tw">
+<table>
+  <caption>The four stages, and who does them</caption>
+  <tr><th>Stage</th><th>What happens</th><th>Who</th><th class="n">Time</th></tr>
+  <tr><td><strong>Story research</strong></td><td>A researcher compiles <em>"everything that happened throughout the subject's life"</em></td><td>part-time story researcher</td><td class="n">part of ~2 wks</td></tr>
+  <tr class="hi"><td><strong>Beat sheet</strong></td><td><em>"A scene-by-scene outline of what should happen in the documentary"</em></td><td><strong>him, personally</strong></td><td class="n">~2 hours</td></tr>
+  <tr><td><strong>Video research</strong></td><td>Gathering all the footage the beats call for</td><td>full-time video researcher</td><td class="n">~1 week</td></tr>
+  <tr class="hi"><td><strong>Edit</strong></td><td>The cut</td><td><strong>him, never delegated</strong></td><td class="n">the rest</td></tr>
+</table>
+</div>
+
+<p>Note what the beat sheet is <em>not</em>. It is not a 60-block finished script with narration
+written out. It is a <strong>skeleton — two hours of work — whose job is to tell the video researcher
+what to go and find.</strong> The writing happens in the edit.</p>
+
+<h2><span class="n">III.</span> The team, and the two things he keeps</h2>
+
+<div class="tw">
+<table>
+  <caption>Four people</caption>
+  <tr><th>Role</th><th class="n">Load</th></tr>
+  <tr><td>Video researcher</td><td class="n">full-time</td></tr>
+  <tr><td>Assistant video editor</td><td class="n">full-time</td></tr>
+  <tr><td>Social media + accounting</td><td class="n">full-time</td></tr>
+  <tr><td>Story researcher</td><td class="n">part-time</td></tr>
+</table>
+</div>
+
+<p>He delegates everything except two things — being on camera, and <strong>the editing</strong>:</p>
+
+<blockquote>"You have to accept that at first, that person will not do it as well as you… but with time
+they will catch up."<cite>on delegation</cite></blockquote>
+
+<div class="verdict">
+  <div class="lab">Read this twice</div>
+  <p>A man with a <strong>full-time assistant editor</strong> still will not hand over the cut. He
+  gives away research, footage, social and accounting — and keeps the one thing that makes the film a
+  film.</p>
+</div>
+
+<h2><span class="n">IV.</span> The ratio that indicts your pipeline</h2>
+
+<div class="bars">
+  <div class="bar big"><div class="lab">Gavia — footage hunt</div><div class="track"><div class="fill b" style="width:100%"></div></div><div class="val">~40 h</div></div>
+  <div class="bar big"><div class="lab">Gavia — structure</div><div class="track"><div class="fill b" style="width:5%"></div></div><div class="val">2 h</div></div>
+  <div class="bar" style="margin-top:.9rem"><div class="lab">Yours — footage hunt</div><div class="track"><div class="fill" style="width:0.2%"></div></div><div class="val">~0</div></div>
+  <div class="bar"><div class="lab">Yours — script versions</div><div class="track"><div class="fill" style="width:60%"></div></div><div class="val">V1·V2·V3</div></div>
+</div>
+<p class="note">"Yours" measured on the Hemsworth film: three complete scripts and a full picture
+build, with no sourcing stage at all. Four minutes of footage searching on 3 August then produced 30
+named exercises and 560,000 characters of unused first-person interview.</p>
+
+<p><strong>He spends roughly twenty times more effort finding footage than structuring the film.</strong>
+Your pipeline inverted that, and every consequence follows: no subject on screen, no workout in the
+workout video, and 84% of the picture generated because there was nothing real to cut to.</p>
+
+<h2><span class="n">V.</span> What the films themselves prove</h2>
+
+<p>Interviews tell you the process. The films tell you the format. These are measured, not claimed.</p>
+
+<div class="tw">
+<table>
+  <caption>Eight films, measured</caption>
+  <tr><th>Film</th><th class="n">Views</th><th class="n">Runtime</th><th class="n">WPM</th><th class="n">Music beats</th></tr>
+  <tr class="hi"><td>The Girl Who Broke Khamzat Chimaev</td><td class="n">8.5M</td><td class="n">25:26</td><td class="n">141</td><td class="n">2.9%</td></tr>
+  <tr><td>Alex Pereira</td><td class="n">5.7M</td><td class="n">26:51</td><td class="n">153</td><td class="n">3.8%</td></tr>
+  <tr><td>Steven Seagal: Bullshido Master</td><td class="n">3.5M</td><td class="n">36:33</td><td class="n">—</td><td class="n">2.2%</td></tr>
+  <tr><td>Valentina Shevchenko</td><td class="n">2.9M</td><td class="n">27:08</td><td class="n">—</td><td class="n">5.1%</td></tr>
+  <tr><td>Sean Strickland</td><td class="n">2.3M</td><td class="n">30:47</td><td class="n">—</td><td class="n">1.1%</td></tr>
+  <tr><td>Tony Ferguson</td><td class="n">2.3M</td><td class="n">26:59</td><td class="n">—</td><td class="n">8.3%</td></tr>
+  <tr><td>Kimbo Slice</td><td class="n">1.0M</td><td class="n">26:46</td><td class="n">173</td><td class="n">0.7%</td></tr>
+  <tr><td>Turki Alalshikh</td><td class="n">1.2M</td><td class="n">17:39</td><td class="n">—</td><td class="n">0.0%</td></tr>
+</table>
+</div>
+
+<p><strong>Median runtime 26.9 minutes. Median music-beat share 2.5%.</strong> These films are dense.
+The silence is deployed, not sprinkled.</p>
+
+<h3>The cold open is a fixed formula</h3>
+
+<p>All three films analysed in depth open identically. This is a template, not a style.</p>
+
+<ol class="formula">
+  <li><b>Direct address to a specific artifact.</b> <em>"Pay attention to this little girl."</em> ·
+  <em>"Pay attention to the man in the background."</em> · <em>"It started with a video."</em>
+  Never a biography. Never a date.</li>
+  <li><b>The artifact is a real recorded document</b> — a photo-op, a Google Street View capture from
+  twelve years earlier, a backyard fight video. Something that exists.</li>
+  <li><b>An explicit withheld promise, stated in words, very early.</b> In the 8.5M-view film it
+  lands at <b>0:14</b>: <em>"I'll reveal later what she whispered to him."</em></li>
+  <li><b>A rapid cascade of archival voices</b> — several sources, minimal narration.</li>
+  <li><b>The central question spoken aloud.</b> <em>"Will he get to the top or self-destruct along the
+  way?"</em> · <em>"How could a backyard fighter get so big he almost destroys an entire sport?"</em></li>
+</ol>
+
+<h3>Bite-dominant from about 2:00</h3>
+
+<p>From roughly two minutes in, the transcripts are overwhelmingly first-person interview material —
+including the <strong>interviewer's questions</strong>, used as structure. The narrator sets up and
+hands off. He does not explain what you just heard.</p>
+
+<h3>Title grammar</h3>
+
+<p><code>The [NOUN] That/Who [VERB]ED [SUBJECT]</code> — every title names a <strong>hidden cause</strong>
+and an <strong>effect on a known subject</strong>:</p>
+
+<p style="font-family:var(--sans);font-size:.88rem;line-height:1.9">
+<em>The Girl Who Broke Khamzat Chimaev</em> · <em>The Fruit that Showed Conor McGregor His OWN
+Death</em> · <em>Why the UFC Broke Kimbo Slice</em> · <em>The Night that Ended Islam Makhachev's
+Career</em> · <em>The UFC Champ Who FAKED His Life</em></p>
+
+<h2><span class="n">VI.</span> His system against yours</h2>
+
+<div class="vs">
+  <div class="hd h">Gavia</div><div class="hd y">Celeb Workout, today</div>
+
+  <div class="c h"><b>Order</b>Story research → beat sheet (2h) → footage hunt (1 wk) → edit</div>
+  <div class="c y"><b>Order</b>Research → full script → picture → render → rejected</div>
+
+  <div class="c h"><b>Structure doc</b>A two-hour skeleton whose job is to brief the researcher</div>
+  <div class="c y"><b>Structure doc</b>Three complete 60-block scripts, none built on known footage</div>
+
+  <div class="c h"><b>Footage</b>One full-time person, one week per film</div>
+  <div class="c y"><b>Footage</b>No stage existed. Assets sat untranscribed on disk</div>
+
+  <div class="c h"><b>Picture</b>Real archive, cut to the beat sheet</div>
+  <div class="c y"><b>Picture</b>84% generated stills standing in for material already owned</div>
+
+  <div class="c h"><b>Voice</b>Bite-dominant from 2:00; narrator hands off</div>
+  <div class="c y"><b>Voice</b>7.5% real voice; narrator restates the bite</div>
+
+  <div class="c h"><b>Runtime</b>Median 26.9 min</div>
+  <div class="c y"><b>Runtime</b>11.6 min (V3) · 12:47 (V1 render)</div>
+
+  <div class="c h"><b>What he keeps</b>The edit. Always.</div>
+  <div class="c y"><b>What you keep</b>The rejection, at the end, after it cost a night</div>
+</div>
+
+<h2><span class="n">VII.</span> What to take</h2>
+
+<ul class="take">
+  <li class="a"><strong>Automate the two weeks he pays humans for.</strong> Story research and video
+  research are the whole front half of his schedule and the entire stage your pipeline lacks. That is
+  where a machine wins outright — indexing, transcribing, searching, cutting complete thoughts.</li>
+  <li class="y"><strong>Adopt the beat sheet.</strong> Two hours, scene by scene, written
+  <em>before</em> the footage hunt and used to brief it. Not a finished script. The braid outline is
+  already this shape.</li>
+  <li class="y"><strong>Adopt the cold-open formula literally.</strong> Five parts, artifact first,
+  withheld promise inside the first twenty seconds, central question spoken aloud.</li>
+  <li class="y"><strong>Adopt the title grammar.</strong> Hidden cause plus known subject, with the
+  channel's search terms carried behind it.</li>
+  <li class="n"><strong>Do not copy his order blindly.</strong> He writes the beat sheet before the
+  footage hunt because he already knows the MMA archive by heart. You don't have that per celebrity —
+  which is exactly what an inventory pass substitutes for. <strong>Inventory → beat sheet → targeted
+  hunt.</strong></li>
+  <li class="n"><strong>Do not automate the edit first.</strong> It is the one thing the professional
+  refuses to hand over even to a full-time assistant. Machines can catch the mechanical failures —
+  echo, mid-sentence cuts, over-mined sources, missing exercises. Final judgement on the cut is the
+  last thing to give away, not the first.</li>
+</ul>
+
+<div class="verdict" style="margin-top:2rem">
+  <div class="lab">The trade</div>
+  <p>Buy back the two weeks he spends on research, and spend twenty minutes on the thing he considers
+  irreplaceable. That is a better deal than an unattended machine handing you a finished film —
+  and it is the deal his own numbers argue for.</p>
+</div>
+
+<p class="note" style="margin-top:2rem">Process detail documented from his Tubefilter interview and
+Patreon. Format figures measured from eight public documentaries. <strong>His technical breakdowns —
+<em>Q&amp;A #3: What's Your Technical Process?</em>, the 65-minute <em>Colby Covington Storytelling &amp;
+Editing Masterclass</em>, the Khamzat director commentary — sit behind his Patreon at Executive
+Producer tier and have never been accessed.</strong> That is the single highest-value research hour
+available to this project.</p>
+
+</div>

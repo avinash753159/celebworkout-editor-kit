@@ -1,0 +1,294 @@
+<title>Making it faster — hardware, models and Seedance</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#12100E; --body:#242017; --rule:#CFC7BA;
+    --paper:#F7F4EE; --panel:#EFEAE1; --mute:#6E665A; --good:#2E6B4F; --bad:#93321F;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;}
+  }
+  :root[data-theme="dark"]{--red:#E4573F;--ink:#F2EDE4;--body:#D8D1C4;--rule:#3B3630;
+          --paper:#131211;--panel:#1C1A17;--mute:#948B7C;--good:#6FBF95;--bad:#E47862;}
+  :root[data-theme="light"]{--red:#B22B1A;--ink:#12100E;--body:#242017;--rule:#CFC7BA;
+          --paper:#F7F4EE;--panel:#EFEAE1;--mute:#6E665A;--good:#2E6B4F;--bad:#93321F;}
+
+  body{background:var(--paper);color:var(--body);font-family:var(--serif);
+       font-size:17px;line-height:1.62;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:52rem;margin:0 auto;padding:0 1.5rem 6rem;}
+
+  header.mast{border-top:5px solid var(--red);padding-top:.7rem;margin-top:2.2rem;}
+  .kicker{font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.16em;
+          text-transform:uppercase;color:var(--red);}
+  .kicker span{color:var(--mute);}
+  h1{font-size:clamp(2.1rem,5.5vw,3.2rem);line-height:1.06;margin:.5rem 0 .6rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.018em;text-wrap:balance;}
+  .stand{font-size:1.24rem;line-height:1.45;color:var(--mute);font-style:italic;
+         max-width:40rem;margin:0 0 1.4rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+          padding:.55rem 0;margin-bottom:2.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  h2{font-family:var(--sans);font-size:1.28rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.01em;margin:3rem 0 .2rem;padding-top:1.1rem;border-top:1px solid var(--rule);}
+  h2 .n{color:var(--red);font-variant-numeric:tabular-nums;margin-right:.5rem;}
+  h3{font-family:var(--sans);font-size:.94rem;font-weight:700;color:var(--ink);
+     margin:1.9rem 0 .35rem;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+  .lede::first-letter{float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;
+     color:var(--red);font-weight:700;}
+  strong{color:var(--ink);font-weight:700;}
+  a{color:var(--red);}
+
+  /* verdict strip */
+  .verdict{display:flex;gap:.9rem;align-items:baseline;background:var(--panel);
+     border-left:4px solid var(--red);padding:.85rem 1.1rem;margin:1.1rem 0 1.5rem;}
+  .verdict .lab{font-family:var(--sans);font-size:.64rem;font-weight:700;letter-spacing:.14em;
+     text-transform:uppercase;color:var(--red);white-space:nowrap;padding-top:.22em;}
+  .verdict p{margin:0;font-size:1.02rem;}
+
+  /* tables */
+  .tw{overflow-x:auto;margin:1.3rem 0 1.6rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.85rem;
+        font-variant-numeric:tabular-nums;}
+  caption{caption-side:top;text-align:left;font-family:var(--sans);font-size:.66rem;
+     font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);
+     padding-bottom:.5rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.44rem .7rem .44rem 0;border-bottom:1px solid var(--rule);vertical-align:baseline;}
+  td.n,th.n{text-align:right;padding-right:0;}
+  tr.hi td{background:color-mix(in srgb,var(--red) 9%,transparent);font-weight:600;color:var(--ink);}
+  .yes{color:var(--good);font-weight:700;} .no{color:var(--bad);font-weight:700;}
+
+  /* bar chart */
+  .bars{margin:1.4rem 0 1.8rem;font-family:var(--sans);font-size:.8rem;}
+  .bar{display:grid;grid-template-columns:8.5rem 1fr 4.2rem;gap:.7rem;align-items:center;
+       margin-bottom:.42rem;}
+  .bar .lab{color:var(--body);text-align:right;}
+  .bar .track{background:var(--panel);height:1.15rem;position:relative;}
+  .bar .fill{background:var(--red);height:100%;}
+  .bar .fill.q{background:var(--mute);}
+  .bar .val{font-variant-numeric:tabular-nums;color:var(--mute);}
+  .bar.big .lab,.bar.big .val{color:var(--ink);font-weight:700;}
+
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;
+        margin:-.6rem 0 1.6rem;}
+
+  ol.rank{list-style:none;counter-reset:r;padding:0;margin:1.2rem 0 0;}
+  ol.rank li{counter-increment:r;position:relative;padding:1rem 0 1rem 3.2rem;
+     border-bottom:1px solid var(--rule);}
+  ol.rank li::before{content:counter(r);position:absolute;left:0;top:.85rem;
+     font-family:var(--sans);font-size:1.5rem;font-weight:700;color:var(--red);line-height:1;}
+  ol.rank .h{font-family:var(--sans);font-weight:700;color:var(--ink);font-size:.98rem;
+     display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline;}
+  ol.rank .tag{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+     font-weight:700;white-space:nowrap;}
+  ol.rank p{margin:.3rem 0 0;font-size:.98rem;}
+
+  .pull{border-top:2px solid var(--red);border-bottom:1px solid var(--rule);
+     padding:1rem 0;margin:2rem 0;font-size:1.32rem;line-height:1.34;color:var(--ink);
+     font-style:italic;text-wrap:balance;}
+
+  code{font-family:var(--mono);font-size:.86em;background:var(--panel);padding:.1em .32em;}
+  footer{margin-top:3.5rem;padding-top:1rem;border-top:1px solid var(--rule);
+     font-family:var(--sans);font-size:.74rem;color:var(--mute);line-height:1.6;}
+  footer a{color:var(--mute);}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Production economics <span>&nbsp;·&nbsp; Celeb Workout</span></div>
+  <h1>The bottleneck was never the computer</h1>
+  <p class="stand">Three proposals to speed up the pipeline — rented GPUs, cheaper models, and free Chinese video generation. Two of them solve a problem you do not have. The third is worth about two dollars, and it fixes the wrong complaint.</p>
+  <div class="byline">
+    <span>3 August 2026</span>
+    <span>Hemsworth film · 104 shots · 12&nbsp;min&nbsp;47&nbsp;s</span>
+    <span>Cost to date $4.16</span>
+  </div>
+</header>
+
+<p class="lede">The instinct behind all three questions is sound: the film took a night and it should have taken an hour. But before buying hardware it is worth asking where the night actually went, because the answer is unflattering and it is not the hardware's fault.</p>
+
+<h2><span class="n">I.</span> Where eight hours went</h2>
+
+<p>The Hemsworth film ran from 02:26 to 10:32 — <strong>eight hours and six minutes</strong> of wall clock. Of that, one hour and forty minutes was a computer doing work. The rest was an assistant sitting idle between your messages, because I do not run unless you send one.</p>
+
+<div class="bars">
+  <div class="bar big"><span class="lab">Idle</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">6 h 25 m</span></div>
+  <div class="bar big"><span class="lab">Render</span><span class="track"><span class="fill" style="width:15.6%"></span></span><span class="val">60 m</span></div>
+  <div class="bar"><span class="lab">Crash recovery</span><span class="track"><span class="fill q" style="width:6.5%"></span></span><span class="val">25 m</span></div>
+  <div class="bar"><span class="lab">Script</span><span class="track"><span class="fill q" style="width:2.6%"></span></span><span class="val">10 m</span></div>
+  <div class="bar"><span class="lab">Music</span><span class="track"><span class="fill q" style="width:1.3%"></span></span><span class="val">5 m</span></div>
+  <div class="bar"><span class="lab">Prompts ×5</span><span class="track"><span class="fill q" style="width:1.3%"></span></span><span class="val">5 m</span></div>
+  <div class="bar"><span class="lab">Depth maps</span><span class="track"><span class="fill q" style="width:1.0%"></span></span><span class="val">4 m</span></div>
+  <div class="bar"><span class="lab">104 images</span><span class="track"><span class="fill q" style="width:0.7%"></span></span><span class="val">2.5 m</span></div>
+  <div class="bar"><span class="lab">Narration</span><span class="track"><span class="fill q" style="width:0.3%"></span></span><span class="val">66 s</span></div>
+</div>
+<p class="note">Measured from process logs. The crash-recovery figure is time lost to segfaults whose root cause was a full disk, not a code defect.</p>
+
+<p class="pull">A GPU cannot make an idle assistant work. Every hardware proposal below is competing for the 60-minute bar, not the 6-hour one.</p>
+
+<h2><span class="n">II.</span> Would a rented GPU help?</h2>
+
+<p>Yes — and the pricing is better than you would expect. DigitalOcean bills GPU Droplets <strong>per second with a five-minute minimum</strong>, which is exactly the shape a burst job wants.</p>
+
+<div class="tw">
+<table>
+  <caption>DigitalOcean GPU Droplets — on-demand, August 2026</caption>
+  <thead><tr><th>GPU</th><th class="n">$ / GPU-hour</th><th>Fit for this job</th></tr></thead>
+  <tbody>
+    <tr class="hi"><td>RTX 4000 Ada</td><td class="n">0.76</td><td>Enough for the warp. Too little VRAM for video models.</td></tr>
+    <tr class="hi"><td>RTX 6000 Ada / L40S</td><td class="n">1.57</td><td>48 GB — the sweet spot. Runs LTX-2 and Wan 2.2.</td></tr>
+    <tr><td>AMD MI300X</td><td class="n">2.59</td><td>ROCm friction not worth it here.</td></tr>
+    <tr><td>NVIDIA H100</td><td class="n">4.41</td><td>Overkill. You are not training anything.</td></tr>
+    <tr><td>NVIDIA H200</td><td class="n">4.47</td><td>Overkill.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>The render argument — real, but small</h3>
+
+<p>The push-in is a per-pixel <code>cv2.remap</code>. Measured on this machine it costs <strong>0.538&nbsp;s per frame</strong> at 1920×1080, and the film is 18,420 frames. The same operation as a <code>grid_sample</code> on any of the cards above runs in single-digit milliseconds. Transfer is not a concern: I measured the payload at <strong>67&nbsp;MB of stills up and 61&nbsp;MB of clips down</strong>.</p>
+
+<div class="tw">
+<table>
+  <caption>Rendering 18,420 frames — three routes</caption>
+  <thead><tr><th>Route</th><th class="n">Wall clock</th><th class="n">Cash</th><th>Setup</th></tr></thead>
+  <tbody>
+    <tr><td>Today — full-res CPU, 6 workers</td><td class="n">~60 min</td><td class="n">$0</td><td>none</td></tr>
+    <tr class="hi"><td>Half-res warp, upscale to 1080p</td><td class="n">~18 min</td><td class="n">$0</td><td>one afternoon, once</td></tr>
+    <tr><td>RTX 4000 Ada droplet</td><td class="n">~25 min<sup>†</sup></td><td class="n">$0.32</td><td>image build + snapshot</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="note"><sup>†</sup> Including upload, download and boot on a warm snapshot. Compute itself is roughly two minutes; the wall clock is almost entirely logistics.</p>
+
+<div class="verdict">
+  <span class="lab">Verdict</span>
+  <p>For rendering alone, <strong>renting is slower than the free fix.</strong> Half-resolution warping beats the droplet on wall clock, costs nothing, and adds no moving parts. Do not rent a GPU to render.</p>
+</div>
+
+<h3>The argument that actually justifies a GPU</h3>
+
+<p>Here is the part worth your attention. The reason the film is stills-with-fake-parallax is that <em>real</em> motion was priced out. Veo 3.1 Lite is $0.05 per second; 104 clips at five seconds is <strong>$26</strong>, against a $10 ceiling. So the pipeline generated still images and faked the movement — and "images after images" is precisely the complaint in your own edit rules.</p>
+
+<div class="tw">
+<table>
+  <caption>104 clips of genuine motion — what each route costs</caption>
+  <thead><tr><th>Route</th><th class="n">Cost</th><th class="n">Wall clock</th><th>Licence</th></tr></thead>
+  <tbody>
+    <tr><td>Veo 3.1 Lite (today's API)</td><td class="n">$26.00</td><td class="n">~40 min</td><td>Google terms — fine</td></tr>
+    <tr class="hi"><td>LTX-2 on RTX 6000 Ada</td><td class="n">~$1.85</td><td class="n">~70 min</td><td>Free under $10 m revenue</td></tr>
+    <tr><td>Wan 2.2 on RTX 6000 Ada</td><td class="n">~$7–10</td><td class="n">~5 h</td><td class="yes">Apache 2.0 — cleanest</td></tr>
+    <tr><td>HunyuanVideo 1.5</td><td class="n">—</td><td class="n">—</td><td class="no">Tencent licence — avoid</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>LTX-2 generates a five-second clip in under thirty seconds on consumer silicon and is the only open model producing synced audio and video in one pass. Wan 2.2 renders humans better — faces, skin, hair — and carries an Apache 2.0 licence, which for a monetised channel is the least ambiguous position you can be in. It is also five times slower.</p>
+
+<div class="verdict">
+  <span class="lab">Verdict</span>
+  <p>Rent a GPU <strong>to buy motion you cannot otherwise afford</strong>, not to save render minutes. Roughly $2 turns 104 dead stills into 104 moving shots — and that addresses the actual criticism, which was never that the film took too long to make.</p>
+</div>
+
+<h2><span class="n">III.</span> Smart model to plan, cheap model to build</h2>
+
+<p>This is already the architecture, which is why it is not where the savings are. The whole Hemsworth film cost <strong>$4.16</strong>.</p>
+
+<div class="tw">
+<table>
+  <caption>Current model allocation</caption>
+  <thead><tr><th>Stage</th><th>Model</th><th>Tier</th><th class="n">Cost</th></tr></thead>
+  <tbody>
+    <tr><td>Research, script, edit decisions</td><td>Opus 5</td><td>top</td><td class="n">—</td></tr>
+    <tr><td>Shot prompts (5 parallel agents)</td><td>Opus 5</td><td class="no">top — wasteful</td><td class="n">—</td></tr>
+    <tr><td>104 stills</td><td>gemini-3.1-flash-lite-image</td><td class="yes">cheapest</td><td class="n">$4.16</td></tr>
+    <tr><td>Narration</td><td>eleven_turbo_v2_5</td><td class="yes">cheapest</td><td class="n">~$0</td></tr>
+    <tr><td>Render</td><td>no model — pure CPU</td><td>—</td><td class="n">$0</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>The only genuine downgrade available is the five prompt-writing agents, which currently inherit the session model. Moving them to Haiku saves perhaps three minutes and a few cents. It is worth doing and it will not be noticed.</p>
+
+<div class="verdict">
+  <span class="lab">Verdict</span>
+  <p>Model selection is not your bottleneck. But <strong>the buried version of this idea is the important one:</strong> the stage that failed had no model assigned at all. Nothing in the pipeline searched for, cut, and placed real footage of the subject — which is why a film about Chris Hemsworth contained no Chris Hemsworth. That is a missing stage, not a wrong model, and no amount of compute fixes it.</p>
+</div>
+
+<h2><span class="n">IV.</span> Seedance 2.5 — is it free?</h2>
+
+<p>No, on three separate counts.</p>
+
+<h3>There is no API to call</h3>
+<p>ByteDance announced Seedance 2.5 in late June 2026 and it remains <strong>pre-release for API access</strong> as of last week. No price has been published. Volcano Engine is the expected channel but has not opened it. There is nothing to integrate.</p>
+
+<h3>When it does land, it looks more expensive, not less</h3>
+<div class="tw">
+<table>
+  <caption>Estimated cost of a five-second clip</caption>
+  <thead><tr><th>Model</th><th class="n">Per 5 s</th><th class="n">×104 shots</th></tr></thead>
+  <tbody>
+    <tr class="hi"><td>Veo 3.1 Lite — what you use now</td><td class="n">$0.25</td><td class="n">$26</td></tr>
+    <tr><td>Seedance 2.5 — estimated floor</td><td class="n">$0.47</td><td class="n">$49</td></tr>
+    <tr><td>Seedance 2.5 — estimated ceiling</td><td class="n">$1.06</td><td class="n">$110</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>The free tier cannot be automated</h3>
+<p>The free element is Dreamina's daily bonus credits — a web interface with manual prompting and manual download. It is a way to try the model, not a way to produce 104 shots. And <code>seed.bytedance.com</code> is a research showcase page, not a service.</p>
+
+<div class="verdict">
+  <span class="lab">Caution</span>
+  <p>ByteDance has publicly warned that resellers advertising "Seedance 2.5 access" ahead of official distribution should be treated as unverified. Several are already selling plans. <strong>Do not buy credits from any of them.</strong></p>
+</div>
+
+<h2><span class="n">V.</span> What I would actually do</h2>
+
+<ol class="rank">
+  <li>
+    <div class="h"><span>Let me run unattended</span><span class="tag">saves ~6 h · $0</span></div>
+    <p>A <code>/loop</code> re-invokes me on an interval so work continues while you sleep. This is the entire difference between eight hours and ninety minutes, and it is the thing that actually broke on Friday night. Nothing else on this list is within an order of magnitude.</p>
+  </li>
+  <li>
+    <div class="h"><span>Add a real-footage stage</span><span class="tag">fixes the film · $0</span></div>
+    <p>The GMA and Men's Health downloads are sitting uncut on disk. The captions already mark a clean eleven-second thought about his fear of forgetting his wife and children. Trim it to ten seconds, place it, and the film contains its subject. No hardware involved.</p>
+  </li>
+  <li>
+    <div class="h"><span>Warp at half resolution</span><span class="tag">saves ~40 min · $0</span></div>
+    <p>Measured at 3.4× faster. On a push-in you are magnifying the image anyway, so the visible loss is small. Skip the depth warp entirely on the 22 shots that are cards, titles and music beats — those are graphics and gain nothing from parallax.</p>
+  </li>
+  <li>
+    <div class="h"><span>Disk pre-flight</span><span class="tag">saves ~25 min · $0</span></div>
+    <p>Refuse to start below 20 GB free. Every segfault on Friday was <code>paging file too small</code> wearing a disguise.</p>
+  </li>
+  <li>
+    <div class="h"><span>Then rent the GPU — for motion, not speed</span><span class="tag">~$2 per film</span></div>
+    <p>An RTX 6000 Ada running LTX-2 or Wan 2.2, once the four free items above are done. Build the image once, snapshot it, and every future film boots into it in two minutes. This is the step that changes what the videos look like rather than how long they take.</p>
+  </li>
+</ol>
+
+<p class="pull">Four of the five best moves cost nothing. The one that costs money is worth doing for a reason nobody asked about.</p>
+
+<footer>
+  <p><strong>Sources.</strong>
+  <a href="https://www.digitalocean.com/pricing/gpu-droplets">DigitalOcean GPU Droplet pricing</a> ·
+  <a href="https://www.spheron.network/blog/digitalocean-gpu-pricing-2026/">DigitalOcean GPU pricing 2026, Spheron</a> ·
+  <a href="https://kie.ai/blog/seedance-2-5-pricing">Seedance 2.5 pricing: what we know</a> ·
+  <a href="https://www.atlascloud.ai/blog/guides/seedance-2.5-pricing-guide">Seedance 2.5 pricing guide</a> ·
+  <a href="https://www.techtimes.com/articles/318975/20260624/bytedance-seedance-25-native-30-second-ai-video-no-stitching-required.htm">ByteDance Seedance 2.5 announcement</a> ·
+  <a href="https://wavespeed.ai/blog/posts/blog-ltx-2-license-commercial-use/">LTX-2 licence and commercial use</a> ·
+  <a href="https://www.aimagicx.com/blog/open-source-ai-video-models-comparison-2026">Wan 2.2 vs HunyuanVideo 1.5 vs LTX-Video</a> ·
+  <a href="https://localaimaster.com/blog/local-ai-video-generation">Local AI video generation, 2026</a></p>
+  <p>Timings measured on this machine — 20 logical cores, AMD Radeon 880M integrated graphics, CPU-only PyTorch 2.12. Payload sizes measured from <code>work/hemsworth</code>. Cost figures from the run ledger.</p>
+</footer>
+
+</div>

@@ -1,0 +1,391 @@
+<!doctype html><html lang="en" data-resolution="landscape"><head><meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920,height=1080"/><script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face{font-family:Anton;src:url("assets/fonts/Anton-Regular.ttf") format("truetype")}
+@font-face{font-family:Archivo;src:url("assets/fonts/Archivo-Regular.ttf") format("truetype")}
+@font-face{font-family:ArchivoBlack;src:url("assets/fonts/ArchivoBlack-Regular.ttf") format("truetype")}
+:root{--red:#b22b1a;--ink:#0d0d0d;--paper:#f4f2ef;--gray:#a9a9a9;--char:#252525}
+*{box-sizing:border-box;margin:0;padding:0}html,body{width:1920px;height:1080px;overflow:hidden;background:var(--ink)}body{font-family:Archivo,Arial,sans-serif;color:var(--paper)}#root{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--ink)}.clip{position:absolute;inset:0;overflow:hidden}.scene-video,.opener-video{width:100%;height:100%;object-fit:cover;background:#080808}.hero-video{inset:0}.film-frame-video{left:88px;top:144px;right:auto;bottom:auto;width:1232px;height:792px;object-fit:contain;background:#050505}.page-mast{position:absolute;z-index:8;left:76px;right:76px;top:48px;height:50px;border-bottom:8px solid var(--red);display:flex;justify-content:space-between;align-items:flex-start;color:var(--ink);font:900 18px ArchivoBlack;letter-spacing:.14em}.page-mast span{font:600 15px Archivo;letter-spacing:.12em;color:#626262}.page-mast.light{color:var(--paper)}.page-mast.light span{color:var(--gray)}.page-number,.folio{position:absolute;font:900 15px ArchivoBlack;letter-spacing:.16em}.page-number{right:78px;bottom:42px;color:#777}.folio{right:46px;bottom:36px;color:#777}.brand-bug{position:absolute;z-index:80;right:44px;top:30px;background:var(--ink);color:var(--paper);border-bottom:5px solid var(--red);padding:12px 17px;font:900 15px ArchivoBlack;letter-spacing:.17em}.texture{position:absolute;z-index:75;inset:0;pointer-events:none;opacity:.06;background-image:radial-gradient(rgba(0,0,0,.55) .6px,transparent .7px);background-size:4px 4px;mix-blend-mode:multiply}.chapter-tab{position:absolute;z-index:77;left:0;top:34px;background:var(--paper);color:var(--ink);border-left:14px solid var(--red);padding:13px 28px 12px 34px;font:900 15px ArchivoBlack;letter-spacing:.15em;box-shadow:10px 10px 0 rgba(13,13,13,.24)}
+.video-layout{background:transparent}.video-layout .video-shell{position:absolute;overflow:hidden}.hero-footage .video-shell{inset:0}.film-frame .video-shell{left:74px;top:130px;width:1260px;height:820px;border:14px solid var(--paper);box-shadow:24px 24px 0 rgba(178,43,26,.65)}.video-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.84),rgba(13,13,13,.1) 58%,rgba(13,13,13,.35)),linear-gradient(0deg,rgba(13,13,13,.72),transparent 46%)}.film-frame .video-shade{background:linear-gradient(0deg,rgba(13,13,13,.22),transparent 50%)}.video-copy{position:absolute;z-index:3;left:84px;bottom:78px;width:1120px}.film-frame .video-copy{left:1400px;top:220px;bottom:auto;width:430px}.video-copy p,.montage-copy p{font:900 19px ArchivoBlack;letter-spacing:.15em;color:var(--gray);margin-bottom:17px}.video-copy p:before,.montage-copy p:before{content:"";display:inline-block;width:86px;height:8px;background:var(--red);margin-right:18px}.video-copy h2,.montage-copy h2{font:400 100px/.91 Anton;text-transform:uppercase;letter-spacing:.01em}.film-frame .video-copy h2{font-size:72px;color:var(--paper)}.video-copy em,.montage-copy em,.roster-feature em,.compare-feature em,.stat-feature em{font-style:normal;color:#d75544}.video-copy span{display:block;margin-top:34px;font:900 13px ArchivoBlack;letter-spacing:.14em;color:#747474}.montage-copy{display:flex;flex-direction:column;justify-content:flex-end;padding:0 84px 80px;background:linear-gradient(0deg,rgba(13,13,13,.88),transparent 72%)}
+.feature-opener{background:transparent}.opener-video{position:absolute;inset:0}.opener-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,13,13,.1),rgba(13,13,13,.66) 65%,rgba(13,13,13,.92))}.opener-page{position:absolute;right:0;top:0;width:760px;height:1080px;background:rgba(244,242,239,.96);color:var(--ink);padding:170px 76px 80px;border-left:18px solid var(--red)}.opener-page p{font:900 18px ArchivoBlack;letter-spacing:.15em;color:#666;margin-bottom:54px}.opener-page h1{font:400 124px/.86 Anton;text-transform:uppercase}.opener-page h1 span{display:block}.opener-page i{display:block;width:170px;height:12px;background:var(--red);margin:54px 0 32px}.opener-page small{font:900 14px ArchivoBlack;letter-spacing:.15em}.cover-kicker{position:absolute;left:64px;top:52px;background:var(--ink);border-top:8px solid var(--red);padding:14px 19px;font:900 17px ArchivoBlack;letter-spacing:.18em}
+.photo-feature,.evidence-spread,.feature-spread,.compare-feature,.roster-feature,.diagram-feature{background:var(--paper);color:var(--ink)}.photo-feature-grid{position:absolute;left:74px;right:74px;top:126px;bottom:224px;display:grid;gap:18px}.photos-2 .photo-feature-grid{grid-template-columns:1.55fr 1fr}.photos-3 .photo-feature-grid{grid-template-columns:1.4fr 1fr;grid-template-rows:1fr 1fr}.photos-3 figure:first-child{grid-row:1/3}.photo-feature figure,.roster-feature figure,.compare-feature figure,.feature-spread figure,.evidence-visual{position:relative;overflow:hidden;background:#171717}.photo-feature img,.roster-feature img,.compare-feature img,.feature-spread img,.evidence-visual img{width:100%;height:100%;object-fit:cover}.photo-feature figcaption,.roster-feature figcaption,.compare-feature figcaption,.feature-spread figcaption,.evidence-visual figcaption{position:absolute;left:18px;bottom:18px;background:var(--ink);color:var(--paper);padding:10px 14px;font:900 16px ArchivoBlack;letter-spacing:.08em}.photo-feature figcaption b{color:var(--red);margin-right:11px}.photo-deck{position:absolute;left:76px;right:76px;bottom:48px;height:138px;display:flex;justify-content:space-between;align-items:flex-start;gap:44px}.photo-deck p{font:900 18px ArchivoBlack;letter-spacing:.15em;color:var(--red);padding-top:9px}.photo-deck h2{font:400 73px/.9 Anton;text-align:right;text-transform:uppercase}
+.evidence-grid{position:absolute;left:76px;right:76px;top:132px;bottom:68px;display:grid;grid-template-columns:1.08fr .92fr;gap:54px}.evidence-visual{border-top:14px solid var(--red)}.evidence-copy{padding:28px 24px 0 0}.evidence-copy>span{font:900 15px ArchivoBlack;letter-spacing:.16em;color:#777}.evidence-copy h2{font:400 72px/.9 Anton;text-transform:uppercase;margin:30px 0 44px}.evidence-copy p{font:400 38px/1.34 Georgia,serif}.evidence-copy mark{position:relative;background:transparent;color:inherit}.evidence-copy mark b{position:relative;z-index:2;font-weight:700}.evidence-copy mark i{position:absolute;z-index:1;left:-6px;right:-6px;bottom:1px;height:88%;background:rgba(178,43,26,.3);transform-origin:left center}.evidence-copy footer{position:absolute;right:24px;bottom:20px;font:900 14px ArchivoBlack;letter-spacing:.12em;color:#686868}
+.feature-spread{display:grid;grid-template-columns:1.18fr .82fr;padding:128px 76px 70px;gap:44px}.feature-spread figure{height:854px;border-top:14px solid var(--red)}.feature-spread article{padding:28px 24px}.feature-spread article>p{font:900 17px ArchivoBlack;letter-spacing:.15em;color:var(--red)}.feature-spread h2{font:400 102px/.88 Anton;margin:28px 0 56px}.feature-spread blockquote{font:700 42px/1.28 Georgia,serif}.feature-spread article i{display:block;width:150px;height:10px;background:var(--red);margin:42px 0 28px}.feature-spread article footer{font:900 15px ArchivoBlack;letter-spacing:.11em}
+.compare-feature{padding:128px 76px 74px}.compare-grid{height:790px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.compare-grid figure{border-top:13px solid var(--red)}.compare-feature h2{position:absolute;z-index:4;left:50%;bottom:60px;transform:translateX(-50%) rotate(-1deg);white-space:nowrap;background:var(--ink);color:var(--paper);padding:14px 28px;font:400 72px Anton;text-transform:uppercase}.compare-rule{position:absolute;z-index:3;left:50%;top:118px;width:12px;height:864px;background:var(--red);transform:translateX(-50%)}
+.stat-feature{background:var(--ink);color:var(--paper)}.stat-number{position:absolute;left:90px;top:190px;display:flex;align-items:flex-end}.stat-number b{font:400 440px/.72 Anton;color:var(--red)}.stat-number span{font:400 104px/.85 Anton;margin-left:24px;margin-bottom:32px}.stat-feature article{position:absolute;left:1040px;right:100px;top:265px}.stat-feature article p{font:900 19px ArchivoBlack;letter-spacing:.15em;color:var(--gray);margin-bottom:30px}.stat-feature article h2{font:400 99px/.9 Anton;text-transform:uppercase}.stat-feature article h3{font:600 24px/1.4 Archivo;color:var(--gray);margin-top:34px}.stat-rail{position:absolute;left:90px;right:90px;bottom:82px;height:14px;background:linear-gradient(90deg,var(--red) 0 62%,#383838 62%)}
+.diagram-feature{padding:140px 76px 70px}.diagram-head{display:flex;align-items:flex-start;justify-content:space-between;gap:80px}.diagram-head p{font:900 18px ArchivoBlack;letter-spacing:.15em;color:var(--red);padding-top:16px}.diagram-head h2{font:400 92px/.9 Anton;text-align:right;text-transform:uppercase}.diagram-rule{height:11px;background:var(--red);margin:58px 0 86px;transform-origin:left}.diagram-flow{display:flex;align-items:center;justify-content:center;gap:54px}.diagram-node{position:relative;width:330px;height:230px;border:4px solid var(--ink);border-top:18px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center}.diagram-node:not(:last-child):after{content:"";position:absolute;right:-58px;top:100px;width:55px;height:8px;background:var(--red)}.diagram-node b{font:400 58px Anton}.diagram-node span{font:900 15px ArchivoBlack;letter-spacing:.15em;color:#6a6a6a;margin-top:10px}.diagram-feature footer{position:absolute;left:76px;bottom:48px;font:900 14px ArchivoBlack;letter-spacing:.14em;color:#777}
+.roster-feature{padding:126px 76px 64px}.roster-grid{height:788px;display:grid;grid-template-columns:1.38fr .72fr;grid-template-rows:1fr 1fr;gap:18px}.roster-main{grid-row:1/3}.roster-feature h2{position:absolute;right:108px;bottom:74px;background:var(--paper);padding:20px 24px;font:400 68px/.92 Anton;text-align:right}.interview-slug{inset:auto auto 60px 72px;width:780px;height:176px;background:var(--paper);color:var(--ink);border-left:15px solid var(--red);padding:24px 34px;box-shadow:18px 18px 0 rgba(13,13,13,.55)}.interview-slug span{font:900 13px ArchivoBlack;letter-spacing:.15em;color:#777}.interview-slug p{font:900 17px ArchivoBlack;letter-spacing:.12em;color:var(--red);margin-top:8px}.interview-slug h2{font:400 55px Anton;margin-top:4px}
+.archive-feature{background:transparent;color:var(--paper)}.archive-video{left:82px;top:146px;right:auto;bottom:auto;width:1156px;height:806px;object-fit:contain;background:#050505}.archive-frame{position:absolute;left:70px;top:134px;width:1180px;height:830px;border:12px solid var(--paper);box-shadow:22px 22px 0 rgba(178,43,26,.56);overflow:hidden}.timecode{position:absolute;left:18px;bottom:15px;background:var(--ink);padding:7px 10px;font:900 12px ArchivoBlack;letter-spacing:.12em}.archive-feature article{position:absolute;left:1340px;right:74px;top:210px}.archive-feature article p{font:900 16px ArchivoBlack;letter-spacing:.15em;color:#d75544}.archive-feature h2{font:400 76px/.9 Anton;margin:26px 0 48px}.archive-feature blockquote{font:700 38px/1.22 Georgia,serif}.archive-feature article i{display:block;width:150px;height:10px;background:var(--red);margin:42px 0 28px}.archive-feature footer{font:900 13px ArchivoBlack;letter-spacing:.14em;color:#777}
+.closing-summary{background:var(--ink);color:var(--paper);padding:150px 86px 80px}.closing-summary h2{position:relative;z-index:2;font:400 128px/.83 Anton;letter-spacing:.01em}.closing-summary h2 em{font-style:normal;color:#d75544}.closing-list{position:absolute;z-index:2;right:86px;top:220px;width:620px;display:grid;gap:14px}.closing-list span,.closing-list b{border-top:4px solid #555;padding:13px 0;font:900 28px ArchivoBlack;letter-spacing:.11em}.closing-list b{color:#d75544;border-color:var(--red)}.closing-red{position:absolute;right:-240px;bottom:-380px;width:900px;height:900px;border-radius:50%;background:var(--red);opacity:.22}
+.page-mast{left:300px;right:330px}.page-mast span{color:#5d5d5d}.page-mast.light span{color:#b5b5b5}.page-number{bottom:24px;color:#5d5d5d}.folio,.video-copy span{color:#8b8b8b}.photo-deck{right:150px}.diagram-feature footer,.feature-spread article footer{color:#5d5d5d}.chapter-tab{inset:auto;right:auto;bottom:auto;width:auto;height:auto}
+</style></head><body><div id="root" data-composition-id="main" data-duration="822.429" data-width="1920" data-height="1080" data-fps="30">
+<video id="opener-video-i1" class="clip opener-video" src="assets/video/intro_last_shot.mp4" data-start="0" data-duration="5.427" data-track-index="1" data-media-start="1.25" muted playsinline></video>
+    <div id="opener-i1" data-start="0" data-duration="5.427" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-i1">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>MICHAEL JORDAN / REPORTED, NOT MYTHOLOGIZED</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>THE WORK</span><span data-layout-allow-overlap>BEHIND THE BODY</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">I1</div>
+    </div>
+<video id="v-h1" class="clip scene-video hero-video" src="assets/video/pistons_contact.mp4" data-start="5.427" data-duration="17.673" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-h1-scene" class="clip video-layout hero-footage" data-video-id="v-h1" data-start="5.427" data-duration="17.673" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>THE PROBLEM</p><h2 data-layout-allow-overlap>THE BEST PLAYER IN THE LEAGUE.<br><em>STILL GOING HOME.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">H1 / 23</div></div>
+<div id="evidence-h2" data-start="23.1" data-duration="10.736" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>CBS SPORTS</strong><span>MAY 2020 / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/pistons_contact.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE H2</span><h2>How Jordan built for Detroit</h2>
+          <p>Detroit eliminated Chicago in <mark><i></i><b>three consecutive postseasons: 1988, 1989 and 1990.</b></mark> Twice, the loss came in the Conference Finals.</p>
+          <footer>cbssports.com</footer></article>
+      </div><div class="page-number">H2</div>
+    </div>
+<video id="v-h3" class="clip scene-video film-frame-video" src="assets/video/jordan_rules.mp4" data-start="33.836" data-duration="16.16" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-h3-scene" class="clip video-layout film-frame" data-video-id="v-h3" data-start="33.836" data-duration="16.16" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>DETROIT&#x27;S PLAN</p><h2 data-layout-allow-overlap>THE JORDAN <em>RULES</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">H3 / 23</div></div>
+<div id="photos-r1" data-start="49.996" data-duration="22.578" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip photo-feature photos-3">
+      <header class="page-mast"><strong>CELEB WORKOUT</strong><span>MICHAEL JORDAN / THE WORK BEHIND THE BODY</span></header>
+      <div class="photo-feature-grid"><figure><img src="assets/images/mj_family_young.jpg"/><figcaption><b>01</b>WILMINGTON</figcaption></figure><figure><img src="assets/images/mj_young1.jpg"/><figcaption><b>02</b>AGE 21</figcaption></figure><figure><img src="assets/editorial/jordan_wilmington_home.jpg"/><figcaption><b>03</b>THE FAMILY HOME</figcaption></figure></div>
+      <div class="photo-deck"><p>THE ORIGIN STORY</p><h2>LEFT OFF VARSITY.<br><em>NOT LEFT BEHIND.</em></h2></div><div class="page-number">R1</div>
+    </div>
+<div id="photos-r2" data-start="72.574" data-duration="15.667" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip photo-feature photos-2">
+      <header class="page-mast"><strong>CELEB WORKOUT</strong><span>MICHAEL JORDAN / THE WORK BEHIND THE BODY</span></header>
+      <div class="photo-feature-grid"><figure><img src="assets/images/mj_laney_action.jpg"/><figcaption><b>01</b>THE WORK</figcaption></figure><figure><img src="assets/images/mj_laney_dunk.jpg"/><figcaption><b>02</b>THE GROWTH</figcaption></figure></div>
+      <div class="photo-deck"><p>THE BACK GARDEN</p><h2>LARRY WON.<br>MICHAEL <em>RETURNED.</em></h2></div><div class="page-number">R2</div>
+    </div>
+<div id="feature-r3" data-start="88.241" data-duration="17.04" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-spread">
+      <header class="page-mast"><strong>LONG FORM / MICHAEL JORDAN</strong><span>R3</span></header>
+      <figure data-layout-allow-overflow><img src="assets/editorial/jordan_1982_shot.jpg" style="object-position:55% 36%"/><figcaption>NORTH CAROLINA / 1982</figcaption></figure>
+      <article><p>NORTH CAROLINA / 1982</p><h2>THE SHOT</h2><blockquote>“A freshman takes the final shot of the national championship.”</blockquote><i></i><footer>SPORTS ILLUSTRATED / ARCHIVAL REPORT</footer></article>
+      <div class="page-number">R3</div></div>
+<video id="v-r4-0" class="clip scene-video hero-video" src="assets/video/rookie_1984.mp4" data-start="105.281" data-duration="8.952" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-r4-0-scene" class="clip video-layout hero-footage" data-video-id="v-r4-0" data-start="105.281" data-duration="8.952" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">R4 / 23</div></div>
+<video id="v-r4-1" class="clip scene-video hero-video" src="assets/video/boston_63.mp4" data-start="114.233" data-duration="8.952" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-r4-1-scene" class="clip video-layout hero-footage" data-video-id="v-r4-1" data-start="114.233" data-duration="8.952" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">R4 / 23</div></div>
+<video id="v-r4-2" class="clip scene-video hero-video" src="assets/video/defense_1988.mp4" data-start="123.185" data-duration="8.952" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-r4-2-scene" class="clip video-layout hero-footage" data-video-id="v-r4-2" data-start="123.185" data-duration="8.952" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">R4 / 23</div></div>
+<div id="montage-r4" class="clip montage-copy" data-start="105.281" data-duration="7.2" data-track-index="4" data-layout-allow-overlap data-layout-allow-occlusion><p>1984 → 1988</p><h2>BRILLIANCE <em>WITHOUT THE RING.</em></h2></div>
+<video id="v-r5" class="clip scene-video hero-video" src="assets/video/dirty_defense.mp4" data-start="132.137" data-duration="2.799" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-r5-scene" class="clip video-layout hero-footage" data-video-id="v-r5" data-start="132.137" data-duration="2.799" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>DETROIT</p><h2 data-layout-allow-overlap>EVERY POSSESSION<br><em>EXPENSIVE.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">R5 / 23</div></div>
+<div id="compare-r6" data-start="134.936" data-duration="16.779" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip compare-feature">
+      <header class="page-mast"><strong>BODY OF WORK</strong><span>THEN / BUILT</span></header>
+      <div class="compare-grid"><figure><img src="assets/images/mj_skinny.jpg"/><figcaption>1985 / 195 LB</figcaption></figure><figure><img src="assets/images/mj_built.jpg"/><figcaption>MID-90s / BUILT FOR CONTACT</figcaption></figure></div>
+      <h2>THE FRAME <em>CHANGED</em></h2><div class="compare-rule"></div><div class="page-number">R6</div></div>
+<video id="opener-video-r7" class="clip opener-video" src="assets/video/mvp_1988.mp4" data-start="151.715" data-duration="9.452" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="opener-r7" data-start="151.715" data-duration="9.452" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-r7">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>SUMMER / 1990</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>AN ENGINEERING</span><span data-layout-allow-overlap>PROBLEM</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">R7</div>
+    </div>
+<div id="photos-t1" data-start="161.167" data-duration="11.448" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip photo-feature photos-2">
+      <header class="page-mast"><strong>CELEB WORKOUT</strong><span>MICHAEL JORDAN / THE WORK BEHIND THE BODY</span></header>
+      <div class="photo-feature-grid"><figure><img src="assets/images/mj_grover_gq_2000.jpg"/><figcaption><b>01</b>JORDAN + GROVER</figcaption></figure><figure><img src="assets/images/mj_grover_press.jpg"/><figcaption><b>02</b>THE PARTNERSHIP</figcaption></figure></div>
+      <div class="photo-deck"><p>CHICAGO / 1989</p><h2>ONE TRAINER.<br><em>ALMOST NO CLIENTS.</em></h2></div><div class="page-number">T1</div>
+    </div>
+<video id="v-t2" class="clip scene-video film-frame-video" src="assets/video/bite_grover_letter.mp4" data-start="172.615" data-duration="25.232" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-t2-scene" class="clip video-layout film-frame" data-video-id="v-t2" data-start="172.615" data-duration="25.232" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">T2 / 23</div></div><div id="id-t2" class="clip interview-slug" data-start="172.615" data-duration="6.4" data-track-index="5"><span>ORAL HISTORY</span><p>HOW THE LETTER REACHED JORDAN</p><h2>TIM GROVER</h2></div>
+<div id="evidence-t3" data-start="197.847" data-duration="3.936" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>GQ</strong><span>THE ASSIST / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/article_gq_grover.png" style="object-position:50% 58%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE T3</span><h2>The letter that found Jordan</h2>
+          <p>Grover learned Jordan was tired of <mark><i></i><b>being knocked around by Detroit</b></mark> and wrote directly to the player with a reason to answer.</p>
+          <footer>gq.com</footer></article>
+      </div><div class="page-number">T3</div>
+    </div>
+<div id="stat-t3b" data-start="201.783" data-duration="7.054" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip stat-feature">
+      <header class="page-mast light"><strong data-layout-allow-overlap>CELEB WORKOUT / DATA</strong><span>T3b</span></header>
+      <div class="stat-number" data-layout-allow-overlap><b data-layout-allow-overlap>30</b><span data-layout-allow-overlap>DAYS</span></div>
+      <article data-layout-allow-overlap><p>THE AGREEMENT</p><h2 data-layout-allow-overlap>BECAME <em data-layout-allow-overlap>15 YEARS</em></h2><h3>Nothing more — unless it worked.</h3></article><div class="stat-rail"></div></div>
+<div id="photos-t3c" data-start="208.837" data-duration="6.546" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip photo-feature photos-2">
+      <header class="page-mast"><strong>CELEB WORKOUT</strong><span>MICHAEL JORDAN / THE WORK BEHIND THE BODY</span></header>
+      <div class="photo-feature-grid"><figure><img src="assets/images/tim_grover_b.jpg"/><figcaption><b>01</b>THE TRAINER</figcaption></figure><figure><img src="assets/images/mj_grover_training.jpg"/><figcaption><b>02</b>THE WORK</figcaption></figure></div>
+      <div class="photo-deck"><p>THE FIRST PROGRAM</p><h2>BUILD THE BODY.<br><em>KEEP THE GAME.</em></h2></div><div class="page-number">T3c</div>
+    </div>
+<video id="v-t4" class="clip scene-video film-frame-video" src="assets/video/bite_grover_program.mp4" data-start="215.383" data-duration="24.752" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-t4-scene" class="clip video-layout film-frame" data-video-id="v-t4" data-start="215.383" data-duration="24.752" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">T4 / 23</div></div><div id="id-t4" class="clip interview-slug" data-start="215.383" data-duration="6.4" data-track-index="5"><span>ORAL HISTORY</span><p>THE FIRST PROGRAM</p><h2>TIM GROVER</h2></div>
+<div id="compare-t5" data-start="240.135" data-duration="14.225" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip compare-feature">
+      <header class="page-mast"><strong>BODY OF WORK</strong><span>THEN / BUILT</span></header>
+      <div class="compare-grid"><figure><img src="assets/images/mj_skinny2.jpg"/><figcaption>THE TALENT</figcaption></figure><figure><img src="assets/images/mj_built2.jpg"/><figcaption>THE ARMOR</figcaption></figure></div>
+      <h2>≈15 LB <em>OF MUSCLE</em></h2><div class="compare-rule"></div><div class="page-number">T5</div></div>
+<div id="roster-w1" data-start="254.36" data-duration="8.676" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip roster-feature">
+      <header class="page-mast"><strong>THE BREAKFAST CLUB</strong><span>5–7 A.M. / HIGHLAND PARK</span></header>
+      <div class="roster-grid"><figure class="roster-main"><img src="assets/images/scottie_pippen.jpg"/><figcaption>01 / SCOTTIE PIPPEN</figcaption></figure>
+      <figure><img src="assets/images/ron_harper.jpg"/><figcaption>02 / RON HARPER</figcaption></figure><figure><img src="assets/images/randy_brown.jpg"/><figcaption>03 / RANDY BROWN</figcaption></figure></div>
+      <h2 data-layout-allow-overlap data-layout-allow-occlusion>BEFORE THE ARENA.<br><em>BEFORE THE CROWD.</em></h2><div class="page-number">W1</div></div>
+<video id="v-w1b" class="clip scene-video hero-video" src="assets/video/render_ready/arriving_to_practice.mp4" data-start="263.036" data-duration="2.946" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w1b-scene" class="clip video-layout hero-footage" data-video-id="v-w1b" data-start="263.036" data-duration="2.946" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>BEFORE DAWN</p><h2 data-layout-allow-overlap>THE DAY STARTED<br><em>BEFORE THE ARENA.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">W1b / 23</div></div>
+<video id="v-w1c" class="clip scene-video film-frame-video" src="assets/video/bite_grover_breakfast.mp4" data-start="265.982" data-duration="24.898" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w1c-scene" class="clip video-layout film-frame" data-video-id="v-w1c" data-start="265.982" data-duration="24.898" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">W1c / 23</div></div><div id="id-w1c" class="clip interview-slug" data-start="265.982" data-duration="6.4" data-track-index="5"><span>ORAL HISTORY</span><p>THE BREAKFAST CLUB ROUTINE</p><h2>TIM GROVER</h2></div>
+<video id="v-w1d" class="clip scene-video film-frame-video" src="assets/video/render_ready/finals_backstage_1996.mp4" data-start="290.88" data-duration="4.624" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w1d-scene" class="clip video-layout film-frame" data-video-id="v-w1d" data-start="290.88" data-duration="4.624" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>THE SECOND THREE-PEAT</p><h2 data-layout-allow-overlap>BY THEN, THIS WAS<br><em>THE TEAM'S MORNING.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">W1d / 23</div></div>
+<video id="opener-video-w2" class="clip opener-video" src="assets/video/render_ready/bulls_backstage_1998.mp4" data-start="295.504" data-duration="4.09" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="opener-w2" data-start="295.504" data-duration="4.09" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-w2">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>THE PROGRAM / DAILY WORK</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>UNGLAMOROUS</span><span data-layout-allow-overlap>ON PURPOSE</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">W2</div>
+    </div>
+<div id="diagram-w3" data-start="299.594" data-duration="19.095" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip diagram-feature">
+      <header class="page-mast"><strong>TRAINING FILE</strong><span>W3</span></header>
+      <div class="diagram-head"><p>THE PROGRAM</p><h2>BASE → FORCE → CONTROL</h2></div>
+      <div class="diagram-rule"></div><div class="diagram-flow"><div class="diagram-node"><b>SQUAT</b><span>BASE</span></div><div class="diagram-node"><b>CLEAN</b><span>FORCE</span></div><div class="diagram-node"><b>STEP-UP</b><span>TRANSFER</span></div><div class="diagram-node"><b>CORE</b><span>CONTROL</span></div></div><footer>LOAD FOLLOWS FUNCTION / NOT APPEARANCE</footer></div>
+<div id="evidence-w4" data-start="318.689" data-duration="13.616" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>BASKETBALL NETWORK</strong><span>TIM GROVER / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/grover_program.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE W4</span><h2>The set never ended at six</h2>
+          <p>Grover would prescribe six repetitions. <mark><i></i><b>Jordan did twelve — every set.</b></mark> The harder job was getting him to stop.</p>
+          <footer>basketballnetwork.net</footer></article>
+      </div><div class="page-number">W4</div>
+    </div>
+<div id="feature-w6" data-start="332.305" data-duration="11.93" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-spread">
+      <header class="page-mast"><strong>LONG FORM / MICHAEL JORDAN</strong><span>W6</span></header>
+      <figure data-layout-allow-overflow><img src="assets/images/mj_dunk87.jpg" style="object-position:50% 50%"/><figcaption>ARCHIVE TRANSCRIPT</figcaption></figure>
+      <article><p>ARCHIVE TRANSCRIPT</p><h2>NO SECRET EXERCISE</h2><blockquote>“Conditioning and nutrition are very important. I used to work out every single day.”</blockquote><i></i><footer>MICHAEL JORDAN / RECORDED AT THE TIME</footer></article>
+      <div class="page-number">W6</div></div>
+<video id="archive-video-w7" class="clip archive-video" src="assets/video/render_ready/bite_mj_conditioning.mp4" data-start="344.235" data-duration="25.716" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="archive-w7" class="clip archive-feature" data-video-id="archive-video-w7" data-start="344.235" data-duration="25.716" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion>
+      <header class="page-mast light"><strong>PRIMARY SOURCE / TAPE</strong><span>W7</span></header>
+      <div class="archive-frame"><span class="timecode">TC 00:W7:23</span></div>
+      <article><p>MICHAEL JORDAN / ARCHIVE</p><h2>CONDITIONING + WEIGHTS</h2><blockquote>WEIGHTS. AEROBIC WORK. EVERY DAY.</blockquote><i></i><footer>ORIGINAL AUDIO / EDITORIAL FRAME</footer></article></div>
+<div id="stat-w8" data-start="369.951" data-duration="2.888" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip stat-feature">
+      <header class="page-mast light"><strong data-layout-allow-overlap>CELEB WORKOUT / DATA</strong><span>W8</span></header>
+      <div class="stat-number" data-layout-allow-overlap><b data-layout-allow-overlap>01</b><span data-layout-allow-overlap>FIRST</span></div>
+      <article data-layout-allow-overlap><p>LISTEN TO THE ORDER</p><h2 data-layout-allow-overlap>CONDITIONING<br><em data-layout-allow-overlap>BEFORE WEIGHTS.</em></h2><h3></h3></article><div class="stat-rail"></div></div>
+<div id="diagram-w9" data-start="372.839" data-duration="10.919" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip diagram-feature">
+      <header class="page-mast"><strong>TRAINING FILE</strong><span>W9</span></header>
+      <div class="diagram-head"><p>JORDAN&#x27;S OWN SEQUENCE</p><h2>PREPARE → CONDITION → LOAD</h2></div>
+      <div class="diagram-rule"></div><div class="diagram-flow"><div class="diagram-node"><b>STRETCH</b><span>MOBILITY</span></div><div class="diagram-node"><b>SPRINT</b><span>STAMINA</span></div><div class="diagram-node"><b>LIFT</b><span>STRENGTH</span></div></div><footer>LOAD FOLLOWS FUNCTION / NOT APPEARANCE</footer></div>
+<video id="v-w10" class="clip scene-video hero-video" src="assets/video/bench_strategy.mp4" data-start="383.758" data-duration="7.916" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w10-scene" class="clip video-layout hero-footage" data-video-id="v-w10" data-start="383.758" data-duration="7.916" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>THE DETAIL IN THE PHOTOGRAPHS</p><h2 data-layout-allow-overlap>LOOK AT<br><em>THE SHORTS.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">W10 / 23</div></div>
+<div id="evidence-w11" data-start="391.674" data-duration="10.846" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>TIM GROVER</strong><span>INTERVIEW TRANSCRIPT / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/bench_strategy.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE W11</span><h2>A recovery signal hidden in plain sight</h2>
+          <p>He told Jordan to grab the hem of his shorts instead of leaning on his knees. <mark><i></i><b>It reduced the load without broadcasting exhaustion.</b></mark> The detail mattered because opponents were always reading him.</p>
+          <footer>youtube.com</footer></article>
+      </div><div class="page-number">W11</div>
+    </div>
+<div id="diagram-w12" data-start="402.52" data-duration="18.555" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip diagram-feature">
+      <header class="page-mast"><strong>TRAINING FILE</strong><span>W12</span></header>
+      <div class="diagram-head"><p>A PROGRAM FOR A BODY</p><h2>LEFT ≠ RIGHT</h2></div>
+      <div class="diagram-rule"></div><div class="diagram-flow"><div class="diagram-node"><b>MEASURE</b><span>ASYMMETRY</span></div><div class="diagram-node"><b>ADJUST</b><span>LOAD</span></div><div class="diagram-node"><b>TEST</b><span>MOVEMENT</span></div></div><footer>LOAD FOLLOWS FUNCTION / NOT APPEARANCE</footer></div>
+<div id="feature-w13" data-start="421.075" data-duration="11.424" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-spread">
+      <header class="page-mast"><strong>LONG FORM / MICHAEL JORDAN</strong><span>W13</span></header>
+      <figure data-layout-allow-overflow><img src="assets/images/bulls_practice_trio.jpg" style="object-position:50% 50%"/><figcaption>TRAIN THE ATHLETE — NOT THE CHART</figcaption></figure>
+      <article><p>TRAIN THE ATHLETE — NOT THE CHART</p><h2>ASYMMETRY</h2><blockquote>“One hand might carry fifty pounds while the other carried ten. The objective was balance in motion.”</blockquote><i></i><footer>TIM GROVER / TRAINING ACCOUNT</footer></article>
+      <div class="page-number">W13</div></div>
+<div id="stat-w14" data-start="432.499" data-duration="12.509" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip stat-feature">
+      <header class="page-mast light"><strong data-layout-allow-overlap>CELEB WORKOUT / DATA</strong><span>W14</span></header>
+      <div class="stat-number" data-layout-allow-overlap><b data-layout-allow-overlap>1990</b><span data-layout-allow-overlap>THE TURN</span></div>
+      <article data-layout-allow-overlap><p>PRO BASKETBALL</p><h2 data-layout-allow-overlap>WEIGHTS WERE STILL<br><em data-layout-allow-overlap>THE ENEMY.</em></h2><h3>Players feared losing their shooting touch.</h3></article><div class="stat-rail"></div></div>
+<video id="v-w14b" class="clip scene-video film-frame-video" src="assets/video/render_ready/running_with_bulls.mp4" data-start="445.008" data-duration="6.994" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w14b-scene" class="clip video-layout film-frame" data-video-id="v-w14b" data-start="445.008" data-duration="6.994" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>CHIP SCHAEFER</p><h2 data-layout-allow-overlap>HE ARRIVED AT<br><em>EXACTLY THAT MOMENT.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">W14b / 23</div></div>
+<video id="v-w14d" class="clip scene-video film-frame-video" src="assets/video/bite_schaefer_1990.mp4" data-start="452.002" data-duration="25.429" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w14d-scene" class="clip video-layout film-frame" data-video-id="v-w14d" data-start="452.002" data-duration="25.429" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">W14d / 23</div></div><div id="id-w14d" class="clip interview-slug" data-start="452.002" data-duration="6.4" data-track-index="5"><span>ORAL HISTORY</span><p>BULLS HEAD ATHLETIC TRAINER / 1990</p><h2>CHIP SCHAEFER</h2></div>
+<div id="evidence-w14e" data-start="477.431" data-duration="14.313" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>CHIP SCHAEFER</strong><span>ORAL HISTORY / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/schaefer_1990.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE W14e</span><h2>The league catches up</h2>
+          <p>In 1990, weight training was <mark><i></i><b>only beginning to take hold across professional basketball.</b></mark> Jordan and Grover were already building for contact.</p>
+          <footer>youtube.com</footer></article>
+      </div><div class="page-number">W14e</div>
+    </div>
+<div id="photos-w15" data-start="491.744" data-duration="9.632" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip photo-feature photos-2">
+      <header class="page-mast"><strong>CELEB WORKOUT</strong><span>MICHAEL JORDAN / THE WORK BEHIND THE BODY</span></header>
+      <div class="photo-feature-grid"><figure><img src="assets/images/mj_rookie_1985.jpg"/><figcaption><b>01</b>WHAT HE HAD</figcaption></figure><figure><img src="assets/images/mj_1996_built.jpg"/><figcaption><b>02</b>WHAT HE BUILT</figcaption></figure></div>
+      <div class="photo-deck"><p>THE FINISHED FRAME</p><h2>THE ROUTINE WAS COPYABLE.<br><em>THE APPETITE WASN'T.</em></h2></div><div class="page-number">W15</div>
+    </div>
+<video id="v-w16" class="clip scene-video hero-video" src="assets/video/rare_practice_1998.mp4" data-start="501.376" data-duration="13.603" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-w16-scene" class="clip video-layout hero-footage" data-video-id="v-w16" data-start="501.376" data-duration="13.603" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>THE PART YOU CANNOT PROGRAM</p><h2 data-layout-allow-overlap>RETURN TO THE<br><em>DISCOMFORT.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">W16 / 23</div></div>
+<video id="opener-video-d1" class="clip opener-video" src="assets/video/championship_archive.mp4" data-start="514.979" data-duration="4.409" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="opener-d1" data-start="514.979" data-duration="4.409" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-d1">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>04 / INPUTS FOR THE WORK</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>FOOD IS</span><span data-layout-allow-overlap>TIMING</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">D1</div>
+    </div>
+<div id="evidence-d2" data-start="519.388" data-duration="6.815" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>THE SPORTS RUSH</strong><span>REPORTING SUMMARY / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/images/mj_pippen_highfive.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE D2</span><h2>Against the era&#x27;s orthodoxy</h2>
+          <p>The standard advice was carbohydrate loading: <mark><i></i><b>rice, pasta, bread — and more of it.</b></mark> Jordan&#x27;s game-day plan went in the other direction.</p>
+          <footer>thesportsrush.com</footer></article>
+      </div><div class="page-number">D2</div>
+    </div>
+<div id="diagram-d3" data-start="526.203" data-duration="11.704" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip diagram-feature">
+      <header class="page-mast"><strong>TRAINING FILE</strong><span>D3</span></header>
+      <div class="diagram-head"><p>THE INPUTS</p><h2>BODY CHEMISTRY + ENERGY OUTPUT</h2></div>
+      <div class="diagram-rule"></div><div class="diagram-flow"><div class="diagram-node"><b>BODY</b><span>CHEMISTRY</span></div><div class="diagram-node"><b>WORK</b><span>DEMAND</span></div><div class="diagram-node"><b>MEAL</b><span>TIMING</span></div></div><footer>LOAD FOLLOWS FUNCTION / NOT APPEARANCE</footer></div>
+<div id="evidence-d4" data-start="537.907" data-duration="15.326" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>SLAM</strong><span>GAME-DAY ROUTINE / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/mj_meals.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE D4</span><h2>The unusual part was the clock</h2>
+          <p>Jordan&#x27;s preferred game-day meal was steak and a potato, <mark><i></i><b>about four hours before tipoff.</b></mark> The point was predictable energy, not novelty.</p>
+          <footer>slamonline.com</footer></article>
+      </div><div class="page-number">D4</div>
+    </div>
+<div id="diagram-d5" data-start="553.233" data-duration="8.492" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip diagram-feature">
+      <header class="page-mast"><strong>TRAINING FILE</strong><span>D5</span></header>
+      <div class="diagram-head"><p>A SIMPLE DAY</p><h2>THREE MEALS / TRAINING CLOCK</h2></div>
+      <div class="diagram-rule"></div><div class="diagram-flow"><div class="diagram-node"><b>BREAKFAST</b><span>FUEL</span></div><div class="diagram-node"><b>PRACTICE</b><span>WORK</span></div><div class="diagram-node"><b>RECOVER</b><span>EAT + REST</span></div></div><footer>LOAD FOLLOWS FUNCTION / NOT APPEARANCE</footer></div>
+<video id="archive-video-d6" class="clip archive-video" src="assets/video/render_ready/bite_mj_meals.mp4" data-start="561.725" data-duration="25.457" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="archive-d6" class="clip archive-feature" data-video-id="archive-video-d6" data-start="561.725" data-duration="25.457" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion>
+      <header class="page-mast light"><strong>PRIMARY SOURCE / TAPE</strong><span>D6</span></header>
+      <div class="archive-frame"><span class="timecode">TC 00:D6:23</span></div>
+      <article><p>MICHAEL JORDAN / ARCHIVE</p><h2>MEALS + RECOVERY</h2><blockquote>THREE MEALS. TRAIN. RECOVER. REST.</blockquote><i></i><footer>ORIGINAL AUDIO / EDITORIAL FRAME</footer></article></div>
+<div id="evidence-d7" data-start="587.182" data-duration="6.122" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>TIM GROVER</strong><span>INTERVIEW TRANSCRIPT / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/images/tim_grover_a.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE D7</span><h2>The diet argument, simplified</h2>
+          <p>Every nutrition plan can work <mark><i></i><b>if the athlete actually follows it.</b></mark> Fit the diet to the body, the workload, and the time horizon.</p>
+          <footer>youtube.com</footer></article>
+      </div><div class="page-number">D7</div>
+    </div>
+<div id="feature-d8" data-start="593.304" data-duration="11.383" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-spread">
+      <header class="page-mast"><strong>LONG FORM / MICHAEL JORDAN</strong><span>D8</span></header>
+      <figure data-layout-allow-overflow><img src="assets/editorial/stills/grover_letter.jpg" style="object-position:50% 50%"/><figcaption>THE PRINCIPLE</figcaption></figure>
+      <article><p>THE PRINCIPLE</p><h2>THE BODY DECIDES</h2><blockquote>“The useful diet is the one that fits the athlete and survives long enough to matter.”</blockquote><i></i><footer>TIM GROVER / NUTRITION ACCOUNT</footer></article>
+      <div class="page-number">D8</div></div>
+<video id="opener-video-p1" class="clip opener-video" src="assets/video/dream_team_practice.mp4" data-start="604.687" data-duration="11.217" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="opener-p1" data-start="604.687" data-duration="11.217" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-p1">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>05 / THE COMPONENT PEOPLE COPY LEAST</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>PRACTICE</span><span data-layout-allow-overlap>IS THE TEST</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">P1</div>
+    </div>
+<video id="archive-video-p2" class="clip archive-video" src="assets/video/render_ready/bite_mj_practice.mp4" data-start="615.904" data-duration="21.175" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="archive-p2" class="clip archive-feature" data-video-id="archive-video-p2" data-start="615.904" data-duration="21.175" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion>
+      <header class="page-mast light"><strong>PRIMARY SOURCE / TAPE</strong><span>P2</span></header>
+      <div class="archive-frame"><span class="timecode">TC 00:P2:23</span></div>
+      <article><p>MICHAEL JORDAN / ARCHIVE</p><h2>PRACTICE AS A TEST</h2><blockquote>THE GAME WAS NOTHING HE HADN&#x27;T REHEARSED.</blockquote><i></i><footer>ORIGINAL AUDIO / EDITORIAL FRAME</footer></article></div>
+<video id="v-p3" class="clip scene-video hero-video" src="assets/video/jordan_practice.mp4" data-start="637.079" data-duration="11.746" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-p3-scene" class="clip video-layout hero-footage" data-video-id="v-p3" data-start="637.079" data-duration="11.746" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>THE STANDARD</p><h2 data-layout-allow-overlap>TEAMMATES FELT IT<br><em>EVERY DAY.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">P3 / 23</div></div>
+<div id="evidence-p4" data-start="648.825" data-duration="16.33" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>TIM GROVER</strong><span>SIDELINE ACCOUNT / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/mj_practice.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE P4</span><h2>When the whistle blew</h2>
+          <p>The room went quiet. Jordan&#x27;s rule was <mark><i></i><b>practice hard enough that the game becomes easier.</b></mark> The standard also filtered the roster.</p>
+          <footer>youtube.com</footer></article>
+      </div><div class="page-number">P4</div>
+    </div>
+<video id="v-p5-0" class="clip scene-video hero-video" src="assets/video/render_ready/camp_shooting.mp4" data-start="665.155" data-duration="9.949" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-p5-0-scene" class="clip video-layout hero-footage" data-video-id="v-p5-0" data-start="665.155" data-duration="9.949" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">P5 / 23</div></div>
+<video id="v-p5-1" class="clip scene-video hero-video" src="assets/video/render_ready/united_center_warmup.mp4" data-start="675.103" data-duration="9.949" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-p5-1-scene" class="clip video-layout hero-footage" data-video-id="v-p5-1" data-start="675.103" data-duration="9.949" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">P5 / 23</div></div>
+<div id="montage-p5" class="clip montage-copy" data-start="665.155" data-duration="7.2" data-track-index="4" data-layout-allow-overlap data-layout-allow-occlusion><p>THE EQUATION</p><h2>HARDER PRACTICE.<br><em>EASIER GAME.</em></h2></div>
+<video id="v-s1" class="clip scene-video hero-video" src="assets/video/pistons_sweep_1991.mp4" data-start="685.052" data-duration="5.015" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-s1-scene" class="clip video-layout hero-footage" data-video-id="v-s1" data-start="685.052" data-duration="5.015" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>1991 / EASTERN CONFERENCE FINALS</p><h2 data-layout-allow-overlap>CHICAGO MET<br><em>DETROIT AGAIN.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">S1 / 23</div></div>
+<video id="v-s2-0" class="clip scene-video hero-video" src="assets/video/first_ring_alt.mp4" data-start="690.067" data-duration="7.454" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-s2-0-scene" class="clip video-layout hero-footage" data-video-id="v-s2-0" data-start="690.067" data-duration="7.454" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">S2 / 23</div></div>
+<video id="v-s2-1" class="clip scene-video hero-video" src="assets/video/finals_1991.mp4" data-start="697.521" data-duration="7.454" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-s2-1-scene" class="clip video-layout hero-footage" data-video-id="v-s2-1" data-start="697.521" data-duration="7.454" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div>
+      <div class="folio">S2 / 23</div></div>
+<div id="montage-s2" class="clip montage-copy" data-start="690.067" data-duration="7.2" data-track-index="4" data-layout-allow-overlap data-layout-allow-occlusion><p>THE ANSWER</p><h2>4–0.<br><em>THEN THE FIRST RING.</em></h2></div>
+<video id="v-s3" class="clip scene-video hero-video" src="assets/video/flu_game_1997.mp4" data-start="704.974" data-duration="18.74" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-s3-scene" class="clip video-layout hero-footage" data-video-id="v-s3" data-start="704.974" data-duration="18.74" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>GAME 5 / 1997 FINALS</p><h2 data-layout-allow-overlap>38 POINTS.<br><em>BARELY STANDING.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">S3 / 23</div></div>
+<div id="evidence-s4" data-start="723.714" data-duration="11.311" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>BLEACHER REPORT</strong><span>TRAINER&#x27;S ACCOUNT / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/flu_game.jpg" style="object-position:50% 50%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE S4</span><h2>The night before Game Five</h2>
+          <p>One pizza was delivered. Jordan was <mark><i></i><b>the only person in the room who ate it.</b></mark> Around three a.m., Grover found him curled into a ball.</p>
+          <footer>bleacherreport.com</footer></article>
+      </div><div class="page-number">S4</div>
+    </div>
+<div id="evidence-s5" data-start="735.025" data-duration="8.21" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip evidence-spread">
+      <header class="page-mast"><strong>THE LAST DANCE</strong><span>2020 / SOURCE FILE</span></header>
+      <div class="evidence-grid">
+        <figure class="evidence-visual"><img src="assets/editorial/stills/flu_game_second.jpg" style="object-position:64% 48%"/><figcaption>ORIGINAL REPORTING / ARCHIVAL IMAGE</figcaption></figure>
+        <article class="evidence-copy"><span>FIELD NOTE S5</span><h2>The account becomes public</h2>
+          <p>For twenty-three years the night was remembered as flu. <mark><i></i><b>Jordan later described food poisoning.</b></mark> The label changed. The performance did not.</p>
+          <footer>netflix.com</footer></article>
+      </div><div class="page-number">S5</div>
+    </div>
+<video id="v-s6" class="clip scene-video hero-video" src="assets/video/flu_game_second.mp4" data-start="743.235" data-duration="13.567" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-s6-scene" class="clip video-layout hero-footage" data-video-id="v-s6" data-start="743.235" data-duration="13.567" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>DEPLETED / SHIVERING / STILL PLAYING</p><h2 data-layout-allow-overlap>THEN HE WALKED<br><em>ONTO THE FLOOR.</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">S6 / 23</div></div>
+<video id="opener-video-s7" class="clip opener-video" src="assets/video/render_ready/flu_game_backstory.mp4" data-start="756.802" data-duration="2.011" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="opener-s7" data-start="756.802" data-duration="2.011" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-s7">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>GAME 5 / UTAH / 1997</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>44</span><span data-layout-allow-overlap>MINUTES</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">S7</div>
+    </div>
+<div id="summary-e1v4" data-start="758.813" data-duration="22.635" data-track-index="0" data-layout-allow-overlap data-layout-allow-occlusion class="clip closing-summary">
+      <header class="page-mast light"><strong>THE HONEST SUMMARY</strong><span>THE SYSTEM / 1989–2003</span></header>
+      <h2>ORDINARY<br>WORK.<br><em>EXTRAORDINARY</em><br>CONSISTENCY.</h2>
+      <div class="closing-list"><span>MOBILITY</span><span>CONDITIONING</span><span>STRENGTH</span><span>FOOD</span><span>SLEEP</span><b>REPEAT</b></div>
+      <div class="closing-red" data-layout-allow-overflow></div></div>
+<video id="opener-video-e2v4" class="clip opener-video" src="assets/video/render_ready/seventy_two_ten.mp4" data-start="781.448" data-duration="10.45" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="opener-e2v4" data-start="781.448" data-duration="10.45" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion class="clip feature-opener" data-video-id="opener-video-e2v4">
+      <div class="opener-shade"></div><section class="opener-page" data-layout-allow-overlap><p>THE FINISHED PRODUCT WAS BUILT</p><h1 data-layout-allow-overlap><span data-layout-allow-overlap>TALENT</span><span data-layout-allow-overlap>MADE AVAILABLE</span></h1><i></i><small>THE SYSTEM / REPORTED &amp; RECONSTRUCTED</small></section>
+      <div class="cover-kicker">MICHAEL JORDAN</div><div class="page-number">E2V4</div>
+    </div>
+<video id="archive-video-e3" class="clip archive-video" src="assets/video/render_ready/bite_mj_outofshape.mp4" data-start="791.898" data-duration="22.796" data-track-index="1" data-media-start="0" muted playsinline></video>
+    <div id="archive-e3" class="clip archive-feature" data-video-id="archive-video-e3" data-start="791.898" data-duration="22.796" data-track-index="2" data-layout-allow-overlap data-layout-allow-occlusion>
+      <header class="page-mast light"><strong>PRIMARY SOURCE / TAPE</strong><span>E3</span></header>
+      <div class="archive-frame"><span class="timecode">TC 00:E3:23</span></div>
+      <article><p>MICHAEL JORDAN / ARCHIVE</p><h2>LOSING CONDITIONING</h2><blockquote>CONDITIONING IS PERISHABLE.</blockquote><i></i><footer>ORIGINAL AUDIO / EDITORIAL FRAME</footer></article></div>
+<video id="v-e4v4" class="clip scene-video hero-video" src="assets/video/bulls_prime.mp4" data-start="814.694" data-duration="7.735" data-track-index="1" data-media-start="0" muted playsinline style="object-position:50% 50%"></video>
+    <div id="v-e4v4-scene" class="clip video-layout hero-footage" data-video-id="v-e4v4" data-start="814.694" data-duration="7.735" data-track-index="3" data-layout-allow-overlap data-layout-allow-occlusion>
+      <div class="video-shell"><div class="video-shade"></div></div><aside class="video-copy" data-layout-allow-overlap><p data-layout-allow-overlap>THE REAL WORKOUT</p><h2 data-layout-allow-overlap>WHOSE SYSTEM<br><em>SHOULD WE STUDY NEXT?</em></h2><span>CELEB WORKOUT / FILM STUDY</span></aside>
+      <div class="folio">E4V4 / 23</div></div><div id="chapter-r1" class="clip chapter-tab" data-start="49.996" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>01 / THE ROLE</div>
+<div id="chapter-t1" class="clip chapter-tab" data-start="161.167" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>02 / THE TURN</div>
+<div id="chapter-w1" class="clip chapter-tab" data-start="254.36" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>03 / THE WORKOUT</div>
+<div id="chapter-d1" class="clip chapter-tab" data-start="514.979" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>04 / THE DIET</div>
+<div id="chapter-p1" class="clip chapter-tab" data-start="604.687" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>05 / PRACTICE</div>
+<div id="chapter-s1" class="clip chapter-tab" data-start="685.052" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>06 / THE RESULTS</div>
+<div id="chapter-e1v4" class="clip chapter-tab" data-start="758.813" data-duration="4.4" data-track-index="78" data-layout-allow-overlap data-layout-allow-occlusion>07 / THE POINT</div><div class="brand-bug" data-layout-allow-overlap data-layout-allow-occlusion>CELEB WORKOUT</div><div class="texture"></div>
+<audio id="master-audio" src="assets/audio/narration.wav" data-start="0" data-duration="822.429" data-track-index="90" data-volume="1"></audio>
+</div><script>
+window.__timelines=window.__timelines||{};const tl=gsap.timeline({paused:true});
+document.querySelectorAll('.video-layout').forEach((el)=>{const s=+el.dataset.start,d=+el.dataset.duration,v=document.getElementById(el.dataset.videoId),copy=el.querySelector('.video-copy');tl.fromTo(v,{scale:1.045},{scale:1.005,duration:Math.max(.5,d-.1),ease:'none'},s+.02);if(copy){tl.set(copy,{opacity:1,y:70},s+.12);tl.to(copy,{y:0,duration:.42,ease:'power4.out'},s+.12)}});
+document.querySelectorAll('.feature-opener').forEach((el)=>{const s=+el.dataset.start,d=+el.dataset.duration,p=el.querySelector('.opener-page'),v=document.getElementById(el.dataset.videoId);tl.fromTo(p,{xPercent:102},{xPercent:0,duration:.72,ease:'power3.inOut'},s+.08);tl.fromTo(v,{scale:1.07},{scale:1.01,duration:Math.max(.6,d-.1),ease:'none'},s+.02);el.querySelectorAll('h1 span').forEach((line,i)=>{tl.set(line,{opacity:1,y:80},s+.62+i*.14);tl.to(line,{y:0,duration:.22,ease:'power4.out'},s+.62+i*.14)})});
+document.querySelectorAll('.photo-feature,.roster-feature').forEach((el)=>{const s=+el.dataset.start,d=+el.dataset.duration;el.querySelectorAll('figure').forEach((fig,i)=>{tl.set(fig,{opacity:1,y:70},s+.1+i*.12);tl.to(fig,{y:0,duration:.42,ease:'power4.out'},s+.1+i*.12);tl.fromTo(fig.querySelector('img'),{scale:1.06},{scale:1.01,duration:Math.max(.5,d-.2),ease:'none'},s+.05)})});
+document.querySelectorAll('.evidence-spread').forEach((el)=>{const s=+el.dataset.start,d=+el.dataset.duration,img=el.querySelector('.evidence-visual'),mark=el.querySelector('mark i');tl.fromTo(img,{clipPath:'inset(0 100% 0 0)'},{clipPath:'inset(0 0% 0 0)',duration:.72,ease:'power3.inOut'},s+.08);tl.fromTo(mark,{scaleX:0},{scaleX:1,duration:.58,ease:'power2.out'},s+Math.min(2.0,d*.32));tl.fromTo(el.querySelector('.evidence-copy'),{x:55},{x:0,duration:.65,ease:'power4.out'},s+.18)});
+document.querySelectorAll('.feature-spread').forEach((el)=>{const s=+el.dataset.start,d=+el.dataset.duration,fig=el.querySelector('figure');tl.fromTo(fig,{clipPath:'inset(0 0 100% 0)'},{clipPath:'inset(0 0 0% 0)',duration:.72,ease:'power3.inOut'},s+.08);tl.fromTo(fig.querySelector('img'),{scale:1.07},{scale:1.01,duration:Math.max(.5,d-.2),ease:'none'},s+.06);tl.set(el.querySelector('article'),{opacity:1,y:55},s+.28);tl.to(el.querySelector('article'),{y:0,duration:.42,ease:'power4.out'},s+.28)});
+document.querySelectorAll('.compare-feature').forEach((el)=>{const s=+el.dataset.start;const figs=el.querySelectorAll('figure');tl.fromTo(figs[0],{x:-220},{x:0,duration:.62,ease:'power4.out'},s+.05);tl.fromTo(figs[1],{x:220},{x:0,duration:.62,ease:'power4.out'},s+.11);tl.fromTo(el.querySelector('h2'),{scale:1.18,y:30},{scale:1,y:0,duration:.42,ease:'power4.out'},s+.55)});
+document.querySelectorAll('.stat-feature').forEach((el)=>{const s=+el.dataset.start;tl.set(el.querySelector('.stat-number'),{opacity:1,y:100},s+.12);tl.to(el.querySelector('.stat-number'),{y:0,duration:.48,ease:'power4.out'},s+.12);tl.fromTo(el.querySelector('article'),{x:80},{x:0,duration:.55,ease:'power4.out'},s+.34)});
+document.querySelectorAll('.diagram-feature').forEach((el)=>{const s=+el.dataset.start;tl.fromTo(el.querySelector('.diagram-rule'),{scaleX:0},{scaleX:1,duration:.58,ease:'power2.out'},s+.1);el.querySelectorAll('.diagram-node').forEach((n,i)=>{tl.set(n,{opacity:1,y:70},s+.35+i*.12);tl.to(n,{y:0,duration:.36,ease:'power4.out'},s+.35+i*.12)})});
+document.querySelectorAll('.archive-feature').forEach((el)=>{const s=+el.dataset.start,d=+el.dataset.duration,v=document.getElementById(el.dataset.videoId);tl.fromTo(el.querySelector('.archive-frame'),{x:-120},{x:0,duration:.62,ease:'power4.out'},s+.06);tl.fromTo(el.querySelector('article'),{x:100},{x:0,duration:.62,ease:'power4.out'},s+.16);tl.fromTo(v,{scale:1.035},{scale:1,duration:Math.max(.5,d-.2),ease:'none'},s+.04)});
+document.querySelectorAll('.interview-slug,.chapter-tab,.montage-copy').forEach((el)=>{const s=+el.dataset.start;tl.set(el,{opacity:1,x:-130},s+.1);tl.to(el,{x:0,duration:.45,ease:'power4.out'},s+.1)});
+document.querySelectorAll('.closing-list>*').forEach((el,i)=>{const s=758.813+.2+i*.13;tl.set(el,{opacity:1,y:55},s);tl.to(el,{y:0,duration:.18,ease:'power4.out'},s)});
+window.__timelines['main']=tl;
+</script></body></html>

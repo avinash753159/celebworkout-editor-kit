@@ -1,0 +1,272 @@
+<title>Resources — Jennifer Aniston</title>
+<style>
+  :root{
+    --red:#B22B1A; --ink:#121212; --body:#2E2E2E; --rule:#D4D4D4; --hair:#E6E6E6;
+    --paper:#FFFFFF; --panel:#F4F4F4; --mute:#6B6B6B; --good:#1F6F4A; --bad:#A32A17;
+    --a1:#2B5C7E; --a2:#8A4B2A; --a3:#3F7048; --a4:#7C3A2A;
+    --serif:"Milo Serif","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:"Inter","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:"Cascadia Mono",Consolas,"DejaVu Sans Mono",monospace;
+    color-scheme: light;
+  }
+  html,body{background:#fff;}
+  body{color:var(--body);font-family:var(--serif);font-size:16.5px;line-height:1.58;margin:0;
+       -webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums;}
+  .wrap{max-width:58rem;margin:0 auto;padding:0 1.5rem 6rem;background:#fff;}
+
+  header.mast{margin-top:2.4rem;}
+  .tab{display:inline-block;background:var(--red);color:#fff;font-family:var(--sans);
+       font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+       padding:.22rem .6rem;margin-bottom:.9rem;}
+  h1{font-size:clamp(2rem,5vw,3rem);line-height:1.05;margin:0 0 .55rem;
+     color:var(--ink);font-weight:700;letter-spacing:-.015em;text-wrap:balance;}
+  .stand{font-size:1.15rem;line-height:1.42;color:var(--mute);max-width:44rem;margin:0 0 1.3rem;text-wrap:pretty;}
+  .byline{font-family:var(--sans);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;
+          color:var(--mute);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule);
+          padding:.5rem 0;margin-bottom:1.6rem;display:flex;gap:1.4rem;flex-wrap:wrap;}
+
+  nav.roles{display:flex;gap:.5rem;flex-wrap:wrap;margin:0 0 2.2rem;font-family:var(--sans);}
+  nav.roles a{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+     color:#fff;padding:.4rem .8rem;border-bottom:none;}
+  nav.roles a.r1{background:var(--a1);} nav.roles a.r2{background:var(--a4);}
+  nav.roles a.r3{background:var(--a2);} nav.roles a.r4{background:var(--a3);}
+
+  .role-head{font-family:var(--sans);display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;
+     margin:3.2rem 0 .3rem;padding:.6rem 0;border-top:4px solid var(--rc);border-bottom:1px solid var(--rule);}
+  .role-head .tag{font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+     color:#fff;background:var(--rc);padding:.25rem .6rem;}
+  .role-head h2{margin:0;border:none;padding:0;font-size:1.3rem;}
+  #researcher{--rc:var(--a1);} #videoeditor{--rc:var(--a4);}
+  #audioeditor{--rc:var(--a2);} #writer{--rc:var(--a3);}
+
+  h2{font-family:var(--sans);font-size:1.18rem;font-weight:700;color:var(--ink);
+     letter-spacing:-.005em;}
+  h3{font-family:var(--sans);font-size:.92rem;font-weight:700;color:var(--ink);margin:1.6rem 0 .4rem;}
+  p{margin:0 0 .95rem;text-wrap:pretty;}
+  strong{color:var(--ink);font-weight:700;}
+  code{font-family:var(--mono);font-size:.85em;background:var(--panel);padding:.05em .3em;}
+  a{color:var(--red);text-decoration:none;border-bottom:1px solid currentColor;}
+  a:hover{color:var(--ink);}
+
+  .card{border:1px solid var(--rule);border-left:3px solid var(--red);padding:.9rem 1.1rem;margin:1rem 0 1.4rem;}
+  .card h3{margin:0 0 .3rem;font-size:1rem;}
+  .card .repo{font-family:var(--mono);font-size:.82rem;color:var(--red);margin-bottom:.5rem;
+     display:inline-block;border-bottom:1px solid currentColor;text-decoration:none;}
+  .card .repo:hover{color:var(--ink);}
+  .card .repo::after{content:" ↗";font-family:var(--sans);}
+  .card .status{display:inline-block;font-family:var(--sans);font-size:.6rem;font-weight:700;
+     letter-spacing:.08em;text-transform:uppercase;padding:.12em .5em;margin-bottom:.6rem;}
+  .status.verified{background:#E6F2EC;color:var(--good);}
+  .status.new{background:#FDF3E3;color:#8A5A00;}
+  .status.installed{background:#EDF2F6;color:#2B5C7E;}
+
+  .box{background:var(--panel);border-top:2px solid var(--red);padding:.85rem 1.05rem;margin:1rem 0 1.4rem;}
+  .box .lab{font-family:var(--sans);font-size:.6rem;font-weight:700;letter-spacing:.13em;
+     text-transform:uppercase;color:var(--red);margin-bottom:.25rem;}
+  .box p{margin:0;font-size:.98rem;}
+
+  .tw{overflow-x:auto;margin:1.1rem 0 1.5rem;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:.79rem;}
+  th{text-align:left;font-weight:700;color:var(--ink);border-bottom:1.5px solid var(--ink);
+     padding:.42rem .7rem .42rem 0;font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;}
+  td{padding:.48rem .7rem .48rem 0;border-bottom:1px solid var(--hair);vertical-align:top;}
+  td.n{text-align:right;padding-right:0;}
+
+  ul.skills{list-style:none;padding:0;margin:.8rem 0 1.4rem;font-family:var(--sans);font-size:.87rem;}
+  ul.skills li{padding:.4rem 0;border-bottom:1px solid var(--hair);}
+  ul.skills li b{color:var(--ink);}
+
+  .note{font-family:var(--sans);font-size:.76rem;color:var(--mute);line-height:1.5;margin:-.4rem 0 1.6rem;}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="tab">Resources · Jennifer Aniston · crew handoff — one section per role</div>
+  <h1>Resources</h1>
+  <p class="stand">Everything each person working on this film needs, in one place: what to build
+  with, where it plugs into the actual shot list, and what's already sitting in this project ready
+  to reuse. Checked against live repos and this film's real row data — nothing here is guessed.</p>
+  <div class="byline"><span>118 shot-list rows mapped by asset class below</span><span>see GOAL.md for the full production record</span></div>
+</header>
+
+<nav class="roles">
+  <a class="r1" href="#researcher">1 · Researcher</a>
+  <a class="r2" href="#videoeditor">2 · Video Editor</a>
+  <a class="r3" href="#audioeditor">3 · Audio Editor</a>
+  <a class="r4" href="#writer">4 · Writer / Transcript</a>
+</nav>
+
+<div class="role-head" id="researcher"><span class="tag">1</span><h2>Researcher</h2></div>
+
+<p class="lede">Your job: work every remaining <code>hunt</code> field in
+<code>manifest/shotlist_jennifer_aniston.json</code> into a confirmed asset or a documented dead end.
+118 of 118 rows now have concrete, actionable directions — an exact URL, an exact
+platform+query+date-range, or an exact free-stock query — not vague prose. See
+<code>GOAL.md</code> §16 for what changed and why.</p>
+
+<div class="card">
+  <span class="status new">NEW — the highest-leverage tool for your #1 blocker</span>
+  <h3>claude-video</h3>
+  <a class="repo" href="https://github.com/bradautomates/claude-video" target="_blank" rel="noopener">github.com/bradautomates/claude-video</a>
+  <p>Lets Claude actually <strong>watch</strong> a video instead of reasoning from a title or search
+  snippet: pulls native captions first (free, instant), falls back to <code>yt-dlp</code> +
+  <code>ffmpeg</code> frame extraction and Whisper transcription (needs a Groq or OpenAI key) when
+  captions don't exist, then hands back a timestamped transcript plus frames.</p>
+  <p><strong>Why this matters:</strong> real voice sits at 3.4% against a 40% gate (<code>GOAL.md</code>
+  §7) — the single blocking item in this whole production. Every <code>hunt</code> field naming a
+  real interview (InStyle, Katie Couric Media, the Refinery29 Ingber piece, GMA/how2fit coverage) is
+  a candidate: point claude-video at it, get the real transcript back, and either confirm exact
+  wording (restore it as a REAL-V bite) or learn it doesn't say what was assumed — same discipline
+  that already found the fabricated Rolling Stone quote and the wrong byline in this film's own
+  research (<code>GOAL.md</code> §15).</p>
+  <p>Install: <code>/plugin marketplace add bradautomates/claude-video</code> in Claude Code, or
+  <code>npx skills add bradautomates/claude-video -g</code> elsewhere.</p>
+</div>
+
+<h3>Every source-critical row, at a glance</h3>
+<div class="tw">
+<table>
+<tr><th>Beat</th><th>What to verify</th><th>Where</th></tr>
+<tr><td>1, 5, 16</td><td>Confirmed real: Rolling Stone #729 (archive.org, full OCR text pulled and read directly)</td><td>archive.org/details/rolling-stone-729-1996-03-07-jennifer-aniston-c</td></tr>
+<tr><td>7, 8</td><td>Confirmed real: Ingber testimonial quote</td><td>mandyingber.com</td></tr>
+<tr><td>10</td><td>Confirmed real: Ingber on set for <em>The Break-Up</em> (2005, not 2006 — corrected)</td><td>Refinery29, 2013</td></tr>
+<tr><td>12, 12 (Poconos)</td><td>2019 InStyle "six failed shows" / telemarketing story — corroborated by 4+ secondary sites, primary InStyle page not yet pulled directly</td><td>InStyle, 2019 — still owed a primary-source pull</td></tr>
+<tr><td>13</td><td>"Investor" claim removed — no primary source supports it; Coleman's real title is Pvolve VP of Training</td><td>pvolve.com, Businesswire June 2023</td></tr>
+<tr><td>15</td><td>P.band = upper body, P.ball = glutes/lower body (was backwards)</td><td>pvolve.com/products/p-band, /pages/p-ball</td></tr>
+<tr><td>15</td><td>Azubuike boxing quote — verbatim confirmed, originates InStyle Sept 2018 (not GMA)</td><td>InStyle, Sept 2018; re-quoted by ABC/GMA.com Mar 2019</td></tr>
+</table>
+</div>
+
+<div class="role-head" id="videoeditor"><span class="tag">2</span><h2>Video Editor</h2></div>
+
+<p class="lede">This film's 118 rows break down as: <strong>35 REAL-A, 33 CARD, 20 DOC, 13 DEMO,
+10 STOCK, 4 REAL-V, 3 ANIM</strong>. The CARD rows are original brand graphics with no photography —
+that's the layer Remotion actually fits. Checked against the real repos below, not guessed.</p>
+
+<div class="card">
+  <span class="status new">NEW — free, MIT-licensed, clone-and-customize</span>
+  <h3>reactvideoeditor/remotion-templates</h3>
+  <a class="repo" href="https://github.com/reactvideoeditor/remotion-templates" target="_blank" rel="noopener">github.com/reactvideoeditor/remotion-templates</a>
+  <p>81 free React components for Remotion, 9 per category, MIT licensed. Not an npm install — copy
+  the specific template file you want into this project and wire it to real props. Categories that
+  map directly onto this film's CARD rows:</p>
+  <div class="tw">
+  <table>
+  <tr><th>Template category</th><th>Use it for</th><th>Example rows in this film</th></tr>
+  <tr><td>Logo &amp; Branding (stroke-draw, typewriter, spin reveals)</td><td>Name-reveal cards</td><td>Beat 7 row 1 ("MANDY INGBER" builds letter-by-letter), Beat 13's "DANI COLEMAN" card</td></tr>
+  <tr><td>Text Animation (bounce, glitch, typewriter)</td><td>Anton-numeral stat cards</td><td>Beat 3's "6 FAILED SHOWS", Beat 6's "2 MARRIAGES / 3 DECADES", Beat 5's "1994" hinge-year card</td></tr>
+  <tr><td>Charts &amp; Data (line/bar, timeline)</td><td>The two timeline graphics that need a bar spanning years</td><td>Beat 7 row 6 (2006, dashed line backward), Beat 10 row 7 (2006-to-present unbroken bar)</td></tr>
+  <tr><td>Intro &amp; Outro (cinematic titles, end cards, countdown)</td><td>Act-break bumpers and the series end card</td><td>Beat 8 row 1 ("THE METHOD" act-break), Beat 16's final "TRAIN LIKE THE ICONS" end card</td></tr>
+  <tr><td>Transitions (cross dissolve, wipes, morphing)</td><td>Beat-to-beat cuts specified in the shot list's <code>LINK</code> dict</td><td>Card→archive and archive→card transitions throughout — see <code>pipeline/shotlist_jennifer_aniston.py</code>'s <code>LINK</code> dict for the exact rule per class pair</td></tr>
+  <tr><td>Cinematic Effects (Ken Burns, spotlight reveal)</td><td>The slow push-in already specified on every REAL-A/DOC row</td><td>All 35 REAL-A + 20 DOC rows — <code>CLASS_TREATMENT</code> in the pipeline script already calls for "slow push 1.00→1.04," this category is a drop-in implementation of that exact spec</td></tr>
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <span class="status new">NEW — official Remotion template gallery</span>
+  <h3>Remotion templates + docs/resources</h3>
+  <a class="repo" href="https://www.remotion.dev/templates" target="_blank" rel="noopener">remotion.dev/templates</a>
+  <a class="repo" href="https://www.remotion.dev/docs/resources" target="_blank" rel="noopener">remotion.dev/docs/resources</a>
+  <a class="repo" href="https://www.remotion.dev/showcase" target="_blank" rel="noopener">remotion.dev/showcase</a>
+  <p>Two pieces worth pulling from the official gallery specifically: the <strong>TikTok template</strong>
+  (word-by-word animated captions) for burned-in captions on the film's 4 REAL-V bite rows and any
+  future DEMO rows with speech — matches <code>THE_STANDARD.html</code>'s existing rule that captions
+  sit bottom-third, bold sans, all caps. And <strong>Stills</strong> (dynamic PNG/JPEG generation) for
+  batch-rendering the 33 CARD rows straight from the JSON manifest instead of hand-building each one
+  in an editor — the manifest already has the exact copy and duration for every card.</p>
+  <p><code>docs/resources</code> also lists <strong>remotion-subtitle</strong> (captioning/styling
+  utilities) and <strong>remotion-animate-text</strong> (text animation helpers) as standalone
+  libraries, if a full template feels heavier than needed for a specific card.</p>
+</div>
+
+<h3>Recommended build order</h3>
+<ol>
+  <li>Start from the <strong>Blank</strong> template (remotion.dev/templates) or a Next.js starter if
+  the render needs to be a hosted app rather than a local CLI render.</li>
+  <li>Clone the specific template files needed (see table above) from
+  <code>reactvideoeditor/remotion-templates</code> into the project — don't install the whole repo.</li>
+  <li>Build one React component per CARD sub-type (numeral-stat, name-reveal, timeline, act-break,
+  end-card) driven by props, then generate one <code>&lt;Composition&gt;</code> per row directly from
+  <code>manifest/shotlist_jennifer_aniston.json</code> — the JSON already has the exact copy, duration,
+  and beat context for every card, so this is a data-driven render, not 33 hand-built graphics.</li>
+  <li>For the 35 REAL-A + 20 DOC archival rows, apply the Cinematic Effects Ken Burns component
+  uniformly — it's a direct implementation of the push-in spec already written into every one of
+  those rows' <code>note</code> field.</li>
+</ol>
+
+<div class="role-head" id="audioeditor"><span class="tag">3</span><h2>Audio Editor</h2></div>
+
+<p class="lede">Five continuous-narration blocks, not sixteen per-beat clips. Never crossfade. Full
+mix rules and the exact ElevenLabs-ready text are on the Audio Plan and Transcript tabs — this
+section is about what tooling to actually run.</p>
+
+<div class="box">
+  <div class="lab">ElevenLabs — a working, tested pattern already exists in this project</div>
+  <p><code>pipeline/hems_narrate.py</code> is the real template to copy, not a generic integration
+  written from scratch. Verified from the file itself: narrates block-by-block (a failed block costs
+  one block, not the whole render; each block gets an exact measured duration for the EDL); uses
+  ElevenLabs' <code>previous_text</code>/<code>next_text</code> parameters to keep prosody continuous
+  across joins; butt-joins with 30ms edge fades and <strong>never crossfades</strong> (a crossfade
+  shortens total audio ~0.3s per junction — this caused audible A/V drift on an earlier film in this
+  project). Voice used previously: <code>nPczCjzI2devNBz1zQrb</code> ("Brian"), model
+  <code>eleven_turbo_v2_5</code> (0.5 credits/char). Key at <code>elevenlabs_key.txt</code>, repo root.</p>
+  <p>For this film: adapt it to read the 5 files in <code>dossier/jennifer_aniston/tts/</code>
+  (CNB-1.txt through CNB-5.txt) instead of one script file — same block-per-file, never-crossfade rule.</p>
+</div>
+
+<div class="tw">
+<table>
+<tr><th>Tool</th><th>Use</th></tr>
+<tr><td><code>edge-tts</code> (free)</td><td>Draft pass first — build and time the whole film on this before spending ElevenLabs credits, per every GOAL.md in this project.</td></tr>
+<tr><td><code>ffmpeg</code></td><td>All mixing (<code>amix</code> with <code>normalize=0</code>, <code>aformat</code> to stereo before mixing, fades) — see <code>generate_music_bed.py</code> / <code>mix_music.py</code> in the sibling CelebWorkout project for the exact filter chains the Audio Plan tab's mix rules are drawn from.</td></tr>
+<tr><td>Remotion Audiogram template</td><td>remotion.dev/templates — waveform/text visualization, useful if any beat needs an on-screen audio-reactive element rather than a plain card during a bite.</td></tr>
+</table>
+</div>
+
+<div class="role-head" id="writer"><span class="tag">4</span><h2>Writer / Transcript</h2></div>
+
+<p class="lede">The Transcript tab has the current, locked, ElevenLabs-ready narration. This section
+is about tools for the <em>next</em> revision pass, not what's already final.</p>
+
+<div class="card">
+  <span class="status installed">ALREADY INSTALLED in this project</span>
+  <h3>creative-writing-skills</h3>
+  <a class="repo" href="https://github.com/haowjy/creative-writing-skills" target="_blank" rel="noopener">github.com/haowjy/creative-writing-skills</a>
+  <p>A skill/agent package for fiction craft — prose technique, scene mechanics, story planning,
+  editorial review, character simulation, reader simulation — coordinated by a "muse" agent across
+  three phases (explore/plan, draft/revise, knowledge maintenance).</p>
+  <p><strong>Already sitting in <code>.claude/skills/</code> in this exact repo</strong>, apparently
+  installed for an earlier or parallel project and never used on this one:</p>
+  <ul class="skills">
+    <li><b>story-review</b> — editorial critique of a draft. A second, independent pass alongside
+    (not instead of) the exemplar-quality craft tournament already applied to this film's cold open,
+    B-story payoff, and close.</li>
+    <li><b>reader-sim</b> — simulates an audience reader's real-time reaction. Useful for
+    stress-testing the (now-cut-to-9s) cold open, or any future beat pacing question.</li>
+    <li><b>writing-principles</b> — reader-reward model and failure-mode diagnostics, generic across
+    fiction and, with adaptation, narration.</li>
+    <li><b>creative-writing-craft</b> — prose rhythm, sensory grounding, POV/voice technique.</li>
+    <li><b>character-sim, story-planning, llm-writing, information-hierarchy</b>, and others — see
+    <code>.claude/skills/</code> for the full list (22 sub-skills total).</li>
+  </ul>
+  <p>Built for fiction, not documentary narration — filter every suggestion through that, but
+  <code>reader-sim</code> and <code>story-review</code> are close enough to be worth a trial run.</p>
+</div>
+
+<div class="tw">
+<table>
+  <caption style="font-family:var(--sans);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-align:left;padding-bottom:.5rem;display:block;">Other credentials/tools present in the repo root</caption>
+  <tr><th>File / tool</th><th>Purpose (name only — contents not reproduced)</th></tr>
+  <tr><td><code>.veo_key</code></td><td>Google Veo — irrelevant to this film specifically: 0 GEN-S/GEN-V rows in the shot list, so no generation spend expected. Relevant only if a future pass adds a generated fallback.</td></tr>
+  <tr><td><code>do_token.txt</code></td><td>DigitalOcean token — used elsewhere in this project's infra; not currently wired into the Aniston pipeline.</td></tr>
+  <tr><td><code>gws</code> CLI</td><td>Google Workspace CLI (Drive/Docs/Sheets/Gmail) — available in this environment for uploading the finished render or building a Google Doc version of any of these tabs.</td></tr>
+</table>
+</div>
+
+<p class="note">Nothing on this page was guessed — every external repo/page was fetched and read
+directly, every "already installed" claim was checked against this project's actual files, and the
+row-count/beat mapping was pulled live from <code>manifest/shotlist_jennifer_aniston.json</code>.</p>
+
+</div>
