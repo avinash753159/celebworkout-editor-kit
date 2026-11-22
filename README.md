@@ -41,6 +41,17 @@ All footage lives in one Drive folder: **[Videos to Edit](https://drive.google.c
 How to open a package (Premiere XML or After Effects `.jsx`):
 [`docs/delivery/README.md`](docs/delivery/README.md).
 
+## Final assembly prompt (current workflow, 2026-11-21)
+
+**[`FINAL_ASSEMBLY_PROMPT.md`](FINAL_ASSEMBLY_PROMPT.md)** is the prompt to paste into Claude Code for the final cut.
+
+1. Build the first cut (`SKILL.md` here + the ytceleb repo).
+2. Upload it to YouTube as **unlisted**; in Studio > Copyright, trim out every claimed segment.
+3. Download the edited version and run the prompt on it. It bridges every removed segment so the story still flows.
+
+It also carries the verified tool list (stars checked 2026-11-21), the pronunciation check, the 15-25 min length gate, the full QC gate, and delivery rules.
+**Owner override:** this prompt's music bed replaces the "NO MUSIC BED" Standing Ruling in `SKILL.md`.
+
 ## How a video is made — read in this order
 
 1. **[`.claude/skills/celebvid/SKILL.md`](.claude/skills/celebvid/SKILL.md)** — the full playbook.
@@ -69,7 +80,7 @@ How to open a package (Premiere XML or After Effects `.jsx`):
 | 9 | Graphics — HyperFrames glass cards | `reference/jordan_v1_hyperframes/` |
 | 10 | Render, then **watch it** and QC | `card_qc.py`, `contact_sheet.py` |
 
-Hard rules that keep coming back: **no music bed**, Kokoro voice only, pictures
+Hard rules that keep coming back: **music bed per `FINAL_ASSEMBLY_PROMPT.md` (owner override 2026-11-21; was no music bed)**, Kokoro voice only, pictures
 must match the name/era being spoken, no burned-in third-party channel graphics,
 every quote verified against the source audio.
 
