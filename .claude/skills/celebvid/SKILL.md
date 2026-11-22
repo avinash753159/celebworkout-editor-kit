@@ -13,6 +13,8 @@ TRAINER carry the film in their own recorded words, with the narrator only
 bridging between them, full-frame data graphics synced to the spoken word, and
 every quotation proven against its own audio.
 
+**2026-11-21 additions, read with this file:** `playbook/README.md` (weekly flow, SEO template, evals, learning loop), `playbook/EDITING_CRAFT.md` (cuts that breathe, music matched to the words, transitions, graphics), `playbook/TOOLS.md` (what each tool is for), and `FINAL_ASSEMBLY_PROMPT.md` (final cut after the YouTube copyright pass). Same files in the ytceleb repo.
+
 **Start at "§0 THE STANDING RULINGS", then "RUN IT".** §0 is what three rounds of
 rejected cuts bought; RUN IT is the pipeline in order.
 
@@ -55,16 +57,31 @@ rejected: `am_onyx` (flatter), `am_eric` (193 wpm, too fast), `bm_george`
 (British, wrong register). Cache on a hash of the TEXT plus voice, never a block
 id. See `jordan_v1/voice.py`.
 
-### NO MUSIC BED AT ALL
+### MUSIC BED: ON, mood-matched, ducked (owner override 2026-11-21)
+
+The earlier ruling was "NO MUSIC BED AT ALL":
 
 > *"Your background audio track is super weird. Remove the complete background
 > audio track. Just have it be the voiceover part and even in the interviews
 > don't put sound over their voice or anything like that."*
 
-The only audio is narration plus the bites' own recorded sound. Keep `mood.py`
-and still write `qc/MOOD_TIMELINE.md` — the analysis remains the right design if
-a bed is ever wanted again — but **do not mix it**. One audio stream,
-`loudnorm=I=-14:TP=-1.5:LRA=11`, no `amix`.
+**Reversed on 2026-11-21:** the owner chose the full music version in
+`FINAL_ASSEMBLY_PROMPT.md` (high-energy motivational bed, ducking, chapter SFX),
+and added: *"the music and tone needs to match."* The old complaint is now the
+spec for doing it right, not a reason to skip it:
+
+- **Music follows the MOOD OF THE WORDS** (`mood.py` → `qc/MOOD_TIMELINE.md`),
+  changing when the sentiment changes, not when the chapter does. Read
+  `playbook/EDITING_CRAFT.md` for cue rules.
+- **Speech always wins.** Bed at about -18 to -22 dB under narration and bites,
+  up to about -10 to -12 dB in gaps and chapter cards, 150-300 ms fades.
+  Under an interview bite that already has its own music, use Demucs to strip
+  that music or drop our bed to silence for that bite.
+- **High-pass the bed** (~120-220 Hz) so it never muddies the voice.
+- **Licensed only:** YouTube Audio Library, Pixabay, FreePD, CC0/CC-BY. Every
+  track in `CREDITS.txt`; CC-BY also in the description.
+- Mix with `amix=normalize=0` (see Audio architecture), then
+  `loudnorm=I=-14:TP=-1.5:LRA=11` on the final master.
 
 ### PICTURES PINNED TO NAMES AND ERAS — build `cues.py` before the first cut
 
