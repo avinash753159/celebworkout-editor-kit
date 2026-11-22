@@ -6,3 +6,6 @@ __pycache__/
 *_key.txt
 *.pickle
 .env
+
+growth/thumbnail/out/
+growth/thumbnail/backups/
